@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { Trophy, Users, Building2, BarChart2, GitFork, ArrowRight, CheckCircle2 } from "lucide-react";
 import { SearchBar } from "@/components/search-bar";
@@ -40,13 +41,19 @@ export default async function HomePage({ searchParams }: PageProps) {
           Search teams, organizations, rankings, scores, and participant rosters from the local competition dataset.
         </p>
 
-        {/* Primary Search Experience */}
+        {/* Primary Search Experience wrapped in Suspense */}
         <div className="mt-5 max-w-2xl mx-auto">
-          <SearchBar
-            initialQuery={query}
-            initialExact={exact}
-            popularOrganizations={popularOrganizations}
-          />
+          <Suspense
+            fallback={
+              <div className="h-10 w-full animate-pulse rounded-md bg-[#F7F7F7] border border-[#D5D5D5]" />
+            }
+          >
+            <SearchBar
+              initialQuery={query}
+              initialExact={exact}
+              popularOrganizations={popularOrganizations}
+            />
+          </Suspense>
         </div>
 
         {/* Compact Horizontal Statistics Strip */}

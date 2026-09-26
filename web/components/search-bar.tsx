@@ -30,8 +30,10 @@ export function SearchBar({
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    setQuery(searchParams.get("q") || "");
-    setExact(searchParams.get("exact") === "1" || searchParams.get("exact") === "true");
+    if (searchParams) {
+      setQuery(searchParams.get("q") || "");
+      setExact(searchParams.get("exact") === "1" || searchParams.get("exact") === "true");
+    }
   }, [searchParams]);
 
   useEffect(() => {
