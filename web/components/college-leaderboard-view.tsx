@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import {
   Building2,
   Users,
@@ -87,6 +87,7 @@ const QUICK_PRESETS = ["IIT", "BITS", "NIT", "IIIT", "VIT", "Amrita", "Rishihood
 
 export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardViewProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
 
@@ -133,8 +134,12 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
       else params.set("pageSize", overrides.pageSize.toString());
     }
 
+    const currentBasePath = pathname || "/colleges";
+    const queryString = params.toString();
+    const targetUrl = queryString ? `${currentBasePath}?${queryString}` : currentBasePath;
+
     startTransition(() => {
-      router.push(`/leaderboard/colleges?${params.toString()}`);
+      router.push(targetUrl);
     });
   };
 

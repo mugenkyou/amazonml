@@ -12,7 +12,7 @@ export function Header() {
   const navItems = [
     { label: "Explorer", href: "/", icon: Trophy, description: "Search & overview" },
     { label: "Leaderboard", href: "/leaderboard", icon: BarChart2, description: "Team standings & scores" },
-    { label: "Colleges", href: "/leaderboard/colleges", icon: Building2, description: "College rankings & stats" },
+    { label: "Colleges", href: "/colleges", icon: Building2, description: "College rankings & stats" },
     { label: "Directory", href: "/organizations", icon: Users2, description: "All 1,546 institutions" },
     { label: "Compare", href: "/compare", icon: Users2, description: "Side-by-side metrics" },
     { label: "Cross-College", href: "/cross-college", icon: GitFork, description: "Inter-university teams" },
@@ -74,8 +74,8 @@ export function Header() {
                 ? pathname === "/"
                 : item.href === "/leaderboard"
                 ? pathname === "/leaderboard"
-                : item.href === "/leaderboard/colleges"
-                ? pathname === "/leaderboard/colleges"
+                : item.href === "/colleges"
+                ? pathname === "/colleges" || pathname === "/leaderboard/colleges"
                 : pathname.startsWith(item.href);
 
             return (

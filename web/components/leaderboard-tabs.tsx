@@ -36,7 +36,7 @@ export function LeaderboardTabs({
       </Link>
 
       <Link
-        href="/leaderboard/colleges"
+        href="/colleges"
         className={`inline-flex items-center gap-2 px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
           activeTab === "colleges"
             ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/30 to-transparent"
