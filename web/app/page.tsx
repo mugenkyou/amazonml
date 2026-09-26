@@ -136,7 +136,7 @@ export default async function HomePage({ searchParams }: PageProps) {
       {/* Feature Navigation Cards */}
       {!query && (
         <section className="my-5 sm:my-6">
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <Link
               href="/leaderboard"
               className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-3.5 sm:p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
@@ -149,10 +149,30 @@ export default async function HomePage({ searchParams }: PageProps) {
                   <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
                 </div>
                 <h3 className="mt-2.5 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
-                  Full Leaderboard Standings
+                  Team Leaderboard
                 </h3>
                 <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
                   Filter all 4,334 teams by rank tiers (Top 10, 25, 50, 100) and roster sizes.
+                </p>
+              </div>
+            </Link>
+
+            <Link
+              href="/leaderboard/colleges"
+              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-3.5 sm:p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]/50 group-hover:bg-[#FF9900] group-hover:text-[#111111] transition-colors">
+                    <Building2 className="h-4 w-4" />
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
+                </div>
+                <h3 className="mt-2.5 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
+                  College Leaderboard
+                </h3>
+                <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
+                  Rank 1,546 colleges by performance, best team rank, top-5 average, and scores.
                 </p>
               </div>
             </Link>
@@ -164,15 +184,15 @@ export default async function HomePage({ searchParams }: PageProps) {
               <div>
                 <div className="flex items-center justify-between">
                   <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]/50 group-hover:bg-[#FF9900] group-hover:text-[#111111] transition-colors">
-                    <Building2 className="h-4 w-4" />
+                    <Database className="h-4 w-4" />
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
                 </div>
                 <h3 className="mt-2.5 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
-                  College & University Directory
+                  Colleges Directory
                 </h3>
                 <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
-                  Browse 1,546 academic institutions with team counts, scores, and best ranks.
+                  Search 1,546 academic institutions with team rosters, scores, and best ranks.
                 </p>
               </div>
             </Link>
@@ -189,7 +209,7 @@ export default async function HomePage({ searchParams }: PageProps) {
                   <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
                 </div>
                 <h3 className="mt-2.5 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
-                  Cross-College Collaborations
+                  Cross-College Teams
                 </h3>
                 <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
                   Discover multi-university teams created through cross-institutional collaboration.
@@ -210,13 +230,23 @@ export default async function HomePage({ searchParams }: PageProps) {
               </div>
               <span>Leaderboard Preview (Top Ranked Teams)</span>
             </h2>
-            <Link
-              href="/leaderboard"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-[#007185] hover:text-[#E47911] hover:underline"
-            >
-              <span>View Full Leaderboard (4,334 Teams)</span>
-              <ArrowRight className="h-3 w-3" />
-            </Link>
+            <div className="flex items-center gap-3">
+              <Link
+                href="/leaderboard/colleges"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#E47911] hover:underline"
+              >
+                <span>College Leaderboard</span>
+                <ArrowRight className="h-3 w-3" />
+              </Link>
+              <span className="text-[#D5D5D5]">•</span>
+              <Link
+                href="/leaderboard"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#007185] hover:text-[#E47911] hover:underline"
+              >
+                <span>View Full Leaderboard (4,334 Teams)</span>
+                <ArrowRight className="h-3 w-3" />
+              </Link>
+            </div>
           </div>
         )}
 

@@ -70,27 +70,44 @@ export default async function OrganizationsDirectoryPage({
       </nav>
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5 mb-3.5">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
-            Colleges & Universities Directory
-          </h1>
+          <div className="flex items-center gap-2">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
+              Colleges & Universities Directory
+            </h1>
+            <Link
+              href="/leaderboard/colleges"
+              className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-[#E47911] bg-[#FFF3E0] border border-[#F5C26B] px-2 py-0.5 rounded-full hover:bg-[#FF9900] hover:text-[#111111] transition-colors"
+            >
+              <span>View College Leaderboard</span>
+              <span>→</span>
+            </Link>
+          </div>
           <p className="text-xs text-[#5F6368] mt-0.5">
             Discover {total.toLocaleString()} academic institutions represented across 4,334 teams in the Amazon ML Challenge.
           </p>
         </div>
 
-        {/* Search */}
-        <form action="/organizations" method="GET" className="relative w-full sm:w-72">
-          <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#767676]" />
-          <input
-            type="text"
-            name="q"
-            defaultValue={query}
-            placeholder="Search college name (e.g. IIT, BITS, VIT)..."
-            className="w-full min-h-[40px] rounded-lg border border-[#D5D5D5] bg-white py-2 pl-9 pr-3 text-xs text-[#111111] placeholder-[#767676] outline-none focus:border-[#FF9900]"
-          />
-        </form>
+        {/* Search & Leaderboard Quick Link */}
+        <div className="flex items-center gap-2">
+          <Link
+            href="/leaderboard/colleges"
+            className="sm:hidden inline-flex min-h-[40px] items-center justify-center rounded-lg border border-[#F5C26B] bg-[#FFF3E0] px-3 py-2 text-xs font-bold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-colors shrink-0"
+          >
+            Leaderboard
+          </Link>
+          <form action="/organizations" method="GET" className="relative w-full sm:w-72">
+            <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#767676]" />
+            <input
+              type="text"
+              name="q"
+              defaultValue={query}
+              placeholder="Search college name (e.g. IIT, BITS, VIT)..."
+              className="w-full min-h-[40px] rounded-lg border border-[#D5D5D5] bg-white py-2 pl-9 pr-3 text-xs text-[#111111] placeholder-[#767676] outline-none focus:border-[#FF9900]"
+            />
+          </form>
+        </div>
       </div>
 
       {/* Interactive Directory with Cards Default & List toggle */}

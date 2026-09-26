@@ -21,7 +21,8 @@
 
 ## Primary Routes & Navigation
 - `/` - Main Explorer Dashboard: Universal search across teams, participant names, and colleges with quick filters.
-- `/leaderboard` - Official Contest Standings: Complete 4,334-team rankings with filters by rank tier (Top 10, Top 25, Top 50, Top 100) and team size.
+- `/leaderboard` - Official Team Standings: Complete 4,334-team rankings with filters by rank tier (Top 10, Top 25, Top 50, Top 100) and team size.
+- `/leaderboard/colleges` - College Leaderboard: Analytical ranking of 1,546 colleges by overall performance, best team rank, top-5 average rank, and score distributions.
 - `/organizations` - Institutional Directory: Alphabetical and ranked index of 1,546 participating colleges and universities.
 - `/organizations/[slug]` - College Profile: Entity page showing total student teams, participant roster, best rank, score distribution, and team links for a specific university.
 - `/teams/[teamId]` - Team Profile: Entity page detailing official rank, score, finish timestamp, participant names, and university affiliations.

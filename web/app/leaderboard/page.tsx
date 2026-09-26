@@ -4,6 +4,7 @@ import { Users, Trophy, ChevronLeft, ChevronRight, LayoutGrid, Table as TableIco
 import { filterLeaderboard } from "@/lib/analytics";
 import { TeamCard } from "@/components/team-card";
 import { TeamTable } from "@/components/team-table";
+import { LeaderboardTabs } from "@/components/leaderboard-tabs";
 import { JsonLd } from "@/components/json-ld";
 import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
 import type { SearchResultTeam } from "@/lib/types";
@@ -108,7 +109,7 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
       </nav>
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5 mb-4">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
             Amazon ML Challenge 2026 Leaderboard
@@ -144,6 +145,9 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
           </Link>
         </div>
       </div>
+
+      {/* Leaderboard Tabs: Teams vs Colleges */}
+      <LeaderboardTabs activeTab="teams" />
 
       {/* Filter Toolbar */}
       <div className="mt-3.5 rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-3 shadow-subtle space-y-2.5">
