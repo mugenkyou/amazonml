@@ -1,14 +1,14 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import {
-  Mail,
-  Github,
   MessageSquare,
   Home,
   HelpCircle,
-  ExternalLink,
+  FileText,
   CheckCircle2,
   ArrowRight,
+  Database,
+  Layers,
 } from "lucide-react";
 import { JsonLd } from "@/components/json-ld";
 import {
@@ -19,16 +19,16 @@ import {
 } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Contact & Project Feedback • Amazon ML Challenge Explorer",
+  title: "Contact & Feedback • Amazon ML Challenge Explorer",
   description:
-    "Get in touch with the maintainers of Amazon ML Challenge Explorer. Submit feedback, report bugs, or request features via our open GitHub repository.",
+    "Information and support for Amazon ML Challenge Explorer. Find answers to common dataset questions and explore documentation.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
     title: "Contact & Feedback • Amazon ML Challenge Explorer",
     description:
-      "Submit bug reports, feature requests, and dataset questions on GitHub.",
+      "Platform questions, dataset inquiries, and documentation for Amazon ML Challenge Explorer.",
     url: `${SITE_URL}/contact`,
   },
 };
@@ -41,7 +41,7 @@ export default function ContactPage() {
 
   const webPageSchema = generateWebPageSchema({
     title: "Contact & Project Feedback",
-    description: "Contact methods and repository issue tracker for Amazon ML Challenge Explorer.",
+    description: "Contact methods and guidance for Amazon ML Challenge Explorer.",
     pathname: "/contact",
   });
 
@@ -63,44 +63,50 @@ export default function ContactPage() {
       <div className="border-b border-[#E3E3E3] pb-4 mb-6">
         <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-3 py-0.5 text-xs font-semibold text-[#E47911] mb-2.5">
           <MessageSquare className="h-3.5 w-3.5" />
-          <span>Open Source Support & Inquiries</span>
+          <span>Platform Support & Inquiries</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#111111]">
-          Contact & Project Feedback
+          Contact & Feedback
         </h1>
         <p className="mt-1.5 text-xs sm:text-sm text-[#5F6368]">
-          Have a question about the dataset, encountered a bug, or want to contribute to the open exploration platform?
+          Have a question about the dataset, methodology, or institutional rankings?
         </p>
       </div>
 
       {/* Content */}
       <div className="space-y-6 text-xs sm:text-sm text-[#333333] leading-relaxed">
-        {/* GitHub Contact Channel */}
+        {/* Resource Guide */}
         <section className="rounded-xl border border-[#E3E3E3] bg-white p-5 sm:p-6 shadow-subtle">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-start gap-3.5">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#131921] text-white">
-                <Github className="h-5 w-5 text-[#FF9900]" />
-              </div>
-              <div>
-                <h2 className="text-base sm:text-lg font-bold text-[#111111]">
-                  GitHub Issue Tracker & Discussions
-                </h2>
-                <p className="text-xs text-[#5F6368] mt-1">
-                  The primary communication and feedback channel is our public GitHub repository. You can submit bug reports, dataset normalization suggestions, and feature requests directly.
-                </p>
-              </div>
-            </div>
+          <h2 className="text-base sm:text-lg font-bold text-[#111111] mb-3 flex items-center gap-2">
+            <Layers className="h-4.5 w-4.5 text-[#FF9900]" />
+            <span>Platform Documentation & Inquiries</span>
+          </h2>
+          <p>
+            Amazon ML Challenge Explorer is maintained as an independent data analysis tool. For questions regarding the methodology or institutional calculations, please consult our documentation sections:
+          </p>
 
-            <a
-              href="https://github.com/mugenkyou/amazonml/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-[38px] items-center justify-center gap-1.5 rounded-lg bg-[#FF9900] px-4 py-2 font-bold text-[#111111] hover:bg-[#E47911] hover:text-white transition-all shadow-xs shrink-0"
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Link
+              href="/methodology"
+              className="rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-3.5 hover:border-[#FF9900] hover:bg-[#FFFDF9] transition-all flex items-start justify-between"
             >
-              <span>Open Issue on GitHub</span>
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
+              <div>
+                <span className="font-bold text-[#111111] block mb-1">Methodology & Calculations</span>
+                <span className="text-[11px] text-[#767676]">Review college ranking formulas and normalization logic.</span>
+              </div>
+              <ArrowRight className="h-4 w-4 text-[#767676] shrink-0 mt-0.5" />
+            </Link>
+
+            <Link
+              href="/data-sources"
+              className="rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-3.5 hover:border-[#FF9900] hover:bg-[#FFFDF9] transition-all flex items-start justify-between"
+            >
+              <div>
+                <span className="font-bold text-[#111111] block mb-1">Data Sources & Provenance</span>
+                <span className="text-[11px] text-[#767676]">Learn about the public leaderboard collection and completeness.</span>
+              </div>
+              <ArrowRight className="h-4 w-4 text-[#767676] shrink-0 mt-0.5" />
+            </Link>
           </div>
         </section>
 
@@ -114,10 +120,10 @@ export default function ContactPage() {
           <div className="space-y-4">
             <div className="rounded-lg bg-[#F7F7F7] border border-[#E3E3E3] p-3.5">
               <h3 className="font-bold text-[#111111] mb-1">
-                How can I correct a misspelled college name or affiliation?
+                How are college names and affiliations normalized?
               </h3>
               <p className="text-xs text-[#5F6368]">
-                College names are matched through our automated normalization mapping. If you notice an institutional alias that should be mapped to a canonical university profile, please open an issue on GitHub referencing the specific organization slug and team IDs.
+                College names are matched through our automated normalization mapping. Names with multiple registration aliases or acronyms are consolidated to produce unified institutional profiles.
               </p>
             </div>
 
@@ -126,7 +132,7 @@ export default function ContactPage() {
                 Is this an official Amazon or Unstop service?
               </h3>
               <p className="text-xs text-[#5F6368]">
-                No. This is an independent open-data explorer and research project. For official inquiries, prize claims, or certificates, please contact the organizers directly through the official Unstop competition portal.
+                No. This is an independent data exploration and research tool. For official competition inquiries, prize claims, or certificates, please contact the organizers directly through the official Unstop competition portal.
               </p>
             </div>
 
@@ -139,7 +145,7 @@ export default function ContactPage() {
                 <Link href="/llms.txt" className="text-[#007185] hover:text-[#E47911] font-mono hover:underline">
                   /llms.txt
                 </Link>{" "}
-                or explore our static sitemap at{" "}
+                or explore our sitemap at{" "}
                 <Link href="/sitemap.xml" className="text-[#007185] hover:text-[#E47911] font-mono hover:underline">
                   /sitemap.xml
                 </Link>

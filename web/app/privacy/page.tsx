@@ -132,8 +132,8 @@ export default function PrivacyPage() {
             If you have questions about this privacy notice or dataset representation, please visit our{" "}
             <Link href="/contact" className="text-[#007185] hover:text-[#E47911] hover:underline font-medium">
               Contact & Feedback Page
-            </Link>{" "}
-            or open an issue on GitHub.
+            </Link>
+            .
           </p>
         </section>
       </div>

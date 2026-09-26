@@ -116,18 +116,8 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="hover:text-[#E47911] hover:underline transition-colors">
-                  Contact & GitHub Feedback
+                  Contact & Feedback
                 </Link>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/mugenkyou/amazonml"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#E47911] hover:underline transition-colors"
-                >
-                  GitHub Open Repository
-                </a>
               </li>
             </ul>
           </div>
@@ -155,7 +145,7 @@ export function Footer() {
         {/* Disclaimer Notice */}
         <div className="pt-2 text-[11px] text-[#767676] leading-relaxed border-t border-[#EAEAEA]">
           <p>
-            <strong>Disclaimer:</strong> Amazon ML Challenge Explorer is an independent open-data platform created for educational and archival exploration. This website is not affiliated with, endorsed by, or sponsored by Amazon, Unstop, or the official challenge organizers. All trademarks and dataset copyrights belong to their respective holders.
+            <strong>Disclaimer:</strong> Amazon ML Challenge Explorer is an independent data exploration platform created for educational and archival exploration. This website is not affiliated with, endorsed by, or sponsored by Amazon, Unstop, or the official challenge organizers. All trademarks and dataset copyrights belong to their respective holders.
           </p>
         </div>
       </div>
