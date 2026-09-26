@@ -18,28 +18,26 @@ export function StatCard({
   badgeVariant = "info",
 }: StatCardProps) {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-surface-900/60 p-5 backdrop-blur-md transition-all hover:border-white/20 hover:shadow-lg hover:shadow-indigo-500/5">
+    <div className="rounded-md border border-[#E3E3E3] bg-white p-4 shadow-subtle">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+        <span className="text-xs font-semibold text-[#5F6368]">
           {title}
         </span>
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-indigo-400">
-          <Icon className="h-5 w-5" />
-        </div>
+        <Icon className="h-4 w-4 text-[#767676]" />
       </div>
 
-      <div className="mt-3 flex items-baseline gap-2">
-        <span className="text-3xl font-extrabold tracking-tight text-white font-mono">
+      <div className="mt-2 flex items-baseline gap-2">
+        <span className="text-2xl font-bold tracking-tight text-[#111111] font-mono">
           {typeof value === "number" ? value.toLocaleString() : value}
         </span>
         {badge && (
           <span
-            className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
+            className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${
               badgeVariant === "success"
-                ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                ? "bg-[#ECFDF3] text-[#067D62] border border-[#A6F4C5]"
                 : badgeVariant === "warning"
-                ? "bg-amber-500/10 text-amber-400 border border-amber-500/20"
-                : "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"
+                ? "bg-[#FFF4ED] text-[#B54708] border border-[#FECDCA]"
+                : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
             }`}
           >
             {badge}
@@ -47,7 +45,7 @@ export function StatCard({
         )}
       </div>
 
-      <p className="mt-1 text-xs text-slate-400">{subtitle}</p>
+      <p className="mt-0.5 text-[11px] text-[#767676]">{subtitle}</p>
     </div>
   );
 }

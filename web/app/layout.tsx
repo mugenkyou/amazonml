@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
-const fontSans = Plus_Jakarta_Sans({
+const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     default: "Unstop ML Challenge Leaderboard & Organization Explorer",
   },
   description:
-    "Explore the Unstop ML Challenge leaderboard by college or organization. Search IITs, NITs, BITS, VIT, and find top performing student teams with instant offline rankings.",
+    "Explore the Unstop ML Challenge leaderboard by college or organization. Search IITs, NITs, BITS, VIT, and view official rankings, scores, and team rosters.",
   keywords: [
     "Unstop",
     "ML Challenge",
@@ -55,8 +55,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fontSans.variable} ${fontMono.variable} dark`}>
-      <body className="min-h-screen bg-surface-950 font-sans text-slate-100 antialiased flex flex-col selection:bg-indigo-500 selection:text-white">
+    <html lang="en" className={`${fontSans.variable} ${fontMono.variable}`}>
+      <body className="min-h-screen bg-white font-sans text-[#111111] antialiased flex flex-col selection:bg-amber-100 selection:text-amber-900">
         <Header />
         <main className="flex-1 pb-16">{children}</main>
         <Footer />

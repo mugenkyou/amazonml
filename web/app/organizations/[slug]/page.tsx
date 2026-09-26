@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Building2, Trophy, Users, ArrowLeft, BarChart2, GitCompare } from "lucide-react";
+import { Building2, Trophy, ArrowLeft, GitCompare } from "lucide-react";
 import { getAllOrganizations } from "@/lib/data";
 import { getOrganizationStats } from "@/lib/analytics";
 import { TeamCard } from "@/components/team-card";
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: OrgPageProps): Promise<Metada
   }
 
   return {
-    title: `${stats.organization.name} - Leaderboard & Statistics`,
+    title: `${stats.organization.name} - Leaderboard & Metrics`,
     description: `View ${stats.teamCount} teams, best rank #${stats.bestRank || "—"}, top score ${stats.bestScore?.toFixed(6) || "—"}, and player members from ${stats.organization.name}.`,
     openGraph: {
       title: `${stats.organization.name} - ML Challenge Performance`,
@@ -58,20 +58,20 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
   }));
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
       {/* Back Navigation & Compare Action */}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         <Link
           href="/organizations"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-[#007185] hover:text-[#C7511F] hover:underline"
         >
-          <ArrowLeft className="h-4 w-4" />
-          <span>Back to All Organizations</span>
+          <ArrowLeft className="h-3.5 w-3.5" />
+          <span>Back to All Colleges</span>
         </Link>
 
         <Link
           href={`/compare?orgs=${stats.organization.slug}`}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-white/10 bg-surface-900 px-3 py-1.5 text-xs font-semibold text-indigo-300 hover:bg-white/5 hover:text-white transition-colors"
+          className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors"
         >
           <GitCompare className="h-3.5 w-3.5" />
           <span>Compare College</span>
@@ -79,81 +79,81 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
       </div>
 
       {/* Organization Header */}
-      <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-surface-900/90 to-surface-950 p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
-        <div className="flex items-start gap-4">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/20 text-white">
-            <Building2 className="h-7 w-7" />
+      <div className="rounded-md border border-[#E3E3E3] bg-white p-5 shadow-subtle">
+        <div className="flex items-start gap-3.5">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-[#131921] text-white">
+            <Building2 className="h-5 w-5 text-[#FF9900]" />
           </div>
           <div className="min-w-0">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
               {stats.organization.name}
             </h1>
-            <p className="text-xs sm:text-sm text-slate-400 font-mono mt-1">
-              Contest Affiliate Slug: <code>{stats.organization.slug}</code>
+            <p className="text-xs text-[#767676] font-mono mt-0.5">
+              Slug: <code>{stats.organization.slug}</code>
             </p>
           </div>
         </div>
 
-        {/* Factual Performance Statistics Row */}
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6 border-t border-white/10 pt-6">
-          <div className="rounded-2xl border border-white/5 bg-slate-900/60 p-3.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
-              Total Teams
+        {/* Compact Metric Strip */}
+        <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6 border-t border-[#E3E3E3] pt-4">
+          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+              Teams
             </span>
-            <div className="mt-1 text-xl font-black font-mono text-white">
+            <div className="mt-0.5 text-base font-bold font-mono text-[#111111]">
               {stats.teamCount.toLocaleString()}
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/5 bg-slate-900/60 p-3.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+              Players
+            </span>
+            <div className="mt-0.5 text-base font-bold font-mono text-[#111111]">
+              {stats.playerCount.toLocaleString()}
+            </div>
+          </div>
+
+          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Best Rank
             </span>
-            <div className="mt-1 text-xl font-black font-mono text-amber-400">
+            <div className="mt-0.5 text-base font-bold font-mono text-[#E47911]">
               {stats.bestRank !== null ? `#${stats.bestRank}` : "—"}
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/5 bg-slate-900/60 p-3.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Best Score
             </span>
-            <div className="mt-1 text-xl font-black font-mono text-emerald-400">
+            <div className="mt-0.5 text-base font-bold font-mono text-[#111111]">
               {stats.bestScore !== null ? stats.bestScore.toFixed(6) : "0.000000"}
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/5 bg-slate-900/60 p-3.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Average Score
             </span>
-            <div className="mt-1 text-xl font-black font-mono text-indigo-300">
+            <div className="mt-0.5 text-base font-bold font-mono text-[#111111]">
               {stats.averageScore !== null ? stats.averageScore.toFixed(6) : "—"}
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/5 bg-slate-900/60 p-3.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Top 10 Finishes
             </span>
-            <div className="mt-1 text-xl font-black font-mono text-purple-300">
+            <div className="mt-0.5 text-base font-bold font-mono text-[#111111]">
               {stats.top10Count}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-white/5 bg-slate-900/60 p-3.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
-              Avg Team Size
-            </span>
-            <div className="mt-1 text-xl font-black font-mono text-slate-300">
-              {stats.averageTeamSize}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Lightweight Score Distribution Section */}
-      <div className="mt-8">
+      {/* Lightweight Score Distribution */}
+      <div className="mt-6">
         <ScoreDistribution
           buckets={stats.scoreBuckets}
           highestScore={stats.bestScore}
@@ -163,24 +163,24 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
         />
       </div>
 
-      {/* Teams Grid */}
-      <div className="mt-10">
-        <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
-          <h2 className="text-xl font-bold text-white flex items-center gap-2">
-            <Trophy className="h-5 w-5 text-indigo-400" />
+      {/* Teams List */}
+      <div className="mt-8">
+        <div className="flex items-center justify-between border-b border-[#E3E3E3] pb-2.5 mb-4">
+          <h2 className="text-sm font-bold text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
+            <Trophy className="h-4 w-4 text-[#E47911]" />
             <span>Affiliated Teams ({stats.teams.length})</span>
           </h2>
-          <span className="text-xs text-slate-400 font-mono">Sorted by Official Rank</span>
+          <span className="text-xs text-[#767676] font-mono">Sorted by Official Contest Rank</span>
         </div>
 
         {stats.teams.length > 0 ? (
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {searchResultTeams.map((team) => (
               <TeamCard key={team.teamId} team={team} searchedQuery={stats.organization.name} />
             ))}
           </div>
         ) : (
-          <div className="rounded-2xl border border-white/10 bg-surface-900/40 p-8 text-center text-slate-400">
+          <div className="rounded-md border border-[#E3E3E3] bg-[#FAFAFA] p-6 text-center text-xs text-[#767676]">
             No teams recorded for this organization in the dataset snapshot.
           </div>
         )}

@@ -1,15 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { BarChart2, Filter, Users, Trophy, ChevronLeft, ChevronRight } from "lucide-react";
+import { BarChart2, Users, Trophy, ChevronLeft, ChevronRight } from "lucide-react";
 import { filterLeaderboard } from "@/lib/analytics";
 import { TeamCard } from "@/components/team-card";
 import { TeamTable } from "@/components/team-table";
 import type { SearchResultTeam } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "Full Leaderboard & Standings",
+  title: "Leaderboard & Standings",
   description:
-    "Explore complete official contest standings, filter teams by rank tiers (Top 10, 25, 50, 100) and team member sizes.",
+    "Complete official contest standings. Filter teams by rank tiers (Top 10, 25, 50, 100) and team size.",
 };
 
 interface LeaderboardPageProps {
@@ -78,36 +78,32 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
   ];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
-      {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold text-indigo-400 mb-2">
-            <BarChart2 className="h-3.5 w-3.5" />
-            <span>Leaderboard Standings</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
             Contest Leaderboard
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Displaying {total.toLocaleString()} filtered teams by official contest rank.
+          <p className="text-xs text-[#5F6368] mt-0.5">
+            Displaying {total.toLocaleString()} teams ranked by official competition score.
           </p>
         </div>
 
         {/* View Toggle */}
-        <div className="flex items-center gap-1 rounded-xl border border-white/10 bg-surface-900 p-1">
+        <div className="flex items-center gap-1 rounded border border-[#D5D5D5] bg-white p-0.5">
           <Link
             href={buildFilterUrl({ view: "table" })}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
-              view === "table" ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-white"
+            className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
+              view === "table" ? "bg-[#131921] text-white" : "text-[#5F6368] hover:text-[#111111]"
             }`}
           >
             Table View
           </Link>
           <Link
             href={buildFilterUrl({ view: "cards" })}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
-              view === "cards" ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-white"
+            className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
+              view === "cards" ? "bg-[#131921] text-white" : "text-[#5F6368] hover:text-[#111111]"
             }`}
           >
             Card View
@@ -115,22 +111,22 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
         </div>
       </div>
 
-      {/* Filter Control Bar */}
-      <div className="mt-6 rounded-2xl border border-white/10 bg-surface-900/60 p-4 backdrop-blur-md">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          {/* Rank Range Filter Pills */}
+      {/* Filter Toolbar */}
+      <div className="mt-4 rounded-md border border-[#E3E3E3] bg-[#FAFAFA] p-3 shadow-subtle">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {/* Rank Range Filter */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2 flex items-center gap-1">
-              <Trophy className="h-3.5 w-3.5 text-amber-400" /> Rank:
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
+              <Trophy className="h-3.5 w-3.5 text-[#E47911]" /> Rank:
             </span>
             {rankOptions.map((opt) => (
               <Link
                 key={opt.value}
                 href={buildFilterUrl({ rank: opt.value, page: 1 })}
-                className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-colors ${
+                className={`rounded px-2 py-0.5 text-xs font-medium transition-colors ${
                   rank === opt.value
-                    ? "bg-indigo-600 text-white"
-                    : "bg-surface-950 text-slate-400 hover:text-white border border-white/5"
+                    ? "bg-[#131921] text-white"
+                    : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
                 }`}
               >
                 {opt.label}
@@ -138,19 +134,19 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
             ))}
           </div>
 
-          {/* Team Size Filter Pills */}
+          {/* Team Size Filter */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mr-2 flex items-center gap-1">
-              <Users className="h-3.5 w-3.5 text-indigo-400" /> Team Size:
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
+              <Users className="h-3.5 w-3.5 text-[#5F6368]" /> Team Size:
             </span>
             {sizeOptions.map((opt) => (
               <Link
                 key={opt.value}
                 href={buildFilterUrl({ size: opt.value, page: 1 })}
-                className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-colors ${
+                className={`rounded px-2 py-0.5 text-xs font-medium transition-colors ${
                   size === opt.value
-                    ? "bg-indigo-600 text-white"
-                    : "bg-surface-950 text-slate-400 hover:text-white border border-white/5"
+                    ? "bg-[#131921] text-white"
+                    : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
                 }`}
               >
                 {opt.label}
@@ -161,10 +157,10 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
       </div>
 
       {/* Results View */}
-      <div className="mt-6">
+      <div className="mt-4">
         {teams.length > 0 ? (
           view === "cards" ? (
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {searchResultTeams.map((team) => (
                 <TeamCard key={team.teamId} team={team} />
               ))}
@@ -173,7 +169,7 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
             <TeamTable teams={searchResultTeams} />
           )
         ) : (
-          <div className="rounded-2xl border border-white/10 bg-surface-900/40 p-12 text-center text-slate-400">
+          <div className="rounded-md border border-[#E3E3E3] bg-[#FAFAFA] p-8 text-center text-xs text-[#767676]">
             No teams match the selected filter criteria.
           </div>
         )}
@@ -181,40 +177,40 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between border-t border-white/10 pt-6 mt-8">
-          <span className="text-xs text-slate-400">
-            Page <strong className="text-white">{page}</strong> of{" "}
-            <strong className="text-white">{totalPages}</strong>
+        <div className="flex items-center justify-between border-t border-[#E3E3E3] pt-4 mt-6">
+          <span className="text-xs text-[#5F6368]">
+            Page <strong className="text-[#111111]">{page}</strong> of{" "}
+            <strong className="text-[#111111]">{totalPages}</strong>
           </span>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             {page > 1 ? (
               <Link
                 href={buildFilterUrl({ page: page - 1 })}
-                className="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-surface-900 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white"
+                className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
               >
-                <ChevronLeft className="h-4 w-4" />
-                <span>Previous</span>
+                <ChevronLeft className="h-3.5 w-3.5" />
+                <span>Prev</span>
               </Link>
             ) : (
-              <span className="inline-flex items-center gap-1 rounded-lg border border-white/5 bg-surface-950 px-3 py-1.5 text-xs text-slate-600 cursor-not-allowed">
-                <ChevronLeft className="h-4 w-4" />
-                <span>Previous</span>
+              <span className="inline-flex items-center gap-1 rounded border border-[#E3E3E3] bg-[#F7F7F7] px-2.5 py-1 text-xs text-[#A0A0A0] cursor-not-allowed">
+                <ChevronLeft className="h-3.5 w-3.5" />
+                <span>Prev</span>
               </span>
             )}
 
             {page < totalPages ? (
               <Link
                 href={buildFilterUrl({ page: page + 1 })}
-                className="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-surface-900 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white"
+                className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
               >
                 <span>Next</span>
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-3.5 w-3.5" />
               </Link>
             ) : (
-              <span className="inline-flex items-center gap-1 rounded-lg border border-white/5 bg-surface-950 px-3 py-1.5 text-xs text-slate-600 cursor-not-allowed">
+              <span className="inline-flex items-center gap-1 rounded border border-[#E3E3E3] bg-[#F7F7F7] px-2.5 py-1 text-xs text-[#A0A0A0] cursor-not-allowed">
                 <span>Next</span>
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-3.5 w-3.5" />
               </span>
             )}
           </div>

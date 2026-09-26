@@ -1,13 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Building2, Search, Users, Trophy, ArrowRight, GitCompare } from "lucide-react";
+import { Building2, Search, ArrowRight, GitCompare } from "lucide-react";
 import { getAllOrganizations } from "@/lib/data";
 import { normalizeOrganization } from "@/lib/normalize";
 
 export const metadata: Metadata = {
   title: "Colleges & Organizations Directory",
   description:
-    "Directory of all 1,350 colleges, universities, and institutions participating in the Unstop ML Challenge.",
+    "Directory of 1,350 colleges, universities, and institutions participating in the Unstop ML Challenge.",
 };
 
 interface OrganizationsPageProps {
@@ -46,107 +46,100 @@ export default async function OrganizationsDirectoryPage({
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-purple-500/30 bg-purple-500/10 px-2.5 py-0.5 text-xs font-semibold text-purple-400 mb-2">
-            <Building2 className="h-3.5 w-3.5" />
-            <span>Institutional Directory</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
             Colleges & Organizations
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Browse {total.toLocaleString()} institutions representing {allOrgs.reduce((s, o) => s + o.teamCount, 0).toLocaleString()} teams.
+          <p className="text-xs text-[#5F6368] mt-0.5">
+            Directory of {total.toLocaleString()} institutions participating in the competition.
           </p>
         </div>
 
-        {/* Directory Search Box */}
+        {/* Search */}
         <form action="/organizations" method="GET" className="relative w-full sm:w-72">
-          <Search className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#767676]" />
           <input
             type="text"
             name="q"
             defaultValue={query}
-            placeholder="Search colleges..."
-            className="w-full rounded-xl border border-white/10 bg-surface-900 py-2 pl-10 pr-4 text-xs text-white placeholder-slate-400 outline-none focus:border-purple-500"
+            placeholder="Search college name..."
+            className="w-full rounded border border-[#D5D5D5] bg-white py-1.5 pl-9 pr-3 text-xs text-[#111111] placeholder-[#767676] outline-none focus:border-[#FF9900]"
           />
         </form>
       </div>
 
-      {/* Organizations Grid */}
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {paginatedOrgs.map((org) => (
-          <div
-            key={org.slug}
-            className="group flex flex-col justify-between rounded-2xl border border-white/10 bg-surface-900/60 p-5 backdrop-blur-sm transition-all hover:border-purple-500/30 hover:bg-surface-800/80"
-          >
-            <div>
-              <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                  <Building2 className="h-5 w-5" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <Link
-                    href={`/organizations/${org.slug}`}
-                    className="font-bold text-white group-hover:text-purple-300 transition-colors text-sm line-clamp-2 hover:underline"
-                  >
-                    {org.name}
-                  </Link>
-                  <p className="text-[11px] text-slate-400 font-mono mt-0.5 truncate">
-                    Slug: {org.slug}
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-4 grid grid-cols-2 gap-2 border-t border-white/5 pt-3 text-xs">
-                <div className="rounded-lg bg-surface-950 p-2 border border-white/5">
-                  <span className="text-[10px] text-slate-400 block uppercase font-bold">Teams</span>
-                  <strong className="text-sm font-mono text-white">{org.teamCount}</strong>
-                </div>
-                <div className="rounded-lg bg-surface-950 p-2 border border-white/5">
-                  <span className="text-[10px] text-slate-400 block uppercase font-bold">Players</span>
-                  <strong className="text-sm font-mono text-slate-300">{org.playerCount}</strong>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-3 text-xs">
-              <Link
-                href={`/compare?orgs=${org.slug}`}
-                className="inline-flex items-center gap-1 text-slate-400 hover:text-purple-300 transition-colors"
-                title="Compare this college"
-              >
-                <GitCompare className="h-3.5 w-3.5" />
-                <span>Compare</span>
-              </Link>
-
-              <Link
-                href={`/organizations/${org.slug}`}
-                className="inline-flex items-center gap-1 font-semibold text-purple-400 hover:text-purple-300 transition-colors"
-              >
-                <span>View Teams</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        ))}
+      {/* Directory Table */}
+      <div className="mt-4 overflow-hidden rounded-md border border-[#E3E3E3] bg-white shadow-subtle">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead className="border-b border-[#E3E3E3] bg-[#F7F7F7] text-[11px] font-bold uppercase tracking-wider text-[#5F6368]">
+              <tr>
+                <th scope="col" className="py-3 pl-4 pr-3">Institution Name</th>
+                <th scope="col" className="px-3 py-3 text-right">Teams</th>
+                <th scope="col" className="px-3 py-3 text-right">Players</th>
+                <th scope="col" className="py-3 pl-3 pr-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[#E3E3E3] text-[#111111]">
+              {paginatedOrgs.map((org) => (
+                <tr key={org.slug} className="transition-colors hover:bg-[#F9F9F9]">
+                  <td className="py-3 pl-4 pr-3">
+                    <Link
+                      href={`/organizations/${org.slug}`}
+                      className="font-bold text-[#111111] hover:text-[#E47911] hover:underline transition-colors block"
+                    >
+                      {org.name}
+                    </Link>
+                    <span className="text-[11px] font-mono text-[#767676]">Slug: {org.slug}</span>
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3 font-mono text-right font-bold text-[#111111]">
+                    {org.teamCount.toLocaleString()}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3 font-mono text-right text-[#5F6368]">
+                    {org.playerCount.toLocaleString()}
+                  </td>
+                  <td className="whitespace-nowrap py-3 pl-3 pr-4 text-right text-xs">
+                    <div className="flex items-center justify-end gap-2">
+                      <Link
+                        href={`/compare?orgs=${org.slug}`}
+                        className="inline-flex items-center gap-1 text-[11px] font-medium text-[#5F6368] hover:text-[#111111]"
+                        title="Add to comparison"
+                      >
+                        <GitCompare className="h-3 w-3" />
+                        <span>Compare</span>
+                      </Link>
+                      <Link
+                        href={`/organizations/${org.slug}`}
+                        className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2 py-1 text-xs font-semibold text-[#007185] hover:text-[#C7511F] hover:border-[#FF9900]"
+                      >
+                        <span>Teams</span>
+                        <ArrowRight className="h-3 w-3" />
+                      </Link>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between border-t border-white/10 pt-6 mt-8">
-          <span className="text-xs text-slate-400">
-            Page <strong className="text-white">{safePage}</strong> of{" "}
-            <strong className="text-white">{totalPages}</strong>
+        <div className="flex items-center justify-between border-t border-[#E3E3E3] pt-4 mt-6">
+          <span className="text-xs text-[#5F6368]">
+            Page <strong className="text-[#111111]">{safePage}</strong> of{" "}
+            <strong className="text-[#111111]">{totalPages}</strong>
           </span>
 
           <div className="flex items-center gap-2">
             {safePage > 1 && (
               <Link
                 href={buildUrl(safePage - 1)}
-                className="rounded-lg border border-white/10 bg-surface-900 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white"
+                className="rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
               >
                 Previous
               </Link>
@@ -154,7 +147,7 @@ export default async function OrganizationsDirectoryPage({
             {safePage < totalPages && (
               <Link
                 href={buildUrl(safePage + 1)}
-                className="rounded-lg border border-white/10 bg-surface-900 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white"
+                className="rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
               >
                 Next
               </Link>

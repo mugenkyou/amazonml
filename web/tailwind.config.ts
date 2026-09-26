@@ -9,25 +9,44 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "#FFFFFF",
+        foreground: "#111111",
         surface: {
-          50: "#f8fafc",
-          100: "#f1f5f9",
-          800: "#1e293b",
-          900: "#0f172a",
-          950: "#090d16",
+          DEFAULT: "#FFFFFF",
+          subtle: "#F7F7F7",
+          hover: "#F3F3F3",
+          border: "#E3E3E3",
+          borderStrong: "#D5D5D5",
         },
-        brand: {
-          400: "#818cf8",
-          500: "#6366f1",
-          600: "#4f46e5",
-          700: "#4338ca",
+        text: {
+          primary: "#111111",
+          secondary: "#5F6368",
+          muted: "#767676",
+        },
+        amazon: {
+          orange: "#FF9900",
+          orangeDark: "#E47911",
+          orangeSoft: "#FFF3E0",
+          orangeBorder: "#F5C27A",
+          navy: "#131921",
+          navyLight: "#232F3E",
+          teal: "#007185",
+          tealDark: "#004B57",
+        },
+        status: {
+          success: "#067D62",
+          warning: "#B54708",
+          danger: "#C40000",
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
+        sans: ["var(--font-sans)", "Inter", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
+      },
+      boxShadow: {
+        subtle: "0 1px 2px 0 rgba(0, 0, 0, 0.04)",
+        card: "0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04)",
+        dropdown: "0 4px 12px 0 rgba(0, 0, 0, 0.12)",
       },
     },
   },

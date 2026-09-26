@@ -1,13 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { GitFork, Trophy, Building2, User, ArrowRight } from "lucide-react";
+import { ArrowRight, User } from "lucide-react";
 import { getCrossCollegeTeams } from "@/lib/analytics";
 import { slugifyOrganization } from "@/lib/normalize";
 
 export const metadata: Metadata = {
-  title: "Cross-College & Multi-Institution Teams",
+  title: "Cross-College & Collaborative Teams",
   description:
-    "Discover collaborative competition teams comprising student members from multiple colleges and universities.",
+    "Discover competition teams formed with student members from multiple colleges and universities.",
 };
 
 interface CrossCollegePageProps {
@@ -38,153 +38,148 @@ export default async function CrossCollegePage({ searchParams }: CrossCollegePag
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
-      {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 px-2.5 py-0.5 text-xs font-semibold text-pink-400 mb-2">
-            <GitFork className="h-3.5 w-3.5" />
-            <span>Inter-College Collaboration</span>
-          </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
             Cross-College Teams
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs text-[#5F6368] mt-0.5">
             Displaying {total.toLocaleString()} teams with members from 2 or more distinct institutions.
           </p>
         </div>
 
         {/* Sort Controls */}
-        <div className="flex items-center gap-1 rounded-xl border border-white/10 bg-surface-900 p-1">
+        <div className="flex items-center gap-1 rounded border border-[#D5D5D5] bg-white p-0.5">
           <Link
             href={buildUrl("rank", 1)}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
-              sort === "rank" ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-white"
+            className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
+              sort === "rank" ? "bg-[#131921] text-white" : "text-[#5F6368] hover:text-[#111111]"
             }`}
           >
             Sort by Rank
           </Link>
           <Link
             href={buildUrl("institutions", 1)}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
-              sort === "institutions" ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-white"
+            className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
+              sort === "institutions" ? "bg-[#131921] text-white" : "text-[#5F6368] hover:text-[#111111]"
             }`}
           >
-            Sort by Most Institutions
+            Sort by Most Colleges
           </Link>
         </div>
       </div>
 
-      {/* Cross-College Teams Grid */}
-      <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {paginatedTeams.map((team) => {
-          const rankNum = team.rank || "—";
+      {/* Cross-College Table */}
+      <div className="mt-4 overflow-hidden rounded-md border border-[#E3E3E3] bg-white shadow-subtle">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead className="border-b border-[#E3E3E3] bg-[#F7F7F7] text-[11px] font-bold uppercase tracking-wider text-[#5F6368]">
+              <tr>
+                <th scope="col" className="py-3 pl-4 pr-2 text-center w-16">Rank</th>
+                <th scope="col" className="px-3 py-3">Team</th>
+                <th scope="col" className="px-3 py-3 text-right">Score</th>
+                <th scope="col" className="px-3 py-3 text-center">Colleges</th>
+                <th scope="col" className="px-3 py-3">Institutions Involved</th>
+                <th scope="col" className="px-3 py-3">Members</th>
+                <th scope="col" className="py-3 pl-2 pr-4 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[#E3E3E3] text-[#111111]">
+              {paginatedTeams.map((team) => {
+                const rankNum = team.rank || "—";
+                const isTopRank = rankNum === "1";
+                const isTop3 = ["1", "2", "3"].includes(rankNum);
 
-          return (
-            <div
-              key={team.teamId}
-              className="group flex flex-col justify-between rounded-2xl border border-white/10 bg-surface-900/60 p-5 backdrop-blur-sm transition-all hover:border-pink-500/30 hover:bg-surface-800/80"
-            >
-              <div>
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`inline-flex h-8 min-w-8 items-center justify-center rounded-lg px-2 text-xs font-black font-mono ${
-                        rankNum === "1"
-                          ? "bg-amber-400 text-black font-bold"
-                          : rankNum === "2"
-                          ? "bg-slate-300 text-black font-bold"
-                          : rankNum === "3"
-                          ? "bg-amber-700 text-white font-bold"
-                          : "bg-slate-800 text-slate-300"
-                      }`}
-                    >
-                      #{rankNum}
-                    </span>
-                    <div>
+                return (
+                  <tr key={team.teamId} className="transition-colors hover:bg-[#F9F9F9]">
+                    <td className="whitespace-nowrap py-3 pl-4 pr-2 text-center">
+                      <span
+                        className={`inline-flex h-6 min-w-6 items-center justify-center rounded px-1.5 text-xs font-bold font-mono ${
+                          isTopRank
+                            ? "bg-[#FF9900] text-[#111111]"
+                            : isTop3
+                            ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A]"
+                            : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+                        }`}
+                      >
+                        #{rankNum}
+                      </span>
+                    </td>
+                    <td className="px-3 py-3">
                       <Link
                         href={`/teams/${team.teamId}`}
-                        className="font-bold text-white group-hover:text-pink-300 transition-colors text-sm hover:underline"
+                        className="font-bold text-[#111111] hover:text-[#E47911] hover:underline transition-colors block"
                       >
                         {team.teamName}
                       </Link>
-                      <div className="text-[11px] font-mono text-slate-400">ID: {team.teamId}</div>
-                    </div>
-                  </div>
-
-                  <div className="text-right">
-                    <span className="inline-flex items-center rounded-full bg-pink-500/10 border border-pink-500/20 px-2 py-0.5 text-[10px] font-semibold text-pink-300">
-                      {team.institutionCount} Colleges
-                    </span>
-                  </div>
-                </div>
-
-                {/* Score */}
-                <div className="mt-3 flex items-center justify-between rounded-lg bg-surface-950 px-3 py-2 border border-white/5 text-xs">
-                  <span className="text-slate-400">Score</span>
-                  <span className="font-mono font-bold text-emerald-400">{team.score}</span>
-                </div>
-
-                {/* Institutions */}
-                <div className="mt-3 space-y-1.5">
-                  <div className="text-[11px] font-semibold text-slate-400 flex items-center gap-1">
-                    <Building2 className="h-3 w-3 text-pink-400" />
-                    <span>Institutions Represented:</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {team.institutions.map((org) => {
-                      const slug = slugifyOrganization(org);
-                      return (
-                        <Link
-                          key={org}
-                          href={`/organizations/${slug}`}
-                          className="rounded-md bg-white/5 px-2 py-0.5 text-[11px] text-slate-300 border border-white/5 hover:border-pink-500/40 hover:text-white transition-colors"
-                        >
-                          {org}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Members */}
-                <div className="mt-3 space-y-1 border-t border-white/5 pt-2 text-xs">
-                  {team.players.map((p, idx) => (
-                    <div key={`${p.name}-${idx}`} className="flex items-center justify-between text-slate-400 text-[11px]">
-                      <span className="text-slate-200 font-medium truncate">{p.name}</span>
-                      <span className="text-slate-500 truncate max-w-[130px] ml-2">{p.organization}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-4 border-t border-white/5 pt-3 text-right">
-                <Link
-                  href={`/teams/${team.teamId}`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-pink-400 hover:text-pink-300 transition-colors"
-                >
-                  <span>View Details</span>
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
-            </div>
-          );
-        })}
+                      <span className="text-[11px] font-mono text-[#767676]">ID: {team.teamId}</span>
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-3 font-mono font-bold text-right text-[#111111]">
+                      {team.score || "0.000000"}
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-3 text-center font-mono">
+                      <span className="rounded bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-0.5 text-xs font-bold text-[#111111]">
+                        {team.institutionCount}
+                      </span>
+                    </td>
+                    <td className="px-3 py-3 max-w-sm">
+                      <div className="flex flex-wrap gap-1">
+                        {team.institutions.map((org) => {
+                          const slug = slugifyOrganization(org);
+                          return (
+                            <Link
+                              key={org}
+                              href={`/organizations/${slug}`}
+                              className="rounded bg-[#F7F7F7] border border-[#E3E3E3] px-1.5 py-0.5 text-[11px] text-[#5F6368] hover:border-[#FF9900] hover:text-[#111111] transition-colors"
+                            >
+                              {org}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </td>
+                    <td className="px-3 py-3">
+                      <div className="flex flex-col gap-0.5 text-xs">
+                        {team.players.map((p, idx) => (
+                          <div key={`${p.name}-${idx}`} className="flex items-center gap-1 text-[11px] text-[#5F6368]">
+                            <User className="h-3 w-3 text-[#767676] shrink-0" />
+                            <span className="font-medium text-[#111111]">{p.name}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </td>
+                    <td className="whitespace-nowrap py-3 pl-2 pr-4 text-right text-xs">
+                      <Link
+                        href={`/teams/${team.teamId}`}
+                        className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2 py-1 font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors text-xs"
+                      >
+                        <span>View</span>
+                        <ArrowRight className="h-3 w-3" />
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between border-t border-white/10 pt-6 mt-8">
-          <span className="text-xs text-slate-400">
-            Page <strong className="text-white">{safePage}</strong> of{" "}
-            <strong className="text-white">{totalPages}</strong>
+        <div className="flex items-center justify-between border-t border-[#E3E3E3] pt-4 mt-6">
+          <span className="text-xs text-[#5F6368]">
+            Page <strong className="text-[#111111]">{safePage}</strong> of{" "}
+            <strong className="text-[#111111]">{totalPages}</strong>
           </span>
 
           <div className="flex items-center gap-2">
             {safePage > 1 && (
               <Link
                 href={buildUrl(sort, safePage - 1)}
-                className="rounded-lg border border-white/10 bg-surface-900 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white"
+                className="rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
               >
                 Previous
               </Link>
@@ -192,7 +187,7 @@ export default async function CrossCollegePage({ searchParams }: CrossCollegePag
             {safePage < totalPages && (
               <Link
                 href={buildUrl(sort, safePage + 1)}
-                className="rounded-lg border border-white/10 bg-surface-900 px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white"
+                className="rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
               >
                 Next
               </Link>

@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Trophy, Users2, Building2, BarChart2, GitFork } from "lucide-react";
+import { Trophy, BarChart2, Building2, Users2, GitFork, Menu, X } from "lucide-react";
 
 export function Header() {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { label: "Explorer", href: "/", icon: Trophy },
@@ -16,25 +18,25 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-surface-950/85 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Brand */}
-        <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-90">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-md shadow-indigo-500/20">
-            <Trophy className="h-4 w-4 text-white" />
+    <header className="sticky top-0 z-40 w-full border-b border-[#E3E3E3] bg-white">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Brand Identity */}
+        <Link href="/" className="flex items-center gap-2.5">
+          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#131921] text-white">
+            <Trophy className="h-4 w-4 text-[#FF9900]" />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-base font-bold tracking-tight text-white">ML Explorer</span>
-              <span className="hidden rounded-full bg-indigo-500/10 px-2 py-0.5 text-[10px] font-semibold text-indigo-400 border border-indigo-500/20 md:inline-block">
-                Contest 290344
-              </span>
-            </div>
+          <div className="flex items-baseline gap-2">
+            <span className="text-sm sm:text-base font-bold tracking-tight text-[#111111]">
+              Unstop ML Explorer
+            </span>
+            <span className="hidden text-[11px] font-mono text-[#767676] sm:inline-block">
+              Contest 290344
+            </span>
           </div>
         </Link>
 
-        {/* Primary Navigation */}
-        <nav className="flex items-center gap-1 sm:gap-2">
+        {/* Desktop Primary Navigation */}
+        <nav className="hidden md:flex items-center gap-1 h-full">
           {navItems.map((item) => {
             const isActive =
               item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
@@ -43,19 +45,62 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs sm:text-sm font-medium transition-colors ${
+                className={`relative flex items-center gap-1.5 h-full px-3 text-xs sm:text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-indigo-500/15 text-indigo-300 border border-indigo-500/30"
-                    : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
+                    ? "text-[#111111] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#FF9900]"
+                    : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
                 }`}
               >
-                <item.icon className="h-3.5 w-3.5 shrink-0 opacity-80" />
+                <item.icon className={`h-3.5 w-3.5 ${isActive ? "text-[#E47911]" : "text-[#767676]"}`} />
                 <span>{item.label}</span>
               </Link>
             );
           })}
         </nav>
+
+        {/* Right side snapshot indicator & Mobile Menu Toggle */}
+        <div className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-1.5 rounded bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-1 text-[11px] font-medium text-[#5F6368]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#067D62]" />
+            <span>Local Dataset (3,398 Teams)</span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden rounded p-1.5 text-[#5F6368] hover:bg-[#F7F7F7] hover:text-[#111111]"
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-b border-[#E3E3E3] bg-[#FAFAFA] px-4 py-2 space-y-1">
+          {navItems.map((item) => {
+            const isActive =
+              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium ${
+                  isActive
+                    ? "bg-[#FFF3E0] text-[#E47911] font-semibold"
+                    : "text-[#5F6368] hover:bg-white hover:text-[#111111]"
+                }`}
+              >
+                <item.icon className="h-4 w-4" />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </header>
   );
 }
