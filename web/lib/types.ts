@@ -56,3 +56,43 @@ export interface SearchResponse {
   totalPages: number;
   teams: SearchResultTeam[];
 }
+
+export interface ScoreDistributionBucket {
+  label: string;
+  min: number;
+  max: number;
+  count: number;
+  percentage: number;
+}
+
+export interface OrganizationStats {
+  organization: Organization;
+  teamCount: number;
+  playerCount: number;
+  bestRank: number | null;
+  bestScore: number | null;
+  lowestScore: number | null;
+  averageScore: number | null;
+  medianScore: number | null;
+  top10Count: number;
+  top25Count: number;
+  top50Count: number;
+  top100Count: number;
+  averageTeamSize: number;
+  crossCollegeTeamCount: number;
+  scoreBuckets: ScoreDistributionBucket[];
+  teams: Team[];
+}
+
+export interface CrossCollegeTeam extends Team {
+  institutionCount: number;
+  institutions: string[];
+}
+
+export interface LeaderboardFilterOptions {
+  rankRange?: "all" | "top10" | "top25" | "top50" | "top100";
+  teamSize?: "all" | "1" | "2" | "3" | "4";
+  query?: string;
+  page?: number;
+  pageSize?: number;
+}
