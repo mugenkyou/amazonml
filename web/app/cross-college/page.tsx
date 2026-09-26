@@ -1,13 +1,24 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, User, GitFork, Building2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, User, GitFork, Building2, ChevronLeft, ChevronRight, Home } from "lucide-react";
 import { getCrossCollegeTeams } from "@/lib/analytics";
 import { slugifyOrganization } from "@/lib/normalize";
+import { JsonLd } from "@/components/json-ld";
+import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Cross-College & Collaborative Teams",
+  title: "Cross-College Collaborative Teams • Amazon ML Challenge 2024",
   description:
-    "Discover competition teams formed with student members from multiple colleges and universities in the Amazon ML Challenge.",
+    "Discover competition teams formed by student members collaborating across multiple academic institutions in the Amazon ML Challenge 2024.",
+  alternates: {
+    canonical: "/cross-college",
+  },
+  openGraph: {
+    title: "Cross-College Teams • Amazon ML Challenge 2024",
+    description:
+      "Explore inter-university collaborative teams from multiple colleges and institutions.",
+    url: `${SITE_URL}/cross-college`,
+  },
 };
 
 interface CrossCollegePageProps {
@@ -30,6 +41,11 @@ export default async function CrossCollegePage({ searchParams }: CrossCollegePag
   const startIndex = (safePage - 1) * pageSize;
   const paginatedTeams = allCrossTeams.slice(startIndex, startIndex + pageSize);
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", item: "/" },
+    { name: "Cross-College Teams", item: "/cross-college" },
+  ]);
+
   const buildUrl = (targetSort: string, targetPage: number) => {
     const p = new URLSearchParams();
     if (targetSort !== "rank") p.set("sort", targetSort);
@@ -39,6 +55,17 @@ export default async function CrossCollegePage({ searchParams }: CrossCollegePag
 
   return (
     <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+      <JsonLd data={breadcrumbSchema} />
+
+      {/* Visual Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="mb-3.5 flex items-center gap-1.5 text-xs text-[#767676]">
+        <Link href="/" className="inline-flex items-center gap-1 hover:text-[#E47911]">
+          <Home className="h-3 w-3" />
+          <span>Home</span>
+        </Link>
+        <span>/</span>
+        <span className="font-semibold text-[#111111]">Cross-College Teams</span>
+      </nav>
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5">
         <div>

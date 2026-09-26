@@ -1,11 +1,19 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Building2, Trophy, ArrowLeft, GitCompare, Users, Award } from "lucide-react";
+import { Building2, Trophy, ArrowLeft, GitCompare, Users, Award, Home } from "lucide-react";
 import { getAllOrganizations } from "@/lib/data";
 import { getOrganizationStats } from "@/lib/analytics";
 import { TeamCard } from "@/components/team-card";
 import { ScoreDistribution } from "@/components/score-distribution";
+import { JsonLd } from "@/components/json-ld";
+import {
+  generateBreadcrumbSchema,
+  generateOrganizationSchema,
+  getCanonicalUrl,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 import type { SearchResultTeam } from "@/lib/types";
 
 interface OrgPageProps {
@@ -16,7 +24,7 @@ interface OrgPageProps {
 
 export async function generateStaticParams() {
   const organizations = getAllOrganizations();
-  return organizations.slice(0, 50).map((org) => ({
+  return organizations.slice(0, 100).map((org) => ({
     slug: org.slug,
   }));
 }
@@ -31,12 +39,26 @@ export async function generateMetadata({ params }: OrgPageProps): Promise<Metada
     };
   }
 
+  const orgName = stats.organization.name;
+  const canonicalPath = `/organizations/${slug}`;
+  const bestRankText = stats.bestRank ? `Best Rank #${stats.bestRank}` : "Unranked";
+  const bestScoreText = stats.bestScore ? `Best Score ${stats.bestScore.toFixed(6)}` : "";
+
   return {
-    title: `${stats.organization.name} - Leaderboard & Metrics`,
-    description: `View ${stats.teamCount} teams, best rank #${stats.bestRank || "—"}, top score ${stats.bestScore?.toFixed(6) || "—"}, and player members from ${stats.organization.name}.`,
+    title: `${orgName} • Amazon ML Challenge 2024 Leaderboard & Student Teams`,
+    description: `Performance metrics for ${orgName} in the Amazon ML Challenge 2024: ${stats.teamCount} student teams, ${stats.playerCount} participants, ${bestRankText}, ${bestScoreText}.`,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
-      title: `${stats.organization.name} - Amazon ML Challenge Performance`,
-      description: `Explore rankings, scores, and ${stats.teamCount} student teams from ${stats.organization.name}.`,
+      title: `${orgName} - Amazon ML Challenge 2024 Performance`,
+      description: `Explore ${stats.teamCount} teams, participant rosters, rankings, and score distributions for ${orgName}.`,
+      url: getCanonicalUrl(canonicalPath),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${orgName} - Amazon ML Challenge 2024 Performance`,
+      description: `Explore ${stats.teamCount} teams, participant rosters, rankings, and score distributions for ${orgName}.`,
     },
   };
 }
@@ -53,12 +75,36 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
     ...t,
     matchedOrganizations: [stats.organization.name],
     matchedPlayers: t.players.filter(
-      (p) => p.organization.toLowerCase() === stats.organization.name.toLowerCase()
+      (p) => (p.organization || "").toLowerCase() === stats.organization.name.toLowerCase()
     ),
   }));
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", item: "/" },
+    { name: "Colleges & Organizations", item: "/organizations" },
+    { name: stats.organization.name, item: `/organizations/${slug}` },
+  ]);
+
+  const orgSchema = generateOrganizationSchema(stats.organization, stats);
+
   return (
     <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+      <JsonLd data={[breadcrumbSchema, orgSchema]} />
+
+      {/* Visual Breadcrumbs */}
+      <nav aria-label="Breadcrumb" className="mb-3.5 flex items-center gap-1.5 text-xs text-[#767676] flex-wrap">
+        <Link href="/" className="inline-flex items-center gap-1 hover:text-[#E47911]">
+          <Home className="h-3 w-3" />
+          <span>Home</span>
+        </Link>
+        <span>/</span>
+        <Link href="/organizations" className="hover:text-[#E47911]">
+          Colleges
+        </Link>
+        <span>/</span>
+        <span className="font-semibold text-[#111111] truncate max-w-xs">{stats.organization.name}</span>
+      </nav>
+
       {/* Back Navigation & Compare Action */}
       <div className="mb-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
         <Link
@@ -78,7 +124,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
         </Link>
       </div>
 
-      {/* Organization Header Card with Orange Accent */}
+      {/* Organization Header Card */}
       <div className="rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-4 sm:p-5 shadow-subtle">
         <div className="flex items-start gap-3">
           <div className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-lg bg-[#FFF3E0] border border-[#F5C26B]/50 text-[#E47911]">
@@ -89,7 +135,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
               {stats.organization.name}
             </h1>
             <p className="text-[10px] sm:text-xs text-[#767676] font-mono mt-0.5 truncate">
-              Slug: <code>{stats.organization.slug}</code>
+              Institution ID / Slug: <code>{stats.organization.slug}</code> • Challenge 2024
             </p>
           </div>
         </div>
@@ -107,7 +153,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
 
           <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2 sm:p-2.5">
             <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-              Players
+              Participants
             </span>
             <div className="mt-0.5 text-sm sm:text-base font-bold font-mono text-[#111111]">
               {stats.playerCount.toLocaleString()}
@@ -170,7 +216,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
             <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
               <Trophy className="h-3.5 w-3.5 text-[#FF9900]" />
             </div>
-            <span>Affiliated Teams ({stats.teams.length})</span>
+            <span>Affiliated Teams from {stats.organization.name} ({stats.teams.length})</span>
           </h2>
           <span className="text-[11px] text-[#767676] font-mono">Sorted by Official Contest Rank</span>
         </div>

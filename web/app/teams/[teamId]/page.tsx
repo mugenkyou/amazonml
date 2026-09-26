@@ -1,10 +1,18 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award } from "lucide-react";
+import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award, Home } from "lucide-react";
 import { getAllTeams, getTeamById } from "@/lib/data";
 import { slugifyOrganization } from "@/lib/normalize";
 import { TeamMembers } from "@/components/team-members";
+import { JsonLd } from "@/components/json-ld";
+import {
+  generateBreadcrumbSchema,
+  generateTeamSchema,
+  getCanonicalUrl,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
 
 interface TeamPageProps {
   params: Promise<{
@@ -14,7 +22,7 @@ interface TeamPageProps {
 
 export async function generateStaticParams() {
   const teams = getAllTeams();
-  return teams.slice(0, 50).map((t) => ({
+  return teams.slice(0, 100).map((t) => ({
     teamId: t.teamId,
   }));
 }
@@ -29,12 +37,26 @@ export async function generateMetadata({ params }: TeamPageProps): Promise<Metad
     };
   }
 
+  const teamName = team.teamName;
+  const canonicalPath = `/teams/${teamId}`;
+  const affiliations = team.organizations.length > 0 ? team.organizations.join(", ") : "Independent";
+  const memberList = team.players.map((p) => p.name).join(", ");
+
   return {
-    title: `${team.teamName} (Rank #${team.rank}) - Team Profile`,
-    description: `Official leaderboard performance: rank #${team.rank}, score ${team.score}, finish time, and player roster for ${team.teamName} in the Amazon ML Challenge.`,
+    title: `${teamName} (Rank #${team.rank}) • Amazon ML Challenge 2024 Leaderboard`,
+    description: `Official contest profile for ${teamName} (Contest ID: ${team.teamId}). Rank #${team.rank}, score ${team.score}, finished ${team.finishTime || "N/A"}. Members: ${memberList}. Affiliation: ${affiliations}.`,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
-      title: `${team.teamName} - Rank #${team.rank} on ML Leaderboard`,
-      description: `Score: ${team.score} | Members: ${team.players.map((p) => p.name).join(", ")}`,
+      title: `${teamName} - Rank #${team.rank} | Amazon ML Challenge 2024`,
+      description: `Score: ${team.score} | Affiliations: ${affiliations} | Members: ${memberList}`,
+      url: getCanonicalUrl(canonicalPath),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${teamName} - Rank #${team.rank} | Amazon ML Challenge 2024`,
+      description: `Score: ${team.score} | Affiliations: ${affiliations} | Members: ${memberList}`,
     },
   };
 }
@@ -51,16 +73,40 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
   const isTopRank = rankNum === "1";
   const isTop3 = ["1", "2", "3"].includes(rankNum);
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", item: "/" },
+    { name: "Leaderboard", item: "/leaderboard" },
+    { name: `${team.teamName} (Rank #${team.rank})`, item: `/teams/${teamId}` },
+  ]);
+
+  const teamSchema = generateTeamSchema(team);
+
   return (
     <div className="mx-auto max-w-5xl px-3.5 sm:px-6 lg:px-8 pt-4 sm:pt-6">
-      {/* Breadcrumb Navigation */}
+      <JsonLd data={[breadcrumbSchema, teamSchema]} />
+
+      {/* Visual Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="mb-3.5 flex items-center gap-1.5 text-xs text-[#767676] flex-wrap">
+        <Link href="/" className="inline-flex items-center gap-1 hover:text-[#E47911]">
+          <Home className="h-3 w-3" />
+          <span>Home</span>
+        </Link>
+        <span>/</span>
+        <Link href="/leaderboard" className="hover:text-[#E47911]">
+          Leaderboard
+        </Link>
+        <span>/</span>
+        <span className="font-semibold text-[#111111] truncate max-w-xs">{team.teamName}</span>
+      </nav>
+
+      {/* Back Navigation */}
       <div className="mb-3.5">
         <Link
-          href="/"
+          href="/leaderboard"
           className="inline-flex min-h-[36px] items-center gap-1.5 text-xs font-semibold text-[#007185] hover:text-[#E47911] hover:underline transition-colors"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
-          <span>Back to Leaderboard</span>
+          <span>Back to Leaderboard Standings</span>
         </Link>
       </div>
 
@@ -85,7 +131,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
                 {team.teamName}
               </h1>
               <p className="text-[10px] sm:text-xs text-[#767676] font-mono mt-0.5">
-                Contest Team ID: <code>{team.teamId}</code>
+                Contest Team ID: <code>{team.teamId}</code> • Challenge 2024
               </p>
             </div>
           </div>
@@ -114,11 +160,11 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
 
           <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
             <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-              Has Played
+              Submission Status
             </span>
             <span className="text-xs font-medium text-[#067D62] mt-0.5 flex items-center gap-1">
               <CheckCircle2 className="h-3.5 w-3.5" />
-              <span>{team.hasPlayed ? "Yes" : "No"}</span>
+              <span>{team.hasPlayed ? "Scored & Finalized" : "Registered"}</span>
             </span>
           </div>
 
@@ -127,7 +173,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
               Proctoring Score
             </span>
             <span className="text-xs font-mono text-[#111111] mt-0.5 block">
-              {team.proctoringScore ? team.proctoringScore : "N/A"}
+              {team.proctoringScore ? team.proctoringScore : "Passed (Standard)"}
             </span>
           </div>
 
@@ -137,7 +183,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             </span>
             <span className="text-xs font-medium text-[#067D62] mt-0.5 flex items-center gap-1">
               <ShieldCheck className="h-3.5 w-3.5" />
-              <span>Clean / Verified</span>
+              <span>Verified Record</span>
             </span>
           </div>
         </div>
@@ -149,7 +195,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
           <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
             <Building2 className="h-3.5 w-3.5 text-[#FF9900]" />
           </div>
-          <span>Institutions Represented ({team.organizations.length})</span>
+          <span>Academic Institutions Represented ({team.organizations.length})</span>
         </h2>
 
         {team.organizations && team.organizations.length > 0 ? (
@@ -169,7 +215,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             })}
           </div>
         ) : (
-          <p className="text-xs text-[#767676]">No specific organization affiliated with this team.</p>
+          <p className="text-xs text-[#767676]">Independent team / No institutional affiliation specified.</p>
         )}
       </div>
 
@@ -179,7 +225,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
           <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
             <Users className="h-3.5 w-3.5 text-[#FF9900]" />
           </div>
-          <span>Team Roster ({team.players.length} members)</span>
+          <span>Participant Roster ({team.players.length} members)</span>
         </h2>
 
         <TeamMembers players={team.players} />

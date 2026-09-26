@@ -4,6 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { JsonLd } from "@/components/json-ld";
+import { generateWebSiteSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -18,35 +20,66 @@ const fontMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    template: "%s | Amazon ML Challenge Explorer",
-    default: "Amazon ML Challenge Explorer • Leaderboard & Organization Intelligence",
+    template: `%s | ${SITE_NAME}`,
+    default: `${SITE_NAME} • Leaderboard, College Rankings & Team Rosters`,
   },
   description:
-    "Explore the Amazon ML Challenge leaderboard by college or organization. Search IITs, NITs, BITS, VIT, and view official rankings, scores, and team rosters.",
+    "Explore and search the complete Amazon ML Challenge 2024 leaderboard dataset. Find 3,398 teams, 11,394 student participants, 1,350 colleges, institutional rankings, and score distributions.",
   keywords: [
-    "Amazon ML Challenge",
-    "Amazon ML",
-    "Leaderboard",
-    "College Ranking",
-    "Coding Competition",
-    "IIT",
-    "NIT",
-    "BITS",
+    "Amazon ML Challenge 2024 leaderboard",
+    "Amazon ML Challenge leaderboard",
+    "Amazon ML Challenge teams",
+    "Amazon ML Challenge participants",
+    "Amazon ML Challenge colleges",
+    "Amazon ML Challenge rankings",
+    "Amazon ML Challenge scores",
+    "Amazon ML Challenge college rankings",
+    "Amazon ML Challenge team rankings",
+    "Amazon ML Challenge 2024 teams",
+    "Amazon ML Challenge 2024 participants",
+    "Amazon ML Challenge 2024 colleges",
+    "Amazon ML Challenge leaderboard by college",
+    "Amazon ML Challenge cross college teams",
+    "Amazon ML Challenge Explorer",
   ],
-  authors: [{ name: "Amazon ML Challenge Explorer" }],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://amazonml-leaderboard.local",
-    siteName: "Amazon ML Challenge Explorer",
-    title: "Amazon ML Challenge Explorer",
-    description: "Search and filter ML Challenge teams by college and organization.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} • Leaderboard & College Performance`,
+    description:
+      "Search and analyze 3,398 teams and 1,350 colleges from the Amazon ML Challenge 2024 leaderboard snapshot.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Amazon ML Challenge Explorer",
-    description: "Search and filter ML Challenge teams by college and organization.",
+    title: `${SITE_NAME} • Leaderboard & College Performance`,
+    description:
+      "Search and analyze 3,398 teams and 1,350 colleges from the Amazon ML Challenge 2024 leaderboard snapshot.",
   },
 };
 
@@ -55,9 +88,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const websiteSchema = generateWebSiteSchema();
+
   return (
     <html lang="en" className={`${fontSans.variable} ${fontMono.variable}`}>
       <head>
+        <JsonLd data={websiteSchema} />
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-77BY7EW1V3"

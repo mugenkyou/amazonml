@@ -1,15 +1,26 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Users, Trophy, ChevronLeft, ChevronRight, LayoutGrid, Table as TableIcon } from "lucide-react";
+import { Users, Trophy, ChevronLeft, ChevronRight, LayoutGrid, Table as TableIcon, Home } from "lucide-react";
 import { filterLeaderboard } from "@/lib/analytics";
 import { TeamCard } from "@/components/team-card";
 import { TeamTable } from "@/components/team-table";
+import { JsonLd } from "@/components/json-ld";
+import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
 import type { SearchResultTeam } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "Contest Leaderboard & Standings",
+  title: "Amazon ML Challenge 2024 Leaderboard • Full Official Standings & Scores",
   description:
-    "Official competition standings for the Amazon ML Challenge. Filter teams by rank tiers (Top 10, 25, 50, 100) and team sizes.",
+    "Explore the complete 3,398-team rankings and official scores from the Amazon ML Challenge 2024. Filter standings by rank tiers (Top 10, Top 25, Top 50, Top 100) and team roster size.",
+  alternates: {
+    canonical: "/leaderboard",
+  },
+  openGraph: {
+    title: "Amazon ML Challenge 2024 Official Standings & Leaderboard",
+    description:
+      "Browse official standings, scores, team rosters, and finish times for all 3,398 teams in the Amazon ML Challenge.",
+    url: `${SITE_URL}/leaderboard`,
+  },
 };
 
 interface LeaderboardPageProps {
@@ -43,6 +54,11 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
     matchedOrganizations: t.organizations,
     matchedPlayers: t.players,
   }));
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", item: "/" },
+    { name: "Leaderboard", item: "/leaderboard" },
+  ]);
 
   const buildFilterUrl = (overrides: Record<string, string | number>) => {
     const current = new URLSearchParams();
@@ -79,11 +95,23 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
 
   return (
     <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+      <JsonLd data={breadcrumbSchema} />
+
+      {/* Visual Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="mb-3.5 flex items-center gap-1.5 text-xs text-[#767676]">
+        <Link href="/" className="inline-flex items-center gap-1 hover:text-[#E47911]">
+          <Home className="h-3 w-3" />
+          <span>Home</span>
+        </Link>
+        <span>/</span>
+        <span className="font-semibold text-[#111111]">Leaderboard</span>
+      </nav>
+
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
-            Contest Leaderboard
+            Amazon ML Challenge 2024 Leaderboard
           </h1>
           <p className="text-xs text-[#5F6368] mt-0.5 font-mono">
             Displaying {total.toLocaleString()} teams ranked by official competition score.
@@ -122,7 +150,7 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
         {/* Rank Range Filter */}
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
-            <Trophy className="h-3.5 w-3.5 text-[#E47911]" /> Rank:
+            <Trophy className="h-3.5 w-3.5 text-[#E47911]" /> Rank Tier:
           </span>
           {rankOptions.map((opt) => (
             <Link

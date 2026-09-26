@@ -1,0 +1,35 @@
+# Amazon ML Challenge Explorer
+> An independent leaderboard explorer, search engine, and institutional analytics platform for the Amazon ML Challenge 2024 dataset.
+
+## Platform Overview
+- Website: https://amazonmlchallengeexplorer.vercel.app
+- Challenge Name: Amazon ML Challenge 2024
+- Challenge ID: 290344
+- Competition Type: CodeContest / Machine Learning
+- Source Platform: Public Unstop Leaderboard Data
+- Collection Scope: 114/114 complete leaderboard pages (100% complete historical snapshot)
+- Dataset Dimensions:
+  - 3,398 total teams & submission records
+  - 11,394 individual participant profiles
+  - 1,350 unique academic institutions & organizations
+
+## Independence & Data Disclaimer
+- Amazon ML Challenge Explorer is an independent data analysis and exploration tool built by researchers and participants.
+- This platform is NOT affiliated with, endorsed by, or sponsored by Amazon, Unstop, or the official competition organizers.
+- The leaderboard data represents a complete offline historical snapshot of the public leaderboard as finalized during the competition.
+- Metrics such as college aggregates, score distributions, and cross-college team breakdowns are derived directly from the immutable dataset snapshot.
+
+## Primary Routes & Navigation
+- `/` - Main Explorer Dashboard: Universal search across teams, participant names, and colleges with quick filters.
+- `/leaderboard` - Official Contest Standings: Complete 3,398-team rankings with filters by rank tier (Top 10, Top 25, Top 50, Top 100) and team size.
+- `/organizations` - Institutional Directory: Alphabetical and ranked index of 1,350 participating colleges and universities.
+- `/organizations/[slug]` - College Profile: Entity page showing total student teams, participant roster, best rank, score distribution, and team links for a specific university.
+- `/teams/[teamId]` - Team Profile: Entity page detailing official rank, score, finish timestamp, participant names, and university affiliations.
+- `/compare` - Institutional Comparison Tool: Multi-university comparison of participation volume, top ranks, and score percentiles.
+- `/cross-college` - Inter-University Collaboration Directory: Catalog of multi-institution teams where participants teamed up across different universities.
+
+## Data Interpretation Guidelines
+- **Scores**: Range from 0.000000 to 1.000000 based on the official competition evaluation metric.
+- **Ranks**: Ordered by score descending, with finish time as tie-breaker where applicable.
+- **Affiliations**: Self-reported institutional affiliations recorded during team registration.
+- **Cross-College Teams**: Teams whose members listed different academic institutions.
