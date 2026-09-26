@@ -68,29 +68,29 @@ export function OrganizationResults({ searchResponse }: OrganizationResultsProps
         </div>
 
         {/* View Toggle */}
-        <div className="flex items-center gap-1 rounded border border-[#D5D5D5] bg-white p-0.5">
+        <div className="flex items-center rounded-md border border-[#D5D5D5] bg-white p-0.5 shadow-sm">
           <button
             type="button"
             onClick={() => setViewMode("table")}
-            className={`flex items-center gap-1 rounded px-2.5 py-1 text-xs font-medium transition-colors ${
+            className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold transition-colors ${
               viewMode === "table"
-                ? "bg-[#131921] text-white"
-                : "text-[#5F6368] hover:text-[#111111]"
+                ? "bg-[#FF9900] text-[#111111]"
+                : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
             }`}
           >
-            <TableIcon className="h-3 w-3" />
+            <TableIcon className="h-3.5 w-3.5" />
             <span>Table</span>
           </button>
           <button
             type="button"
             onClick={() => setViewMode("grid")}
-            className={`flex items-center gap-1 rounded px-2.5 py-1 text-xs font-medium transition-colors ${
+            className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold transition-colors ${
               viewMode === "grid"
-                ? "bg-[#131921] text-white"
-                : "text-[#5F6368] hover:text-[#111111]"
+                ? "bg-[#FF9900] text-[#111111]"
+                : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
             }`}
           >
-            <LayoutGrid className="h-3 w-3" />
+            <LayoutGrid className="h-3.5 w-3.5" />
             <span>Cards</span>
           </button>
         </div>

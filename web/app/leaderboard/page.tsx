@@ -1,15 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { BarChart2, Users, Trophy, ChevronLeft, ChevronRight } from "lucide-react";
+import { Users, Trophy, ChevronLeft, ChevronRight, LayoutGrid, Table as TableIcon } from "lucide-react";
 import { filterLeaderboard } from "@/lib/analytics";
 import { TeamCard } from "@/components/team-card";
 import { TeamTable } from "@/components/team-table";
 import type { SearchResultTeam } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "Leaderboard & Standings",
+  title: "Contest Leaderboard & Standings",
   description:
-    "Complete official contest standings. Filter teams by rank tiers (Top 10, 25, 50, 100) and team size.",
+    "Official competition standings for the Amazon ML Challenge. Filter teams by rank tiers (Top 10, 25, 50, 100) and team sizes.",
 };
 
 interface LeaderboardPageProps {
@@ -27,10 +27,10 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
   const rank = (params.rank || "all") as "all" | "top10" | "top25" | "top50" | "top100";
   const size = (params.size || "all") as "all" | "1" | "2" | "3" | "4";
   const query = params.q || "";
-  const page = parseInt(params.page || "1", 10) || 1;
+  const page = Math.max(1, parseInt(params.page || "1", 10) || 1);
   const view = params.view || "table";
 
-  const { total, totalPages, teams } = filterLeaderboard({
+  const { total, totalPages, page: safePage, teams } = filterLeaderboard({
     rankRange: rank,
     teamSize: size,
     query,
@@ -91,22 +91,28 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
         </div>
 
         {/* View Toggle */}
-        <div className="flex items-center gap-1 rounded border border-[#D5D5D5] bg-white p-0.5">
+        <div className="flex items-center rounded-md border border-[#D5D5D5] bg-white p-0.5 shadow-sm">
           <Link
             href={buildFilterUrl({ view: "table" })}
-            className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
-              view === "table" ? "bg-[#131921] text-white" : "text-[#5F6368] hover:text-[#111111]"
+            className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold transition-colors ${
+              view === "table"
+                ? "bg-[#FF9900] text-[#111111]"
+                : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
             }`}
           >
-            Table View
+            <TableIcon className="h-3.5 w-3.5" />
+            <span>Table</span>
           </Link>
           <Link
             href={buildFilterUrl({ view: "cards" })}
-            className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
-              view === "cards" ? "bg-[#131921] text-white" : "text-[#5F6368] hover:text-[#111111]"
+            className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold transition-colors ${
+              view === "cards"
+                ? "bg-[#FF9900] text-[#111111]"
+                : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
             }`}
           >
-            Card View
+            <LayoutGrid className="h-3.5 w-3.5" />
+            <span>Cards</span>
           </Link>
         </div>
       </div>
@@ -123,9 +129,9 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
               <Link
                 key={opt.value}
                 href={buildFilterUrl({ rank: opt.value, page: 1 })}
-                className={`rounded px-2 py-0.5 text-xs font-medium transition-colors ${
+                className={`rounded px-2.5 py-1 text-xs font-medium transition-colors ${
                   rank === opt.value
-                    ? "bg-[#131921] text-white"
+                    ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-semibold"
                     : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
                 }`}
               >
@@ -143,9 +149,9 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
               <Link
                 key={opt.value}
                 href={buildFilterUrl({ size: opt.value, page: 1 })}
-                className={`rounded px-2 py-0.5 text-xs font-medium transition-colors ${
+                className={`rounded px-2.5 py-1 text-xs font-medium transition-colors ${
                   size === opt.value
-                    ? "bg-[#131921] text-white"
+                    ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-semibold"
                     : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
                 }`}
               >
@@ -179,14 +185,14 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
       {totalPages > 1 && (
         <div className="flex items-center justify-between border-t border-[#E3E3E3] pt-4 mt-6">
           <span className="text-xs text-[#5F6368]">
-            Page <strong className="text-[#111111]">{page}</strong> of{" "}
+            Page <strong className="text-[#111111]">{safePage}</strong> of{" "}
             <strong className="text-[#111111]">{totalPages}</strong>
           </span>
 
           <div className="flex items-center gap-1.5">
-            {page > 1 ? (
+            {safePage > 1 ? (
               <Link
-                href={buildFilterUrl({ page: page - 1 })}
+                href={buildFilterUrl({ page: safePage - 1 })}
                 className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
               >
                 <ChevronLeft className="h-3.5 w-3.5" />
@@ -199,9 +205,9 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
               </span>
             )}
 
-            {page < totalPages ? (
+            {safePage < totalPages ? (
               <Link
-                href={buildFilterUrl({ page: page + 1 })}
+                href={buildFilterUrl({ page: safePage + 1 })}
                 className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
               >
                 <span>Next</span>

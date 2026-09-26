@@ -7,7 +7,15 @@ import fs from "fs";
 import path from "path";
 import type { DatasetMetadata, Organization, Team } from "./types";
 
-const DATA_DIR = path.resolve(process.cwd(), "data/generated");
+function getDataDirectory(): string {
+  const localWebDir = path.resolve(process.cwd(), "data/generated");
+  if (fs.existsSync(localWebDir)) return localWebDir;
+  const rootDir = path.resolve(process.cwd(), "web/data/generated");
+  if (fs.existsSync(rootDir)) return rootDir;
+  return localWebDir;
+}
+
+const DATA_DIR = getDataDirectory();
 
 let cachedTeams: Team[] | null = null;
 let cachedTeamsById: Map<string, Team> | null = null;
@@ -20,13 +28,11 @@ function loadJSON<T>(filename: string, fallback: T): T {
   try {
     const filePath = path.join(DATA_DIR, filename);
     if (!fs.existsSync(filePath)) {
-      console.warn(`Generated data file not found: ${filePath}`);
       return fallback;
     }
     const content = fs.readFileSync(filePath, "utf-8");
     return JSON.parse(content) as T;
-  } catch (err) {
-    console.error(`Failed to load ${filename}:`, err);
+  } catch {
     return fallback;
   }
 }

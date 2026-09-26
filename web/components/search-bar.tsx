@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Search, X, Building2 } from "lucide-react";
+import { Search, X, Building2, Loader2 } from "lucide-react";
 import type { Organization } from "@/lib/types";
 
 interface SearchBarProps {
@@ -25,9 +25,11 @@ export function SearchBar({
   const [suggestions, setSuggestions] = useState<Organization[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(-1);
+  const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     if (searchParams) {
@@ -40,29 +42,48 @@ export function SearchBar({
     if (debounceTimerRef.current) {
       clearTimeout(debounceTimerRef.current);
     }
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
 
-    if (!query || query.trim().length < 1) {
+    const trimmed = query.trim();
+    if (trimmed.length < 1) {
       setSuggestions([]);
       setShowDropdown(false);
+      setIsLoadingSuggestions(false);
       return;
     }
 
     debounceTimerRef.current = setTimeout(async () => {
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
+      setIsLoadingSuggestions(true);
+
       try {
-        const res = await fetch(`/api/search?q=${encodeURIComponent(query.trim())}&type=suggest&limit=6`);
+        const res = await fetch(
+          `/api/search?q=${encodeURIComponent(trimmed)}&type=suggest&limit=6`,
+          { signal: controller.signal }
+        );
         if (res.ok) {
           const data = await res.json();
           setSuggestions(data.organizations || []);
           setShowDropdown(true);
         }
-      } catch (err) {
-        console.error("Failed to fetch autocomplete suggestions", err);
+      } catch (err: unknown) {
+        if (err instanceof Error && err.name !== "AbortError") {
+          setSuggestions([]);
+        }
+      } finally {
+        setIsLoadingSuggestions(false);
       }
     }, 180);
 
     return () => {
       if (debounceTimerRef.current) {
         clearTimeout(debounceTimerRef.current);
+      }
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
       }
     };
   }, [query]);
@@ -114,6 +135,7 @@ export function SearchBar({
       }
     } else if (e.key === "Escape") {
       setShowDropdown(false);
+      setFocusedIndex(-1);
     }
   };
 
@@ -125,14 +147,23 @@ export function SearchBar({
           handleSearch();
         }}
         className="relative"
+        role="search"
       >
-        <div className="relative flex items-stretch rounded-md border border-[#D5D5D5] bg-white shadow-subtle focus-within:border-[#FF9900] focus-within:ring-2 focus-within:ring-[#FF9900]/20">
+        <div className="relative flex items-stretch rounded-md border border-[#D5D5D5] bg-white shadow-subtle focus-within:border-[#FF9900] focus-within:ring-2 focus-within:ring-[#FF9900]/20 transition-all">
           <div className="flex items-center pl-3.5 pr-2 text-[#767676]">
-            <Search className="h-4 w-4" />
+            {isLoadingSuggestions ? (
+              <Loader2 className="h-4 w-4 animate-spin text-[#FF9900]" />
+            ) : (
+              <Search className="h-4 w-4" />
+            )}
           </div>
 
           <input
             type="text"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded={showDropdown && suggestions.length > 0}
+            aria-controls="autocomplete-suggestions"
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -157,6 +188,7 @@ export function SearchBar({
               }}
               className="flex items-center pr-3 text-[#767676] hover:text-[#111111]"
               title="Clear search"
+              aria-label="Clear search"
             >
               <X className="h-4 w-4" />
             </button>
@@ -173,12 +205,18 @@ export function SearchBar({
 
         {/* Autocomplete Dropdown */}
         {showDropdown && suggestions.length > 0 && (
-          <div className="absolute left-0 right-0 top-full z-50 mt-1 overflow-hidden rounded-md border border-[#E3E3E3] bg-white shadow-dropdown">
+          <div
+            id="autocomplete-suggestions"
+            role="listbox"
+            className="absolute left-0 right-0 top-full z-50 mt-1 overflow-hidden rounded-md border border-[#E3E3E3] bg-white shadow-dropdown"
+          >
             <div className="p-1">
               {suggestions.map((org, index) => (
                 <button
                   key={org.slug || org.name}
                   type="button"
+                  role="option"
+                  aria-selected={focusedIndex === index}
                   onClick={() => {
                     setQuery(org.name);
                     handleSearch(org.name);

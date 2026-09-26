@@ -1,13 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, User } from "lucide-react";
+import { ArrowRight, User, GitFork } from "lucide-react";
 import { getCrossCollegeTeams } from "@/lib/analytics";
 import { slugifyOrganization } from "@/lib/normalize";
 
 export const metadata: Metadata = {
   title: "Cross-College & Collaborative Teams",
   description:
-    "Discover competition teams formed with student members from multiple colleges and universities.",
+    "Discover competition teams formed with student members from multiple colleges and universities in the Amazon ML Challenge.",
 };
 
 interface CrossCollegePageProps {
@@ -20,7 +20,7 @@ interface CrossCollegePageProps {
 export default async function CrossCollegePage({ searchParams }: CrossCollegePageProps) {
   const params = await searchParams;
   const sort = (params.sort || "rank") as "rank" | "institutions";
-  const page = parseInt(params.page || "1", 10) || 1;
+  const page = Math.max(1, parseInt(params.page || "1", 10) || 1);
   const pageSize = 24;
 
   const allCrossTeams = getCrossCollegeTeams({ sortBy: sort });
@@ -51,19 +51,23 @@ export default async function CrossCollegePage({ searchParams }: CrossCollegePag
         </div>
 
         {/* Sort Controls */}
-        <div className="flex items-center gap-1 rounded border border-[#D5D5D5] bg-white p-0.5">
+        <div className="flex items-center rounded-md border border-[#D5D5D5] bg-white p-0.5 shadow-sm">
           <Link
             href={buildUrl("rank", 1)}
-            className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
-              sort === "rank" ? "bg-[#131921] text-white" : "text-[#5F6368] hover:text-[#111111]"
+            className={`px-2.5 py-1 text-xs font-semibold rounded transition-colors ${
+              sort === "rank"
+                ? "bg-[#FF9900] text-[#111111]"
+                : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
             }`}
           >
             Sort by Rank
           </Link>
           <Link
             href={buildUrl("institutions", 1)}
-            className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
-              sort === "institutions" ? "bg-[#131921] text-white" : "text-[#5F6368] hover:text-[#111111]"
+            className={`px-2.5 py-1 text-xs font-semibold rounded transition-colors ${
+              sort === "institutions"
+                ? "bg-[#FF9900] text-[#111111]"
+                : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
             }`}
           >
             Sort by Most Colleges
