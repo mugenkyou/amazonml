@@ -1,254 +1,194 @@
 {% extends "base.html" %}
 
-{% block title %}Leaderboard & Organization Search - Unstop ML Challenge{% endblock %}
+{% block title %}{% if query %}{{ query }} - Organization Search | {% endif %}Unstop ML Explorer{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container page-container">
   
-  <!-- Collection Status Alert if Incomplete / Stale -->
-  {% if not meta or not meta.complete %}
-    <div class="alert-banner alert-warning">
-      <div class="alert-icon">⚠️</div>
-      <div class="alert-body">
-        <strong>Dataset Status Notice:</strong>
-        {% if not meta or not meta.records_collected %}
-          No leaderboard data has been collected yet. Run the batch collector with <code>python -m collector.fetch_all</code> to populate the dataset.
-        {% else %}
-          The dataset is currently marked as incomplete or partially collected ({{ meta.records_collected }} records collected, {{ meta.pages_failed }} failed pages).
-        {% endif %}
-      </div>
-    </div>
-  {% endif %}
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <h1 class="hero-heading">Explore the ML Challenge leaderboard</h1>
+    <p class="hero-subtext">Search teams, organizations, rankings, scores, and participant data from the local leaderboard snapshot.</p>
+  </section>
 
-  <!-- KPI Overview Cards -->
-  <section class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-header">
-        <span class="stat-title">Total Teams</span>
-        <span class="stat-icon">👥</span>
-      </div>
-      <div class="stat-value">{{ meta.unique_teams if meta else total_teams_count }}</div>
-      <div class="stat-sub">Registered contest teams</div>
+  <!-- Metrics Strip -->
+  <section class="metrics-strip">
+    <div class="metric-item">
+      <span class="metric-label">Total Teams</span>
+      <span class="metric-val font-mono">{{ meta.unique_teams if meta else total_teams_count }}</span>
     </div>
-
-    <div class="stat-card">
-      <div class="stat-header">
-        <span class="stat-title">Total Players</span>
-        <span class="stat-icon">🎓</span>
-      </div>
-      <div class="stat-value">{{ meta.unique_players if meta else 0 }}</div>
-      <div class="stat-sub">Individual participants</div>
+    <div class="metric-item">
+      <span class="metric-label">Total Players</span>
+      <span class="metric-val font-mono">{{ meta.unique_players if meta else 0 }}</span>
     </div>
-
-    <div class="stat-card">
-      <div class="stat-header">
-        <span class="stat-title">Organizations</span>
-        <span class="stat-icon">🏛️</span>
-      </div>
-      <div class="stat-value">{{ meta.unique_organizations if meta else total_orgs_count }}</div>
-      <div class="stat-sub">Colleges & universities</div>
+    <div class="metric-item">
+      <span class="metric-label">Organizations</span>
+      <span class="metric-val font-mono">{{ meta.unique_organizations if meta else total_orgs_count }}</span>
     </div>
-
-    <div class="stat-card">
-      <div class="stat-header">
-        <span class="stat-title">Collection Status</span>
-        <span class="stat-icon">🔄</span>
-      </div>
-      <div class="stat-value stat-status">
+    <div class="metric-item">
+      <span class="metric-label">Snapshot Status</span>
+      <span class="metric-val status-val">
         {% if meta and meta.complete %}
-          <span class="text-success">Complete</span>
-        {% elif meta and meta.records_collected %}
-          <span class="text-warning">Incomplete</span>
+          <span class="status-indicator ready">Complete</span>
         {% else %}
-          <span class="text-danger">Not Run</span>
+          <span class="status-indicator partial">Snapshot Loaded</span>
         {% endif %}
-      </div>
-      <div class="stat-sub">
-        {% if meta and meta.collection_finished_at %}
-          {{ meta.collection_finished_at[:19] | replace("T", " ") }} UTC
-        {% else %}
-          No snapshot loaded
-        {% endif %}
-      </div>
+      </span>
     </div>
   </section>
 
-  <!-- Organization Search Box -->
+  <!-- Search Section -->
   <section class="search-section">
-    <form action="{{ url_for('search') }}" method="GET" class="search-form" id="search-form">
-      <div class="search-bar-wrapper">
-        <div class="search-input-group">
-          <span class="search-prefix-icon">🔍</span>
+    <form action="{{ url_for('search') }}" method="GET" class="search-box-form" id="search-form">
+      <div class="search-bar-row">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
           <input 
             type="text" 
             name="q" 
             id="org-search-input" 
             value="{{ query }}" 
-            placeholder="Search organization or college (e.g., IIT, VIT, BITS, Manipal)..." 
+            placeholder="Search teams, organizations, or participants..." 
             autocomplete="off"
-            class="search-input"
+            class="search-text-input"
           >
           {% if query %}
-            <a href="{{ url_for('index') }}" class="search-clear-btn" title="Clear search">✕</a>
+            <a href="{{ url_for('index') }}" class="search-clear-link" title="Clear query">✕</a>
           {% endif %}
-          <div id="autocomplete-list" class="autocomplete-dropdown" style="display: none;"></div>
+          <div id="autocomplete-list" class="autocomplete-panel" style="display: none;"></div>
         </div>
-        <button type="submit" class="btn btn-primary search-submit-btn">Filter Teams</button>
+        <button type="submit" class="btn btn-amazon-orange">Search</button>
       </div>
 
-      <div class="search-options">
-        <label class="checkbox-label" title="Enable to match organization name exactly instead of substring">
+      <div class="search-sub-row">
+        <label class="exact-checkbox-label">
           <input type="checkbox" name="exact" value="1" {% if exact %}checked{% endif %} onchange="this.form.submit()">
-          <span>Exact match only</span>
+          <span>Exact organization match</span>
         </label>
-
-        {% if top_orgs %}
-          <div class="quick-tags">
-            <span class="quick-tags-label">Popular:</span>
-            {% for org in top_orgs %}
-              <a href="{{ url_for('search', q=org.organization) }}" class="tag-chip">
-                {{ org.organization }} <span class="tag-count">({{ org.team_count }})</span>
-              </a>
-            {% endfor %}
-          </div>
-        {% endif %}
+        
+        <div class="popular-chips">
+          <span class="chips-label">Popular:</span>
+          {% for org in top_orgs[:6] %}
+            <a href="{{ url_for('search', q=org.organization) }}" class="chip-link">
+              {{ org.organization | truncate(24) }}
+            </a>
+          {% endfor %}
+        </div>
       </div>
     </form>
   </section>
 
-  <!-- Results Summary Header -->
-  <section class="results-meta">
-    <div class="results-count">
+  <!-- Query Results Header / Filter Info -->
+  <section class="results-header">
+    <div class="results-info">
       {% if query %}
-        Found <strong>{{ total_count }}</strong> teams with players from 
-        <span class="highlight-query">"{{ query }}"</span> 
-        {% if exact %}<em>(exact match)</em>{% endif %}
+        <span class="results-count font-mono">{{ total_count }}</span> teams found for <span class="highlight-query">"{{ query }}"</span>
+        {% if exact %}<span class="badge-filter">Exact Match</span>{% endif %}
       {% else %}
-        Showing all <strong>{{ total_count }}</strong> ranked teams
+        <span class="section-title">Leaderboard Rankings</span>
+        <span class="results-subtext font-mono">Showing Top {{ teams | length }} of {{ total_count }} Teams</span>
       {% endif %}
     </div>
 
-    {% if total_pages > 1 %}
-      <div class="pagination-summary">
-        Page {{ page }} of {{ total_pages }}
-      </div>
+    {% if query %}
+      <a href="{{ url_for('index') }}" class="reset-link">Clear Filter</a>
     {% endif %}
   </section>
 
-  <!-- Teams Leaderboard Table -->
+  <!-- Teams Data Table -->
   <section class="table-container">
-    {% if teams %}
-      <table class="leaderboard-table" id="leaderboard-table">
-        <thead>
-          <tr>
-            <th class="col-rank">Rank</th>
-            <th class="col-team">Team Name</th>
-            <th class="col-score">Score</th>
-            <th class="col-time">Finish Time</th>
-            <th class="col-orgs">Matching Organization(s)</th>
-            <th class="col-players">Players</th>
-            <th class="col-actions">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th class="col-rank">Rank</th>
+          <th class="col-team">Team Name</th>
+          <th class="col-score text-right">Score</th>
+          <th class="col-orgs">Organizations</th>
+          <th class="col-members text-center">Members</th>
+          <th class="col-time text-right">Finish Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if teams %}
           {% for team in teams %}
-            <tr>
+            <tr class="table-row clickable-row" onclick="window.location='{{ url_for('team_detail', team_id=team.team_id) }}'">
               <td class="col-rank">
-                <span class="rank-badge rank-badge-{{ team.rank if team.rank in ['1', '2', '3'] else 'other' }}">
+                <span class="rank-badge {% if team.rank == '1' %}rank-gold{% elif team.rank == '2' %}rank-silver{% elif team.rank == '3' %}rank-bronze{% endif %} font-mono">
                   #{{ team.rank if team.rank else '—' }}
                 </span>
               </td>
               <td class="col-team">
-                <div class="team-title">
-                  <a href="{{ url_for('team_detail', team_id=team.team_id) }}" class="team-link">
-                    {{ team.team_name if team.team_name else 'Unnamed Team' }}
-                  </a>
-                </div>
-                <div class="team-id-sub">ID: {{ team.team_id }}</div>
+                <a href="{{ url_for('team_detail', team_id=team.team_id) }}" class="team-link font-medium">
+                  {{ team.team_name if team.team_name else 'Unnamed Team' }}
+                </a>
               </td>
-              <td class="col-score font-mono">
-                <strong>{{ team.score if team.score else '0.000000' }}</strong>
-              </td>
-              <td class="col-time text-muted font-mono">
-                {{ team.finish_time if team.finish_time else '—' }}
+              <td class="col-score text-right font-mono font-semibold score-text">
+                {{ team.score if team.score else '0.000000' }}
               </td>
               <td class="col-orgs">
-                {% if team.organizations %}
-                  <div class="org-tags-list">
+                <div class="org-tags-wrapper">
+                  {% if team.organizations %}
                     {% for org in team.organizations %}
-                      <a href="{{ url_for('search', q=org) }}" class="org-badge" title="Filter by {{ org }}">
+                      <a href="{{ url_for('search', q=org) }}" class="org-pill" onclick="event.stopPropagation()">
                         {{ org }}
                       </a>
                     {% endfor %}
-                  </div>
-                {% else %}
-                  <span class="text-muted">Not specified</span>
-                {% endif %}
+                  {% else %}
+                    <span class="text-muted">—</span>
+                  {% endif %}
+                </div>
               </td>
-              <td class="col-players">
-                {% if team.players %}
-                  <div class="players-stack">
-                    {% for p in team.players %}
-                      <div class="player-pill" title="{{ p.player_name }} ({{ p.organization }})">
-                        <span class="player-avatar-icon">👤</span>
-                        <span class="player-name-text">{{ p.player_name }}</span>
-                      </div>
-                    {% endfor %}
-                  </div>
-                {% else %}
-                  <span class="text-muted">No players</span>
-                {% endif %}
+              <td class="col-members text-center font-mono">
+                <span class="member-count-pill">{{ team.players | length }}</span>
               </td>
-              <td class="col-actions">
-                <a href="{{ url_for('team_detail', team_id=team.team_id) }}" class="btn btn-sm btn-outline">
-                  View
-                </a>
+              <td class="col-time text-right font-mono text-muted text-sm">
+                {{ team.finish_time if team.finish_time else '—' }}
               </td>
             </tr>
           {% endfor %}
-        </tbody>
-      </table>
-
-      <!-- Pagination Navigation -->
-      {% if total_pages > 1 %}
-        <nav class="pagination-nav">
-          <div class="pagination-links">
-            {% if page > 1 %}
-              <a href="{{ url_for('search', q=query, exact=1 if exact else 0, page=1) }}" class="page-link">&laquo; First</a>
-              <a href="{{ url_for('search', q=query, exact=1 if exact else 0, page=page-1) }}" class="page-link">&lsaquo; Prev</a>
-            {% else %}
-              <span class="page-link disabled">&laquo; First</span>
-              <span class="page-link disabled">&lsaquo; Prev</span>
-            {% endif %}
-
-            {% for p_num in range([1, page - 2]|max, [total_pages + 1, page + 3]|min) %}
-              {% if p_num == page %}
-                <span class="page-link active">{{ p_num }}</span>
-              {% else %}
-                <a href="{{ url_for('search', q=query, exact=1 if exact else 0, page=p_num) }}" class="page-link">{{ p_num }}</a>
-              {% endif %}
-            {% endfor %}
-
-            {% if page < total_pages %}
-              <a href="{{ url_for('search', q=query, exact=1 if exact else 0, page=page+1) }}" class="page-link">Next &rsaquo;</a>
-              <a href="{{ url_for('search', q=query, exact=1 if exact else 0, page=total_pages) }}" class="page-link">Last &raquo;</a>
-            {% else %}
-              <span class="page-link disabled">Next &rsaquo;</span>
-              <span class="page-link disabled">Last &raquo;</span>
-            {% endif %}
-          </div>
-        </nav>
-      {% endif %}
-
-    {% else %}
-      <div class="empty-state">
-        <div class="empty-icon">🔎</div>
-        <h3>No teams found</h3>
-        <p>No teams match your search for <strong>"{{ query }}"</strong>.</p>
-        <a href="{{ url_for('index') }}" class="btn btn-primary">Reset Search</a>
-      </div>
-    {% endif %}
+        {% else %}
+          <tr>
+            <td colspan="6" class="empty-state-cell">
+              <div class="empty-state">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="empty-icon">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <div class="empty-title">No teams match this search</div>
+                <div class="empty-desc">Try searching for a different college name or uncheck exact match.</div>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary btn-sm mt-3">Reset Search</a>
+              </div>
+            </td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
   </section>
+
+  <!-- Pagination -->
+  {% if total_pages > 1 %}
+    <div class="pagination-wrapper">
+      <div class="pagination-info text-sm text-muted">
+        Page <span class="font-mono font-semibold">{{ page }}</span> of <span class="font-mono">{{ total_pages }}</span>
+      </div>
+      <div class="pagination-controls">
+        {% if page > 1 %}
+          <a href="{{ url_for('search', q=query, exact=exact|int, page=page-1, per_page=per_page) }}" class="btn btn-secondary btn-sm">
+            Previous
+          </a>
+        {% endif %}
+        
+        {% if page < total_pages %}
+          <a href="{{ url_for('search', q=query, exact=exact|int, page=page+1, per_page=per_page) }}" class="btn btn-secondary btn-sm">
+            Next
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
 
 </div>
 {% endblock %}
