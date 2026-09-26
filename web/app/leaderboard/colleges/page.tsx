@@ -34,6 +34,7 @@ export const metadata: Metadata = {
 interface CollegeLeaderboardPageProps {
   searchParams: Promise<{
     sort?: string;
+    tier?: string;
     q?: string;
     page?: string;
     pageSize?: string;
@@ -45,12 +46,14 @@ export default async function CollegeLeaderboardPage({
 }: CollegeLeaderboardPageProps) {
   const params = await searchParams;
   const sort = (params.sort || "overall") as CollegeSortMetric;
+  const tier = (params.tier || "all") as "all" | "top10" | "top25" | "top50" | "top100";
   const query = (params.q || "").trim();
   const page = Math.max(1, parseInt(params.page || "1", 10) || 1);
   const pageSize = Math.max(1, Math.min(100, parseInt(params.pageSize || "25", 10) || 25));
 
   const initialResult = getCollegeLeaderboard({
     metric: sort,
+    tier,
     query,
     page,
     pageSize,

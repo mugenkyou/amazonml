@@ -40,6 +40,7 @@ export interface CollegeLeaderboardEntry {
 
 export interface CollegeLeaderboardFilterOptions {
   metric?: CollegeSortMetric;
+  tier?: "all" | "top10" | "top25" | "top50" | "top100";
   query?: string;
   page?: number;
   pageSize?: number;
@@ -51,8 +52,10 @@ export interface CollegeLeaderboardResult {
   pageSize: number;
   totalPages: number;
   metric: CollegeSortMetric;
+  tier: "all" | "top10" | "top25" | "top50" | "top100";
   query: string;
   colleges: CollegeLeaderboardEntry[];
+  top3Colleges: CollegeLeaderboardEntry[];
   summaryStats: {
     totalColleges: number;
     totalTeamsEvaluated: number;
@@ -204,6 +207,7 @@ export function getCollegeLeaderboard(
 ): CollegeLeaderboardResult {
   const allEntries = computeCollegeLeaderboardEntries();
   const metric: CollegeSortMetric = options.metric || "overall";
+  const tier = options.tier || "all";
   const query = (options.query || "").trim();
   const page = Math.max(1, options.page || 1);
   const pageSize = Math.max(1, Math.min(100, options.pageSize || 25));
@@ -298,22 +302,35 @@ export function getCollegeLeaderboard(
     rank: index + 1,
   }));
 
-  // 2. Filter by search query if provided
+  const top3Colleges = rankedEntries.slice(0, 3);
+
+  // 2. Filter by rank tier if specified
   let filtered = rankedEntries;
+  if (tier === "top10") {
+    filtered = filtered.filter((e) => e.rank <= 10);
+  } else if (tier === "top25") {
+    filtered = filtered.filter((e) => e.rank <= 25);
+  } else if (tier === "top50") {
+    filtered = filtered.filter((e) => e.rank <= 50);
+  } else if (tier === "top100") {
+    filtered = filtered.filter((e) => e.rank <= 100);
+  }
+
+  // 3. Filter by search query if provided
   if (query) {
     const tokens = tokenizeQuery(query);
-    filtered = rankedEntries.filter((entry) => {
+    filtered = filtered.filter((entry) => {
       const norm = entry.normalizedName;
       return tokens.every((token) => norm.includes(token));
     });
   }
 
-  // 3. Compute Summary Stats across the entire dataset
+  // 4. Compute Summary Stats across the entire dataset
   const collegesWithTop10 = allEntries.filter((e) => e.top10Count > 0).length;
   const collegesWithTop100 = allEntries.filter((e) => e.top100Count > 0).length;
   const totalParticipants = allEntries.reduce((sum, e) => sum + e.playerCount, 0);
 
-  // 4. Paginate
+  // 5. Paginate
   const total = filtered.length;
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
   const safePage = Math.min(page, totalPages);
@@ -326,8 +343,10 @@ export function getCollegeLeaderboard(
     pageSize,
     totalPages,
     metric,
+    tier,
     query,
     colleges: paginatedColleges,
+    top3Colleges,
     summaryStats: {
       totalColleges: allEntries.length,
       totalTeamsEvaluated: 4334,

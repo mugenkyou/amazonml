@@ -11,13 +11,16 @@ import {
   Search,
   ChevronLeft,
   ChevronRight,
-  HelpCircle,
   BarChart3,
   Award,
   Sparkles,
   Info,
   Layers,
   Scale,
+  Crown,
+  Medal,
+  Star,
+  CheckCircle2,
 } from "lucide-react";
 import type {
   CollegeLeaderboardEntry,
@@ -32,7 +35,7 @@ interface CollegeLeaderboardViewProps {
 const METRIC_OPTIONS: { value: CollegeSortMetric; label: string; description: string }[] = [
   {
     value: "overall",
-    label: "Overall Performance",
+    label: "Overall Performance (Default)",
     description: "Composite metric: 35% Best Rank + 35% Top-5 Depth + 20% Tier Bonus + 10% Best Score",
   },
   {
@@ -72,20 +75,33 @@ const METRIC_OPTIONS: { value: CollegeSortMetric; label: string; description: st
   },
 ];
 
+const TIER_OPTIONS = [
+  { label: "All Colleges", value: "all" },
+  { label: "Top 10", value: "top10" },
+  { label: "Top 25", value: "top25" },
+  { label: "Top 50", value: "top50" },
+  { label: "Top 100", value: "top100" },
+];
+
+const QUICK_PRESETS = ["IIT", "BITS", "NIT", "IIIT", "VIT", "Amrita", "Rishihood"];
+
 export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardViewProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
 
   const currentMetric = (searchParams.get("sort") as CollegeSortMetric) || initialResult.metric;
+  const currentTier = searchParams.get("tier") || initialResult.tier || "all";
   const currentQuery = searchParams.get("q") || initialResult.query;
   const currentPage = parseInt(searchParams.get("page") || "1", 10) || initialResult.page;
-  const currentPageSize = parseInt(searchParams.get("pageSize") || "25", 10) || initialResult.pageSize;
+  const currentPageSize =
+    parseInt(searchParams.get("pageSize") || "25", 10) || initialResult.pageSize;
 
   const [searchInput, setSearchInput] = useState(currentQuery);
 
   const updateUrl = (overrides: {
     sort?: string;
+    tier?: string;
     q?: string;
     page?: number;
     pageSize?: number;
@@ -95,6 +111,11 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
     if (overrides.sort !== undefined) {
       if (overrides.sort === "overall") params.delete("sort");
       else params.set("sort", overrides.sort);
+    }
+
+    if (overrides.tier !== undefined) {
+      if (overrides.tier === "all") params.delete("tier");
+      else params.set("tier", overrides.tier);
     }
 
     if (overrides.q !== undefined) {
@@ -125,10 +146,212 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
   const activeMetricObj =
     METRIC_OPTIONS.find((m) => m.value === currentMetric) || METRIC_OPTIONS[0];
 
-  const { colleges, total, totalPages, page: safePage, summaryStats } = initialResult;
+  const { colleges, total, totalPages, page: safePage, summaryStats, top3Colleges } =
+    initialResult;
+
+  // Show Top 3 Showcase only when on page 1, tier 'all', and no active search query
+  const showPodium = safePage === 1 && currentTier === "all" && !currentQuery && top3Colleges.length >= 3;
 
   return (
     <div className="space-y-5">
+      {/* Top 3 Champion Podium / Spotlight Cards */}
+      {showPodium && (
+        <section className="space-y-2.5">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#111111] flex items-center gap-1.5">
+              <Trophy className="h-4 w-4 text-[#FF9900]" />
+              <span>Top Ranked Academic Institutions ({activeMetricObj.label})</span>
+            </h2>
+            <span className="text-[11px] font-mono text-[#767676]">Updated 2026 Snapshot</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {/* #1 Champion Card (Gold) */}
+            {top3Colleges[0] && (
+              <div className="relative rounded-xl border-2 border-[#F5C26B] bg-gradient-to-b from-[#FFFDF5] via-[#FFF9EE] to-white p-4 sm:p-4.5 shadow-card order-1 md:order-2">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 bg-[#131921] text-[#FF9900] text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full shadow-xs border border-[#FF9900]/40">
+                  <Crown className="h-3 w-3 text-[#FF9900]" />
+                  <span>#1 Ranked College</span>
+                </div>
+
+                <div className="pt-2 flex items-start justify-between gap-2">
+                  <div className="min-w-0 flex-1">
+                    <span className="inline-flex items-center gap-1 rounded bg-[#FFF3E0] border border-[#F5C26B] px-2 py-0.5 text-[10px] font-bold text-[#E47911] font-mono">
+                      <Star className="h-3 w-3 fill-[#E47911]" /> Champion
+                    </span>
+                    <h3 className="text-base sm:text-lg font-black text-[#111111] mt-1.5 leading-snug line-clamp-2">
+                      <Link
+                        href={`/organizations/${top3Colleges[0].slug}`}
+                        className="hover:text-[#E47911] transition-colors"
+                      >
+                        {top3Colleges[0].name}
+                      </Link>
+                    </h3>
+                  </div>
+
+                  <div className="text-right shrink-0 rounded-lg bg-[#FF9900] text-[#111111] px-2.5 py-1 shadow-2xs">
+                    <span className="text-[9px] uppercase font-bold block leading-none opacity-80">
+                      Score
+                    </span>
+                    <span className="text-base sm:text-lg font-black font-mono leading-none">
+                      {top3Colleges[0].overallScore.toFixed(1)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Metrics Grid */}
+                <div className="mt-3.5 grid grid-cols-2 gap-1.5 text-xs border-t border-[#F5C26B]/40 pt-2.5">
+                  <div className="rounded-md bg-white/90 border border-[#F5C26B]/50 p-2">
+                    <span className="text-[10px] text-[#767676] block font-medium">Best Team</span>
+                    <span className="font-bold font-mono text-[#067D62]">
+                      #{top3Colleges[0].bestRank}
+                    </span>
+                  </div>
+                  <div className="rounded-md bg-white/90 border border-[#F5C26B]/50 p-2">
+                    <span className="text-[10px] text-[#767676] block font-medium">Top 5 Avg</span>
+                    <span className="font-bold font-mono text-[#111111]">
+                      {top3Colleges[0].top5AvgRank}
+                    </span>
+                  </div>
+                  <div className="rounded-md bg-white/90 border border-[#F5C26B]/50 p-2">
+                    <span className="text-[10px] text-[#767676] block font-medium">Teams</span>
+                    <span className="font-bold font-mono text-[#111111]">
+                      {top3Colleges[0].teamCount} teams
+                    </span>
+                  </div>
+                  <div className="rounded-md bg-white/90 border border-[#F5C26B]/50 p-2">
+                    <span className="text-[10px] text-[#767676] block font-medium">Students</span>
+                    <span className="font-bold font-mono text-[#111111]">
+                      {top3Colleges[0].playerCount} roster
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-3 pt-2">
+                  <Link
+                    href={`/organizations/${top3Colleges[0].slug}`}
+                    className="flex w-full min-h-[38px] items-center justify-center gap-1.5 rounded-lg bg-[#FF9900] px-3 py-1.5 text-xs font-bold text-[#111111] hover:bg-[#E47911] hover:text-white transition-all shadow-xs"
+                  >
+                    <span>View Champion College Profile</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {/* #2 Card (Silver) */}
+            {top3Colleges[1] && (
+              <div className="relative rounded-xl border border-[#D5D5D5] bg-gradient-to-b from-[#F9F9FB] to-white p-4 shadow-subtle order-2 md:order-1">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0 flex-1">
+                    <span className="inline-flex items-center gap-1 rounded bg-[#F0F0F0] border border-[#D5D5D5] px-2 py-0.5 text-[10px] font-bold text-[#5F6368] font-mono">
+                      <Medal className="h-3 w-3 text-[#5F6368]" /> #2 Rank
+                    </span>
+                    <h3 className="text-sm sm:text-base font-bold text-[#111111] mt-1.5 leading-snug line-clamp-2">
+                      <Link
+                        href={`/organizations/${top3Colleges[1].slug}`}
+                        className="hover:text-[#E47911] transition-colors"
+                      >
+                        {top3Colleges[1].name}
+                      </Link>
+                    </h3>
+                  </div>
+
+                  <div className="text-right shrink-0 rounded-lg bg-[#F0F0F0] border border-[#D5D5D5] px-2.5 py-1">
+                    <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">
+                      Score
+                    </span>
+                    <span className="text-sm sm:text-base font-bold font-mono text-[#111111]">
+                      {top3Colleges[1].overallScore.toFixed(1)}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-3 grid grid-cols-2 gap-1.5 text-xs border-t border-[#EAEAEA] pt-2">
+                  <div className="rounded bg-[#F7F7F7] p-1.5 border border-[#EAEAEA]">
+                    <span className="text-[10px] text-[#767676] block font-medium">Best Rank</span>
+                    <span className="font-bold font-mono text-[#067D62]">
+                      #{top3Colleges[1].bestRank}
+                    </span>
+                  </div>
+                  <div className="rounded bg-[#F7F7F7] p-1.5 border border-[#EAEAEA]">
+                    <span className="text-[10px] text-[#767676] block font-medium">Top 5 Avg</span>
+                    <span className="font-bold font-mono text-[#111111]">
+                      {top3Colleges[1].top5AvgRank}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-3">
+                  <Link
+                    href={`/organizations/${top3Colleges[1].slug}`}
+                    className="flex w-full min-h-[34px] items-center justify-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-3 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-all"
+                  >
+                    <span>View Profile</span>
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {/* #3 Card (Bronze) */}
+            {top3Colleges[2] && (
+              <div className="relative rounded-xl border border-[#E8D0C0] bg-gradient-to-b from-[#FFF9F5] to-white p-4 shadow-subtle order-3">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0 flex-1">
+                    <span className="inline-flex items-center gap-1 rounded bg-[#FFF0E6] border border-[#F5C27A] px-2 py-0.5 text-[10px] font-bold text-[#C45500] font-mono">
+                      <Medal className="h-3 w-3 text-[#C45500]" /> #3 Rank
+                    </span>
+                    <h3 className="text-sm sm:text-base font-bold text-[#111111] mt-1.5 leading-snug line-clamp-2">
+                      <Link
+                        href={`/organizations/${top3Colleges[2].slug}`}
+                        className="hover:text-[#E47911] transition-colors"
+                      >
+                        {top3Colleges[2].name}
+                      </Link>
+                    </h3>
+                  </div>
+
+                  <div className="text-right shrink-0 rounded-lg bg-[#FFF0E6] border border-[#F5C27A] px-2.5 py-1">
+                    <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">
+                      Score
+                    </span>
+                    <span className="text-sm sm:text-base font-bold font-mono text-[#C45500]">
+                      {top3Colleges[2].overallScore.toFixed(1)}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-3 grid grid-cols-2 gap-1.5 text-xs border-t border-[#EAEAEA] pt-2">
+                  <div className="rounded bg-[#F7F7F7] p-1.5 border border-[#EAEAEA]">
+                    <span className="text-[10px] text-[#767676] block font-medium">Best Rank</span>
+                    <span className="font-bold font-mono text-[#067D62]">
+                      #{top3Colleges[2].bestRank}
+                    </span>
+                  </div>
+                  <div className="rounded bg-[#F7F7F7] p-1.5 border border-[#EAEAEA]">
+                    <span className="text-[10px] text-[#767676] block font-medium">Top 5 Avg</span>
+                    <span className="font-bold font-mono text-[#111111]">
+                      {top3Colleges[2].top5AvgRank}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-3">
+                  <Link
+                    href={`/organizations/${top3Colleges[2].slug}`}
+                    className="flex w-full min-h-[34px] items-center justify-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-3 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-all"
+                  >
+                    <span>View Profile</span>
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* Dynamic Summary Strip */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-xs font-mono">
         <div className="flex items-center gap-2 rounded-lg border border-[#F5C26B] bg-[#FFF7E6] p-2.5 sm:p-3 shadow-2xs">
@@ -188,8 +411,9 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
         </div>
       </div>
 
-      {/* Interactive Toolbar: Search & Ranking Selector */}
+      {/* Interactive Toolbar: Search, Ranking Selector & Quick Presets */}
       <div className="rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] p-3.5 sm:p-4 shadow-subtle space-y-3">
+        {/* Search Input & Metric Selector */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           {/* Search Input */}
           <form onSubmit={handleSearchSubmit} className="relative flex-1 max-w-md">
@@ -198,7 +422,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
               type="text"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Search college name (e.g. IIT, BITS, VIT, NIT)..."
+              placeholder="Search college (e.g. IIT, BITS, VIT, NIT)..."
               className="w-full min-h-[42px] rounded-lg border border-[#D5D5D5] bg-white py-2 pl-9 pr-20 text-xs sm:text-sm text-[#111111] placeholder-[#767676] outline-none focus:border-[#FF9900] focus:ring-1 focus:ring-[#FF9900]"
             />
             {searchInput && (
@@ -208,20 +432,20 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                   setSearchInput("");
                   updateUrl({ q: "", page: 1 });
                 }}
-                className="absolute right-12 top-1/2 -translate-y-1/2 text-xs text-[#767676] hover:text-[#111111] px-1.5 py-0.5"
+                className="absolute right-12 top-1/2 -translate-y-1/2 text-xs text-[#767676] hover:text-[#111111] px-1.5 py-0.5 cursor-pointer"
               >
                 Clear
               </button>
             )}
             <button
               type="submit"
-              className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded bg-[#FF9900] px-2.5 py-1 text-xs font-bold text-[#111111] hover:bg-[#E47911] transition-colors"
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded bg-[#FF9900] px-2.5 py-1 text-xs font-bold text-[#111111] hover:bg-[#E47911] transition-colors cursor-pointer"
             >
               Search
             </button>
           </form>
 
-          {/* Ranking Selector Dropdown */}
+          {/* Ranking Selector Dropdown & Page Size */}
           <div className="flex flex-wrap items-center gap-2">
             <label
               htmlFor="metric-selector"
@@ -236,7 +460,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
               onChange={(e) =>
                 updateUrl({ sort: e.target.value as CollegeSortMetric, page: 1 })
               }
-              className="min-h-[42px] rounded-lg border border-[#D5D5D5] bg-white px-3 py-2 text-xs sm:text-sm font-semibold text-[#111111] outline-none focus:border-[#FF9900] focus:ring-1 focus:ring-[#FF9900] cursor-pointer shadow-2xs"
+              className="min-h-[42px] rounded-lg border border-[#D5D5D5] bg-white px-3 py-2 text-xs sm:text-sm font-semibold text-[#111111] outline-none focus:border-[#FF9900] focus:ring-1 focus:ring-[#FF9900] cursor-pointer shadow-2xs max-w-full truncate"
             >
               {METRIC_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>
@@ -258,6 +482,51 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
               <option value="50">50 / page</option>
               <option value="100">100 / page</option>
             </select>
+          </div>
+        </div>
+
+        {/* Tier Filter Pills */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-[#EAEAEA]">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
+            <Trophy className="h-3 w-3 text-[#E47911]" /> Rank Tier:
+          </span>
+          {TIER_OPTIONS.map((opt) => (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => updateUrl({ tier: opt.value, page: 1 })}
+              className={`inline-flex min-h-[30px] items-center rounded-md px-2.5 py-1 text-xs transition-colors cursor-pointer ${
+                currentTier === opt.value
+                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-bold"
+                  : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+
+          {/* Quick preset chips */}
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#767676] ml-2 mr-1 hidden sm:inline-block">
+            Quick Find:
+          </span>
+          <div className="hidden sm:flex items-center gap-1">
+            {QUICK_PRESETS.map((preset) => (
+              <button
+                key={preset}
+                type="button"
+                onClick={() => {
+                  setSearchInput(preset);
+                  updateUrl({ q: preset, page: 1 });
+                }}
+                className={`rounded px-1.5 py-0.5 text-[11px] font-mono transition-colors cursor-pointer ${
+                  currentQuery.toLowerCase() === preset.toLowerCase()
+                    ? "bg-[#131921] text-[#FF9900] font-bold"
+                    : "bg-[#F0F0F0] text-[#5F6368] hover:bg-[#FF9900] hover:text-[#111111]"
+                }`}
+              >
+                {preset}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -294,13 +563,13 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                 key={college.slug}
                 className={`rounded-xl border bg-white p-3.5 shadow-subtle transition-all hover:border-[#FF9900] ${
                   isTopRank
-                    ? "border-[#F5C26B] border-t-[3px] border-t-[#FF9900]"
+                    ? "border-[#F5C26B] border-t-[3px] border-t-[#FF9900] bg-gradient-to-b from-[#FFFDF9] to-white"
                     : isTop3
                     ? "border-[#F5C26B] border-t-2 border-t-[#FF9900]"
                     : "border-[#E3E3E3]"
                 }`}
               >
-                <div className="flex items-start justify-between gap-2">
+                <div className="flex items-start justify-between gap-2.5">
                   <div className="flex items-center gap-2.5 min-w-0 flex-1">
                     <span
                       className={`inline-flex h-8 min-w-8 shrink-0 items-center justify-center rounded-lg px-2 text-xs font-bold font-mono shadow-2xs ${
@@ -339,8 +608,8 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                   </div>
                 </div>
 
-                {/* Mobile Statistics Grid */}
-                <div className="mt-3 grid grid-cols-2 gap-2 border-t border-[#F0F0F0] pt-2.5 text-xs">
+                {/* Mobile Statistics 2x2 Grid */}
+                <div className="mt-3 grid grid-cols-2 gap-1.5 border-t border-[#F0F0F0] pt-2.5 text-xs">
                   <div className="rounded bg-[#F7F7F7] p-2 border border-[#EAEAEA]">
                     <span className="text-[10px] font-medium text-[#767676] block">
                       Teams & Rosters
@@ -361,35 +630,37 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
 
                   <div className="rounded bg-[#F7F7F7] p-2 border border-[#EAEAEA]">
                     <span className="text-[10px] font-medium text-[#767676] block">
+                      Top 5 Teams Avg
+                    </span>
+                    <span className="font-mono font-semibold text-[#111111]">
+                      {college.top5AvgRank !== null ? `Rank ${college.top5AvgRank}` : "—"}
+                    </span>
+                  </div>
+
+                  <div className="rounded bg-[#F7F7F7] p-2 border border-[#EAEAEA]">
+                    <span className="text-[10px] font-medium text-[#767676] block">
                       Average Team Rank
                     </span>
                     <span className="font-mono font-semibold text-[#111111]">
                       {college.avgRank !== null ? `Rank ${college.avgRank}` : "—"}
                     </span>
                   </div>
-
-                  <div className="rounded bg-[#F7F7F7] p-2 border border-[#EAEAEA]">
-                    <span className="text-[10px] font-medium text-[#767676] block">
-                      Top 5 Teams Avg Rank
-                    </span>
-                    <span className="font-mono font-semibold text-[#111111]">
-                      {college.top5AvgRank !== null ? `Rank ${college.top5AvgRank}` : "—"}
-                    </span>
-                  </div>
                 </div>
 
-                {/* Action Link */}
+                {/* Mobile Action Link */}
                 <div className="mt-3 pt-2.5 border-t border-[#F0F0F0] flex items-center justify-between">
                   <div className="text-[10px] font-mono text-[#767676]">
-                    {college.top10Count > 0 && (
+                    {college.top10Count > 0 ? (
                       <span className="text-[#067D62] font-semibold">
                         ★ {college.top10Count} Top-10 Finish{college.top10Count > 1 ? "es" : ""}
                       </span>
+                    ) : (
+                      <span>Score: {college.bestScore ? college.bestScore.toFixed(4) : "—"}</span>
                     )}
                   </div>
                   <Link
                     href={`/organizations/${college.slug}`}
-                    className="inline-flex min-h-[36px] items-center gap-1 rounded-md border border-[#FF9900] bg-[#FFF3E0] px-3 py-1 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all"
+                    className="inline-flex min-h-[36px] items-center gap-1 rounded-md border border-[#FF9900] bg-[#FFF3E0] px-3 py-1 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all active:scale-95"
                   >
                     <span>View College Profile</span>
                     <ArrowRight className="h-3 w-3" />
@@ -400,7 +671,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
           })
         ) : (
           <div className="rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] p-8 text-center text-xs text-[#767676]">
-            No institutions match the search query <strong>&quot;{currentQuery}&quot;</strong>.
+            No institutions match the search criteria.
           </div>
         )}
       </div>
@@ -453,7 +724,13 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                   return (
                     <tr
                       key={college.slug}
-                      className="transition-colors hover:bg-[#FFFDF9]"
+                      className={`transition-colors ${
+                        isTopRank
+                          ? "bg-[#FFFDF5] hover:bg-[#FFF8E7]"
+                          : isTop3
+                          ? "hover:bg-[#FFFDF9]"
+                          : "hover:bg-[#F9F9F9]"
+                      }`}
                     >
                       <td className="whitespace-nowrap py-3 pl-4 pr-2 text-center">
                         <span
@@ -472,12 +749,15 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                       </td>
 
                       <td className="px-3 py-3 max-w-xs lg:max-w-sm">
-                        <Link
-                          href={`/organizations/${college.slug}`}
-                          className="font-bold text-[#111111] hover:text-[#E47911] hover:underline transition-colors block line-clamp-1"
-                        >
-                          {college.name}
-                        </Link>
+                        <div className="flex items-center gap-1.5">
+                          {isTopRank && <Crown className="h-3.5 w-3.5 text-[#FF9900] shrink-0" />}
+                          <Link
+                            href={`/organizations/${college.slug}`}
+                            className="font-bold text-[#111111] hover:text-[#E47911] hover:underline transition-colors block line-clamp-1"
+                          >
+                            {college.name}
+                          </Link>
+                        </div>
                         <div className="flex items-center gap-2 mt-0.5 text-[11px] text-[#767676] font-mono">
                           <span className="truncate">{college.slug}</span>
                           {college.top10Count > 0 && (
@@ -548,7 +828,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
               ) : (
                 <tr>
                   <td colSpan={10} className="py-8 text-center text-xs text-[#767676]">
-                    No institutions match the search query <strong>&quot;{currentQuery}&quot;</strong>.
+                    No institutions match the search criteria.
                   </td>
                 </tr>
               )}
