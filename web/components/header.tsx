@@ -11,8 +11,9 @@ export function Header() {
 
   const navItems = [
     { label: "Explorer", href: "/", icon: Trophy, description: "Search & overview" },
-    { label: "Leaderboard", href: "/leaderboard", icon: BarChart2, description: "Official rankings & scores" },
-    { label: "Organizations", href: "/organizations", icon: Building2, description: "Colleges directory" },
+    { label: "Leaderboard", href: "/leaderboard", icon: BarChart2, description: "Team standings & scores" },
+    { label: "Colleges", href: "/leaderboard/colleges", icon: Building2, description: "College rankings & stats" },
+    { label: "Directory", href: "/organizations", icon: Users2, description: "All 1,546 institutions" },
     { label: "Compare", href: "/compare", icon: Users2, description: "Side-by-side metrics" },
     { label: "Cross-College", href: "/cross-college", icon: GitFork, description: "Inter-university teams" },
   ];
@@ -69,13 +70,19 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-0.5 lg:gap-1 h-full">
           {navItems.map((item) => {
             const isActive =
-              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+              item.href === "/"
+                ? pathname === "/"
+                : item.href === "/leaderboard"
+                ? pathname === "/leaderboard"
+                : item.href === "/leaderboard/colleges"
+                ? pathname === "/leaderboard/colleges"
+                : pathname.startsWith(item.href);
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative flex items-center gap-1.5 h-full px-3 lg:px-3.5 text-xs lg:text-sm font-medium transition-colors ${
+                className={`relative flex items-center gap-1.5 h-full px-2.5 lg:px-3 text-xs lg:text-sm font-medium transition-colors ${
                   isActive
                     ? "text-[#E47911] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[3px] after:bg-[#FF9900]"
                     : "text-[#5F6368] hover:text-[#E47911] hover:bg-[#FFF7E6]"
