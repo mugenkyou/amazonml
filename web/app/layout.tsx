@@ -55,6 +55,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  verification: {
+    google: "5w8gnos2EMpvOaxww-8unXKrbq22ddUe_Wd82N-liqA",
+  },
   robots: {
     index: true,
     follow: true,
@@ -93,6 +96,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fontSans.variable} ${fontMono.variable}`}>
       <head>
+        <meta
+          name="google-site-verification"
+          content="5w8gnos2EMpvOaxww-8unXKrbq22ddUe_Wd82N-liqA"
+        />
         <JsonLd data={websiteSchema} />
         {/* Google tag (gtag.js) */}
         <Script
