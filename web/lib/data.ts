@@ -44,15 +44,19 @@ export function getAllTeams(): Team[] {
   return cachedTeams;
 }
 
-export function getTeamById(teamId: string): Team | null {
+export function getTeamById(teamId: string | number): Team | null {
+  if (!teamId) return null;
+  const strId = String(teamId).trim();
   if (!cachedTeamsById) {
     const teams = getAllTeams();
     cachedTeamsById = new Map<string, Team>();
     for (const t of teams) {
-      cachedTeamsById.set(t.teamId, t);
+      if (t && t.teamId) {
+        cachedTeamsById.set(String(t.teamId).trim(), t);
+      }
     }
   }
-  return cachedTeamsById.get(teamId) || null;
+  return cachedTeamsById.get(strId) || null;
 }
 
 export function getAllOrganizations(): Organization[] {

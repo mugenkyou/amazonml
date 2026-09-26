@@ -320,7 +320,7 @@ export function SearchBar({
 
                 return (
                   <button
-                    key={`${item.type}-${item.title}-${index}`}
+                    key={`${item.type}-${item.teamId || item.slug || item.title}-${index}`}
                     type="button"
                     role="option"
                     aria-selected={focusedIndex === index}

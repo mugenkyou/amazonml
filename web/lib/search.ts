@@ -314,7 +314,10 @@ export function searchSuggestions(
         results.push({
           type: "team",
           title: team.teamName,
-          subtitle: team.organizations.length > 0 ? team.organizations[0] : `Score: ${team.score}`,
+          subtitle:
+            team.organizations.length > 0
+              ? `${team.organizations[0]} (ID: ${team.teamId})`
+              : `ID: ${team.teamId} • Score: ${team.score}`,
           badge: `Rank #${team.rank}`,
           queryValue: team.teamName,
           teamId: team.teamId,
