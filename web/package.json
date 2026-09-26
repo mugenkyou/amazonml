@@ -1,9 +1,11 @@
 {
-  "name": "unstop-leaderboard-web",
+  "name": "amazonml-challenge-explorer",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "prepare-data": "tsx scripts/prepare-data.ts",
+    "sync": "tsx scripts/sync-all.ts",
+    "fetch-data": "tsx scripts/sync-all.ts --force",
     "dev": "npm run prepare-data && next dev",
     "build": "npm run prepare-data && next build",
     "start": "next start",

@@ -216,10 +216,12 @@ export function filterLeaderboard(options: LeaderboardFilterOptions = {}) {
     }
   }
 
-  // 3. Organization query filter
+  // 3. Query filter (matches organizations, team names, and player names)
   if (query) {
     filtered = filtered.filter((t) =>
-      t.normalizedOrganizations.some((o) => o.includes(query))
+      t.teamName.toLowerCase().includes(query) ||
+      t.normalizedOrganizations.some((o) => o.includes(query)) ||
+      (t.players && t.players.some((p) => (p.name || "").toLowerCase().includes(query)))
     );
   }
 

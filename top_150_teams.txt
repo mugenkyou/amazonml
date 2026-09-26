@@ -1,0 +1,2051 @@
+﻿================================================================================
+                      UNSTOP ML CHALLENGE - TOP 150 TEAMS
+================================================================================
+Generated from: web/data/generated/teams.json
+Total Teams in List: 150
+
+================================================================================
+SECTION 1: QUICK LOOKUP TABLE (Rank, Score, Team Name, Colleges/Institutions)
+================================================================================
+RANK   | SCORE   | TEAM NAME                           | COLLEGE / INSTITUTION(S)
+--------------------------------------------------------------------------------------------------------------
+#1     | 0.990748 | Androids                            | Koneru Lakshmaiah Education Foundation (K.L. University), Guntur, Siddartha Educational Academy Group of Institute, kl university
+#2     | 0.989475 | Banana                              | Birla Institute of Technology & Science, Pilani Campus, Indian Institute of Technology (IIT), Hyderabad
+#3     | 0.989292 | KL_converge                         | LNM Institute of Information Technology (LNMIIT), Jaipur, The Bishop's Co-Ed School
+#4     | 0.988853 | KV_Smash                            | Delhi Technological University (DTU), New Delhi, Indian Institute of Science (IISc), Bangalore, Indian Institute of Technology (IIT), Kanpur
+#5     | 0.988732 | 01BIT                               | Indian Institute of Technology (IIT), Patna
+#6     | 0.988584 | CDS_Team_iisc                       | Indian Institute of Science (IISc), Bangalore
+#7     | 0.988557 | Asi baat hai kya                    | Indian Institute of Technology (IIT), Kharagpur
+#8     | 0.988513 | The Potato Gang                     | Maharaja Agrasen Institute of Technology (MAIT), New Delhi, Sharda University (SU), Greater Noida, Sri Sairam Engineering College (SSEC), Chennai
+#9     | 0.988369 | CrossLinkers                        | Newton School Of Technology, Rishihood University, Rishihood University
+#10    | 0.988323 | Teem                                | Indian Institute of Technology (IIT), Kanpur, Indian Institute of Technology (IIT), Madras
+#11    | 0.988273 | GG                                  | Lovely Professional University (LPU), Punjab
+#12    | 0.988272 | Team Sandipani                      | Chaitanya Bharathi Institute of Technology (CBIT), Hyderabad, Chaitanya Bharathi Institute of Technology, Gandipet, Telangana
+#13    | 0.988234 | Confusion Matrix                    | Jadavpur University (JU), Kolkata
+#14    | 0.988229 | plaksha agents                      | Plaksha University, Mohali, Punjab, Plaksha University, Punjab
+#15    | 0.988112 | Neural Ninjas                       | SASTRA Deemed to be University, Shanmugha Arts, Science, Technology & Research Academy (SASTRA), Thanjavur
+#16    | 0.98811 | PsyDuck                             | Atria Institute of Technology (AIT), Bengaluru, Karnataka
+#17    | 0.988095 | Sahaayak                            | IIIT Naya Raipur, International Institute of Information Technology (IIIT), Naya Raipur
+#18    | 0.988067 | CiSTUP                              | Indian Institute of Science (IISc), Bangalore
+#19    | 0.988065 | 『VOID』                              | Mukesh Patel School of Technology Management and Engineering (MPSTME), Shirpur
+#20    | 0.987886 | [object Object]                     | Vishwakarma Institute Of Technology, Pune
+#21    | 0.98781 | Grenuke                             | Vishwakarma Institute of Technology, Pune, Maharashtra
+#22    | 0.987647 | Crescent                            | Jamia Millia Islamia, University Institute of Engineering and Technology (UIET), Chandigarh
+#23    | 0.987581 | DataDecoders                        | Indian Institute of Technology (IIT), Madras
+#24    | 0.98755 | Gradient ascent                     | IIIT Naya Raipur, International Institute of Information Technology (IIIT), Naya Raipur
+#25    | 0.987544 | PerryDaPlatypus                     | Vellore Institute of Technology (VIT), Vellore
+#26    | 0.987506 | Code2Destroy                        | Vellore Institute of Technology (VIT), Vellore
+#27    | 0.987487 | Git Wrecked                         | Indian Institute of Technology (IIT), Guwahati, Indian Institute of Technology (IIT), Kharagpur
+#28    | 0.987311 | Matrix-Code                         | Anil Neerukonda Institute of Technology and Sciences (ANITS), Visakhapatnam, National Institute of Technology (NIT), Patna, SR University, Warangal
+#29    | 0.98731 | Edgr                                | SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai
+#30    | 0.987264 | Six Month                           | Indian Institute of Information Technology (IIIT), Allahabad
+#31    | 0.987258 | Dhurandhar                          | Newton School Of Technology, Rishihood University, Rishihood University
+#32    | 0.987252 | clauders                            | Indian Institute of Technology, Indian Institute of Technology (IIT), Bombay, Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad
+#33    | 0.987138 | Zenith_1007                         | Indian Institute of Information Technology (IIIT), Kalyani, Indian Institute of Information Technology (IIIT), Kottayam
+#34    | 0.987113 | Nexica AI                           | LNCT Group of Colleges, LNCT Group of Colleges, Bhopal, Madhya Pradesh, Lakshmi Narain College of Technology (LNCT), Bhopal, Madhya Pradesh
+#35    | 0.987102 | Segmentation Fault                  | Manipal Institute of Technology (MIT), Manipal
+#36    | 0.987048 | Hero                                | Indian Institute of Technology (IIT), Roorkee
+#37    | 0.987016 | HASHIRA                             | Indian Institute of Technology (IIT), Delhi
+#38    | 0.986952 | Meta Learners                       | Birla Institute of Technology & Science, Pilani Campus, Indian Institute of Technology (IIT), Guwahati, National Institute of Technology (NIT), Agartala
+#39    | 0.986913 | Top1                                | National Institute of Technology Karnataka (NITK), Surathkal
+#40    | 0.986773 | 108 Neurons                         | Indian Institute of Technology (IIT), Jodhpur
+#41    | 0.98674 | amazoners                           | Indian Institute of Technology (IIT), Ropar
+#42    | 0.986736 | Medallion                           | Birla Institute of Technology & Science, Pilani Campus
+#43    | 0.986716 | NeuralNukes                         | Indian Institute of Technology (IIT), Guwahati
+#44    | 0.986644 | Lab Rats                            | Galgotias University (GU), Greater Noida
+#45    | 0.986519 | Flaming Phoenix                     | Atal Bihari Vajpayee-Indian Institute of Information Technology and Management
+#46    | 0.986516 | Softmax                             | JECRC University (JECRCU), Vidhani, Jaipur, Rajasthan
+#47    | 0.986481 | Brute Force                         | Thapar Institute of Engineering and Technology (TIET), Patiala
+#47    | 0.986481 | hill climbers                       | Birla Institute of Technology & Science, Pilani Campus, LNM Institute of Information Technology (LNMIIT), Jaipur
+#48    | 0.986449 | !COYS!                              | International Institute of Information Technology (IIIT), Hyderabad
+#49    | 0.986381 | moov                                | Indian Institute of Technology (IIT), Hyderabad
+#50    | 0.986364 | iiest                               | Indian Institute of Engineering Science and Technology (IIEST), Shibpur
+#51    | 0.986297 | impulsifier                         | Ramdeobaba University, Nagpur, Shri Ramdeo Baba College of Engineering, Shri Ramdeobaba College of Engineering and Management (RCOEM), Nagpur
+#52    | 0.98626 | Amaze-On                            | Thapar Institute of Engineering and Technology (TIET), Patiala
+#53    | 0.986193 | Aura_Farming                        | Indian Institute of Information Technology (IIIT), Dharwad, Indian Institute of Information Technology Dharwad
+#54    | 0.986184 | Astrax                              | Indian Institute of Information Technology (IIIT), Raichur
+#55    | 0.98618 | DataButterflies                     | Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad
+#56    | 0.986147 | mp_up_bangal                        | Indian Institute of Technology (IIT), Hyderabad
+#57    | 0.986116 | MavericK                            | Dr. Vishwanath Karad MIT World Peace University (MIT-WPU), Pune, Indian Institute of Technology (IIT), Madras, MIT World Peace University, Pune, Maharashtra
+#58    | 0.986107 | Dead ReLUs Society                  | SVKM's NMIMS NSOMASA, Vellore Institute of Technology (VIT), Vellore
+#59    | 0.985937 | The_Optimizers                      | Indian Institute of Technology (IIT), Jodhpur
+#60    | 0.98588 | Team AMS                            | Birla Institute of Technology & Science, Pilani Campus, Indian Institute of Technology (IIT), Kharagpur, Maulana Azad National Institute of Technology (MANIT), Bhopal, Pragati Engineering College (PEC), East Godavari, Andhra Pradesh
+#61    | 0.985845 | Ctrl Alt Del                        | Indian Institute of Information Technology (IIIT), Nagpur
+#62    | 0.985789 | God's Plan                          | Indian Institute of Technology (IIT), Kharagpur
+#63    | 0.985722 | printf                              | Indian Institute of Information Technology (IIIT), Allahabad
+#64    | 0.985676 | deliveryagents                      | Indian Institute of Technology (IIT), Mandi
+#65    | 0.985632 | Random Forest Rangers               | Thapar Institute of Engineering and Technology (TIET), Patiala
+#66    | 0.985594 | S3 Bucket of Tears                  | Indian Institute of Engineering Science and Technology (IIEST), Shibpur
+#67    | 0.985589 | Titan Grandmasters                  | CMR Institute Of Techlogy, CMR Institute of Technology (CMRIT), Bangalore
+#68    | 0.985475 | Minutes                             | Geethanjali College of Engineering and Technology, (GCET Hyderabad)
+#69    | 0.985434 | hi im sargent balls reporting ...   | Birla Institute of Technology & Science, Pilani Campus
+#70    | 0.985428 | Djokers                             | Indian Institute of Science (IISc), Bangalore
+#71    | 0.985388 | DoomsDay                            | VIT Bhopal University (VIT), Bhopal
+#71    | 0.985388 | PlayItSmart                         | Banasthali Vidyapith (BU), Jaipur, Indira Gandhi Delhi Technical University for Women (IGDTUW), Delhi, Vellore Institute of Technology (VIT), Vellore
+#72    | 0.985381 | midnight blizzard                   | Manipal Institute of Technology (MIT), Manipal
+#73    | 0.985379 | SHapley                             | S G Balekundari Institute of Technology, SG Balekundri Institute of Technology, SG Balekundri Institute of Technology Belgaum
+#74    | 0.985374 | nexus                               | Indian Institute of Technology (IIT), Madras
+#75    | 0.985344 | EpochZ                              | Graphic Era (Deemed to be University) (GEU), Dehradun, Manipal University (MU), Jaipur
+#76    | 0.985336 | She Sells C Shells                  | International Institute of Information Technology (IIIT), Bangalore
+#77    | 0.98533 | HOLY ML                             | Kazi Nazrul University (KNU), Asansol, West Bengal, University of Engineering and Management (UEM), Kolkata, University of Engineering and Management Kolkata
+#78    | 0.985292 | Claude's Plan                       | MCT's Rajiv Gandhi Institute Of Technology, Rajiv Gandhi Institute of Technology (RGIT), Mumbai, Rajiv Gandhi Institute of Technology, Mumbai
+#79    | 0.985283 | PokerBoys69                         | KLE Technological University (KLE Tech), Hubli
+#80    | 0.985227 | Limitless                           | St. Joseph's College of Engineering, Chennai
+#81    | 0.985213 | Businessmen                         | Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat
+#82    | 0.985196 | Expecto Patronum                    | BMS College of Engineering (BMSCE), Bangalore, M S Ramaiah Institute of Technology (MSRIT), Bangalore, Ramaiah Institute of Technology, Bengaluru, Karnataka
+#82    | 0.985196 | Grinders                            | Indian Institute of Technology (IIT), Hyderabad
+#83    | 0.985143 | Aspiring Alphas                     | University of Petroleoum and Energy Studies, Bidholi, University of Petroleum & Energy Studies (UPES), Dehradun
+#83    | 0.985143 | jarvis                              | International Institute of Information Technology (IIIT), Hyderabad
+#84    | 0.985131 | CSE_on_top                          | Indian Institute of Technology (IIT), Bombay
+#85    | 0.985126 | Co-operative Thread Army            | Indian Institute of Technology (IIT), Kanpur
+#86    | 0.985078 | kittykittyMeowMeow                  | Guru Gobind Singh Indraprastha University (GGSIPU), Delhi, University School of Automation & Robotics, Delhi
+#87    | 0.985053 | Apprentice                          | Jaypee Institute of Information Technology (JIIT), Noida
+#88    | 0.984952 | HumanSlop                           | Indian Institute of Technology (IIT), Bhilai
+#89    | 0.984951 | AutoML                              | Indian Institute of Science (IISc), Bangalore, International Institute of Information Technology, Bhubaneswar
+#90    | 0.984944 | abracadabra                         | Indian Institute of Technology (IIT), Kharagpur
+#91    | 0.984929 | Atlas                               | RV University, Bangalore
+#92    | 0.984899 | StarkVision                         | IIITD - Indraprastha Institute of Information Technology, Indraprastha Institute of Information Technology (IIIT), Delhi, Manipal University (MU), Jaipur
+#93    | 0.984853 | MLGods                              | Indian Institute of Technology (IIT), Guwahati
+#94    | 0.984843 | GameOfCodes                         | Amity School of Engineering & Technology (AMITY), Noida, Amity University, Amity University (AU), Noida
+#95    | 0.984751 | coding ninja                        | Indian Institute of Technology (IIT), Gandhinagar
+#96    | 0.984747 | DZ Blood                            | K. J. Somaiya College of Engineering (KJSCE), Vidyavihar
+#97    | 0.984742 | SSM                                 | Indian Institute of Technology (IIT), Delhi
+#98    | 0.984727 | SHSHSHSH                            | PES University (PESU), Bengaluru
+#99    | 0.984719 | DataHungry                          | Indian Institute of Technology (IIT), Kharagpur, Indian Institute of Technology Kharagpur, National Institute of Technology (NIT), Patna
+#100   | 0.984718 | Ninja mutant turtles                | Heritage Institute of Technology (HIT), Kolkata, Institute of Engineering & Management, Kolkata, Institute of Engineering and Management, university of engineering and management
+#101   | 0.984701 | AmazeIT                             | Indian Institute of Information Technology (IIIT), Allahabad
+#102   | 0.98469 | The Usual Suspects                  | Indian Institute of Technology (IIT), Indore, VNR VJIET, VNRVJIET, HYDERABAD
+#103   | 0.984629 | EpochZero                           | Indian Institute of Technology, BHU, Indian Institute of Technology, Banaras Hindu University (IIT - BHU)
+#104   | 0.984567 | Ult F4                              | Indian Institute of Technology (IIT), Mandi
+#105   | 0.984539 | catalysts                           | Indian Institute of Technology (IIT), Kharagpur
+#106   | 0.984534 | Team Zypher                         | Birla Institute of Technology (BIT), Mesra, Ranchi, Birla Institute of Technology, Mesra, Ranchi
+#107   | 0.984515 | ChatpateOutliers                    | Indian Institute of Technology (IIT), Roorkee
+#108   | 0.984506 | Phoenix                             | KIET Group of Institutions (KIET)  Ghaziabad, KIET Group of Institutions (KIET), Ghaziabad
+#109   | 0.984473 | Navomesh                            | Madan Mohan Malaviya University of Technology (MMMUT), Gorakhpur
+#110   | 0.984466 | SolarSailors                        | Sri Sivasubramaniya Nadar (SSN) College of Engineering, Chennai
+#111   | 0.984462 | Fake Conquerers                     | Birla Institute of Technology & Science (BITS) Pilani, Hyderabad Campus, Birla Institute of Technology and Science Hyderabad
+#112   | 0.984417 | GAMA                                | Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat
+#113   | 0.984406 | CVIGLINGO                           | Indian Institute of Technology (IIT), Gandhinagar
+#114   | 0.984391 | HPC!!                               | Indian Institute of Information Technology (IIIT), Allahabad, Indian Institute of Information Technology Allahbad
+#115   | 0.984335 | Greedy Decoders                     | Vellore Institute of Technology (VIT), Chennai, Vellore Institute of Technology (VIT), Vellore
+#116   | 0.984279 | Something                           | BMS College of Engineering (BMSCE), Bangalore
+#117   | 0.984253 | 0XALTF4                             | Indraprastha Institute of Information Technology (IIIT), Delhi
+#118   | 0.984248 | G-block                             | Indraprastha Institute of Information Technology (IIIT), Delhi
+#119   | 0.98422 | CtrlCrew                            | IIITDM-Jabalpur, Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Jabalpur, Other College not listed here
+#120   | 0.984189 | GangOfFour                          | Vivekanand Education Society Institute of Technology, Vivekanand Education Society's Institute Of Technology (VESIT), Mumbai
+#121   | 0.984175 | Go-On2Win                           | SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai
+#122   | 0.984121 | kashti                              | Indian Institute of Information Technology (IIIT), Allahabad
+#123   | 0.984091 | STR                                 | RV University, RV University, Bangalore
+#124   | 0.984072 | Yeti                                | Indian Institute of Technology (IIT), Kharagpur
+#125   | 0.984035 | Sonder AI                           | Manipal Institute of Technology (MIT), Manipal
+#126   | 0.984032 | Lakshya                             | Shri Govindram Seksaria Institute of Technology and Science (SGSITS), Indore
+#127   | 0.984005 | InnovAstra                          | Indian Institute of Technology (IIT), Bombay
+#128   | 0.983989 | Rank1                               | Indian Institute of Information Technology (IIIT), Lucknow, Indian Institute of Information Technology, Lucknow
+#129   | 0.98398 | Biotechies                          | Indian Institute of Technology (IIT), Madras
+#130   | 0.983909 | Code0011                            | Thapar Institute of Engineering and Technology (TIET), Patiala
+#131   | 0.983888 | Vijaya                              | International Institute of Information Technology (IIIT), Bangalore
+#132   | 0.983856 | are we cooked?                      | Jadavpur University (JU), Kolkata, Thapar Institute of Engineering and Technology (TIET), Patiala
+#133   | 0.983846 | DeepThought                         | Indian Institute of Technology (IIT), Madras
+#134   | 0.983831 | Heatblast                           | Indian Institute of Information Technology (IIIT), Nagpur
+#135   | 0.983797 | Gamblers                            | BMS Institute of Technology and Management (BMSITM), Bangalore
+#136   | 0.983795 | code x                              | Banasthali Vidyapith (BU), Jaipur, Manipal University (MU), Jaipur
+#137   | 0.983765 | Stack Overfit                       | Indian Institute of Science (IISc), Bangalore
+#138   | 0.98371 | Quantum Blume                       | PES University (PESU), Bengaluru
+#139   | 0.983687 | Trinaina                            | Keshav Memorial Institute of Technology (KMIT), Hyderabad, Keshav memorial college of engineering, Neil Gogte Institute of Technology(NGIT),Hyderabad
+#140   | 0.983685 | RIS27                               | Indian Institute of Technology (IIT), Hyderabad
+#141   | 0.983648 | Grund                               | Jadavpur University (JU), Kolkata
+#142   | 0.98362 | riwaaq                              | Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Kancheepuram, Indian Institute of Technology (IIT), Kanpur
+#143   | 0.983569 | VOID                                | Dwarkadas J. Sanghvi College of Engineering
+#144   | 0.983526 | GitBoosters                         | Indraprastha Institute of Information Technology (IIIT), Delhi
+#145   | 0.983521 | IIT Guwahati Gradients              | Indian Institute of Technology (IIT), Guwahati
+#146   | 0.98352 | COMPUTATION_ISSUE                   | Indian Institute of Information Technology (IIIT), Nagpur
+
+
+================================================================================
+SECTION 2: DETAILED ROSTER BREAKDOWN (Ranks #1 to #150)
+================================================================================
+
+--------------------------------------------------------------------------------
+Rank #1 | Androids
+--------------------------------------------------------------------------------
+  * Team ID     : 58688044
+  * Score       : 0.990748
+  * Finish Time : 2026-09-26 16:00:13+05:30
+  * Institution : Koneru Lakshmaiah Education Foundation (K.L. University), Guntur, Siddartha Educational Academy Group of Institute, kl university
+  * Members (3):
+      - Pardheev Krishna Tammineni (Siddartha Educational Academy Group of Institute)
+      - Monika Tammineni (kl university)
+      - Pallam Hemachand (Koneru Lakshmaiah Education Foundation (K.L. University), Guntur)
+
+--------------------------------------------------------------------------------
+Rank #2 | Banana
+--------------------------------------------------------------------------------
+  * Team ID     : 59168609
+  * Score       : 0.989475
+  * Finish Time : 2026-09-26 14:59:13+05:30
+  * Institution : Birla Institute of Technology & Science, Pilani Campus, Indian Institute of Technology (IIT), Hyderabad
+  * Members (4):
+      - Gunasri Phanindra Sasank Tumpati (Birla Institute of Technology & Science, Pilani Campus)
+      - Asish Mourya Birudu (Indian Institute of Technology (IIT), Hyderabad)
+      - Harshit Jaiswal (Birla Institute of Technology & Science, Pilani Campus)
+      - Devansh Agarwal (Birla Institute of Technology & Science, Pilani Campus)
+
+--------------------------------------------------------------------------------
+Rank #3 | KL_converge
+--------------------------------------------------------------------------------
+  * Team ID     : 59142319
+  * Score       : 0.989292
+  * Finish Time : 2026-09-26 16:31:42+05:30
+  * Institution : LNM Institute of Information Technology (LNMIIT), Jaipur, The Bishop's Co-Ed School
+  * Members (3):
+      - Aditya Kumar (LNM Institute of Information Technology (LNMIIT), Jaipur)
+      - Saumilya Gupta (LNM Institute of Information Technology (LNMIIT), Jaipur)
+      - Shashvat Singh (The Bishop's Co-Ed School)
+
+--------------------------------------------------------------------------------
+Rank #4 | KV_Smash
+--------------------------------------------------------------------------------
+  * Team ID     : 59315289
+  * Score       : 0.988853
+  * Finish Time : 2026-09-26 16:07:55+05:30
+  * Institution : Delhi Technological University (DTU), New Delhi, Indian Institute of Science (IISc), Bangalore, Indian Institute of Technology (IIT), Kanpur
+  * Members (3):
+      - Saksham Jain (Delhi Technological University (DTU), New Delhi)
+      - Atishay Jain (Indian Institute of Technology (IIT), Kanpur)
+      - Urvashi Bansal (Indian Institute of Science (IISc), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #5 | 01BIT
+--------------------------------------------------------------------------------
+  * Team ID     : 58822371
+  * Score       : 0.988732
+  * Finish Time : 2026-09-26 14:09:42+05:30
+  * Institution : Indian Institute of Technology (IIT), Patna
+  * Members (3):
+      - Aditya Onam (Indian Institute of Technology (IIT), Patna)
+      - Aditya Gupta (Indian Institute of Technology (IIT), Patna)
+      - Aakarsh Sinha (Indian Institute of Technology (IIT), Patna)
+
+--------------------------------------------------------------------------------
+Rank #6 | CDS_Team_iisc
+--------------------------------------------------------------------------------
+  * Team ID     : 58686151
+  * Score       : 0.988584
+  * Finish Time : 2026-09-26 11:25:28+05:30
+  * Institution : Indian Institute of Science (IISc), Bangalore
+  * Members (4):
+      - Rajarshi Mandal (Indian Institute of Science (IISc), Bangalore)
+      - Nongmaithem Singh (Indian Institute of Science (IISc), Bangalore)
+      - Anish Chaudhary (Indian Institute of Science (IISc), Bangalore)
+      - Tamaghna Mandal (Indian Institute of Science (IISc), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #7 | Asi baat hai kya
+--------------------------------------------------------------------------------
+  * Team ID     : 58745689
+  * Score       : 0.988557
+  * Finish Time : 2026-09-26 12:34:30+05:30
+  * Institution : Indian Institute of Technology (IIT), Kharagpur
+  * Members (4):
+      - Pritish Saha (Indian Institute of Technology (IIT), Kharagpur)
+      - Ankit Meda (Indian Institute of Technology (IIT), Kharagpur)
+      - Srinjoy Ganguly (Indian Institute of Technology (IIT), Kharagpur)
+      - Aadhar Batra (Indian Institute of Technology (IIT), Kharagpur)
+
+--------------------------------------------------------------------------------
+Rank #8 | The Potato Gang
+--------------------------------------------------------------------------------
+  * Team ID     : 59082998
+  * Score       : 0.988513
+  * Finish Time : 2026-09-26 16:13:05+05:30
+  * Institution : Maharaja Agrasen Institute of Technology (MAIT), New Delhi, Sharda University (SU), Greater Noida, Sri Sairam Engineering College (SSEC), Chennai
+  * Members (4):
+      - Yatharth Kaushik (Sharda University (SU), Greater Noida)
+      - Naneet Tyagi (Maharaja Agrasen Institute of Technology (MAIT), New Delhi)
+      - Viraj Singh (Sharda University (SU), Greater Noida)
+      - Tharun Kumar C (Sri Sairam Engineering College (SSEC), Chennai)
+
+--------------------------------------------------------------------------------
+Rank #9 | CrossLinkers
+--------------------------------------------------------------------------------
+  * Team ID     : 59108136
+  * Score       : 0.988369
+  * Finish Time : 2026-09-26 16:59:47+05:30
+  * Institution : Newton School Of Technology, Rishihood University, Rishihood University
+  * Members (4):
+      - Krishnadevan Manju Liby (Newton School Of Technology, Rishihood University)
+      - Mahir Abdullah (Rishihood University)
+      - Vetriselvan R (Rishihood University)
+      - Gokul VKS (Rishihood University)
+
+--------------------------------------------------------------------------------
+Rank #10 | Teem
+--------------------------------------------------------------------------------
+  * Team ID     : 58810494
+  * Score       : 0.988323
+  * Finish Time : 2026-09-26 16:31:20+05:30
+  * Institution : Indian Institute of Technology (IIT), Kanpur, Indian Institute of Technology (IIT), Madras
+  * Members (3):
+      - Devharish N (Indian Institute of Technology (IIT), Madras)
+      - NAVEEN U S (Indian Institute of Technology (IIT), Madras)
+      - Chadhurbala (Indian Institute of Technology (IIT), Kanpur)
+
+--------------------------------------------------------------------------------
+Rank #11 | GG
+--------------------------------------------------------------------------------
+  * Team ID     : 59008636
+  * Score       : 0.988273
+  * Finish Time : 2026-09-26 14:28:24+05:30
+  * Institution : Lovely Professional University (LPU), Punjab
+  * Members (2):
+      - Shivang Goliyan (Lovely Professional University (LPU), Punjab)
+      - Nitisha Chaudhary (Lovely Professional University (LPU), Punjab)
+
+--------------------------------------------------------------------------------
+Rank #12 | Team Sandipani
+--------------------------------------------------------------------------------
+  * Team ID     : 59233336
+  * Score       : 0.988272
+  * Finish Time : 2026-09-26 14:36:46+05:30
+  * Institution : Chaitanya Bharathi Institute of Technology (CBIT), Hyderabad, Chaitanya Bharathi Institute of Technology, Gandipet, Telangana
+  * Members (4):
+      - Reddymalla Dilip (Chaitanya Bharathi Institute of Technology (CBIT), Hyderabad)
+      - Praval Anachi (Chaitanya Bharathi Institute of Technology, Gandipet, Telangana)
+      - Sohan Dintakurthi (Chaitanya Bharathi Institute of Technology, Gandipet, Telangana)
+      - Pathak Akshith Kumar (Chaitanya Bharathi Institute of Technology (CBIT), Hyderabad)
+
+--------------------------------------------------------------------------------
+Rank #13 | Confusion Matrix
+--------------------------------------------------------------------------------
+  * Team ID     : 59088005
+  * Score       : 0.988234
+  * Finish Time : 2026-09-26 14:22:50+05:30
+  * Institution : Jadavpur University (JU), Kolkata
+  * Members (4):
+      - Debarun Patra (Jadavpur University (JU), Kolkata)
+      - Sagnik Samanta (Jadavpur University (JU), Kolkata)
+      - Saptarshi Upadhyay (Jadavpur University (JU), Kolkata)
+      - Naireet Sadhukhan (Jadavpur University (JU), Kolkata)
+
+--------------------------------------------------------------------------------
+Rank #14 | plaksha agents
+--------------------------------------------------------------------------------
+  * Team ID     : 58869927
+  * Score       : 0.988229
+  * Finish Time : 2026-09-26 13:47:31+05:30
+  * Institution : Plaksha University, Mohali, Punjab, Plaksha University, Punjab
+  * Members (4):
+      - Vaibhav Dabas (Plaksha University, Punjab)
+      - Mohil Ahuja (Plaksha University, Mohali, Punjab)
+      - Akshat Gupta (Plaksha University, Punjab)
+      - Mudasir Rasheed (Plaksha University, Punjab)
+
+--------------------------------------------------------------------------------
+Rank #15 | Neural Ninjas
+--------------------------------------------------------------------------------
+  * Team ID     : 59364906
+  * Score       : 0.988112
+  * Finish Time : 2026-09-26 07:03:22+05:30
+  * Institution : SASTRA Deemed to be University, Shanmugha Arts, Science, Technology & Research Academy (SASTRA), Thanjavur
+  * Members (4):
+      - Krishna Kumar G (Shanmugha Arts, Science, Technology & Research Academy (SASTRA), Thanjavur)
+      - Vijaya Pranav V E (Shanmugha Arts, Science, Technology & Research Academy (SASTRA), Thanjavur)
+      - Ponnambalam A (SASTRA Deemed to be University)
+      - Surya P (Shanmugha Arts, Science, Technology & Research Academy (SASTRA), Thanjavur)
+
+--------------------------------------------------------------------------------
+Rank #16 | PsyDuck
+--------------------------------------------------------------------------------
+  * Team ID     : 59314911
+  * Score       : 0.98811
+  * Finish Time : 2026-09-26 11:54:13+05:30
+  * Institution : Atria Institute of Technology (AIT), Bengaluru, Karnataka
+  * Members (4):
+      - Sulaiman Shariff (Atria Institute of Technology (AIT), Bengaluru, Karnataka)
+      - Mayank Kumar Singh (Atria Institute of Technology (AIT), Bengaluru, Karnataka)
+      - jitin raju (Atria Institute of Technology (AIT), Bengaluru, Karnataka)
+      - UJESH YADAV (Atria Institute of Technology (AIT), Bengaluru, Karnataka)
+
+--------------------------------------------------------------------------------
+Rank #17 | Sahaayak
+--------------------------------------------------------------------------------
+  * Team ID     : 59368722
+  * Score       : 0.988095
+  * Finish Time : 2026-09-26 15:52:18+05:30
+  * Institution : IIIT Naya Raipur, International Institute of Information Technology (IIIT), Naya Raipur
+  * Members (2):
+      - Fahmin Mohammed K K (IIIT Naya Raipur)
+      - Ayush Singh (International Institute of Information Technology (IIIT), Naya Raipur)
+
+--------------------------------------------------------------------------------
+Rank #18 | CiSTUP
+--------------------------------------------------------------------------------
+  * Team ID     : 59359067
+  * Score       : 0.988067
+  * Finish Time : 2026-09-26 15:31:10+05:30
+  * Institution : Indian Institute of Science (IISc), Bangalore
+  * Members (4):
+      - Anant Rajput (Indian Institute of Science (IISc), Bangalore)
+      - Uppugunduru Sriram anush (Indian Institute of Science (IISc), Bangalore)
+      - Ashish Kumar Verma (Indian Institute of Science (IISc), Bangalore)
+      - Ankur Singh (Indian Institute of Science (IISc), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #19 | 『VOID』
+--------------------------------------------------------------------------------
+  * Team ID     : 59043493
+  * Score       : 0.988065
+  * Finish Time : 2026-09-26 17:00:57+05:30
+  * Institution : Mukesh Patel School of Technology Management and Engineering (MPSTME), Shirpur
+  * Members (4):
+      - Raghav Nama (Mukesh Patel School of Technology Management and Engineering (MPSTME), Shirpur)
+      - Devesh Poojary (Mukesh Patel School of Technology Management and Engineering (MPSTME), Shirpur)
+      - Deva Nithin Sai (Mukesh Patel School of Technology Management and Engineering (MPSTME), Shirpur)
+      - Meet Dineshchandra Patel (Mukesh Patel School of Technology Management and Engineering (MPSTME), Shirpur)
+
+--------------------------------------------------------------------------------
+Rank #20 | [object Object]
+--------------------------------------------------------------------------------
+  * Team ID     : 58842832
+  * Score       : 0.987886
+  * Finish Time : 2026-09-26 14:22:00+05:30
+  * Institution : Vishwakarma Institute Of Technology, Pune
+  * Members (4):
+      - Shubham Pawar (Vishwakarma Institute Of Technology, Pune)
+      - Vivek Rajendra Patil (Vishwakarma Institute Of Technology, Pune)
+      - Dhruv Lohar (Vishwakarma Institute Of Technology, Pune)
+      - Vedant Thote (Vishwakarma Institute Of Technology, Pune)
+
+--------------------------------------------------------------------------------
+Rank #21 | Grenuke
+--------------------------------------------------------------------------------
+  * Team ID     : 58750781
+  * Score       : 0.98781
+  * Finish Time : 2026-09-26 14:25:30+05:30
+  * Institution : Vishwakarma Institute of Technology, Pune, Maharashtra
+  * Members (3):
+      - Aarush Bakshi (Vishwakarma Institute of Technology, Pune, Maharashtra)
+      - Sachi Dhoka (Vishwakarma Institute of Technology, Pune, Maharashtra)
+      - Ameya Borkar (Vishwakarma Institute of Technology, Pune, Maharashtra)
+
+--------------------------------------------------------------------------------
+Rank #22 | Crescent
+--------------------------------------------------------------------------------
+  * Team ID     : 58976981
+  * Score       : 0.987647
+  * Finish Time : 2026-09-26 12:58:59+05:30
+  * Institution : Jamia Millia Islamia, University Institute of Engineering and Technology (UIET), Chandigarh
+  * Members (4):
+      - Mohd Aijaz Vali (Jamia Millia Islamia)
+      - Syed Mohammad Asjad Haider (Jamia Millia Islamia)
+      - Mohammed Hamdan (University Institute of Engineering and Technology (UIET), Chandigarh)
+      - Syed Shaazib Tanvir (Jamia Millia Islamia)
+
+--------------------------------------------------------------------------------
+Rank #23 | DataDecoders
+--------------------------------------------------------------------------------
+  * Team ID     : 58910341
+  * Score       : 0.987581
+  * Finish Time : 2026-09-26 15:09:21+05:30
+  * Institution : Indian Institute of Technology (IIT), Madras
+  * Members (4):
+      - Dhruv Tibarewal (Indian Institute of Technology (IIT), Madras)
+      - Nishant kaushik (Indian Institute of Technology (IIT), Madras)
+      - Yugal Joshi (Indian Institute of Technology (IIT), Madras)
+      - Faiz (Indian Institute of Technology (IIT), Madras)
+
+--------------------------------------------------------------------------------
+Rank #24 | Gradient ascent
+--------------------------------------------------------------------------------
+  * Team ID     : 59144034
+  * Score       : 0.98755
+  * Finish Time : 2026-09-26 13:55:53+05:30
+  * Institution : IIIT Naya Raipur, International Institute of Information Technology (IIIT), Naya Raipur
+  * Members (3):
+      - Manas Choudhary (International Institute of Information Technology (IIIT), Naya Raipur)
+      - Prashil Thul (IIIT Naya Raipur)
+      - Rakshit Joshi (International Institute of Information Technology (IIIT), Naya Raipur)
+
+--------------------------------------------------------------------------------
+Rank #25 | PerryDaPlatypus
+--------------------------------------------------------------------------------
+  * Team ID     : 59300430
+  * Score       : 0.987544
+  * Finish Time : 2026-09-26 15:56:29+05:30
+  * Institution : Vellore Institute of Technology (VIT), Vellore
+  * Members (3):
+      - A Aswanth Raj (Vellore Institute of Technology (VIT), Vellore)
+      - V Nikhil (Vellore Institute of Technology (VIT), Vellore)
+      - Nambi Rajan (Vellore Institute of Technology (VIT), Vellore)
+
+--------------------------------------------------------------------------------
+Rank #26 | Code2Destroy
+--------------------------------------------------------------------------------
+  * Team ID     : 58692157
+  * Score       : 0.987506
+  * Finish Time : 2026-09-26 14:04:24+05:30
+  * Institution : Vellore Institute of Technology (VIT), Vellore
+  * Members (4):
+      - Shreyas Mandem (Vellore Institute of Technology (VIT), Vellore)
+      - Vinay A (Vellore Institute of Technology (VIT), Vellore)
+      - CHARITH REDDY (Vellore Institute of Technology (VIT), Vellore)
+      - Jeevitesh Kandi (Vellore Institute of Technology (VIT), Vellore)
+
+--------------------------------------------------------------------------------
+Rank #27 | Git Wrecked
+--------------------------------------------------------------------------------
+  * Team ID     : 59042487
+  * Score       : 0.987487
+  * Finish Time : 2026-09-26 16:21:55+05:30
+  * Institution : Indian Institute of Technology (IIT), Guwahati, Indian Institute of Technology (IIT), Kharagpur
+  * Members (4):
+      - Raghu Raman B (Indian Institute of Technology (IIT), Guwahati)
+      - R Virinchi (Indian Institute of Technology (IIT), Guwahati)
+      - Bharghava Oruganti (Indian Institute of Technology (IIT), Guwahati)
+      - Satyam Anand (Indian Institute of Technology (IIT), Kharagpur)
+
+--------------------------------------------------------------------------------
+Rank #28 | Matrix-Code
+--------------------------------------------------------------------------------
+  * Team ID     : 58975905
+  * Score       : 0.987311
+  * Finish Time : 2026-09-26 16:26:10+05:30
+  * Institution : Anil Neerukonda Institute of Technology and Sciences (ANITS), Visakhapatnam, National Institute of Technology (NIT), Patna, SR University, Warangal
+  * Members (3):
+      - Vanapalli Raghava Ashok (National Institute of Technology (NIT), Patna)
+      - Suvarna Tangeti (Anil Neerukonda Institute of Technology and Sciences (ANITS), Visakhapatnam)
+      - MUTHOJU PRAVALIKA (SR University, Warangal)
+
+--------------------------------------------------------------------------------
+Rank #29 | Edgr
+--------------------------------------------------------------------------------
+  * Team ID     : 59366986
+  * Score       : 0.98731
+  * Finish Time : 2026-09-26 14:11:13+05:30
+  * Institution : SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai
+  * Members (2):
+      - Usham Roy (SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai)
+      - Anwesha Roy (SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai)
+
+--------------------------------------------------------------------------------
+Rank #30 | Six Month
+--------------------------------------------------------------------------------
+  * Team ID     : 59265856
+  * Score       : 0.987264
+  * Finish Time : 2026-09-26 01:12:41+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Allahabad
+  * Members (3):
+      - Saumya Agrawal (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Atharva Narkhede Narkhede (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Aayush Kanjani (Indian Institute of Information Technology (IIIT), Allahabad)
+
+--------------------------------------------------------------------------------
+Rank #31 | Dhurandhar
+--------------------------------------------------------------------------------
+  * Team ID     : 58718686
+  * Score       : 0.987258
+  * Finish Time : 2026-09-26 15:42:57+05:30
+  * Institution : Newton School Of Technology, Rishihood University, Rishihood University
+  * Members (4):
+      - Kartikey Gupta (Newton School Of Technology, Rishihood University)
+      - Agnik Misra (Newton School Of Technology, Rishihood University)
+      - Shreshtha Gupta (Rishihood University)
+      - Pankaj Baid (Newton School Of Technology, Rishihood University)
+
+--------------------------------------------------------------------------------
+Rank #32 | clauders
+--------------------------------------------------------------------------------
+  * Team ID     : 58682082
+  * Score       : 0.987252
+  * Finish Time : 2026-09-26 12:49:06+05:30
+  * Institution : Indian Institute of Technology, Indian Institute of Technology (IIT), Bombay, Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad
+  * Members (3):
+      - Anupam Rawat (Indian Institute of Technology (IIT), Bombay)
+      - Arush Sharma (Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad)
+      - Vaibhav Chavhan (Indian Institute of Technology)
+
+--------------------------------------------------------------------------------
+Rank #33 | Zenith_1007
+--------------------------------------------------------------------------------
+  * Team ID     : 59307615
+  * Score       : 0.987138
+  * Finish Time : 2026-09-26 10:38:39+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Kalyani, Indian Institute of Information Technology (IIIT), Kottayam
+  * Members (4):
+      - Sandeep Singh (Indian Institute of Information Technology (IIIT), Kottayam)
+      - Awnikant Ajay (Indian Institute of Information Technology (IIIT), Kalyani)
+      - Agreem Kumar (Indian Institute of Information Technology (IIIT), Kottayam)
+      - Pranjal Tyagi (Indian Institute of Information Technology (IIIT), Kottayam)
+
+--------------------------------------------------------------------------------
+Rank #34 | Nexica AI
+--------------------------------------------------------------------------------
+  * Team ID     : 59319613
+  * Score       : 0.987113
+  * Finish Time : 2026-09-26 13:32:30+05:30
+  * Institution : LNCT Group of Colleges, LNCT Group of Colleges, Bhopal, Madhya Pradesh, Lakshmi Narain College of Technology (LNCT), Bhopal, Madhya Pradesh
+  * Members (3):
+      - Shivam Raj (LNCT Group of Colleges)
+      - Harshit Makraria (LNCT Group of Colleges, Bhopal, Madhya Pradesh)
+      - Divyanshu Shekhar (Lakshmi Narain College of Technology (LNCT), Bhopal, Madhya Pradesh)
+
+--------------------------------------------------------------------------------
+Rank #35 | Segmentation Fault
+--------------------------------------------------------------------------------
+  * Team ID     : 58715412
+  * Score       : 0.987102
+  * Finish Time : 2026-09-26 11:51:40+05:30
+  * Institution : Manipal Institute of Technology (MIT), Manipal
+  * Members (3):
+      - Sahitya Jain (Manipal Institute of Technology (MIT), Manipal)
+      - Tanmay Sharma (Manipal Institute of Technology (MIT), Manipal)
+      - Nireeksha Alva (Manipal Institute of Technology (MIT), Manipal)
+
+--------------------------------------------------------------------------------
+Rank #36 | Hero
+--------------------------------------------------------------------------------
+  * Team ID     : 59071669
+  * Score       : 0.987048
+  * Finish Time : 2026-09-26 15:50:58+05:30
+  * Institution : Indian Institute of Technology (IIT), Roorkee
+  * Members (2):
+      - Divyanshu Bathla (Indian Institute of Technology (IIT), Roorkee)
+      - Parth Aggarwal (Indian Institute of Technology (IIT), Roorkee)
+
+--------------------------------------------------------------------------------
+Rank #37 | HASHIRA
+--------------------------------------------------------------------------------
+  * Team ID     : 59247564
+  * Score       : 0.987016
+  * Finish Time : 2026-09-26 16:40:49+05:30
+  * Institution : Indian Institute of Technology (IIT), Delhi
+  * Members (4):
+      - Samarth Agrawal (Indian Institute of Technology (IIT), Delhi)
+      - Ashad Alam (Indian Institute of Technology (IIT), Delhi)
+      - Paras Rahul Chougule (Indian Institute of Technology (IIT), Delhi)
+      - Venkata Mahesh (Indian Institute of Technology (IIT), Delhi)
+
+--------------------------------------------------------------------------------
+Rank #38 | Meta Learners
+--------------------------------------------------------------------------------
+  * Team ID     : 59207986
+  * Score       : 0.986952
+  * Finish Time : 2026-09-26 14:59:22+05:30
+  * Institution : Birla Institute of Technology & Science, Pilani Campus, Indian Institute of Technology (IIT), Guwahati, National Institute of Technology (NIT), Agartala
+  * Members (4):
+      - Pratham Jain (Birla Institute of Technology & Science, Pilani Campus)
+      - Komil Parmar (Indian Institute of Technology (IIT), Guwahati)
+      - Jayanta Nath (Indian Institute of Technology (IIT), Guwahati)
+      - Emmadi Alekhya (National Institute of Technology (NIT), Agartala)
+
+--------------------------------------------------------------------------------
+Rank #39 | Top1
+--------------------------------------------------------------------------------
+  * Team ID     : 59292432
+  * Score       : 0.986913
+  * Finish Time : 2026-09-26 15:25:51+05:30
+  * Institution : National Institute of Technology Karnataka (NITK), Surathkal
+  * Members (4):
+      - Harshith Gowda R (National Institute of Technology Karnataka (NITK), Surathkal)
+      - Sanchit S Udupa (National Institute of Technology Karnataka (NITK), Surathkal)
+      - Vrishank Honnavalli (National Institute of Technology Karnataka (NITK), Surathkal)
+      - Shrey Golekar (National Institute of Technology Karnataka (NITK), Surathkal)
+
+--------------------------------------------------------------------------------
+Rank #40 | 108 Neurons
+--------------------------------------------------------------------------------
+  * Team ID     : 59303168
+  * Score       : 0.986773
+  * Finish Time : 2026-09-26 15:41:44+05:30
+  * Institution : Indian Institute of Technology (IIT), Jodhpur
+  * Members (4):
+      - Mahek Gadiya (Indian Institute of Technology (IIT), Jodhpur)
+      - Nishant Thapa (Indian Institute of Technology (IIT), Jodhpur)
+      - Kushal Sharma (Indian Institute of Technology (IIT), Jodhpur)
+      - Shasank Dixit Dixit (Indian Institute of Technology (IIT), Jodhpur)
+
+--------------------------------------------------------------------------------
+Rank #41 | amazoners
+--------------------------------------------------------------------------------
+  * Team ID     : 58960732
+  * Score       : 0.98674
+  * Finish Time : 2026-09-26 14:03:02+05:30
+  * Institution : Indian Institute of Technology (IIT), Ropar
+  * Members (3):
+      - Pranav Singh (Indian Institute of Technology (IIT), Ropar)
+      - Kanav Puri (Indian Institute of Technology (IIT), Ropar)
+      - Prashant Singh (Indian Institute of Technology (IIT), Ropar)
+
+--------------------------------------------------------------------------------
+Rank #42 | Medallion
+--------------------------------------------------------------------------------
+  * Team ID     : 59348200
+  * Score       : 0.986736
+  * Finish Time : 2026-09-26 12:57:32+05:30
+  * Institution : Birla Institute of Technology & Science, Pilani Campus
+  * Members (4):
+      - Aditya Raj (Birla Institute of Technology & Science, Pilani Campus)
+      - Siddharth Khare (Birla Institute of Technology & Science, Pilani Campus)
+      - Dhyann Olemmyan (Birla Institute of Technology & Science, Pilani Campus)
+      - Amrit Lahari (Birla Institute of Technology & Science, Pilani Campus)
+
+--------------------------------------------------------------------------------
+Rank #43 | NeuralNukes
+--------------------------------------------------------------------------------
+  * Team ID     : 59315735
+  * Score       : 0.986716
+  * Finish Time : 2026-09-26 12:34:07+05:30
+  * Institution : Indian Institute of Technology (IIT), Guwahati
+  * Members (4):
+      - Kilari Vamsi Krishna (Indian Institute of Technology (IIT), Guwahati)
+      - Bhesetty Rithvik (Indian Institute of Technology (IIT), Guwahati)
+      - Bandi Kesava Sai Kalyan Ram (Indian Institute of Technology (IIT), Guwahati)
+      - Ganji Pushya Mithra Reddy (Indian Institute of Technology (IIT), Guwahati)
+
+--------------------------------------------------------------------------------
+Rank #44 | Lab Rats
+--------------------------------------------------------------------------------
+  * Team ID     : 59398573
+  * Score       : 0.986644
+  * Finish Time : 2026-09-25 22:10:03+05:30
+  * Institution : Galgotias University (GU), Greater Noida
+  * Members (3):
+      - Bavya Sarda (Galgotias University (GU), Greater Noida)
+      - Kashyap (Galgotias University (GU), Greater Noida)
+      - Ishanvi Singh (Galgotias University (GU), Greater Noida)
+
+--------------------------------------------------------------------------------
+Rank #45 | Flaming Phoenix
+--------------------------------------------------------------------------------
+  * Team ID     : 59094370
+  * Score       : 0.986519
+  * Finish Time : 2026-09-26 11:51:36+05:30
+  * Institution : Atal Bihari Vajpayee-Indian Institute of Information Technology and Management
+  * Members (3):
+      - PRASUN BARANWAL (Atal Bihari Vajpayee-Indian Institute of Information Technology and Management)
+      - Prasanna Mishra (Atal Bihari Vajpayee-Indian Institute of Information Technology and Management)
+      - Prachi Agrawal (Atal Bihari Vajpayee-Indian Institute of Information Technology and Management)
+
+--------------------------------------------------------------------------------
+Rank #46 | Softmax
+--------------------------------------------------------------------------------
+  * Team ID     : 58699965
+  * Score       : 0.986516
+  * Finish Time : 2026-09-26 14:26:54+05:30
+  * Institution : JECRC University (JECRCU), Vidhani, Jaipur, Rajasthan
+  * Members (4):
+      - Niharika Sharma (JECRC University (JECRCU), Vidhani, Jaipur, Rajasthan)
+      - Krishna Mohan (JECRC University (JECRCU), Vidhani, Jaipur, Rajasthan)
+      - Praneet Kumar Dutta (JECRC University (JECRCU), Vidhani, Jaipur, Rajasthan)
+      - Sanya Kumari (JECRC University (JECRCU), Vidhani, Jaipur, Rajasthan)
+
+--------------------------------------------------------------------------------
+Rank #47 | Brute Force
+--------------------------------------------------------------------------------
+  * Team ID     : 59264834
+  * Score       : 0.986481
+  * Finish Time : 2026-09-26 11:52:46+05:30
+  * Institution : Thapar Institute of Engineering and Technology (TIET), Patiala
+  * Members (2):
+      - Parth Biyani (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Sanyam Wadhwa (Thapar Institute of Engineering and Technology (TIET), Patiala)
+
+--------------------------------------------------------------------------------
+Rank #47 | hill climbers
+--------------------------------------------------------------------------------
+  * Team ID     : 59170084
+  * Score       : 0.986481
+  * Finish Time : 2026-09-26 14:46:50+05:30
+  * Institution : Birla Institute of Technology & Science, Pilani Campus, LNM Institute of Information Technology (LNMIIT), Jaipur
+  * Members (4):
+      - Harshit Nayan (LNM Institute of Information Technology (LNMIIT), Jaipur)
+      - Karun Pacholi (LNM Institute of Information Technology (LNMIIT), Jaipur)
+      - Siddhartha Swarnkar (LNM Institute of Information Technology (LNMIIT), Jaipur)
+      - Ayush Gupta (Birla Institute of Technology & Science, Pilani Campus)
+
+--------------------------------------------------------------------------------
+Rank #48 | !COYS!
+--------------------------------------------------------------------------------
+  * Team ID     : 59352131
+  * Score       : 0.986449
+  * Finish Time : 2026-09-26 15:33:35+05:30
+  * Institution : International Institute of Information Technology (IIIT), Hyderabad
+  * Members (4):
+      - Rithvik Achutuni (International Institute of Information Technology (IIIT), Hyderabad)
+      - Deepak Pandey (International Institute of Information Technology (IIIT), Hyderabad)
+      - Gautam Gandhi (International Institute of Information Technology (IIIT), Hyderabad)
+      - Manas Inamdar (International Institute of Information Technology (IIIT), Hyderabad)
+
+--------------------------------------------------------------------------------
+Rank #49 | moov
+--------------------------------------------------------------------------------
+  * Team ID     : 59166197
+  * Score       : 0.986381
+  * Finish Time : 2026-09-26 10:29:34+05:30
+  * Institution : Indian Institute of Technology (IIT), Hyderabad
+  * Members (4):
+      - Akshay Bagde (Indian Institute of Technology (IIT), Hyderabad)
+      - Ankit Kr Sinha (Indian Institute of Technology (IIT), Hyderabad)
+      - Aayush Ranjan (Indian Institute of Technology (IIT), Hyderabad)
+      - APOORV SINGH (Indian Institute of Technology (IIT), Hyderabad)
+
+--------------------------------------------------------------------------------
+Rank #50 | iiest
+--------------------------------------------------------------------------------
+  * Team ID     : 59401866
+  * Score       : 0.986364
+  * Finish Time : 2026-09-26 16:43:03+05:30
+  * Institution : Indian Institute of Engineering Science and Technology (IIEST), Shibpur
+  * Members (2):
+      - Kingshuk Sadhukhan (Indian Institute of Engineering Science and Technology (IIEST), Shibpur)
+      - Sandip Singha (Indian Institute of Engineering Science and Technology (IIEST), Shibpur)
+
+--------------------------------------------------------------------------------
+Rank #51 | impulsifier
+--------------------------------------------------------------------------------
+  * Team ID     : 59331482
+  * Score       : 0.986297
+  * Finish Time : 2026-09-26 15:28:19+05:30
+  * Institution : Ramdeobaba University, Nagpur, Shri Ramdeo Baba College of Engineering, Shri Ramdeobaba College of Engineering and Management (RCOEM), Nagpur
+  * Members (4):
+      - Shantanu Ritesh Anantwar (Ramdeobaba University, Nagpur)
+      - Shloak Nioding Nioding (Shri Ramdeobaba College of Engineering and Management (RCOEM), Nagpur)
+      - Pranil Bankar (Shri Ramdeo Baba College of Engineering)
+      - Koushik Upadhyay (Shri Ramdeobaba College of Engineering and Management (RCOEM), Nagpur)
+
+--------------------------------------------------------------------------------
+Rank #52 | Amaze-On
+--------------------------------------------------------------------------------
+  * Team ID     : 58976513
+  * Score       : 0.98626
+  * Finish Time : 2026-09-26 15:44:10+05:30
+  * Institution : Thapar Institute of Engineering and Technology (TIET), Patiala
+  * Members (4):
+      - Sarthak Tyagi (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Aaryan Beniwal (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Animesh Srivastava (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Saurya Gur (Thapar Institute of Engineering and Technology (TIET), Patiala)
+
+--------------------------------------------------------------------------------
+Rank #53 | Aura_Farming
+--------------------------------------------------------------------------------
+  * Team ID     : 59208755
+  * Score       : 0.986193
+  * Finish Time : 2026-09-26 16:48:07+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Dharwad, Indian Institute of Information Technology Dharwad
+  * Members (4):
+      - Rahul Soni (Indian Institute of Information Technology Dharwad)
+      - Pratyush Kumar (Indian Institute of Information Technology (IIIT), Dharwad)
+      - Rakshit Verma (Indian Institute of Information Technology Dharwad)
+      - Ankit Kushwaha (Indian Institute of Information Technology Dharwad)
+
+--------------------------------------------------------------------------------
+Rank #54 | Astrax
+--------------------------------------------------------------------------------
+  * Team ID     : 58750681
+  * Score       : 0.986184
+  * Finish Time : 2026-09-26 16:38:32+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Raichur
+  * Members (3):
+      - Swastik R R (Indian Institute of Information Technology (IIIT), Raichur)
+      - L Sree Lalith Karthik (Indian Institute of Information Technology (IIIT), Raichur)
+      - Deva Anand M (Indian Institute of Information Technology (IIIT), Raichur)
+
+--------------------------------------------------------------------------------
+Rank #55 | DataButterflies
+--------------------------------------------------------------------------------
+  * Team ID     : 59229028
+  * Score       : 0.98618
+  * Finish Time : 2026-09-26 14:52:18+05:30
+  * Institution : Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad
+  * Members (4):
+      - Preetham Nimmagadda (Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad)
+      - Jaideep Kaur (Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad)
+      - Varsha (Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad)
+      - Nitisha Madeshiya (Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad)
+
+--------------------------------------------------------------------------------
+Rank #56 | mp_up_bangal
+--------------------------------------------------------------------------------
+  * Team ID     : 59282073
+  * Score       : 0.986147
+  * Finish Time : 2026-09-26 15:43:14+05:30
+  * Institution : Indian Institute of Technology (IIT), Hyderabad
+  * Members (3):
+      - Akarsh Dubey (Indian Institute of Technology (IIT), Hyderabad)
+      - Amabarish Sarkar (Indian Institute of Technology (IIT), Hyderabad)
+      - Mayank Mishra (Indian Institute of Technology (IIT), Hyderabad)
+
+--------------------------------------------------------------------------------
+Rank #57 | MavericK
+--------------------------------------------------------------------------------
+  * Team ID     : 59383119
+  * Score       : 0.986116
+  * Finish Time : 2026-09-26 15:11:26+05:30
+  * Institution : Dr. Vishwanath Karad MIT World Peace University (MIT-WPU), Pune, Indian Institute of Technology (IIT), Madras, MIT World Peace University, Pune, Maharashtra
+  * Members (4):
+      - Kaushik Doddamani (Indian Institute of Technology (IIT), Madras)
+      - Tanushree Doddamani (Dr. Vishwanath Karad MIT World Peace University (MIT-WPU), Pune)
+      - Omkar Tupe (Indian Institute of Technology (IIT), Madras)
+      - Mitansh Dekate Dekate (MIT World Peace University, Pune, Maharashtra)
+
+--------------------------------------------------------------------------------
+Rank #58 | Dead ReLUs Society
+--------------------------------------------------------------------------------
+  * Team ID     : 58678062
+  * Score       : 0.986107
+  * Finish Time : 2026-09-26 12:46:03+05:30
+  * Institution : SVKM's NMIMS NSOMASA, Vellore Institute of Technology (VIT), Vellore
+  * Members (4):
+      - Raahul Muthukrishnan (Vellore Institute of Technology (VIT), Vellore)
+      - Sumit Kothari (SVKM's NMIMS NSOMASA)
+      - Parth Jadhav (Vellore Institute of Technology (VIT), Vellore)
+      - Manhar (Vellore Institute of Technology (VIT), Vellore)
+
+--------------------------------------------------------------------------------
+Rank #59 | The_Optimizers
+--------------------------------------------------------------------------------
+  * Team ID     : 58814147
+  * Score       : 0.985937
+  * Finish Time : 2026-09-26 16:34:07+05:30
+  * Institution : Indian Institute of Technology (IIT), Jodhpur
+  * Members (4):
+      - Aditya Yadav (Indian Institute of Technology (IIT), Jodhpur)
+      - Nikhil Jha (Indian Institute of Technology (IIT), Jodhpur)
+      - Akshat Jain (Indian Institute of Technology (IIT), Jodhpur)
+      - Aditya Pratap Singh (Indian Institute of Technology (IIT), Jodhpur)
+
+--------------------------------------------------------------------------------
+Rank #60 | Team AMS
+--------------------------------------------------------------------------------
+  * Team ID     : 59354976
+  * Score       : 0.98588
+  * Finish Time : 2026-09-26 15:16:27+05:30
+  * Institution : Birla Institute of Technology & Science, Pilani Campus, Indian Institute of Technology (IIT), Kharagpur, Maulana Azad National Institute of Technology (MANIT), Bhopal, Pragati Engineering College (PEC), East Godavari, Andhra Pradesh
+  * Members (4):
+      - Sachet Vijay (Indian Institute of Technology (IIT), Kharagpur)
+      - Lochan Patil (Maulana Azad National Institute of Technology (MANIT), Bhopal)
+      - Achutha Venkata Satyanarayana (Pragati Engineering College (PEC), East Godavari, Andhra Pradesh)
+      - Neeradi Chandra Sagar (Birla Institute of Technology & Science, Pilani Campus)
+
+--------------------------------------------------------------------------------
+Rank #61 | Ctrl Alt Del
+--------------------------------------------------------------------------------
+  * Team ID     : 59173509
+  * Score       : 0.985845
+  * Finish Time : 2026-09-26 16:07:11+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Nagpur
+  * Members (4):
+      - Abdul Malik (Indian Institute of Information Technology (IIIT), Nagpur)
+      - Rakshit Ladda (Indian Institute of Information Technology (IIIT), Nagpur)
+      - Samarth Bhandegaonkar (Indian Institute of Information Technology (IIIT), Nagpur)
+      - Ashwin Rathore (Indian Institute of Information Technology (IIIT), Nagpur)
+
+--------------------------------------------------------------------------------
+Rank #62 | God's Plan
+--------------------------------------------------------------------------------
+  * Team ID     : 58825051
+  * Score       : 0.985789
+  * Finish Time : 2026-09-26 14:20:36+05:30
+  * Institution : Indian Institute of Technology (IIT), Kharagpur
+  * Members (4):
+      - Atul Singh (Indian Institute of Technology (IIT), Kharagpur)
+      - Aryan Lohia (Indian Institute of Technology (IIT), Kharagpur)
+      - Anuj Asthana (Indian Institute of Technology (IIT), Kharagpur)
+      - Aditya Kariwal (Indian Institute of Technology (IIT), Kharagpur)
+
+--------------------------------------------------------------------------------
+Rank #63 | printf
+--------------------------------------------------------------------------------
+  * Team ID     : 58707010
+  * Score       : 0.985722
+  * Finish Time : 2026-09-26 13:35:45+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Allahabad
+  * Members (3):
+      - Sarah Sagri (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Afzal Mohammed Afzal Mohammed Vasim (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Harshita H (Indian Institute of Information Technology (IIIT), Allahabad)
+
+--------------------------------------------------------------------------------
+Rank #64 | deliveryagents
+--------------------------------------------------------------------------------
+  * Team ID     : 59258091
+  * Score       : 0.985676
+  * Finish Time : 2026-09-26 10:27:15+05:30
+  * Institution : Indian Institute of Technology (IIT), Mandi
+  * Members (4):
+      - Anshika Goel (Indian Institute of Technology (IIT), Mandi)
+      - Sachit Bansal (Indian Institute of Technology (IIT), Mandi)
+      - Arihant Kumar Jain (Indian Institute of Technology (IIT), Mandi)
+      - Tanmay Deshpande (Indian Institute of Technology (IIT), Mandi)
+
+--------------------------------------------------------------------------------
+Rank #65 | Random Forest Rangers
+--------------------------------------------------------------------------------
+  * Team ID     : 58997964
+  * Score       : 0.985632
+  * Finish Time : 2026-09-26 14:42:28+05:30
+  * Institution : Thapar Institute of Engineering and Technology (TIET), Patiala
+  * Members (3):
+      - Krish Arora (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Arnav Joshi (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - T A Shreyas Krishnan (Thapar Institute of Engineering and Technology (TIET), Patiala)
+
+--------------------------------------------------------------------------------
+Rank #66 | S3 Bucket of Tears
+--------------------------------------------------------------------------------
+  * Team ID     : 59256006
+  * Score       : 0.985594
+  * Finish Time : 2026-09-26 14:48:04+05:30
+  * Institution : Indian Institute of Engineering Science and Technology (IIEST), Shibpur
+  * Members (3):
+      - Souvik Ghosh (Indian Institute of Engineering Science and Technology (IIEST), Shibpur)
+      - Ayush Kumar (Indian Institute of Engineering Science and Technology (IIEST), Shibpur)
+      - Soumen Maity (Indian Institute of Engineering Science and Technology (IIEST), Shibpur)
+
+--------------------------------------------------------------------------------
+Rank #67 | Titan Grandmasters
+--------------------------------------------------------------------------------
+  * Team ID     : 59019211
+  * Score       : 0.985589
+  * Finish Time : 2026-09-26 16:52:10+05:30
+  * Institution : CMR Institute Of Techlogy, CMR Institute of Technology (CMRIT), Bangalore
+  * Members (4):
+      - Deepesh Kumar Kotta (CMR Institute Of Techlogy)
+      - Balaji Keerthi (CMR Institute of Technology (CMRIT), Bangalore)
+      - Abdul Hakeem K (CMR Institute of Technology (CMRIT), Bangalore)
+      - Aravindh Balaji (CMR Institute of Technology (CMRIT), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #68 | Minutes
+--------------------------------------------------------------------------------
+  * Team ID     : 58831256
+  * Score       : 0.985475
+  * Finish Time : 2026-09-26 14:46:48+05:30
+  * Institution : Geethanjali College of Engineering and Technology, (GCET Hyderabad)
+  * Members (4):
+      - MACHA JAYANTH (Geethanjali College of Engineering and Technology, (GCET Hyderabad))
+      - Gowrawaram Karthik Koundinya (Geethanjali College of Engineering and Technology, (GCET Hyderabad))
+      - M V Abhiram (Geethanjali College of Engineering and Technology, (GCET Hyderabad))
+      - HASANABADA SIRICHANDANA (Geethanjali College of Engineering and Technology, (GCET Hyderabad))
+
+--------------------------------------------------------------------------------
+Rank #69 | hi im sargent balls reporting for doody
+--------------------------------------------------------------------------------
+  * Team ID     : 59369019
+  * Score       : 0.985434
+  * Finish Time : 2026-09-26 12:35:57+05:30
+  * Institution : Birla Institute of Technology & Science, Pilani Campus
+  * Members (3):
+      - Rohan Pandey (Birla Institute of Technology & Science, Pilani Campus)
+      - Ayush Upadhyay (Birla Institute of Technology & Science, Pilani Campus)
+      - Abheek Arora (Birla Institute of Technology & Science, Pilani Campus)
+
+--------------------------------------------------------------------------------
+Rank #70 | Djokers
+--------------------------------------------------------------------------------
+  * Team ID     : 58725899
+  * Score       : 0.985428
+  * Finish Time : 2026-09-26 15:21:50+05:30
+  * Institution : Indian Institute of Science (IISc), Bangalore
+  * Members (2):
+      - Sai Sandesh Reddy Kanthala (Indian Institute of Science (IISc), Bangalore)
+      - Vegesna Juhitha Radha (Indian Institute of Science (IISc), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #71 | DoomsDay
+--------------------------------------------------------------------------------
+  * Team ID     : 59136965
+  * Score       : 0.985388
+  * Finish Time : 2026-09-26 16:53:26+05:30
+  * Institution : VIT Bhopal University (VIT), Bhopal
+  * Members (3):
+      - Aryan Singh (VIT Bhopal University (VIT), Bhopal)
+      - Shubhankar Pandey (VIT Bhopal University (VIT), Bhopal)
+      - Meera Singh (VIT Bhopal University (VIT), Bhopal)
+
+--------------------------------------------------------------------------------
+Rank #71 | PlayItSmart
+--------------------------------------------------------------------------------
+  * Team ID     : 59322426
+  * Score       : 0.985388
+  * Finish Time : 2026-09-26 16:45:37+05:30
+  * Institution : Banasthali Vidyapith (BU), Jaipur, Indira Gandhi Delhi Technical University for Women (IGDTUW), Delhi, Vellore Institute of Technology (VIT), Vellore
+  * Members (4):
+      - Somya Jain (Banasthali Vidyapith (BU), Jaipur)
+      - YENUGONDA AMRUTHA VARSHINI (Vellore Institute of Technology (VIT), Vellore)
+      - Anushka Dixit (Indira Gandhi Delhi Technical University for Women (IGDTUW), Delhi)
+      - Harshita Gupta (Indira Gandhi Delhi Technical University for Women (IGDTUW), Delhi)
+
+--------------------------------------------------------------------------------
+Rank #72 | midnight blizzard
+--------------------------------------------------------------------------------
+  * Team ID     : 58894611
+  * Score       : 0.985381
+  * Finish Time : 2026-09-26 14:15:43+05:30
+  * Institution : Manipal Institute of Technology (MIT), Manipal
+  * Members (3):
+      - Om Uday Dhondge (Manipal Institute of Technology (MIT), Manipal)
+      - Aditya Goyal (Manipal Institute of Technology (MIT), Manipal)
+      - Ayush Kumar (Manipal Institute of Technology (MIT), Manipal)
+
+--------------------------------------------------------------------------------
+Rank #73 | SHapley
+--------------------------------------------------------------------------------
+  * Team ID     : 58786277
+  * Score       : 0.985379
+  * Finish Time : 2026-09-26 15:46:05+05:30
+  * Institution : S G Balekundari Institute of Technology, SG Balekundri Institute of Technology, SG Balekundri Institute of Technology Belgaum
+  * Members (3):
+      - Abhishek Bidare (S G Balekundari Institute of Technology)
+      - Prajakta Dalawai (SG Balekundri Institute of Technology)
+      - Nilesh Patil (SG Balekundri Institute of Technology Belgaum)
+
+--------------------------------------------------------------------------------
+Rank #74 | nexus
+--------------------------------------------------------------------------------
+  * Team ID     : 59032557
+  * Score       : 0.985374
+  * Finish Time : 2026-09-26 15:38:53+05:30
+  * Institution : Indian Institute of Technology (IIT), Madras
+  * Members (3):
+      - Sanjeev Reddy B (Indian Institute of Technology (IIT), Madras)
+      - S Krithi Shailya (Indian Institute of Technology (IIT), Madras)
+      - Akshay Ambekar (Indian Institute of Technology (IIT), Madras)
+
+--------------------------------------------------------------------------------
+Rank #75 | EpochZ
+--------------------------------------------------------------------------------
+  * Team ID     : 59177459
+  * Score       : 0.985344
+  * Finish Time : 2026-09-26 15:45:23+05:30
+  * Institution : Graphic Era (Deemed to be University) (GEU), Dehradun, Manipal University (MU), Jaipur
+  * Members (4):
+      - Archit Badoni (Manipal University (MU), Jaipur)
+      - Manvik Talwar (Manipal University (MU), Jaipur)
+      - Arkaditya (Manipal University (MU), Jaipur)
+      - Aastha Chauhan (Graphic Era (Deemed to be University) (GEU), Dehradun)
+
+--------------------------------------------------------------------------------
+Rank #76 | She Sells C Shells
+--------------------------------------------------------------------------------
+  * Team ID     : 59285973
+  * Score       : 0.985336
+  * Finish Time : 2026-09-26 16:11:18+05:30
+  * Institution : International Institute of Information Technology (IIIT), Bangalore
+  * Members (4):
+      - Kavya Gupta (International Institute of Information Technology (IIIT), Bangalore)
+      - Vriddhi Agrawal (International Institute of Information Technology (IIIT), Bangalore)
+      - Chandrima Nandi (International Institute of Information Technology (IIIT), Bangalore)
+      - Avancha Dedeepya (International Institute of Information Technology (IIIT), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #77 | HOLY ML
+--------------------------------------------------------------------------------
+  * Team ID     : 59328617
+  * Score       : 0.98533
+  * Finish Time : 2026-09-26 14:50:39+05:30
+  * Institution : Kazi Nazrul University (KNU), Asansol, West Bengal, University of Engineering and Management (UEM), Kolkata, University of Engineering and Management Kolkata
+  * Members (4):
+      - Somsubhra Nandi (University of Engineering and Management (UEM), Kolkata)
+      - Athar Akram (Kazi Nazrul University (KNU), Asansol, West Bengal)
+      - Subhra Nandi (University of Engineering and Management Kolkata)
+      - Rajeet Ash (University of Engineering and Management (UEM), Kolkata)
+
+--------------------------------------------------------------------------------
+Rank #78 | Claude's Plan
+--------------------------------------------------------------------------------
+  * Team ID     : 58940166
+  * Score       : 0.985292
+  * Finish Time : 2026-09-26 16:51:14+05:30
+  * Institution : MCT's Rajiv Gandhi Institute Of Technology, Rajiv Gandhi Institute of Technology (RGIT), Mumbai, Rajiv Gandhi Institute of Technology, Mumbai
+  * Members (4):
+      - Rahul Bokade (Rajiv Gandhi Institute of Technology, Mumbai)
+      - Umed Indulkar (Rajiv Gandhi Institute of Technology, Mumbai)
+      - Riddhesh Budha (Rajiv Gandhi Institute of Technology (RGIT), Mumbai)
+      - Hrishita Chavan (MCT's Rajiv Gandhi Institute Of Technology)
+
+--------------------------------------------------------------------------------
+Rank #79 | PokerBoys69
+--------------------------------------------------------------------------------
+  * Team ID     : 59272299
+  * Score       : 0.985283
+  * Finish Time : 2026-09-26 15:50:31+05:30
+  * Institution : KLE Technological University (KLE Tech), Hubli
+  * Members (4):
+      - Kushal Koujalagi (KLE Technological University (KLE Tech), Hubli)
+      - Savitru Uttam Gadagkar (KLE Technological University (KLE Tech), Hubli)
+      - Harshavardhana B Undodi (KLE Technological University (KLE Tech), Hubli)
+      - Akash Hiremath (KLE Technological University (KLE Tech), Hubli)
+
+--------------------------------------------------------------------------------
+Rank #80 | Limitless
+--------------------------------------------------------------------------------
+  * Team ID     : 59239118
+  * Score       : 0.985227
+  * Finish Time : 2026-09-26 16:34:48+05:30
+  * Institution : St. Joseph's College of Engineering, Chennai
+  * Members (4):
+      - Mukeshkumar M (St. Joseph's College of Engineering, Chennai)
+      - Delfi A (St. Joseph's College of Engineering, Chennai)
+      - Nambert Jones L (St. Joseph's College of Engineering, Chennai)
+      - Aparajith V (St. Joseph's College of Engineering, Chennai)
+
+--------------------------------------------------------------------------------
+Rank #81 | Businessmen
+--------------------------------------------------------------------------------
+  * Team ID     : 58814360
+  * Score       : 0.985213
+  * Finish Time : 2026-09-26 16:06:14+05:30
+  * Institution : Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat
+  * Members (4):
+      - Purv Kabaria (Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat)
+      - Om Ashokbhai Satodiya (Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat)
+      - Jay Pipaliya (Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat)
+      - Chetan Kalsariya (Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat)
+
+--------------------------------------------------------------------------------
+Rank #82 | Expecto Patronum
+--------------------------------------------------------------------------------
+  * Team ID     : 58752835
+  * Score       : 0.985196
+  * Finish Time : 2026-09-26 00:08:55+05:30
+  * Institution : BMS College of Engineering (BMSCE), Bangalore, M S Ramaiah Institute of Technology (MSRIT), Bangalore, Ramaiah Institute of Technology, Bengaluru, Karnataka
+  * Members (3):
+      - Vedit Agrawal (BMS College of Engineering (BMSCE), Bangalore)
+      - Khushi Nawal (Ramaiah Institute of Technology, Bengaluru, Karnataka)
+      - Bhuvan Agrawal (M S Ramaiah Institute of Technology (MSRIT), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #82 | Grinders
+--------------------------------------------------------------------------------
+  * Team ID     : 58705522
+  * Score       : 0.985196
+  * Finish Time : 2026-09-26 15:30:07+05:30
+  * Institution : Indian Institute of Technology (IIT), Hyderabad
+  * Members (4):
+      - Daram Vishnuvardhan (Indian Institute of Technology (IIT), Hyderabad)
+      - Saswata Mishra (Indian Institute of Technology (IIT), Hyderabad)
+      - Mohammad Azhar Khan (Indian Institute of Technology (IIT), Hyderabad)
+      - Shivendra Atul Deshpande (Indian Institute of Technology (IIT), Hyderabad)
+
+--------------------------------------------------------------------------------
+Rank #83 | Aspiring Alphas
+--------------------------------------------------------------------------------
+  * Team ID     : 58863712
+  * Score       : 0.985143
+  * Finish Time : 2026-09-26 10:53:35+05:30
+  * Institution : University of Petroleoum and Energy Studies, Bidholi, University of Petroleum & Energy Studies (UPES), Dehradun
+  * Members (4):
+      - Bhavya Talwar (University of Petroleum & Energy Studies (UPES), Dehradun)
+      - Rachit Sethi (University of Petroleoum and Energy Studies, Bidholi)
+      - Arnav Sharma (University of Petroleum & Energy Studies (UPES), Dehradun)
+      - Rudra Gupta (University of Petroleum & Energy Studies (UPES), Dehradun)
+
+--------------------------------------------------------------------------------
+Rank #83 | jarvis
+--------------------------------------------------------------------------------
+  * Team ID     : 59328543
+  * Score       : 0.985143
+  * Finish Time : 2026-09-26 15:52:00+05:30
+  * Institution : International Institute of Information Technology (IIIT), Hyderabad
+  * Members (4):
+      - Atharva Kulkarni (International Institute of Information Technology (IIIT), Hyderabad)
+      - Ayush Roy (International Institute of Information Technology (IIIT), Hyderabad)
+      - Arnav Deshmukh (International Institute of Information Technology (IIIT), Hyderabad)
+      - Sanyam Agrawal (International Institute of Information Technology (IIIT), Hyderabad)
+
+--------------------------------------------------------------------------------
+Rank #84 | CSE_on_top
+--------------------------------------------------------------------------------
+  * Team ID     : 59408611
+  * Score       : 0.985131
+  * Finish Time : 2026-09-26 14:35:16+05:30
+  * Institution : Indian Institute of Technology (IIT), Bombay
+  * Members (3):
+      - Aditya Adhana (Indian Institute of Technology (IIT), Bombay)
+      - Himanshu Thalor (Indian Institute of Technology (IIT), Bombay)
+      - Ankit (Indian Institute of Technology (IIT), Bombay)
+
+--------------------------------------------------------------------------------
+Rank #85 | Co-operative Thread Army
+--------------------------------------------------------------------------------
+  * Team ID     : 59265337
+  * Score       : 0.985126
+  * Finish Time : 2026-09-26 13:29:44+05:30
+  * Institution : Indian Institute of Technology (IIT), Kanpur
+  * Members (4):
+      - Mrinal Chaturvedi (Indian Institute of Technology (IIT), Kanpur)
+      - Aritra Ambudh Dutta (Indian Institute of Technology (IIT), Kanpur)
+      - Siddhant Shekhar (Indian Institute of Technology (IIT), Kanpur)
+      - Vivek (Indian Institute of Technology (IIT), Kanpur)
+
+--------------------------------------------------------------------------------
+Rank #86 | kittykittyMeowMeow
+--------------------------------------------------------------------------------
+  * Team ID     : 59087218
+  * Score       : 0.985078
+  * Finish Time : 2026-09-26 16:22:54+05:30
+  * Institution : Guru Gobind Singh Indraprastha University (GGSIPU), Delhi, University School of Automation & Robotics, Delhi
+  * Members (4):
+      - Abhinav Pratap Singh (Guru Gobind Singh Indraprastha University (GGSIPU), Delhi)
+      - Prasoon Manglam (Guru Gobind Singh Indraprastha University (GGSIPU), Delhi)
+      - Shivam Raj (Guru Gobind Singh Indraprastha University (GGSIPU), Delhi)
+      - Kumar Nalin (University School of Automation & Robotics, Delhi)
+
+--------------------------------------------------------------------------------
+Rank #87 | Apprentice
+--------------------------------------------------------------------------------
+  * Team ID     : 58884328
+  * Score       : 0.985053
+  * Finish Time : 2026-09-26 10:21:21+05:30
+  * Institution : Jaypee Institute of Information Technology (JIIT), Noida
+  * Members (4):
+      - Anmol Agarwal (Jaypee Institute of Information Technology (JIIT), Noida)
+      - Harsimran Singh (Jaypee Institute of Information Technology (JIIT), Noida)
+      - Nitya Arora (Jaypee Institute of Information Technology (JIIT), Noida)
+      - Akshit Kumar Singh (Jaypee Institute of Information Technology (JIIT), Noida)
+
+--------------------------------------------------------------------------------
+Rank #88 | HumanSlop
+--------------------------------------------------------------------------------
+  * Team ID     : 59349507
+  * Score       : 0.984952
+  * Finish Time : 2026-09-26 11:19:55+05:30
+  * Institution : Indian Institute of Technology (IIT), Bhilai
+  * Members (2):
+      - Varun Rao (Indian Institute of Technology (IIT), Bhilai)
+      - GALABA VAMSI (Indian Institute of Technology (IIT), Bhilai)
+
+--------------------------------------------------------------------------------
+Rank #89 | AutoML
+--------------------------------------------------------------------------------
+  * Team ID     : 59314392
+  * Score       : 0.984951
+  * Finish Time : 2026-09-26 02:56:46+05:30
+  * Institution : Indian Institute of Science (IISc), Bangalore, International Institute of Information Technology, Bhubaneswar
+  * Members (4):
+      - Pawan Kumar (Indian Institute of Science (IISc), Bangalore)
+      - shreemaye das (Indian Institute of Science (IISc), Bangalore)
+      - Vaibhav Mahore (Indian Institute of Science (IISc), Bangalore)
+      - Aditya Kumar Pattanayak (International Institute of Information Technology, Bhubaneswar)
+
+--------------------------------------------------------------------------------
+Rank #90 | abracadabra
+--------------------------------------------------------------------------------
+  * Team ID     : 58798924
+  * Score       : 0.984944
+  * Finish Time : 2026-09-26 14:35:19+05:30
+  * Institution : Indian Institute of Technology (IIT), Kharagpur
+  * Members (3):
+      - Ashish Kumar (Indian Institute of Technology (IIT), Kharagpur)
+      - Ranjini Sinha Biswas (Indian Institute of Technology (IIT), Kharagpur)
+      - Pratyay Ganguly (Indian Institute of Technology (IIT), Kharagpur)
+
+--------------------------------------------------------------------------------
+Rank #91 | Atlas
+--------------------------------------------------------------------------------
+  * Team ID     : 59414473
+  * Score       : 0.984929
+  * Finish Time : 2026-09-26 16:21:09+05:30
+  * Institution : RV University, Bangalore
+  * Members (3):
+      - Kushal S (RV University, Bangalore)
+      - Binay Verma (RV University, Bangalore)
+      - R Kumar S R (RV University, Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #92 | StarkVision
+--------------------------------------------------------------------------------
+  * Team ID     : 59304603
+  * Score       : 0.984899
+  * Finish Time : 2026-09-26 10:49:21+05:30
+  * Institution : IIITD - Indraprastha Institute of Information Technology, Indraprastha Institute of Information Technology (IIIT), Delhi, Manipal University (MU), Jaipur
+  * Members (4):
+      - Krish Thukral (Manipal University (MU), Jaipur)
+      - Arush Gumber (IIITD - Indraprastha Institute of Information Technology)
+      - Arnesh Batra (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Aniket Khandelwal (Indraprastha Institute of Information Technology (IIIT), Delhi)
+
+--------------------------------------------------------------------------------
+Rank #93 | MLGods
+--------------------------------------------------------------------------------
+  * Team ID     : 59206559
+  * Score       : 0.984853
+  * Finish Time : 2026-09-26 14:29:00+05:30
+  * Institution : Indian Institute of Technology (IIT), Guwahati
+  * Members (4):
+      - Aquib Aquil (Indian Institute of Technology (IIT), Guwahati)
+      - Aditya (Indian Institute of Technology (IIT), Guwahati)
+      - Aniruddha Arya (Indian Institute of Technology (IIT), Guwahati)
+      - Anirudha Pratap Singh Aquil (Indian Institute of Technology (IIT), Guwahati)
+
+--------------------------------------------------------------------------------
+Rank #94 | GameOfCodes
+--------------------------------------------------------------------------------
+  * Team ID     : 59319590
+  * Score       : 0.984843
+  * Finish Time : 2026-09-26 08:57:39+05:30
+  * Institution : Amity School of Engineering & Technology (AMITY), Noida, Amity University, Amity University (AU), Noida
+  * Members (4):
+      - Yuvraj Srivastava (Amity School of Engineering & Technology (AMITY), Noida)
+      - KHUSHI BHAGAT (Amity University)
+      - Sahil Yadav (Amity University (AU), Noida)
+      - Akash Kandukuri (Amity University (AU), Noida)
+
+--------------------------------------------------------------------------------
+Rank #95 | coding ninja
+--------------------------------------------------------------------------------
+  * Team ID     : 58953845
+  * Score       : 0.984751
+  * Finish Time : 2026-09-26 04:33:34+05:30
+  * Institution : Indian Institute of Technology (IIT), Gandhinagar
+  * Members (4):
+      - Ramji Purwar (Indian Institute of Technology (IIT), Gandhinagar)
+      - Deep Buha (Indian Institute of Technology (IIT), Gandhinagar)
+      - Yash Goyal (Indian Institute of Technology (IIT), Gandhinagar)
+      - Kshitish Madbhavi Madbhavi (Indian Institute of Technology (IIT), Gandhinagar)
+
+--------------------------------------------------------------------------------
+Rank #96 | DZ Blood
+--------------------------------------------------------------------------------
+  * Team ID     : 59462703
+  * Score       : 0.984747
+  * Finish Time : 2026-09-26 14:37:15+05:30
+  * Institution : K. J. Somaiya College of Engineering (KJSCE), Vidyavihar
+  * Members (2):
+      - Abhishek Joshi (K. J. Somaiya College of Engineering (KJSCE), Vidyavihar)
+      - Suryaansh Jain (K. J. Somaiya College of Engineering (KJSCE), Vidyavihar)
+
+--------------------------------------------------------------------------------
+Rank #97 | SSM
+--------------------------------------------------------------------------------
+  * Team ID     : 59338650
+  * Score       : 0.984742
+  * Finish Time : 2026-09-26 14:18:54+05:30
+  * Institution : Indian Institute of Technology (IIT), Delhi
+  * Members (3):
+      - Sahaj Mistry (Indian Institute of Technology (IIT), Delhi)
+      - Mohanish Baviskar (Indian Institute of Technology (IIT), Delhi)
+      - Sarvesh Nikas (Indian Institute of Technology (IIT), Delhi)
+
+--------------------------------------------------------------------------------
+Rank #98 | SHSHSHSH
+--------------------------------------------------------------------------------
+  * Team ID     : 58869231
+  * Score       : 0.984727
+  * Finish Time : 2026-09-26 14:15:33+05:30
+  * Institution : PES University (PESU), Bengaluru
+  * Members (4):
+      - Shreyas Sreenivas (PES University (PESU), Bengaluru)
+      - Shashwat Solanki (PES University (PESU), Bengaluru)
+      - Shaunak Rai (PES University (PESU), Bengaluru)
+      - Shivam Anand (PES University (PESU), Bengaluru)
+
+--------------------------------------------------------------------------------
+Rank #99 | DataHungry
+--------------------------------------------------------------------------------
+  * Team ID     : 58738511
+  * Score       : 0.984719
+  * Finish Time : 2026-09-26 13:53:28+05:30
+  * Institution : Indian Institute of Technology (IIT), Kharagpur, Indian Institute of Technology Kharagpur, National Institute of Technology (NIT), Patna
+  * Members (4):
+      - Jiten Shah (Indian Institute of Technology (IIT), Kharagpur)
+      - Shiva Singh Bagri (National Institute of Technology (NIT), Patna)
+      - Kanishk Choudhary (Indian Institute of Technology (IIT), Kharagpur)
+      - Shobhit Kumar Shukla (Indian Institute of Technology Kharagpur)
+
+--------------------------------------------------------------------------------
+Rank #100 | Ninja mutant turtles
+--------------------------------------------------------------------------------
+  * Team ID     : 58931076
+  * Score       : 0.984718
+  * Finish Time : 2026-09-26 16:42:59+05:30
+  * Institution : Heritage Institute of Technology (HIT), Kolkata, Institute of Engineering & Management, Kolkata, Institute of Engineering and Management, university of engineering and management
+  * Members (4):
+      - Sayan Dutta (university of engineering and management)
+      - Priyansh Ghosh (Institute of Engineering and Management)
+      - Mohikshit Ghorai (Heritage Institute of Technology (HIT), Kolkata)
+      - Debjit Bhunia (Institute of Engineering & Management, Kolkata)
+
+--------------------------------------------------------------------------------
+Rank #101 | AmazeIT
+--------------------------------------------------------------------------------
+  * Team ID     : 59307946
+  * Score       : 0.984701
+  * Finish Time : 2026-09-26 13:33:36+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Allahabad
+  * Members (4):
+      - Shaurya Bhandari (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Subhansh Naithani (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Aashay Nema (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Dhruv Samdani (Indian Institute of Information Technology (IIIT), Allahabad)
+
+--------------------------------------------------------------------------------
+Rank #102 | The Usual Suspects
+--------------------------------------------------------------------------------
+  * Team ID     : 58965871
+  * Score       : 0.98469
+  * Finish Time : 2026-09-26 13:37:49+05:30
+  * Institution : Indian Institute of Technology (IIT), Indore, VNR VJIET, VNRVJIET, HYDERABAD
+  * Members (4):
+      - Varun Kumar Reddy Bommireddy (Indian Institute of Technology (IIT), Indore)
+      - Swami Agnivesh Shaga (VNR VJIET)
+      - Sushanth Kartikeya (VNR VJIET)
+      - Vamshidhar Reddy Saddi (VNRVJIET, HYDERABAD)
+
+--------------------------------------------------------------------------------
+Rank #103 | EpochZero
+--------------------------------------------------------------------------------
+  * Team ID     : 58712939
+  * Score       : 0.984629
+  * Finish Time : 2026-09-26 15:24:21+05:30
+  * Institution : Indian Institute of Technology, BHU, Indian Institute of Technology, Banaras Hindu University (IIT - BHU)
+  * Members (3):
+      - Saarthak Gupta (Indian Institute of Technology, Banaras Hindu University (IIT - BHU))
+      - Tilak Gupta (Indian Institute of Technology, BHU)
+      - Arnaav Shah (Indian Institute of Technology, Banaras Hindu University (IIT - BHU))
+
+--------------------------------------------------------------------------------
+Rank #104 | Ult F4
+--------------------------------------------------------------------------------
+  * Team ID     : 58753740
+  * Score       : 0.984567
+  * Finish Time : 2026-09-26 15:36:03+05:30
+  * Institution : Indian Institute of Technology (IIT), Mandi
+  * Members (3):
+      - KARTAVYA SURYAWANSHI (Indian Institute of Technology (IIT), Mandi)
+      - Japneet Singh (Indian Institute of Technology (IIT), Mandi)
+      - Dhanad Gupta (Indian Institute of Technology (IIT), Mandi)
+
+--------------------------------------------------------------------------------
+Rank #105 | catalysts
+--------------------------------------------------------------------------------
+  * Team ID     : 58744588
+  * Score       : 0.984539
+  * Finish Time : 2026-09-26 13:42:33+05:30
+  * Institution : Indian Institute of Technology (IIT), Kharagpur
+  * Members (4):
+      - Jatain Kumar (Indian Institute of Technology (IIT), Kharagpur)
+      - ANVAY PHARANDE (Indian Institute of Technology (IIT), Kharagpur)
+      - Vishvajeet Rupanawar (Indian Institute of Technology (IIT), Kharagpur)
+      - Pranav Bakshi (Indian Institute of Technology (IIT), Kharagpur)
+
+--------------------------------------------------------------------------------
+Rank #106 | Team Zypher
+--------------------------------------------------------------------------------
+  * Team ID     : 59286457
+  * Score       : 0.984534
+  * Finish Time : 2026-09-26 14:37:13+05:30
+  * Institution : Birla Institute of Technology (BIT), Mesra, Ranchi, Birla Institute of Technology, Mesra, Ranchi
+  * Members (4):
+      - Aditya Kumar (Birla Institute of Technology, Mesra, Ranchi)
+      - Md Saquib Jawed (Birla Institute of Technology (BIT), Mesra, Ranchi)
+      - Gaurav Kumar (Birla Institute of Technology (BIT), Mesra, Ranchi)
+      - Ayush Kumar (Birla Institute of Technology, Mesra, Ranchi)
+
+--------------------------------------------------------------------------------
+Rank #107 | ChatpateOutliers
+--------------------------------------------------------------------------------
+  * Team ID     : 59187351
+  * Score       : 0.984515
+  * Finish Time : 2026-09-26 13:25:57+05:30
+  * Institution : Indian Institute of Technology (IIT), Roorkee
+  * Members (3):
+      - Shivani Singh (Indian Institute of Technology (IIT), Roorkee)
+      - Chanchal Vyas (Indian Institute of Technology (IIT), Roorkee)
+      - Kriti Kumari (Indian Institute of Technology (IIT), Roorkee)
+
+--------------------------------------------------------------------------------
+Rank #108 | Phoenix
+--------------------------------------------------------------------------------
+  * Team ID     : 59124988
+  * Score       : 0.984506
+  * Finish Time : 2026-09-26 16:57:54+05:30
+  * Institution : KIET Group of Institutions (KIET)  Ghaziabad, KIET Group of Institutions (KIET), Ghaziabad
+  * Members (3):
+      - Bhumika Rajoria (KIET Group of Institutions (KIET)  Ghaziabad)
+      - Harsh Gautam (KIET Group of Institutions (KIET)  Ghaziabad)
+      - Dipesh Gupta (KIET Group of Institutions (KIET), Ghaziabad)
+
+--------------------------------------------------------------------------------
+Rank #109 | Navomesh
+--------------------------------------------------------------------------------
+  * Team ID     : 59102434
+  * Score       : 0.984473
+  * Finish Time : 2026-09-26 10:46:58+05:30
+  * Institution : Madan Mohan Malaviya University of Technology (MMMUT), Gorakhpur
+  * Members (4):
+      - Anurag Banerjee (Madan Mohan Malaviya University of Technology (MMMUT), Gorakhpur)
+      - Amartya Pandey (Madan Mohan Malaviya University of Technology (MMMUT), Gorakhpur)
+      - Pushkar Jaiswal (Madan Mohan Malaviya University of Technology (MMMUT), Gorakhpur)
+      - Saksham Sharma (Madan Mohan Malaviya University of Technology (MMMUT), Gorakhpur)
+
+--------------------------------------------------------------------------------
+Rank #110 | SolarSailors
+--------------------------------------------------------------------------------
+  * Team ID     : 59320949
+  * Score       : 0.984466
+  * Finish Time : 2026-09-26 12:25:18+05:30
+  * Institution : Sri Sivasubramaniya Nadar (SSN) College of Engineering, Chennai
+  * Members (2):
+      - Shanmugam Karthikeyen Shivaanee (Sri Sivasubramaniya Nadar (SSN) College of Engineering, Chennai)
+      - Charan Velavan (Sri Sivasubramaniya Nadar (SSN) College of Engineering, Chennai)
+
+--------------------------------------------------------------------------------
+Rank #111 | Fake Conquerers
+--------------------------------------------------------------------------------
+  * Team ID     : 59326989
+  * Score       : 0.984462
+  * Finish Time : 2026-09-26 14:32:51+05:30
+  * Institution : Birla Institute of Technology & Science (BITS) Pilani, Hyderabad Campus, Birla Institute of Technology and Science Hyderabad
+  * Members (4):
+      - Allipuram Samanyu Reddy (Birla Institute of Technology and Science Hyderabad)
+      - Ankur Sarkar (Birla Institute of Technology & Science (BITS) Pilani, Hyderabad Campus)
+      - Pranshu Suman (Birla Institute of Technology and Science Hyderabad)
+      - Himnish Lalchandani (Birla Institute of Technology and Science Hyderabad)
+
+--------------------------------------------------------------------------------
+Rank #112 | GAMA
+--------------------------------------------------------------------------------
+  * Team ID     : 59303980
+  * Score       : 0.984417
+  * Finish Time : 2026-09-26 11:33:22+05:30
+  * Institution : Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat
+  * Members (4):
+      - Manav Pareshbhai Dhamecha (Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat)
+      - Gaurav Damor (Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat)
+      - Aayush Prasad (Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat)
+      - Arshad Mujibalam Khatib (Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat)
+
+--------------------------------------------------------------------------------
+Rank #113 | CVIGLINGO
+--------------------------------------------------------------------------------
+  * Team ID     : 59352221
+  * Score       : 0.984406
+  * Finish Time : 2026-09-26 15:21:22+05:30
+  * Institution : Indian Institute of Technology (IIT), Gandhinagar
+  * Members (4):
+      - Shekhar Hemant (Indian Institute of Technology (IIT), Gandhinagar)
+      - ARKA DUTTA (Indian Institute of Technology (IIT), Gandhinagar)
+      - Sinngam Khaidem (Indian Institute of Technology (IIT), Gandhinagar)
+      - Tirth Bhatt (Indian Institute of Technology (IIT), Gandhinagar)
+
+--------------------------------------------------------------------------------
+Rank #114 | HPC!!
+--------------------------------------------------------------------------------
+  * Team ID     : 59015016
+  * Score       : 0.984391
+  * Finish Time : 2026-09-26 13:19:05+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Allahabad, Indian Institute of Information Technology Allahbad
+  * Members (4):
+      - Vishal Pandey (Indian Institute of Information Technology Allahbad)
+      - Hridyesh Kumar (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Harsh Markam (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Sahil Kumar (Indian Institute of Information Technology (IIIT), Allahabad)
+
+--------------------------------------------------------------------------------
+Rank #115 | Greedy Decoders
+--------------------------------------------------------------------------------
+  * Team ID     : 58842612
+  * Score       : 0.984335
+  * Finish Time : 2026-09-26 11:31:22+05:30
+  * Institution : Vellore Institute of Technology (VIT), Chennai, Vellore Institute of Technology (VIT), Vellore
+  * Members (4):
+      - Prayag Sharma (Vellore Institute of Technology (VIT), Chennai)
+      - Madhav Khurana (Vellore Institute of Technology (VIT), Vellore)
+      - Abhyuday Vaish (Vellore Institute of Technology (VIT), Chennai)
+      - Arawal Shukla (Vellore Institute of Technology (VIT), Chennai)
+
+--------------------------------------------------------------------------------
+Rank #116 | Something
+--------------------------------------------------------------------------------
+  * Team ID     : 59078604
+  * Score       : 0.984279
+  * Finish Time : 2026-09-26 14:30:14+05:30
+  * Institution : BMS College of Engineering (BMSCE), Bangalore
+  * Members (4):
+      - Abhiram Rayadurgam (BMS College of Engineering (BMSCE), Bangalore)
+      - Alok (BMS College of Engineering (BMSCE), Bangalore)
+      - Nayan Sarda (BMS College of Engineering (BMSCE), Bangalore)
+      - Sriyansh Sharma (BMS College of Engineering (BMSCE), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #117 | 0XALTF4
+--------------------------------------------------------------------------------
+  * Team ID     : 58929708
+  * Score       : 0.984253
+  * Finish Time : 2026-09-26 16:26:37+05:30
+  * Institution : Indraprastha Institute of Information Technology (IIIT), Delhi
+  * Members (4):
+      - Saksham Bansal (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Ujjwal Kumar (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Ronit Ghosh (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Shirsh Chandra (Indraprastha Institute of Information Technology (IIIT), Delhi)
+
+--------------------------------------------------------------------------------
+Rank #118 | G-block
+--------------------------------------------------------------------------------
+  * Team ID     : 59160686
+  * Score       : 0.984248
+  * Finish Time : 2026-09-26 13:02:52+05:30
+  * Institution : Indraprastha Institute of Information Technology (IIIT), Delhi
+  * Members (4):
+      - Veer Amol Singh (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Agrim Jindal (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Rishitej Reddy Vyalla (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Arnie Verma (Indraprastha Institute of Information Technology (IIIT), Delhi)
+
+--------------------------------------------------------------------------------
+Rank #119 | CtrlCrew
+--------------------------------------------------------------------------------
+  * Team ID     : 58685402
+  * Score       : 0.98422
+  * Finish Time : 2026-09-26 16:37:42+05:30
+  * Institution : IIITDM-Jabalpur, Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Jabalpur, Other College not listed here
+  * Members (4):
+      - Rohan Chandra Sen (Other College not listed here)
+      - Vansh Gularia (IIITDM-Jabalpur)
+      - Nitin Pandey (Other College not listed here)
+      - Sayan Chakraborty (Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Jabalpur)
+
+--------------------------------------------------------------------------------
+Rank #120 | GangOfFour
+--------------------------------------------------------------------------------
+  * Team ID     : 59059680
+  * Score       : 0.984189
+  * Finish Time : 2026-09-26 16:54:58+05:30
+  * Institution : Vivekanand Education Society Institute of Technology, Vivekanand Education Society's Institute Of Technology (VESIT), Mumbai
+  * Members (4):
+      - Harshavardhan Pramod Khamkar (Vivekanand Education Society Institute of Technology)
+      - PANKAJ GUPTA (Vivekanand Education Society Institute of Technology)
+      - Kushagra Kumar (Vivekanand Education Society's Institute Of Technology (VESIT), Mumbai)
+      - Aanchal Gupta (Vivekanand Education Society's Institute Of Technology (VESIT), Mumbai)
+
+--------------------------------------------------------------------------------
+Rank #121 | Go-On2Win
+--------------------------------------------------------------------------------
+  * Team ID     : 58722681
+  * Score       : 0.984175
+  * Finish Time : 2026-09-26 13:46:47+05:30
+  * Institution : SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai
+  * Members (4):
+      - Vedant Tiwari (SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai)
+      - Prakhar Malviya (SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai)
+      - Abhijeet Pandey (SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai)
+      - Avishar Sharan (SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai)
+
+--------------------------------------------------------------------------------
+Rank #122 | kashti
+--------------------------------------------------------------------------------
+  * Team ID     : 59365127
+  * Score       : 0.984121
+  * Finish Time : 2026-09-26 11:39:40+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Allahabad
+  * Members (2):
+      - Parth Chaurasia (Indian Institute of Information Technology (IIIT), Allahabad)
+      - Adamya Pratap Yadav (Indian Institute of Information Technology (IIIT), Allahabad)
+
+--------------------------------------------------------------------------------
+Rank #123 | STR
+--------------------------------------------------------------------------------
+  * Team ID     : 59051434
+  * Score       : 0.984091
+  * Finish Time : 2026-09-26 16:30:17+05:30
+  * Institution : RV University, RV University, Bangalore
+  * Members (3):
+      - TAMISH SRIDHATTAB (RV University)
+      - Sushrith Kandagatla (RV University, Bangalore)
+      - Rohit Jaysheel Diggi (RV University, Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #124 | Yeti
+--------------------------------------------------------------------------------
+  * Team ID     : 59311981
+  * Score       : 0.984072
+  * Finish Time : 2026-09-26 14:31:44+05:30
+  * Institution : Indian Institute of Technology (IIT), Kharagpur
+  * Members (4):
+      - Harsh Bhatt (Indian Institute of Technology (IIT), Kharagpur)
+      - Shriya Sinha (Indian Institute of Technology (IIT), Kharagpur)
+      - Aditya Kashyap (Indian Institute of Technology (IIT), Kharagpur)
+      - Anurag Pokhariyal (Indian Institute of Technology (IIT), Kharagpur)
+
+--------------------------------------------------------------------------------
+Rank #125 | Sonder AI
+--------------------------------------------------------------------------------
+  * Team ID     : 59362452
+  * Score       : 0.984035
+  * Finish Time : 2026-09-26 14:21:10+05:30
+  * Institution : Manipal Institute of Technology (MIT), Manipal
+  * Members (3):
+      - Nishant Kumar Upadhyay (Manipal Institute of Technology (MIT), Manipal)
+      - Shourya Banda (Manipal Institute of Technology (MIT), Manipal)
+      - Akshat Mishra (Manipal Institute of Technology (MIT), Manipal)
+
+--------------------------------------------------------------------------------
+Rank #126 | Lakshya
+--------------------------------------------------------------------------------
+  * Team ID     : 59134311
+  * Score       : 0.984032
+  * Finish Time : 2026-09-26 15:31:18+05:30
+  * Institution : Shri Govindram Seksaria Institute of Technology and Science (SGSITS), Indore
+  * Members (4):
+      - Soumy Dhiran (Shri Govindram Seksaria Institute of Technology and Science (SGSITS), Indore)
+      - Pratham Goyal (Shri Govindram Seksaria Institute of Technology and Science (SGSITS), Indore)
+      - Aditya Shrotriya (Shri Govindram Seksaria Institute of Technology and Science (SGSITS), Indore)
+      - Arnav Shrivastava (Shri Govindram Seksaria Institute of Technology and Science (SGSITS), Indore)
+
+--------------------------------------------------------------------------------
+Rank #127 | InnovAstra
+--------------------------------------------------------------------------------
+  * Team ID     : 59363428
+  * Score       : 0.984005
+  * Finish Time : 2026-09-26 11:17:49+05:30
+  * Institution : Indian Institute of Technology (IIT), Bombay
+  * Members (4):
+      - Kanakamurthy K Havale Havale (Indian Institute of Technology (IIT), Bombay)
+      - Anant Asati (Indian Institute of Technology (IIT), Bombay)
+      - Parav Sandeep Solanki (Indian Institute of Technology (IIT), Bombay)
+      - Vedant Moghe (Indian Institute of Technology (IIT), Bombay)
+
+--------------------------------------------------------------------------------
+Rank #128 | Rank1
+--------------------------------------------------------------------------------
+  * Team ID     : 58911604
+  * Score       : 0.983989
+  * Finish Time : 2026-09-26 16:18:33+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Lucknow, Indian Institute of Information Technology, Lucknow
+  * Members (4):
+      - Soumyaditya Masanta (Indian Institute of Information Technology, Lucknow)
+      - Shivansh Jain (Indian Institute of Information Technology (IIIT), Lucknow)
+      - Aryan Singh (Indian Institute of Information Technology (IIIT), Lucknow)
+      - Kushagra (Indian Institute of Information Technology, Lucknow)
+
+--------------------------------------------------------------------------------
+Rank #129 | Biotechies
+--------------------------------------------------------------------------------
+  * Team ID     : 59210373
+  * Score       : 0.98398
+  * Finish Time : 2026-09-26 16:33:14+05:30
+  * Institution : Indian Institute of Technology (IIT), Madras
+  * Members (4):
+      - Ruhaib Muhammad (Indian Institute of Technology (IIT), Madras)
+      - Manoj S S (Indian Institute of Technology (IIT), Madras)
+      - SURIYA PRIYAN D (Indian Institute of Technology (IIT), Madras)
+      - Atharv Shete (Indian Institute of Technology (IIT), Madras)
+
+--------------------------------------------------------------------------------
+Rank #130 | Code0011
+--------------------------------------------------------------------------------
+  * Team ID     : 58910405
+  * Score       : 0.983909
+  * Finish Time : 2026-09-26 14:45:11+05:30
+  * Institution : Thapar Institute of Engineering and Technology (TIET), Patiala
+  * Members (4):
+      - Dhruv Goyal (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Vaani Prashar (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Madhav Kapila (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Ishita Gupta (Thapar Institute of Engineering and Technology (TIET), Patiala)
+
+--------------------------------------------------------------------------------
+Rank #131 | Vijaya
+--------------------------------------------------------------------------------
+  * Team ID     : 59041173
+  * Score       : 0.983888
+  * Finish Time : 2026-09-26 17:01:15+05:30
+  * Institution : International Institute of Information Technology (IIIT), Bangalore
+  * Members (4):
+      - Chandrahas Reddy (International Institute of Information Technology (IIIT), Bangalore)
+      - Bojja Sunhith Reddy (International Institute of Information Technology (IIIT), Bangalore)
+      - Harsh Mohta (International Institute of Information Technology (IIIT), Bangalore)
+      - Vignesh Pasupuleti (International Institute of Information Technology (IIIT), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #132 | are we cooked?
+--------------------------------------------------------------------------------
+  * Team ID     : 59149454
+  * Score       : 0.983856
+  * Finish Time : 2026-09-26 09:33:13+05:30
+  * Institution : Jadavpur University (JU), Kolkata, Thapar Institute of Engineering and Technology (TIET), Patiala
+  * Members (4):
+      - Vishesh Gupta (Jadavpur University (JU), Kolkata)
+      - Kavya Mahajan (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Harshit Arora (Thapar Institute of Engineering and Technology (TIET), Patiala)
+      - Souhardyo Dasgupta (Jadavpur University (JU), Kolkata)
+
+--------------------------------------------------------------------------------
+Rank #133 | DeepThought
+--------------------------------------------------------------------------------
+  * Team ID     : 59308989
+  * Score       : 0.983846
+  * Finish Time : 2026-09-26 16:09:21+05:30
+  * Institution : Indian Institute of Technology (IIT), Madras
+  * Members (4):
+      - Rupankar P (Indian Institute of Technology (IIT), Madras)
+      - Ashutosh Patidar (Indian Institute of Technology (IIT), Madras)
+      - Rajshekhar Rakshit (Indian Institute of Technology (IIT), Madras)
+      - Puspak Chakraborty (Indian Institute of Technology (IIT), Madras)
+
+--------------------------------------------------------------------------------
+Rank #134 | Heatblast
+--------------------------------------------------------------------------------
+  * Team ID     : 59371568
+  * Score       : 0.983831
+  * Finish Time : 2026-09-26 15:24:38+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Nagpur
+  * Members (4):
+      - Kartik Pahadiya (Indian Institute of Information Technology (IIIT), Nagpur)
+      - Rohan Kumar (Indian Institute of Information Technology (IIIT), Nagpur)
+      - Rohit Kumar (Indian Institute of Information Technology (IIIT), Nagpur)
+      - Nischal Yerramsetty (Indian Institute of Information Technology (IIIT), Nagpur)
+
+--------------------------------------------------------------------------------
+Rank #135 | Gamblers
+--------------------------------------------------------------------------------
+  * Team ID     : 58897183
+  * Score       : 0.983797
+  * Finish Time : 2026-09-26 15:23:52+05:30
+  * Institution : BMS Institute of Technology and Management (BMSITM), Bangalore
+  * Members (3):
+      - Yash Pandey (BMS Institute of Technology and Management (BMSITM), Bangalore)
+      - Rohit Yadav (BMS Institute of Technology and Management (BMSITM), Bangalore)
+      - Yukthi Shetty (BMS Institute of Technology and Management (BMSITM), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #136 | code x
+--------------------------------------------------------------------------------
+  * Team ID     : 59161056
+  * Score       : 0.983795
+  * Finish Time : 2026-09-26 15:01:32+05:30
+  * Institution : Banasthali Vidyapith (BU), Jaipur, Manipal University (MU), Jaipur
+  * Members (3):
+      - Udita Uniyal (Banasthali Vidyapith (BU), Jaipur)
+      - Akshita Sai Pery (Manipal University (MU), Jaipur)
+      - Udayan Pawar (Manipal University (MU), Jaipur)
+
+--------------------------------------------------------------------------------
+Rank #137 | Stack Overfit
+--------------------------------------------------------------------------------
+  * Team ID     : 59323683
+  * Score       : 0.983765
+  * Finish Time : 2026-09-26 15:22:53+05:30
+  * Institution : Indian Institute of Science (IISc), Bangalore
+  * Members (4):
+      - Nayan Singh (Indian Institute of Science (IISc), Bangalore)
+      - Devendra Umbrajkar (Indian Institute of Science (IISc), Bangalore)
+      - Anay (Indian Institute of Science (IISc), Bangalore)
+      - Lavish Singh (Indian Institute of Science (IISc), Bangalore)
+
+--------------------------------------------------------------------------------
+Rank #138 | Quantum Blume
+--------------------------------------------------------------------------------
+  * Team ID     : 58802478
+  * Score       : 0.98371
+  * Finish Time : 2026-09-26 14:07:23+05:30
+  * Institution : PES University (PESU), Bengaluru
+  * Members (3):
+      - Gagan V (PES University (PESU), Bengaluru)
+      - Rishith Sahu (PES University (PESU), Bengaluru)
+      - Sahaj BS (PES University (PESU), Bengaluru)
+
+--------------------------------------------------------------------------------
+Rank #139 | Trinaina
+--------------------------------------------------------------------------------
+  * Team ID     : 59388547
+  * Score       : 0.983687
+  * Finish Time : 2026-09-26 17:00:00+05:30
+  * Institution : Keshav Memorial Institute of Technology (KMIT), Hyderabad, Keshav memorial college of engineering, Neil Gogte Institute of Technology(NGIT),Hyderabad
+  * Members (4):
+      - Aashna V (Keshav memorial college of engineering)
+      - Prakarsha Kondour (Keshav Memorial Institute of Technology (KMIT), Hyderabad)
+      - Shreya Pitla (Keshav Memorial Institute of Technology (KMIT), Hyderabad)
+      - Gayathri Chinmanolla (Neil Gogte Institute of Technology(NGIT),Hyderabad)
+
+--------------------------------------------------------------------------------
+Rank #140 | RIS27
+--------------------------------------------------------------------------------
+  * Team ID     : 58809184
+  * Score       : 0.983685
+  * Finish Time : 2026-09-26 15:55:09+05:30
+  * Institution : Indian Institute of Technology (IIT), Hyderabad
+  * Members (4):
+      - Nakka Chandrakiran (Indian Institute of Technology (IIT), Hyderabad)
+      - Rehbar Khan (Indian Institute of Technology (IIT), Hyderabad)
+      - Vikram Kumar Anand (Indian Institute of Technology (IIT), Hyderabad)
+      - Muhammed Shanshad P K (Indian Institute of Technology (IIT), Hyderabad)
+
+--------------------------------------------------------------------------------
+Rank #141 | Grund
+--------------------------------------------------------------------------------
+  * Team ID     : 58837425
+  * Score       : 0.983648
+  * Finish Time : 2026-09-26 15:10:21+05:30
+  * Institution : Jadavpur University (JU), Kolkata
+  * Members (4):
+      - Md Khalid Saifullah (Jadavpur University (JU), Kolkata)
+      - Ekorshi Chaudhuri (Jadavpur University (JU), Kolkata)
+      - Anirudh Modi (Jadavpur University (JU), Kolkata)
+      - Snehasis Mondal (Jadavpur University (JU), Kolkata)
+
+--------------------------------------------------------------------------------
+Rank #142 | riwaaq
+--------------------------------------------------------------------------------
+  * Team ID     : 59361640
+  * Score       : 0.98362
+  * Finish Time : 2026-09-26 16:10:27+05:30
+  * Institution : Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Kancheepuram, Indian Institute of Technology (IIT), Kanpur
+  * Members (2):
+      - Sadat Bashir (Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Kancheepuram)
+      - Yawar Hayat Zarkob (Indian Institute of Technology (IIT), Kanpur)
+
+--------------------------------------------------------------------------------
+Rank #143 | VOID
+--------------------------------------------------------------------------------
+  * Team ID     : 58932253
+  * Score       : 0.983569
+  * Finish Time : 2026-09-26 10:38:12+05:30
+  * Institution : Dwarkadas J. Sanghvi College of Engineering
+  * Members (3):
+      - Varun Yogesh Gupta (Dwarkadas J. Sanghvi College of Engineering)
+      - Vihaan Ovalekar (Dwarkadas J. Sanghvi College of Engineering)
+      - Abhijeet Shriniwas Sapar (Dwarkadas J. Sanghvi College of Engineering)
+
+--------------------------------------------------------------------------------
+Rank #144 | GitBoosters
+--------------------------------------------------------------------------------
+  * Team ID     : 59323961
+  * Score       : 0.983526
+  * Finish Time : 2026-09-26 14:43:52+05:30
+  * Institution : Indraprastha Institute of Information Technology (IIIT), Delhi
+  * Members (4):
+      - Pinaksh Kumar (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Keyurkumar Desai (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Priyanshu (Indraprastha Institute of Information Technology (IIIT), Delhi)
+      - Yash Kumar Vaibhav (Indraprastha Institute of Information Technology (IIIT), Delhi)
+
+--------------------------------------------------------------------------------
+Rank #145 | IIT Guwahati Gradients
+--------------------------------------------------------------------------------
+  * Team ID     : 59079787
+  * Score       : 0.983521
+  * Finish Time : 2026-09-26 11:15:09+05:30
+  * Institution : Indian Institute of Technology (IIT), Guwahati
+  * Members (4):
+      - Partha Sarathi Roychaudhuri (Indian Institute of Technology (IIT), Guwahati)
+      - Akshat Agarwal (Indian Institute of Technology (IIT), Guwahati)
+      - Akshat Goyal Goyal (Indian Institute of Technology (IIT), Guwahati)
+      - pushkeshwar singh (Indian Institute of Technology (IIT), Guwahati)
+
+--------------------------------------------------------------------------------
+Rank #146 | COMPUTATION_ISSUE
+--------------------------------------------------------------------------------
+  * Team ID     : 58813509
+  * Score       : 0.98352
+  * Finish Time : 2026-09-26 11:40:40+05:30
+  * Institution : Indian Institute of Information Technology (IIIT), Nagpur
+  * Members (3):
+      - Hitansh Jain (Indian Institute of Information Technology (IIIT), Nagpur)
+      - Utkarsh Pise (Indian Institute of Information Technology (IIIT), Nagpur)
+      - Paras Rana (Indian Institute of Information Technology (IIIT), Nagpur)
+

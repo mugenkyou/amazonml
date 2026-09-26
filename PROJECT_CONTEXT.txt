@@ -1,0 +1,195 @@
+================================================================================
+UNSTOP ML CHALLENGE LEADERBOARD EXPLORER & DATA PLATFORM
+COMPREHENSIVE PROJECT CONTEXT & ARCHITECTURAL SPECIFICATION
+================================================================================
+
+1. EXECUTIVE SUMMARY & OBJECTIVE
+--------------------------------------------------------------------------------
+The Unstop ML Challenge Leaderboard Explorer (Challenge ID: 290344 / CodeContest
+— Amazon ML Challenge 2024) is a data collection, normalization, offline
+indexing, analytics, and web exploration platform.
+
+It harvests the public leaderboard of the national-scale ML challenge on Unstop,
+snapshots raw API responses deterministically to disk, normalizes entities into
+relational CSV models, compiles pre-indexed JSON artifacts, and provides two
+dedicated exploration frontends:
+  - Python Flask Web App (Port 5000) with in-memory substring & exact matching.
+  - Next.js 15 + TypeScript + Tailwind CSS App (Port 3000) with institution
+    deep-dives, compare tools, and cross-college collaboration views.
+
+The architecture ensures zero live requests are made to Unstop when searching
+or browsing.
+
+
+2. DATASET METRICS & SNAPSHOT STATUS
+--------------------------------------------------------------------------------
+- Challenge ID: 290344
+- Competition Type: CodeContest (Amazon ML Challenge)
+- API Endpoint: https://unstop.com/api/public/live-leaderboard/290344/CodeContest
+- Total Pages Collected: 114 / 114 pages (100% completion rate)
+- Total Teams / Submissions: 3,398
+- Total Individual Participants: 11,394
+- Total Unique Organizations / Colleges: 1,350
+- Collection Status: COMPLETE (0 failed pages)
+
+
+3. COMPLETE REPOSITORY FILE TREE
+--------------------------------------------------------------------------------
+unstop-top/
+├── .env.example                          # Template environment config
+├── .gitignore                            # Git ignore patterns
+├── config.py                             # Paths, delays, retries & endpoints
+├── requirements.txt                      # Dependencies (flask, requests, python-dotenv, pytest)
+├── README.md                             # Overview and run instructions
+├── PROJECT_CONTEXT.md                    # Markdown format project context
+├── PROJECT_CONTEXT.txt                   # Plain text format project context
+├── app.py                                # Flask app & LeaderboardDataStore
+│
+├── collector/                            # Batch Ingestion & ETL Package
+│   ├── __init__.py                       # Package exports
+│   ├── client.py                         # HTTP client with exponential backoff & 429 retry logic
+│   ├── parser.py                         # JSON parsing & record extraction
+│   ├── normalizer.py                     # Institutional name normalizer & relational builder
+│   ├── storage.py                        # Raw page JSONs, CSVs & metadata I/O
+│   └── fetch_all.py                      # CLI runner for collection and regeneration
+│
+├── data/                                 # Storage Tier
+│   ├── raw/                              # Raw JSON snapshots (page_0001.json -> page_0114.json)
+│   └── processed/                        # Relational CSVs & collection metadata
+│       ├── teams.csv                     # 3,398 unique teams
+│       ├── players.csv                   # 11,394 player records
+│       ├── organizations.csv             # 1,350 unique organizations
+│       ├── team_organizations.csv        # Junction table mapping teams to institutions
+│       └── collection_metadata.json      # Snapshot status, timestamps, record counts
+│
+├── templates/                            # Flask Jinja2 UI Templates
+│   ├── base.html                         # Base HTML skeleton & global styling
+│   ├── index.html                        # Main dashboard & rankings table
+│   └── team.html                         # Team profile with roster & org chips
+│
+├── static/                               # Flask Static Assets
+│   ├── css/style.css                     # Responsive dark/orange theme
+│   └── js/app.js                         # Debounced autocomplete search
+│
+├── tests/                                # Python Pytest Test Suite
+│   ├── test_collector.py                 # Client retries & backoff tests
+│   ├── test_normalizer.py                # Name normalizer & relational tests
+│   ├── test_parser.py                    # JSON schema handling tests
+│   └── test_routes.py                    # Flask route & search endpoint tests
+│
+└── web/                                  # Next.js 15 Web Application
+    ├── package.json                      # Next.js, React 19, Lucide, Tailwind
+    ├── tsconfig.json                     # TypeScript strict config
+    ├── next.config.ts                    # Next.js config
+    ├── tailwind.config.ts                # Theme extension & design tokens
+    ├── README.md                         # Next.js app documentation
+    ├── scripts/prepare-data.ts           # Ingestion script (CSVs -> JSON snapshots)
+    ├── data/generated/                   # Build-time JSON snapshots
+    │   ├── metadata.json
+    │   ├── teams.json
+    │   ├── organizations.json
+    │   └── organization-index.json
+    ├── lib/                              # Shared TS logic (types, search, normalize, data loader)
+    ├── components/                       # React 19 UI components
+    ├── app/                              # Next.js App Router pages (/leaderboard, /organizations, etc.)
+    └── tests/                            # TypeScript unit test suite
+
+
+4. DATA PIPELINE & COLLECTOR ARCHITECTURE
+--------------------------------------------------------------------------------
+A. collector/client.py (UnstopClient):
+   - Handles public Unstop API requests with standard headers.
+   - Throttling & Bounded Exponential Backoff:
+     * Handles 429 Too Many Requests: reads Retry-After or applies (1.5 ** attempt) + 1.0s.
+     * Handles 5xx Server Errors and Timeouts: retries up to 3 times.
+
+B. collector/parser.py:
+   - Accommodates varied payload structures: top-level data lists or nested pagination dicts.
+   - Extracts team IDs, names, ranks, scores, submission finish times, proctoring metrics.
+   - Extracts player names and organizations (handling both 'organisation' and 'organization').
+
+C. collector/normalizer.py:
+   - Canonicalizes institution names (lowercasing, whitespace collapsing, Unicode quotes standardizing, trailing punctuation trimming).
+   - Generates 4 relational entities (Teams, Players, Organizations, Team-Organizations).
+   - Cross-college support: Teams with multi-college members appear under all affiliated colleges.
+
+D. collector/storage.py:
+   - Deterministic naming for raw JSON snapshots: data/raw/page_0001.json, etc.
+   - Exports UTF-8 CSV files with explicit headers to data/processed/.
+
+E. collector/fetch_all.py (CLI Orchestrator):
+   - Resumable sequential fetcher.
+   - Supports: --start-page, --max-pages, --force, --regenerate-only, --delay.
+
+
+5. RELATIONAL DATA SCHEMAS
+--------------------------------------------------------------------------------
+1. teams.csv:
+   [team_id, team_name, rank, score, finish_time, has_played, proctoring_score, is_blacklisted]
+
+2. players.csv:
+   [team_id, team_name, player_name, organization, player_index]
+
+3. organizations.csv:
+   [organization, normalized_organization, team_count, player_count]
+
+4. team_organizations.csv:
+   [team_id, team_name, organization, normalized_organization]
+
+5. collection_metadata.json:
+   [challenge_id, collection_started_at, collection_finished_at, pages_requested,
+    pages_successful, pages_failed, records_collected, unique_teams, unique_players,
+    unique_organizations, complete, failed_pages, source_endpoint]
+
+
+6. FLASK WEB SERVER (app.py)
+--------------------------------------------------------------------------------
+- In-memory data store (LeaderboardDataStore) loaded once at startup.
+- Fast O(1) team lookups and in-memory substring/exact organization queries.
+- Endpoints:
+  * GET /                               : Main dashboard & leaderboard table
+  * GET /search?q=...&exact=0|1&page=...: Filter teams by organization
+  * GET /team/<team_id>                 : Team profile and member roster
+  * GET /api/organizations?q=...        : Autocomplete JSON endpoint
+  * GET /api/teams?q=...                : Filtered teams JSON API
+  * GET /health                         : Server health and memory stats
+
+
+7. NEXT.JS 15 APPLICATION (web/)
+--------------------------------------------------------------------------------
+- Built with Next.js 15, React 19, TypeScript, and Tailwind CSS.
+- Ingestion step (`npm run prepare-data`) creates optimized JSON bundles in `web/data/generated/`.
+- Routes:
+  * /                           : Dashboard with metrics, debounced search, popular chips
+  * /leaderboard                : Full ranked leaderboard with pagination
+  * /organizations              : Directory of all 1,350+ institutions
+  * /organizations/[slug]       : Deep-dive university profile page
+  * /teams/[teamId]             : Team profile with roster and badges
+  * /compare                    : Side-by-side college performance comparison
+  * /cross-college              : Analytics on inter-university team collaborations
+  * /api/search                 : REST search API
+  * /api/teams/[teamId]         : REST team API
+
+
+8. QUICKSTART COMMANDS
+--------------------------------------------------------------------------------
+# 1. Run Python Tests
+python -m pytest -v
+
+# 2. Run Flask Web Application
+python app.py
+# -> http://127.0.0.1:5000
+
+# 3. Harvest/Regenerate Data
+python -m collector.fetch_all --regenerate-only
+
+# 4. Run Next.js 15 Application
+cd web
+npm install
+npm run prepare-data
+npm run dev
+# -> http://localhost:3000
+
+================================================================================
+END OF PROJECT CONTEXT FILE
+================================================================================

@@ -18,16 +18,16 @@ export function StatCard({
   badgeVariant = "info",
 }: StatCardProps) {
   return (
-    <div className="rounded-md border border-[#E3E3E3] bg-white p-4 shadow-subtle">
+    <div className="rounded-lg border border-[#E3E3E3] bg-white p-3.5 sm:p-4 shadow-subtle">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold text-[#5F6368]">
+        <span className="text-xs font-semibold text-[#5F6368] truncate">
           {title}
         </span>
-        <Icon className="h-4 w-4 text-[#767676]" />
+        <Icon className="h-4 w-4 text-[#767676] shrink-0 ml-1" />
       </div>
 
-      <div className="mt-2 flex items-baseline gap-2">
-        <span className="text-2xl font-bold tracking-tight text-[#111111] font-mono">
+      <div className="mt-2 flex items-baseline gap-2 flex-wrap">
+        <span className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111] font-mono">
           {typeof value === "number" ? value.toLocaleString() : value}
         </span>
         {badge && (
@@ -45,7 +45,7 @@ export function StatCard({
         )}
       </div>
 
-      <p className="mt-0.5 text-[11px] text-[#767676]">{subtitle}</p>
+      <p className="mt-0.5 text-[10px] sm:text-[11px] text-[#767676] truncate">{subtitle}</p>
     </div>
   );
 }

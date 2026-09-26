@@ -10,23 +10,23 @@ interface TeamMembersProps {
 export function TeamMembers({ players }: TeamMembersProps) {
   if (!players || players.length === 0) {
     return (
-      <div className="rounded-md border border-[#E3E3E3] bg-[#F7F7F7] p-4 text-center text-xs text-[#767676]">
+      <div className="rounded-lg border border-[#E3E3E3] bg-[#F7F7F7] p-4 text-center text-xs text-[#767676]">
         No individual member data registered for this team.
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
       {players.map((player, idx) => {
         const orgSlug = player.organization ? slugifyOrganization(player.organization) : null;
 
         return (
           <div
             key={`${player.name}-${idx}`}
-            className="flex items-start gap-3 rounded-md border border-[#E3E3E3] bg-white p-3 shadow-subtle"
+            className="flex items-start gap-2.5 rounded-lg border border-[#E3E3E3] bg-white p-3 shadow-subtle"
           >
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]/50">
               <User className="h-4 w-4" />
             </div>
 
@@ -38,7 +38,7 @@ export function TeamMembers({ players }: TeamMembersProps) {
                 {orgSlug && player.organization ? (
                   <Link
                     href={`/organizations/${orgSlug}`}
-                    className="truncate text-[#007185] hover:text-[#C7511F] hover:underline transition-colors"
+                    className="truncate text-[#007185] hover:text-[#E47911] hover:underline transition-colors"
                   >
                     {player.organization}
                   </Link>

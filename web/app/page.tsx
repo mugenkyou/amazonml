@@ -9,6 +9,7 @@ import { searchTeams } from "@/lib/search";
 interface PageProps {
   searchParams: Promise<{
     q?: string;
+    mode?: string;
     exact?: string;
     page?: string;
   }>;
@@ -17,6 +18,8 @@ interface PageProps {
 export default async function HomePage({ searchParams }: PageProps) {
   const params = await searchParams;
   const query = params.q || "";
+  const modeParam = params.mode as any;
+  const mode = ["all", "college", "person", "team"].includes(modeParam) ? modeParam : "all";
   const exact = params.exact === "1" || params.exact === "true";
   const page = parseInt(params.page || "1", 10) || 1;
 
@@ -25,73 +28,75 @@ export default async function HomePage({ searchParams }: PageProps) {
   const popularOrganizations = allOrganizations.slice(0, 6);
 
   const searchResponse = searchTeams(query, {
+    mode,
     exact,
     page,
     pageSize: query ? 24 : 6,
   });
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8">
       {/* Hero Section with subtle warm accent */}
-      <section className="relative mt-4 rounded-xl border border-[#E3E3E3] bg-gradient-to-b from-[#FFFDF9] via-white to-white px-4 pt-8 pb-6 text-center sm:px-8 sm:pt-10 sm:pb-7 shadow-xs">
+      <section className="relative mt-3 sm:mt-4 rounded-xl border border-[#E3E3E3] bg-gradient-to-b from-[#FFFDF9] via-white to-white px-3.5 py-6 sm:px-8 sm:py-8 text-center shadow-xs">
         {/* Subtle orange top accent line */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[3px] w-24 bg-[#FF9900] rounded-b-full" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[3px] w-20 sm:w-28 bg-[#FF9900] rounded-b-full" />
 
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-3 py-1 text-xs font-semibold text-[#E47911] mb-3">
+        <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-semibold text-[#E47911] mb-2 sm:mb-3">
           <Award className="h-3.5 w-3.5" />
           <span>Official Contest Snapshot • 3,398 Teams</span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#111111]">
+        <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#111111] leading-tight">
           Explore the Amazon ML Challenge Leaderboard
         </h1>
-        <p className="mt-2 text-xs sm:text-sm text-[#5F6368] max-w-xl mx-auto">
+        <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-[#5F6368] max-w-xl mx-auto leading-relaxed">
           Search teams, organizations, rankings, scores, and participant rosters from the offline competition dataset.
         </p>
 
         {/* Primary Search Experience */}
-        <div className="mt-5 max-w-2xl mx-auto">
+        <div className="mt-4 sm:mt-5 max-w-2xl mx-auto">
           <Suspense
             fallback={
-              <div className="h-10 w-full animate-pulse rounded-md bg-[#F7F7F7] border border-[#D5D5D5]" />
+              <div className="h-11 w-full animate-pulse rounded-lg bg-[#F7F7F7] border border-[#D5D5D5]" />
             }
           >
             <SearchBar
               initialQuery={query}
+              initialMode={mode}
               initialExact={exact}
               popularOrganizations={popularOrganizations}
             />
           </Suspense>
         </div>
 
-        {/* Compact Horizontal Statistics Strip */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-[#5F6368] font-mono border-t border-[#EAEAEA] pt-4 max-w-3xl mx-auto">
-          <span className="flex items-center gap-1.5 bg-[#FFF7E6] border border-[#F5C26B] px-2.5 py-1 rounded-md">
-            <Trophy className="h-3.5 w-3.5 text-[#FF9900]" />
-            <strong className="text-[#111111]">{metadata.uniqueTeams.toLocaleString()}</strong> Teams
-          </span>
-          <span className="flex items-center gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-1 rounded-md">
-            <Users className="h-3.5 w-3.5 text-[#5F6368]" />
-            <strong className="text-[#111111]">{metadata.uniquePlayers.toLocaleString()}</strong> Participants
-          </span>
-          <span className="flex items-center gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-1 rounded-md">
-            <Building2 className="h-3.5 w-3.5 text-[#5F6368]" />
-            <strong className="text-[#111111]">{metadata.uniqueOrganizations.toLocaleString()}</strong> Colleges
-          </span>
-          <span className="inline-flex items-center gap-1 text-[#067D62] font-sans font-medium px-2 py-1">
-            <CheckCircle2 className="h-3.5 w-3.5" />
-            <span>Complete Snapshot</span>
-          </span>
+        {/* Statistics Strip: 2x2 grid on mobile, inline flex on sm+ */}
+        <div className="mt-5 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-[#5F6368] font-mono border-t border-[#EAEAEA] pt-4 max-w-3xl mx-auto">
+          <div className="flex items-center justify-center gap-1.5 bg-[#FFF7E6] border border-[#F5C26B] px-2 py-1.5 rounded-md">
+            <Trophy className="h-3.5 w-3.5 text-[#FF9900] shrink-0" />
+            <span className="truncate"><strong className="text-[#111111]">{metadata.uniqueTeams.toLocaleString()}</strong> Teams</span>
+          </div>
+          <div className="flex items-center justify-center gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-1.5 rounded-md">
+            <Users className="h-3.5 w-3.5 text-[#5F6368] shrink-0" />
+            <span className="truncate"><strong className="text-[#111111]">{metadata.uniquePlayers.toLocaleString()}</strong> Players</span>
+          </div>
+          <div className="flex items-center justify-center gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-1.5 rounded-md">
+            <Building2 className="h-3.5 w-3.5 text-[#5F6368] shrink-0" />
+            <span className="truncate"><strong className="text-[#111111]">{metadata.uniqueOrganizations.toLocaleString()}</strong> Colleges</span>
+          </div>
+          <div className="flex items-center justify-center gap-1 text-[#067D62] font-sans font-medium px-2 py-1.5 bg-[#ECFDF3] border border-[#A6F4C5] rounded-md">
+            <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+            <span className="text-[11px] sm:text-xs">Complete</span>
+          </div>
         </div>
       </section>
 
       {/* Feature Navigation Cards with Orange Identity */}
       {!query && (
-        <section className="my-6">
-          <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-3">
+        <section className="my-5 sm:my-6">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
             <Link
               href="/leaderboard"
-              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
+              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-3.5 sm:p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
             >
               <div>
                 <div className="flex items-center justify-between">
@@ -100,7 +105,7 @@ export default async function HomePage({ searchParams }: PageProps) {
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
                 </div>
-                <h3 className="mt-3 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
+                <h3 className="mt-2.5 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
                   Full Leaderboard
                 </h3>
                 <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
@@ -111,7 +116,7 @@ export default async function HomePage({ searchParams }: PageProps) {
 
             <Link
               href="/organizations"
-              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
+              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-3.5 sm:p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
             >
               <div>
                 <div className="flex items-center justify-between">
@@ -120,7 +125,7 @@ export default async function HomePage({ searchParams }: PageProps) {
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
                 </div>
-                <h3 className="mt-3 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
+                <h3 className="mt-2.5 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
                   Organizations Directory
                 </h3>
                 <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
@@ -131,7 +136,7 @@ export default async function HomePage({ searchParams }: PageProps) {
 
             <Link
               href="/cross-college"
-              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
+              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-3.5 sm:p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
             >
               <div>
                 <div className="flex items-center justify-between">
@@ -140,7 +145,7 @@ export default async function HomePage({ searchParams }: PageProps) {
                   </div>
                   <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
                 </div>
-                <h3 className="mt-3 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
+                <h3 className="mt-2.5 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
                   Cross-College Teams
                 </h3>
                 <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
@@ -153,9 +158,9 @@ export default async function HomePage({ searchParams }: PageProps) {
       )}
 
       {/* Top Teams Preview / Results Section */}
-      <section className="mt-6">
+      <section className="mt-5 sm:mt-6">
         {!query && (
-          <div className="flex items-center justify-between border-b border-[#E3E3E3] pb-2.5 mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E3E3E3] pb-2.5 mb-4">
             <h2 className="text-xs font-bold uppercase tracking-wider text-[#111111] flex items-center gap-2">
               <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
                 <Trophy className="h-3.5 w-3.5 text-[#FF9900]" />

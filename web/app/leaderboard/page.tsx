@@ -78,23 +78,23 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
   ];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
+    <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8 pt-4 sm:pt-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
             Contest Leaderboard
           </h1>
-          <p className="text-xs text-[#5F6368] mt-0.5">
+          <p className="text-xs text-[#5F6368] mt-0.5 font-mono">
             Displaying {total.toLocaleString()} teams ranked by official competition score.
           </p>
         </div>
 
         {/* View Toggle */}
-        <div className="flex items-center rounded-md border border-[#D5D5D5] bg-white p-0.5 shadow-sm">
+        <div className="flex items-center rounded-md border border-[#D5D5D5] bg-white p-0.5 shadow-xs self-end sm:self-auto">
           <Link
             href={buildFilterUrl({ view: "table" })}
-            className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold transition-colors ${
+            className={`inline-flex min-h-[32px] items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold transition-colors ${
               view === "table"
                 ? "bg-[#FF9900] text-[#111111]"
                 : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
@@ -105,7 +105,7 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
           </Link>
           <Link
             href={buildFilterUrl({ view: "cards" })}
-            className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold transition-colors ${
+            className={`inline-flex min-h-[32px] items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold transition-colors ${
               view === "cards"
                 ? "bg-[#FF9900] text-[#111111]"
                 : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
@@ -118,47 +118,45 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
       </div>
 
       {/* Filter Toolbar */}
-      <div className="mt-4 rounded-md border border-[#E3E3E3] bg-[#FAFAFA] p-3 shadow-subtle">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          {/* Rank Range Filter */}
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
-              <Trophy className="h-3.5 w-3.5 text-[#E47911]" /> Rank:
-            </span>
-            {rankOptions.map((opt) => (
-              <Link
-                key={opt.value}
-                href={buildFilterUrl({ rank: opt.value, page: 1 })}
-                className={`rounded px-2.5 py-1 text-xs font-medium transition-colors ${
-                  rank === opt.value
-                    ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-semibold"
-                    : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
-                }`}
-              >
-                {opt.label}
-              </Link>
-            ))}
-          </div>
+      <div className="mt-3.5 rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-3 shadow-subtle space-y-2.5">
+        {/* Rank Range Filter */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
+            <Trophy className="h-3.5 w-3.5 text-[#E47911]" /> Rank:
+          </span>
+          {rankOptions.map((opt) => (
+            <Link
+              key={opt.value}
+              href={buildFilterUrl({ rank: opt.value, page: 1 })}
+              className={`inline-flex min-h-[32px] items-center rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+                rank === opt.value
+                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-semibold"
+                  : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
+              }`}
+            >
+              {opt.label}
+            </Link>
+          ))}
+        </div>
 
-          {/* Team Size Filter */}
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
-              <Users className="h-3.5 w-3.5 text-[#5F6368]" /> Team Size:
-            </span>
-            {sizeOptions.map((opt) => (
-              <Link
-                key={opt.value}
-                href={buildFilterUrl({ size: opt.value, page: 1 })}
-                className={`rounded px-2.5 py-1 text-xs font-medium transition-colors ${
-                  size === opt.value
-                    ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-semibold"
-                    : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
-                }`}
-              >
-                {opt.label}
-              </Link>
-            ))}
-          </div>
+        {/* Team Size Filter */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-[#EBEBEB]">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
+            <Users className="h-3.5 w-3.5 text-[#5F6368]" /> Team Size:
+          </span>
+          {sizeOptions.map((opt) => (
+            <Link
+              key={opt.value}
+              href={buildFilterUrl({ size: opt.value, page: 1 })}
+              className={`inline-flex min-h-[32px] items-center rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+                size === opt.value
+                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-semibold"
+                  : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
+              }`}
+            >
+              {opt.label}
+            </Link>
+          ))}
         </div>
       </div>
 
@@ -166,7 +164,7 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
       <div className="mt-4">
         {teams.length > 0 ? (
           view === "cards" ? (
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
               {searchResultTeams.map((team) => (
                 <TeamCard key={team.teamId} team={team} />
               ))}
@@ -175,7 +173,7 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
             <TeamTable teams={searchResultTeams} />
           )
         ) : (
-          <div className="rounded-md border border-[#E3E3E3] bg-[#FAFAFA] p-8 text-center text-xs text-[#767676]">
+          <div className="rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-8 text-center text-xs text-[#767676]">
             No teams match the selected filter criteria.
           </div>
         )}
@@ -183,23 +181,23 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex items-center justify-between border-t border-[#E3E3E3] pt-4 mt-6">
-          <span className="text-xs text-[#5F6368]">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-[#E3E3E3] pt-4 mt-6">
+          <span className="text-xs text-[#5F6368] font-mono order-2 sm:order-1">
             Page <strong className="text-[#111111]">{safePage}</strong> of{" "}
             <strong className="text-[#111111]">{totalPages}</strong>
           </span>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 order-1 sm:order-2">
             {safePage > 1 ? (
               <Link
                 href={buildFilterUrl({ page: safePage - 1 })}
-                className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
+                className="inline-flex h-9 items-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-3 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] active:bg-[#FFE0B2] shadow-xs"
               >
                 <ChevronLeft className="h-3.5 w-3.5" />
                 <span>Prev</span>
               </Link>
             ) : (
-              <span className="inline-flex items-center gap-1 rounded border border-[#E3E3E3] bg-[#F7F7F7] px-2.5 py-1 text-xs text-[#A0A0A0] cursor-not-allowed">
+              <span className="inline-flex h-9 items-center gap-1 rounded-md border border-[#E3E3E3] bg-[#F7F7F7] px-3 text-xs text-[#A0A0A0] cursor-not-allowed">
                 <ChevronLeft className="h-3.5 w-3.5" />
                 <span>Prev</span>
               </span>
@@ -208,13 +206,13 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
             {safePage < totalPages ? (
               <Link
                 href={buildFilterUrl({ page: safePage + 1 })}
-                className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0]"
+                className="inline-flex h-9 items-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-3 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] active:bg-[#FFE0B2] shadow-xs"
               >
                 <span>Next</span>
                 <ChevronRight className="h-3.5 w-3.5" />
               </Link>
             ) : (
-              <span className="inline-flex items-center gap-1 rounded border border-[#E3E3E3] bg-[#F7F7F7] px-2.5 py-1 text-xs text-[#A0A0A0] cursor-not-allowed">
+              <span className="inline-flex h-9 items-center gap-1 rounded-md border border-[#E3E3E3] bg-[#F7F7F7] px-3 text-xs text-[#A0A0A0] cursor-not-allowed">
                 <span>Next</span>
                 <ChevronRight className="h-3.5 w-3.5" />
               </span>

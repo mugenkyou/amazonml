@@ -40,9 +40,9 @@ export default async function OrganizationsDirectoryPage({
   const paginatedOrgs = filteredOrgs.slice(startIndex, startIndex + pageSize);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
+    <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8 pt-4 sm:pt-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
             Colleges & Organizations Directory
@@ -60,7 +60,7 @@ export default async function OrganizationsDirectoryPage({
             name="q"
             defaultValue={query}
             placeholder="Search college name..."
-            className="w-full rounded border border-[#D5D5D5] bg-white py-1.5 pl-9 pr-3 text-xs text-[#111111] placeholder-[#767676] outline-none focus:border-[#FF9900]"
+            className="w-full min-h-[40px] rounded-lg border border-[#D5D5D5] bg-white py-2 pl-9 pr-3 text-xs text-[#111111] placeholder-[#767676] outline-none focus:border-[#FF9900]"
           />
         </form>
       </div>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { searchOrganizations, searchTeams } from "../lib/search";
+import { searchOrganizations, searchSuggestions, searchTeams } from "../lib/search";
 import { getAllTeams, getTeamById } from "../lib/data";
 
 describe("Data and Search Engine", () => {
@@ -28,32 +28,65 @@ describe("Data and Search Engine", () => {
   });
 
   it("searches teams by substring organization query", () => {
-    const result = searchTeams("IIT", { page: 1, pageSize: 30 });
+    const result = searchTeams("IIT", { mode: "college", page: 1, pageSize: 30 });
     expect(result.total).toBeGreaterThan(0);
     expect(result.teams.length).toBeGreaterThan(0);
-    // Every matched team must have an organization containing 'iit' or 'indian institute of technology'
     const firstMatch = result.teams[0];
     const hasIIT = firstMatch.normalizedOrganizations.some((o) => o.includes("iit") || o.includes("indian institute of technology"));
     expect(hasIIT).toBe(true);
   });
 
+  it("searches teams by participant / person name", () => {
+    const teams = getAllTeams();
+    const teamWithPlayers = teams.find((t) => t.players && t.players.length > 0 && t.players[0].name);
+    expect(teamWithPlayers).toBeDefined();
+
+    const playerName = teamWithPlayers!.players[0].name;
+    const result = searchTeams(playerName, { mode: "person" });
+
+    expect(result.total).toBeGreaterThan(0);
+    expect(result.teams.some((t) => t.teamId === teamWithPlayers!.teamId)).toBe(true);
+    expect(result.teams[0].matchedPlayers.some((p) => p.name === playerName)).toBe(true);
+  });
+
+  it("searches teams by team name", () => {
+    const teams = getAllTeams();
+    const firstTeam = teams[0];
+    const result = searchTeams(firstTeam.teamName, { mode: "team" });
+
+    expect(result.total).toBeGreaterThan(0);
+    expect(result.teams[0].teamId).toBe(firstTeam.teamId);
+  });
+
+  it("searches across all categories in 'all' mode", () => {
+    const result = searchTeams("IIT", { mode: "all" });
+    expect(result.total).toBeGreaterThan(0);
+  });
+
   it("handles exact match search option", () => {
-    const substringResult = searchTeams("Indian Institute of Technology (IIT), Madras", { exact: false });
-    const exactResult = searchTeams("Indian Institute of Technology (IIT), Madras", { exact: true });
+    const substringResult = searchTeams("Indian Institute of Technology (IIT), Madras", { mode: "college", exact: false });
+    const exactResult = searchTeams("Indian Institute of Technology (IIT), Madras", { mode: "college", exact: true });
 
     expect(exactResult.total).toBeGreaterThan(0);
     expect(exactResult.total).toBeLessThanOrEqual(substringResult.total);
   });
 
-  it("handles non-existent organization search gracefully", () => {
+  it("handles non-existent search gracefully", () => {
     const result = searchTeams("NonExistentUniversityXYZ12345");
     expect(result.total).toBe(0);
     expect(result.teams.length).toBe(0);
   });
 
-  it("provides organization autocomplete suggestions", () => {
-    const suggestions = searchOrganizations("IIT", 5);
-    expect(suggestions.length).toBeGreaterThan(0);
-    expect(suggestions.length).toBeLessThanOrEqual(5);
+  it("provides multi-mode autocomplete suggestions", () => {
+    const collegeSuggestions = searchSuggestions("IIT", "college", 5);
+    expect(collegeSuggestions.length).toBeGreaterThan(0);
+    expect(collegeSuggestions[0].type).toBe("college");
+
+    const personSuggestions = searchSuggestions("a", "person", 5);
+    expect(personSuggestions.length).toBeGreaterThan(0);
+    expect(personSuggestions[0].type).toBe("person");
+
+    const allSuggestions = searchSuggestions("a", "all", 5);
+    expect(allSuggestions.length).toBeGreaterThan(0);
   });
 });

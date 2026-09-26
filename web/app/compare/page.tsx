@@ -36,9 +36,9 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
   const initialComparisons = compareOrganizations(slugs);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6">
+    <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8 pt-4 sm:pt-6">
       {/* Header */}
-      <div className="border-b border-[#E3E3E3] pb-4 mb-6">
+      <div className="border-b border-[#E3E3E3] pb-3.5 mb-5">
         <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
           Organization Comparison
         </h1>

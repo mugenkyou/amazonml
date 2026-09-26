@@ -42,13 +42,27 @@ export interface DatasetMetadata {
   sourceEndpoint: string;
 }
 
+export type SearchMode = "all" | "college" | "person" | "team";
+
+export interface SearchSuggestion {
+  type: "college" | "person" | "team";
+  title: string;
+  subtitle?: string;
+  badge?: string;
+  slug?: string;
+  teamId?: string;
+  queryValue: string;
+}
+
 export interface SearchResultTeam extends Team {
   matchedOrganizations: string[];
   matchedPlayers: Player[];
+  matchedReasons?: string[];
 }
 
 export interface SearchResponse {
   query: string;
+  mode: SearchMode;
   exact: boolean;
   total: number;
   page: number;
