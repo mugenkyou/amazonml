@@ -26,14 +26,14 @@ import type { SearchMode } from "@/lib/types";
 export const metadata: Metadata = {
   title: "Amazon ML Challenge 2026 Leaderboard Explorer • Teams, Colleges & Scores",
   description:
-    "Search and explore the complete Amazon ML Challenge 2026 leaderboard dataset. Discover 3,398 teams, 11,394 participants, and 1,350 participating colleges with full rankings and score distributions.",
+    "Search and explore the complete Amazon ML Challenge 2026 leaderboard dataset. Discover 4,334 teams, 14,480 participants, and 1,546 participating colleges with full rankings and score distributions.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Amazon ML Challenge 2026 Leaderboard Explorer",
     description:
-      "Independent search engine and analytics platform for 3,398 teams and 1,350 colleges in the Amazon ML Challenge 2026.",
+      "Independent search engine and analytics platform for 4,334 teams and 1,546 colleges in the Amazon ML Challenge 2026.",
     url: SITE_URL,
   },
 };
@@ -80,7 +80,7 @@ export default async function HomePage({ searchParams }: PageProps) {
 
         <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-semibold text-[#E47911] mb-2 sm:mb-3">
           <Award className="h-3.5 w-3.5" />
-          <span>Official Contest Snapshot • 3,398 Teams • 1,350 Colleges</span>
+          <span>Official Contest Snapshot • 4,334 Teams • 1,546 Colleges</span>
         </div>
 
         <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#111111] leading-tight">
@@ -152,7 +152,7 @@ export default async function HomePage({ searchParams }: PageProps) {
                   Full Leaderboard Standings
                 </h3>
                 <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
-                  Filter all 3,398 teams by rank tiers (Top 10, 25, 50, 100) and roster sizes.
+                  Filter all 4,334 teams by rank tiers (Top 10, 25, 50, 100) and roster sizes.
                 </p>
               </div>
             </Link>
@@ -172,7 +172,7 @@ export default async function HomePage({ searchParams }: PageProps) {
                   College & University Directory
                 </h3>
                 <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
-                  Browse 1,350 academic institutions with team counts, scores, and best ranks.
+                  Browse 1,546 academic institutions with team counts, scores, and best ranks.
                 </p>
               </div>
             </Link>
@@ -214,7 +214,7 @@ export default async function HomePage({ searchParams }: PageProps) {
               href="/leaderboard"
               className="inline-flex items-center gap-1 text-xs font-semibold text-[#007185] hover:text-[#E47911] hover:underline"
             >
-              <span>View Full Leaderboard (3,398 Teams)</span>
+              <span>View Full Leaderboard (4,334 Teams)</span>
               <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
@@ -247,7 +247,7 @@ export default async function HomePage({ searchParams }: PageProps) {
                 <span>Multi-Category Search</span>
               </div>
               <p>
-                Search across all 3,398 teams, 11,394 student participants by name, or 1,350 universities with instant in-memory matching and exact phrase filters.
+                Search across all 4,334 teams, 14,480 student participants by name, or 1,546 universities with instant in-memory matching and exact phrase filters.
               </p>
             </div>
 

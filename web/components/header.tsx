@@ -92,7 +92,7 @@ export function Header() {
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="hidden lg:flex items-center gap-1.5 rounded bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-1 text-[11px] font-medium text-[#5F6368]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#067D62]" />
-            <span>Local Dataset (3,398 Teams)</span>
+            <span>Local Dataset (4,334 Teams)</span>
           </div>
 
           {/* Accessible 44px+ touch target button */}
@@ -163,7 +163,7 @@ export function Header() {
             <div className="border-t border-[#EAEAEA] bg-[#FAFAFA] px-4 py-3 text-xs text-[#5F6368] flex items-center justify-between">
               <span className="flex items-center gap-1.5 font-mono text-[11px]">
                 <span className="h-2 w-2 rounded-full bg-[#067D62]" />
-                <span>3,398 Teams Indexed</span>
+                <span>4,334 Teams Indexed</span>
               </span>
               <span className="font-mono text-[11px] text-[#767676]">
                 Challenge ID: 290344

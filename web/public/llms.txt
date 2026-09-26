@@ -9,9 +9,9 @@
 - Source Platform: Public Unstop Leaderboard Data
 - Collection Scope: 114/114 complete leaderboard pages (100% complete historical snapshot)
 - Dataset Dimensions:
-  - 3,398 total teams & submission records
-  - 11,394 individual participant profiles
-  - 1,350 unique academic institutions & organizations
+  - 4,334 total teams & submission records
+  - 14,480 individual participant profiles
+  - 1,546 unique academic institutions & organizations
 
 ## Independence & Data Disclaimer
 - Amazon ML Challenge Explorer is an independent data analysis and exploration tool built by researchers and participants.
@@ -21,8 +21,8 @@
 
 ## Primary Routes & Navigation
 - `/` - Main Explorer Dashboard: Universal search across teams, participant names, and colleges with quick filters.
-- `/leaderboard` - Official Contest Standings: Complete 3,398-team rankings with filters by rank tier (Top 10, Top 25, Top 50, Top 100) and team size.
-- `/organizations` - Institutional Directory: Alphabetical and ranked index of 1,350 participating colleges and universities.
+- `/leaderboard` - Official Contest Standings: Complete 4,334-team rankings with filters by rank tier (Top 10, Top 25, Top 50, Top 100) and team size.
+- `/organizations` - Institutional Directory: Alphabetical and ranked index of 1,546 participating colleges and universities.
 - `/organizations/[slug]` - College Profile: Entity page showing total student teams, participant roster, best rank, score distribution, and team links for a specific university.
 - `/teams/[teamId]` - Team Profile: Entity page detailing official rank, score, finish timestamp, participant names, and university affiliations.
 - `/compare` - Institutional Comparison Tool: Multi-university comparison of participation volume, top ranks, and score percentiles.

@@ -11,14 +11,14 @@ import type { SearchResultTeam } from "@/lib/types";
 export const metadata: Metadata = {
   title: "Amazon ML Challenge 2026 Leaderboard • Full Official Standings & Scores",
   description:
-    "Explore the complete 3,398-team rankings and official scores from the Amazon ML Challenge 2026. Filter standings by rank tiers (Top 10, Top 25, Top 50, Top 100) and team roster size.",
+    "Explore the complete 4,334-team rankings and official scores from the Amazon ML Challenge 2026. Filter standings by rank tiers (Top 10, Top 25, Top 50, Top 100) and team roster size.",
   alternates: {
     canonical: "/leaderboard",
   },
   openGraph: {
     title: "Amazon ML Challenge 2026 Official Standings & Leaderboard",
     description:
-      "Browse official standings, scores, team rosters, and finish times for all 3,398 teams in the Amazon ML Challenge.",
+      "Browse official standings, scores, team rosters, and finish times for all 4,334 teams in the Amazon ML Challenge.",
     url: `${SITE_URL}/leaderboard`,
   },
 };

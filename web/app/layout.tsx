@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} • Leaderboard, College Rankings & Team Rosters`,
   },
   description:
-    "Explore and search the complete Amazon ML Challenge 2026 leaderboard dataset. Find 3,398 teams, 11,394 student participants, 1,350 colleges, institutional rankings, and score distributions.",
+    "Explore and search the complete Amazon ML Challenge 2026 leaderboard dataset. Find 4,334 teams, 14,480 student participants, 1,546 colleges, institutional rankings, and score distributions.",
   keywords: [
     "Amazon ML Challenge 2026 leaderboard",
     "Amazon ML Challenge leaderboard",
@@ -73,13 +73,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} • Leaderboard & College Performance`,
     description:
-      "Search and analyze 3,398 teams and 1,350 colleges from the Amazon ML Challenge 2026 leaderboard snapshot.",
+      "Search and analyze 4,334 teams and 1,546 colleges from the Amazon ML Challenge 2026 leaderboard snapshot.",
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} • Leaderboard & College Performance`,
     description:
-      "Search and analyze 3,398 teams and 1,350 colleges from the Amazon ML Challenge 2026 leaderboard snapshot.",
+      "Search and analyze 4,334 teams and 1,546 colleges from the Amazon ML Challenge 2026 leaderboard snapshot.",
   },
 };
 

@@ -8,16 +8,16 @@ import { JsonLd } from "@/components/json-ld";
 import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Amazon ML Challenge 2026 College & University Directory (1,350 Institutions)",
+  title: "Amazon ML Challenge 2026 College & University Directory (1,546 Institutions)",
   description:
-    "Explore the complete index of 1,350 colleges, universities, and technical institutes participating in the Amazon ML Challenge 2026. View team counts, student rosters, rankings, and performance metrics.",
+    "Explore the complete index of 1,546 colleges, universities, and technical institutes participating in the Amazon ML Challenge 2026. View team counts, student rosters, rankings, and performance metrics.",
   alternates: {
     canonical: "/organizations",
   },
   openGraph: {
     title: "Amazon ML Challenge 2026 Colleges & Universities Index",
     description:
-      "Directory of 1,350 participating academic institutions in the Amazon ML Challenge with full student team rosters and rankings.",
+      "Directory of 1,546 participating academic institutions in the Amazon ML Challenge with full student team rosters and rankings.",
     url: `${SITE_URL}/organizations`,
   },
 };
@@ -76,7 +76,7 @@ export default async function OrganizationsDirectoryPage({
             Colleges & Universities Directory
           </h1>
           <p className="text-xs text-[#5F6368] mt-0.5">
-            Discover {total.toLocaleString()} academic institutions represented across 3,398 teams in the Amazon ML Challenge.
+            Discover {total.toLocaleString()} academic institutions represented across 4,334 teams in the Amazon ML Challenge.
           </p>
         </div>
 
