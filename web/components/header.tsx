@@ -27,10 +27,10 @@ export function Header() {
           </div>
           <div className="flex items-baseline gap-2">
             <span className="text-sm sm:text-base font-bold tracking-tight text-[#111111]">
-              Unstop ML Explorer
+              Amazon ML Challenge Explorer
             </span>
             <span className="hidden text-[11px] font-mono text-[#767676] sm:inline-block">
-              Contest 290344
+              Challenge 290344
             </span>
           </div>
         </Link>

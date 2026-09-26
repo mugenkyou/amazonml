@@ -18,14 +18,14 @@ const fontMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Unstop ML Leaderboard Explorer",
-    default: "Unstop ML Challenge Leaderboard & Organization Explorer",
+    template: "%s | Amazon ML Challenge Explorer",
+    default: "Amazon ML Challenge Explorer • Leaderboard & Organization Intelligence",
   },
   description:
-    "Explore the Unstop ML Challenge leaderboard by college or organization. Search IITs, NITs, BITS, VIT, and view official rankings, scores, and team rosters.",
+    "Explore the Amazon ML Challenge leaderboard by college or organization. Search IITs, NITs, BITS, VIT, and view official rankings, scores, and team rosters.",
   keywords: [
-    "Unstop",
-    "ML Challenge",
+    "Amazon ML Challenge",
+    "Amazon ML",
     "Leaderboard",
     "College Ranking",
     "Coding Competition",
@@ -33,18 +33,18 @@ export const metadata: Metadata = {
     "NIT",
     "BITS",
   ],
-  authors: [{ name: "ML Challenge Explorer" }],
+  authors: [{ name: "Amazon ML Challenge Explorer" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://unstop-leaderboard.local",
-    siteName: "Unstop ML Leaderboard Explorer",
-    title: "Unstop ML Challenge Leaderboard & Organization Explorer",
+    url: "https://amazonml-leaderboard.local",
+    siteName: "Amazon ML Challenge Explorer",
+    title: "Amazon ML Challenge Explorer",
     description: "Search and filter ML Challenge teams by college and organization.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Unstop ML Challenge Leaderboard Explorer",
+    title: "Amazon ML Challenge Explorer",
     description: "Search and filter ML Challenge teams by college and organization.",
   },
 };

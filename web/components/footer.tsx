@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 text-center sm:flex-row sm:text-left sm:px-6 lg:px-8">
         <div>
           <p className="text-xs font-semibold text-[#111111]">
-            Unstop ML Challenge Leaderboard Explorer
+            Amazon ML Challenge Explorer
           </p>
           <p className="text-[11px] text-[#767676] font-mono mt-0.5">
             Challenge ID: <code>{meta.challengeId}</code> • Offline Processed Data Snapshot
