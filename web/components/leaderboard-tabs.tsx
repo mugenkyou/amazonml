@@ -1,29 +1,31 @@
 import Link from "next/link";
-import { Trophy, Building2 } from "lucide-react";
+import { Trophy, Building2, GitFork } from "lucide-react";
 
 interface LeaderboardTabsProps {
-  activeTab: "teams" | "colleges";
-  collegeCount?: number;
+  activeTab: "teams" | "colleges" | "inter-college";
   teamCount?: number;
+  collegeCount?: number;
+  interCollegeCount?: number;
 }
 
 export function LeaderboardTabs({
   activeTab,
-  collegeCount = 1546,
   teamCount = 4334,
+  collegeCount = 1546,
+  interCollegeCount,
 }: LeaderboardTabsProps) {
   return (
-    <div className="flex items-center gap-2 border-b border-[#E3E3E3] mb-4 overflow-x-auto no-scrollbar">
+    <div className="flex items-center gap-1.5 sm:gap-2 border-b border-[#E3E3E3] mb-4 overflow-x-auto no-scrollbar">
       <Link
         href="/leaderboard"
-        className={`inline-flex items-center gap-2 px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
           activeTab === "teams"
-            ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/30 to-transparent"
+            ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
             : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
         }`}
       >
-        <Trophy className={`h-4 w-4 ${activeTab === "teams" ? "text-[#FF9900]" : "text-[#767676]"}`} />
-        <span>Team Standings</span>
+        <Trophy className={`h-4 w-4 shrink-0 ${activeTab === "teams" ? "text-[#FF9900]" : "text-[#767676]"}`} />
+        <span>Teams</span>
         <span
           className={`rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
             activeTab === "teams"
@@ -36,17 +38,17 @@ export function LeaderboardTabs({
       </Link>
 
       <Link
-        href="/colleges"
-        className={`inline-flex items-center gap-2 px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+        href="/leaderboard/colleges"
+        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
           activeTab === "colleges"
-            ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/30 to-transparent"
+            ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
             : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
         }`}
       >
         <Building2
-          className={`h-4 w-4 ${activeTab === "colleges" ? "text-[#FF9900]" : "text-[#767676]"}`}
+          className={`h-4 w-4 shrink-0 ${activeTab === "colleges" ? "text-[#FF9900]" : "text-[#767676]"}`}
         />
-        <span>College Leaderboard</span>
+        <span>Colleges</span>
         <span
           className={`rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
             activeTab === "colleges"
@@ -56,6 +58,31 @@ export function LeaderboardTabs({
         >
           {collegeCount.toLocaleString()}
         </span>
+      </Link>
+
+      <Link
+        href="/leaderboard/inter-college"
+        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+          activeTab === "inter-college"
+            ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
+            : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
+        }`}
+      >
+        <GitFork
+          className={`h-4 w-4 shrink-0 ${activeTab === "inter-college" ? "text-[#FF9900]" : "text-[#767676]"}`}
+        />
+        <span>Inter-College Teams</span>
+        {interCollegeCount !== undefined && (
+          <span
+            className={`rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
+              activeTab === "inter-college"
+                ? "bg-[#FF9900] text-[#111111]"
+                : "bg-[#F0F0F0] text-[#5F6368]"
+            }`}
+          >
+            {interCollegeCount.toLocaleString()}
+          </span>
+        )}
       </Link>
     </div>
   );

@@ -88,16 +88,45 @@ cp .env.example .env
 
 ---
 
-## Running the Data Collector
+## Synchronizing & Collecting Data
 
-### 1. Collect All Pages from Leaderboard API
+### 1. Full End-to-End Sync (Recommended)
+Fetches the latest live leaderboard data from Unstop, updates raw snapshots in `data/raw/`, rebuilds relational CSVs in `data/processed/`, and compiles Next.js web JSON datasets in `web/data/generated/`:
+
 ```bash
-python -m collector.fetch_all
+# Full live fetch & compile web JSONs
+python sync_data.py
+
+# Force re-fetch all pages from the Unstop API
+python sync_data.py --force
 ```
 
-### 2. Custom Start Page or Options
+### 2. Fast Offline Rebuild (No Network Calls)
+Regenerates all relational CSVs and web JSON artifacts from your local raw JSON snapshots:
+
 ```bash
-# Start from page 1
+python sync_data.py --regenerate-only
+```
+
+### 3. Quick Test Sync
+Fetch and sync only the first *N* pages to quickly verify pipeline health:
+
+```bash
+python sync_data.py --max-pages 5
+```
+
+---
+
+## Granular Data Collection Commands
+
+If you need to run specific low-level collector modules independently:
+
+### 1. Collect Raw Snapshots & Build CSVs
+```bash
+# Sequentially fetch all leaderboard pages
+python -m collector.fetch_all
+
+# Start from a specific page
 python -m collector.fetch_all --start-page 1
 
 # Force re-download of existing raw JSON snapshots
@@ -105,11 +134,16 @@ python -m collector.fetch_all --force
 
 # Custom per-page size
 python -m collector.fetch_all --per-page 30
+
+# Regenerate CSVs only (offline)
+python -m collector.fetch_all --regenerate-only
 ```
 
-### 3. Regenerate CSVs from Existing Raw JSON (Offline / No Network Calls)
+### 2. Sync Web Application Datasets (TypeScript)
+From the `web/` directory:
 ```bash
-python -m collector.fetch_all --regenerate-only
+cd web
+npm run prepare-data
 ```
 
 ---

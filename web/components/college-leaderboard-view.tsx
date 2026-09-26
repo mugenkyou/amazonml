@@ -21,7 +21,9 @@ import {
   Medal,
   Star,
   CheckCircle2,
+  GitFork,
 } from "lucide-react";
+import { LeaderboardTabs } from "@/components/leaderboard-tabs";
 import type {
   CollegeLeaderboardEntry,
   CollegeLeaderboardResult,
@@ -159,6 +161,9 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
 
   return (
     <div className="space-y-5">
+      {/* Leaderboard Tabs Navigation */}
+      <LeaderboardTabs activeTab="colleges" />
+
       {/* Top 3 Champion Podium / Spotlight Cards */}
       {showPodium && (
         <section className="space-y-2.5">
@@ -622,6 +627,15 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                     <span className="font-mono font-bold text-[#111111]">
                       {college.teamCount.toLocaleString()} teams • {college.playerCount} students
                     </span>
+                    {college.crossCollegeTeamCount > 0 && (
+                      <Link
+                        href={`/leaderboard/inter-college?college=${college.slug}`}
+                        className="inline-flex items-center gap-1 text-[10px] text-[#E47911] font-mono font-semibold hover:underline mt-0.5"
+                      >
+                        <GitFork className="h-2.5 w-2.5" />
+                        <span>{college.crossCollegeTeamCount} Inter-College Team{college.crossCollegeTeamCount > 1 ? "s" : ""}</span>
+                      </Link>
+                    )}
                   </div>
 
                   <div className="rounded bg-[#F7F7F7] p-2 border border-[#EAEAEA]">
@@ -763,8 +777,18 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                             {college.name}
                           </Link>
                         </div>
-                        <div className="flex items-center gap-2 mt-0.5 text-[11px] text-[#767676] font-mono">
+                        <div className="flex items-center gap-2 mt-0.5 text-[11px] text-[#767676] font-mono flex-wrap">
                           <span className="truncate">{college.slug}</span>
+                          {college.crossCollegeTeamCount > 0 && (
+                            <Link
+                              href={`/leaderboard/inter-college?college=${college.slug}`}
+                              className="rounded bg-[#FFF3E0] border border-[#F5C27A] px-1 py-0.2 text-[10px] font-bold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-colors inline-flex items-center gap-0.5"
+                              title="View inter-college teams"
+                            >
+                              <GitFork className="h-2.5 w-2.5" />
+                              <span>{college.crossCollegeTeamCount} Inter-College</span>
+                            </Link>
+                          )}
                           {college.top10Count > 0 && (
                             <span className="rounded bg-[#ECFDF3] border border-[#A6F4C5] px-1 py-0.2 text-[10px] font-bold text-[#067D62]">
                               {college.top10Count} in Top 10

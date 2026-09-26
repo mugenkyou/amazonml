@@ -322,6 +322,64 @@ async function prepareData() {
     organizationIndex[normOrg] = Array.from(tidsSet);
   }
 
+  // 8.5 Build Inter-College Teams snapshot
+  const orgByNormMap = new Map<string, Organization>();
+  const orgBySlugMap = new Map<string, Organization>();
+  for (const org of organizationsList) {
+    if (org.normalizedName) orgByNormMap.set(org.normalizedName, org);
+    if (org.slug) orgBySlugMap.set(org.slug, org);
+  }
+
+  const interCollegeTeamsSnapshot = [];
+  for (const team of teamsList) {
+    const rawOrgs: string[] = [];
+    if (team.players && team.players.length > 0) {
+      for (const p of team.players) {
+        if (p.organization?.trim()) rawOrgs.push(p.organization.trim());
+      }
+    }
+    if (rawOrgs.length === 0 && team.organizations && team.organizations.length > 0) {
+      for (const o of team.organizations) {
+        if (o?.trim()) rawOrgs.push(o.trim());
+      }
+    }
+
+    const seenSlugs = new Set<string>();
+    const resolvedOrgs = [];
+
+    for (const raw of rawOrgs) {
+      const norm = normalizeOrganization(raw);
+      const slugGuess = slugifyOrganization(raw);
+      const matched = orgByNormMap.get(norm) || orgBySlugMap.get(slugGuess);
+
+      const orgRef = matched
+        ? { name: matched.name, normalizedName: matched.normalizedName || norm, slug: matched.slug }
+        : { name: raw.trim(), normalizedName: norm, slug: slugGuess };
+
+      if (orgRef.slug && !seenSlugs.has(orgRef.slug)) {
+        seenSlugs.add(orgRef.slug);
+        resolvedOrgs.push(orgRef);
+      }
+    }
+
+    if (resolvedOrgs.length >= 2) {
+      interCollegeTeamsSnapshot.push({
+        teamId: team.teamId,
+        teamName: team.teamName,
+        rank: team.rank,
+        sortRank: team.sortRank,
+        score: team.score,
+        finishTime: team.finishTime,
+        hasPlayed: team.hasPlayed,
+        proctoringScore: team.proctoringScore,
+        isBlacklisted: team.isBlacklisted,
+        players: team.players,
+        organizations: resolvedOrgs,
+        collegeCount: resolvedOrgs.length,
+      });
+    }
+  }
+
   // 9. Write outputs to web/data/generated/
   fs.mkdirSync(OUTPUT_GENERATED_DIR, { recursive: true });
 
@@ -344,6 +402,12 @@ async function prepareData() {
   );
 
   fs.writeFileSync(
+    path.join(OUTPUT_GENERATED_DIR, "inter-college-teams.json"),
+    JSON.stringify(interCollegeTeamsSnapshot, null, 2),
+    "utf-8"
+  );
+
+  fs.writeFileSync(
     path.join(OUTPUT_GENERATED_DIR, "metadata.json"),
     JSON.stringify(metadata, null, 2),
     "utf-8"
@@ -353,6 +417,7 @@ async function prepareData() {
   console.log("Data Snapshot Generation Summary:");
   console.log(`- Teams: ${teamsList.length}`);
   console.log(`- Organizations: ${organizationsList.length}`);
+  console.log(`- Inter-College Teams: ${interCollegeTeamsSnapshot.length}`);
   console.log(`- Org Index entries: ${Object.keys(organizationIndex).length}`);
   console.log(`- Metadata status: ${metadata.complete ? "COMPLETE" : "PARTIAL"}`);
   console.log(`Files generated in: ${OUTPUT_GENERATED_DIR}`);

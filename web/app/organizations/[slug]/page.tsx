@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Building2, Trophy, ArrowLeft, GitCompare, Users, Award, Home } from "lucide-react";
+import { Building2, Trophy, ArrowLeft, GitCompare, Users, Award, Home, GitFork, ArrowRight } from "lucide-react";
 import { getAllOrganizations } from "@/lib/data";
 import { getOrganizationStats } from "@/lib/analytics";
+import { getInterCollegeStatsForOrganization } from "@/lib/inter-college";
 import { TeamCard } from "@/components/team-card";
 import { ScoreDistribution } from "@/components/score-distribution";
 import { JsonLd } from "@/components/json-ld";
@@ -71,6 +72,8 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
     notFound();
   }
 
+  const interCollegeStats = getInterCollegeStatsForOrganization(slug);
+
   const searchResultTeams: SearchResultTeam[] = stats.teams.map((t) => ({
     ...t,
     matchedOrganizations: [stats.organization.name],
@@ -115,13 +118,25 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
           <span>Back to All Colleges</span>
         </Link>
 
-        <Link
-          href={`/compare?orgs=${stats.organization.slug}`}
-          className="inline-flex min-h-[36px] items-center justify-center gap-1.5 rounded-md border border-[#F5C26B] bg-[#FFF3E0] px-3.5 py-1.5 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] active:bg-[#FFE0B2] transition-all shadow-xs self-start sm:self-auto"
-        >
-          <GitCompare className="h-3.5 w-3.5" />
-          <span>Compare College</span>
-        </Link>
+        <div className="flex flex-wrap items-center gap-2">
+          {interCollegeStats.interCollegeTeamCount > 0 && (
+            <Link
+              href={`/leaderboard/inter-college?college=${stats.organization.slug}`}
+              className="inline-flex min-h-[36px] items-center justify-center gap-1.5 rounded-md border border-[#F5C26B] bg-[#FFF3E0] px-3 py-1.5 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] active:bg-[#FFE0B2] transition-all shadow-xs"
+            >
+              <GitFork className="h-3.5 w-3.5" />
+              <span>View Inter-College Teams ({interCollegeStats.interCollegeTeamCount}) →</span>
+            </Link>
+          )}
+
+          <Link
+            href={`/compare?orgs=${stats.organization.slug}`}
+            className="inline-flex min-h-[36px] items-center justify-center gap-1.5 rounded-md border border-[#D5D5D5] bg-white px-3 py-1.5 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#F7F7F7] active:bg-[#EAEAEA] transition-all shadow-xs"
+          >
+            <GitCompare className="h-3.5 w-3.5 text-[#5F6368]" />
+            <span>Compare College</span>
+          </Link>
+        </div>
       </div>
 
       {/* Organization Header Card */}
@@ -140,7 +155,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
           </div>
         </div>
 
-        {/* Compact Metric Strip */}
+        {/* Metric Strip (Including Inter-College Teams Metric) */}
         <div className="mt-4 sm:mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6 border-t border-[#EAEAEA] pt-3.5">
           <div className="rounded-md bg-[#FFF7E6] border border-[#F5C26B]/50 p-2 sm:p-2.5">
             <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
@@ -171,19 +186,28 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
 
           <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2 sm:p-2.5">
             <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-              Best Score
+              Inter-College Teams
             </span>
-            <div className="mt-0.5 text-sm sm:text-base font-bold font-mono text-[#111111]">
-              {stats.bestScore !== null ? stats.bestScore.toFixed(6) : "0.000000"}
+            <div className="mt-0.5 text-sm sm:text-base font-bold font-mono text-[#007185] flex items-center justify-between">
+              <span>{interCollegeStats.interCollegeTeamCount}</span>
+              {interCollegeStats.interCollegeTeamCount > 0 && (
+                <Link
+                  href={`/leaderboard/inter-college?college=${stats.organization.slug}`}
+                  className="text-[10px] text-[#E47911] hover:underline font-sans font-semibold"
+                  title="View inter-college teams"
+                >
+                  View →
+                </Link>
+              )}
             </div>
           </div>
 
           <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2 sm:p-2.5">
             <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-              Average Score
+              Best Score
             </span>
             <div className="mt-0.5 text-sm sm:text-base font-bold font-mono text-[#111111]">
-              {stats.averageScore !== null ? stats.averageScore.toFixed(6) : "—"}
+              {stats.bestScore !== null ? stats.bestScore.toFixed(6) : "0.000000"}
             </div>
           </div>
 

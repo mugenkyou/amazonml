@@ -78,12 +78,21 @@ web/
 npm install
 ```
 
-### 2. Prepare Web Data Snapshot
-When new batch data is collected via the Python collector, update the web data snapshot:
+### 2. Synchronize & Prepare Web Data Snapshots
+To run the full end-to-end data synchronization (Live API -> CSVs -> Web JSONs):
+```bash
+# From project root:
+python sync_data.py
+
+# Or from web/ directory:
+npm run sync
+```
+
+To regenerate the web JSON snapshots from existing CSVs without fetching from the network:
 ```bash
 npm run prepare-data
 ```
-This reads `../data/processed/*.csv` and generates optimized JSON files in `web/data/generated/`.
+This reads `../data/processed/*.csv` and outputs optimized JSON files into `web/data/generated/`.
 
 ### 3. Run Development Server
 ```bash

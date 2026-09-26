@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award, Home } from "lucide-react";
+import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award, Home, GitFork } from "lucide-react";
 import { getAllTeams, getTeamById } from "@/lib/data";
 import { slugifyOrganization } from "@/lib/normalize";
+import { isInterCollegeTeam } from "@/lib/inter-college";
 import { TeamMembers } from "@/components/team-members";
 import { JsonLd } from "@/components/json-ld";
 import {
@@ -72,6 +73,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
   const rankNum = team.rank || "—";
   const isTopRank = rankNum === "1";
   const isTop3 = ["1", "2", "3"].includes(rankNum);
+  const isInterCollege = isInterCollegeTeam(team);
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", item: "/" },
@@ -95,12 +97,20 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
         <Link href="/leaderboard" className="hover:text-[#E47911]">
           Leaderboard
         </Link>
+        {isInterCollege && (
+          <>
+            <span>/</span>
+            <Link href="/leaderboard/inter-college" className="hover:text-[#E47911]">
+              Inter-College Teams
+            </Link>
+          </>
+        )}
         <span>/</span>
         <span className="font-semibold text-[#111111] truncate max-w-xs">{team.teamName}</span>
       </nav>
 
       {/* Back Navigation */}
-      <div className="mb-3.5">
+      <div className="mb-3.5 flex items-center justify-between">
         <Link
           href="/leaderboard"
           className="inline-flex min-h-[36px] items-center gap-1.5 text-xs font-semibold text-[#007185] hover:text-[#E47911] hover:underline transition-colors"
@@ -108,6 +118,16 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>Back to Leaderboard Standings</span>
         </Link>
+
+        {isInterCollege && (
+          <Link
+            href="/leaderboard/inter-college"
+            className="inline-flex min-h-[32px] items-center gap-1 text-xs font-semibold text-[#E47911] hover:underline"
+          >
+            <GitFork className="h-3.5 w-3.5" />
+            <span>Explore Inter-College Standings →</span>
+          </Link>
+        )}
       </div>
 
       {/* Main Team Profile Card */}
@@ -127,9 +147,17 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             </span>
 
             <div className="min-w-0 flex-1">
-              <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[#111111] leading-tight break-words">
-                {team.teamName}
-              </h1>
+              <div className="flex flex-wrap items-center gap-2">
+                <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[#111111] leading-tight break-words">
+                  {team.teamName}
+                </h1>
+                {isInterCollege && (
+                  <span className="inline-flex items-center gap-1 rounded bg-[#FFF3E0] border border-[#F5C26B] px-2 py-0.5 text-[10px] font-bold text-[#E47911] font-mono uppercase tracking-wider shadow-2xs">
+                    <GitFork className="h-3 w-3 text-[#FF9900]" />
+                    <span>INTER-COLLEGE TEAM</span>
+                  </span>
+                )}
+              </div>
               <p className="text-[10px] sm:text-xs text-[#767676] font-mono mt-0.5">
                 Contest Team ID: <code>{team.teamId}</code> • Challenge 2026
               </p>
@@ -189,14 +217,25 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
         </div>
       </div>
 
-      {/* Organizations Represented */}
+      {/* Participating Colleges / Academic Institutions Represented */}
       <div className="mt-5 sm:mt-6 rounded-lg border border-[#E3E3E3] bg-white p-4 sm:p-5 shadow-subtle">
-        <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2 mb-3">
-          <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
-            <Building2 className="h-3.5 w-3.5 text-[#FF9900]" />
-          </div>
-          <span>Academic Institutions Represented ({team.organizations.length})</span>
-        </h2>
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2">
+            <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+              <Building2 className="h-3.5 w-3.5 text-[#FF9900]" />
+            </div>
+            <span>
+              {isInterCollege ? "Participating Colleges" : "Academic Institutions Represented"} (
+              {team.organizations.length})
+            </span>
+          </h2>
+
+          {isInterCollege && (
+            <span className="text-[10px] font-mono text-[#E47911] font-semibold bg-[#FFF3E0] px-2 py-0.5 rounded border border-[#F5C26B]">
+              Multi-College Roster
+            </span>
+          )}
+        </div>
 
         {team.organizations && team.organizations.length > 0 ? (
           <div className="flex flex-wrap gap-1.5">

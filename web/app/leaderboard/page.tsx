@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Users, Trophy, ChevronLeft, ChevronRight, LayoutGrid, Table as TableIcon, Home } from "lucide-react";
+import { LeaderboardTabs } from "@/components/leaderboard-tabs";
 import { filterLeaderboard } from "@/lib/analytics";
 import { TeamCard } from "@/components/team-card";
 import { TeamTable } from "@/components/team-table";
@@ -106,6 +107,9 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
         <span>/</span>
         <span className="font-semibold text-[#111111]">Leaderboard</span>
       </nav>
+
+      {/* Leaderboard Tabs */}
+      <LeaderboardTabs activeTab="teams" />
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5 mb-4">

@@ -31,11 +31,17 @@ export function Footer() {
             <Link href="/leaderboard" className="hover:text-[#E47911] hover:underline transition-colors font-medium">
               Leaderboard
             </Link>
+            <Link href="/leaderboard/colleges" className="hover:text-[#E47911] hover:underline transition-colors font-medium">
+              College Leaderboard
+            </Link>
+            <Link href="/leaderboard/inter-college" className="hover:text-[#E47911] hover:underline transition-colors font-medium">
+              Inter-College Teams
+            </Link>
             <Link href="/organizations" className="hover:text-[#E47911] hover:underline transition-colors font-medium">
               Colleges Directory
             </Link>
             <Link href="/cross-college" className="hover:text-[#E47911] hover:underline transition-colors font-medium">
-              Cross-College Teams
+              Cross-College
             </Link>
             <Link href="/compare" className="hover:text-[#E47911] hover:underline transition-colors font-medium">
               Compare Colleges
