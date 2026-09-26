@@ -5,7 +5,6 @@ import {
   getCollegeLeaderboard,
   type CollegeSortMetric,
 } from "@/lib/college-leaderboard";
-import { LeaderboardTabs } from "@/components/leaderboard-tabs";
 import { CollegeLeaderboardView } from "@/components/college-leaderboard-view";
 import { JsonLd } from "@/components/json-ld";
 import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
@@ -102,13 +101,6 @@ export default async function CollegeLeaderboardPage({
           </div>
         </div>
       </div>
-
-      {/* Shared Navigation Switcher between Teams and Colleges */}
-      <LeaderboardTabs
-        activeTab="colleges"
-        collegeCount={initialResult.summaryStats.totalColleges}
-        teamCount={initialResult.summaryStats.totalTeamsEvaluated}
-      />
 
       {/* Main Interactive Table / Cards / Controls */}
       <CollegeLeaderboardView initialResult={initialResult} />

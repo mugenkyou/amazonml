@@ -405,12 +405,12 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
           <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#067D62] text-white shrink-0">
             <Award className="h-4 w-4" />
           </div>
-          <div className="min-w-0">
-            <span className="text-[10px] uppercase font-bold text-[#067D62] block font-sans">
-              Colleges in Top 10
+          <div className="min-w-0 flex-1">
+            <span className="text-[10px] uppercase font-bold text-[#067D62] block font-sans truncate">
+              In Top 10 Tier
             </span>
-            <span className="text-sm sm:text-base font-bold text-[#067D62] truncate block">
-              {summaryStats.collegesWithTop10} Institutions
+            <span className="text-sm sm:text-base font-bold text-[#067D62] block font-mono truncate">
+              {summaryStats.collegesWithTop10} Colleges
             </span>
           </div>
         </div>
