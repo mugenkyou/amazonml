@@ -1,36 +1,44 @@
-# Amazon ML Challenge Explorer
-> An independent leaderboard explorer, search engine, and institutional analytics platform for the Amazon ML Challenge 2026 dataset.
+# Amazon ML Challenge Explorer (LLM Context & AI Agent Sitemap)
+> An independent leaderboard explorer, universal search engine, and institutional analytics platform for the Amazon ML Challenge 2026 dataset.
 
-## Platform Overview
+## Platform Identity & Overview
 - Website: https://amazonmlchallengeexplorer.vercel.app
 - Challenge Name: Amazon ML Challenge 2026
 - Challenge ID: 290344
-- Competition Type: CodeContest / Machine Learning
-- Source Platform: Public Unstop Leaderboard Data
-- Collection Scope: 114/114 complete leaderboard pages (100% complete historical snapshot)
+- Competition Type: Machine Learning / CodeContest
+- Source Platform: Public Unstop Leaderboard Endpoint
+- Historical Snapshot Scope: 114/114 complete leaderboard pages (100% complete archive)
 - Dataset Dimensions:
-  - 4,334 total teams & submission records
-  - 14,480 individual participant profiles
-  - 1,546 unique academic institutions & organizations
+  - 4,334 total teams and finalized submission records
+  - 14,480 registered student participants
+  - 1,546 unique academic institutions and engineering colleges
 
-## Independence & Data Disclaimer
-- Amazon ML Challenge Explorer is an independent data analysis and exploration tool built by researchers and participants.
-- This platform is NOT affiliated with, endorsed by, or sponsored by Amazon, Unstop, or the official competition organizers.
-- The leaderboard data represents a complete offline historical snapshot of the public leaderboard as finalized during the competition.
-- Metrics such as college aggregates, score distributions, and cross-college team breakdowns are derived directly from the immutable dataset snapshot.
+## Independence & Non-Affiliation Notice
+- Amazon ML Challenge Explorer is an independent data analysis and community exploration tool.
+- This platform is NOT affiliated with, maintained by, endorsed by, or sponsored by Amazon, Unstop, or official competition organizers.
+- The leaderboard data represents an immutable historical snapshot collected from the public competition leaderboard.
+- Institutional metrics (such as college rankings, score distributions, and inter-college team detection) are derived analytically from the snapshot dataset.
 
-## Primary Routes & Navigation
-- `/` - Main Explorer Dashboard: Universal search across teams, participant names, and colleges with quick filters.
-- `/leaderboard` - Official Team Standings: Complete 4,334-team rankings with filters by rank tier (Top 10, Top 25, Top 50, Top 100) and team size.
-- `/leaderboard/colleges` - College Leaderboard: Analytical ranking of 1,546 colleges by overall performance, best team rank, top-5 average rank, and score distributions.
-- `/organizations` - Institutional Directory: Alphabetical and ranked index of 1,546 participating colleges and universities.
-- `/organizations/[slug]` - College Profile: Entity page showing total student teams, participant roster, best rank, score distribution, and team links for a specific university.
-- `/teams/[teamId]` - Team Profile: Entity page detailing official rank, score, finish timestamp, participant names, and university affiliations.
-- `/compare` - Institutional Comparison Tool: Multi-university comparison of participation volume, top ranks, and score percentiles.
-- `/cross-college` - Inter-University Collaboration Directory: Catalog of multi-institution teams where participants teamed up across different universities.
+## Primary Routes & URLs
+- `/` - Main Explorer Dashboard: In-memory search across teams, student member names, and universities.
+- `/leaderboard` - Official Team Standings: Complete 4,334-team rankings with filters by rank tiers (Top 10, Top 25, Top 50, Top 100) and team roster sizes (1 to 4+ members).
+- `/leaderboard/colleges` - College Leaderboard: Analytical ranking of 1,546 universities by composite performance score, top team finish, top-5 average rank, and score percentiles.
+- `/leaderboard/inter-college` - Inter-College Teams: Catalog of teams formed by students collaborating across 2 or more distinct universities.
+- `/organizations` - Colleges & Universities Directory: Searchable index of 1,546 academic institutions.
+- `/organizations/[slug]` - College Profile Page: Specific university entity page detailing participating teams, student rosters, best rank, and score distributions.
+- `/teams/[teamId]` - Team Profile Page: Specific team entity page displaying official leaderboard rank, evaluation score, finish timestamp, participant roster, and college affiliations.
+- `/compare` - Institutional Comparison Tool: Multi-university comparison comparing team counts, top finishes, and score percentiles.
+- `/cross-college` - Cross-College Collaborations: High-density directory of multi-institutional teams.
+- `/about` - About Platform: Mission, capabilities, dataset dimensions, and project overview.
+- `/methodology` - Methodology & Algorithms: Technical documentation on data normalization, college scoring formulas, and inter-college detection.
+- `/data-sources` - Data Sources & Provenance: Public endpoint attribution, completeness verification, and static snapshot architecture.
+- `/privacy` - Privacy Policy: Information on privacy-safe search, cookie/local storage usage, and Google Analytics consent controls.
+- `/terms` - Terms of Use: Informational exploration scope, acceptable use, and limitation of liability.
+- `/contact` - Contact & Inquiries: GitHub issue tracker and community feedback channels.
 
-## Data Interpretation Guidelines
-- **Scores**: Range from 0.000000 to 1.000000 based on the official competition evaluation metric.
-- **Ranks**: Ordered by score descending, with finish time as tie-breaker where applicable.
-- **Affiliations**: Self-reported institutional affiliations recorded during team registration.
-- **Cross-College Teams**: Teams whose members listed different academic institutions.
+## Data Interpretation & Metric Definitions
+- **Scores**: Competition evaluation metric range from 0.000000 to 1.000000.
+- **Ranks**: Ordered by evaluation score descending, with submission timestamp tiebreakers where applicable.
+- **Colleges & Affiliations**: Normalized from self-reported university names during team registration.
+- **Inter-College Teams**: Defined as any team whose registered student members report 2 or more distinct academic institutions.
+- **Top-5 Average Rank**: Arithmetic mean rank of the top 5 highest-performing teams from a specific institution.

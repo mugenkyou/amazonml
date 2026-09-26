@@ -2,7 +2,7 @@
  * SEO, Canonical URL, and JSON-LD Structured Data Utilities for Amazon ML Challenge Explorer.
  */
 
-import type { Organization, OrganizationStats, Team } from "./types";
+import type { DatasetMetadata, Organization, OrganizationStats, Team } from "./types";
 
 export const SITE_URL = "https://amazonmlchallengeexplorer.vercel.app";
 export const SITE_NAME = "Amazon ML Challenge Explorer";
@@ -38,9 +38,11 @@ export function generateWebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_NAME,
+    alternateName: ["Amazon ML Challenge 2026 Explorer", "Amazon ML Leaderboard Explorer"],
     url: SITE_URL,
     description:
-      "Explore, search, and analyze the historical Amazon ML Challenge 2026 leaderboard dataset. Discover teams, student participants, rankings, and university performance.",
+      "Explore, search, and analyze the complete Amazon ML Challenge 2026 leaderboard dataset. Discover 4,334 teams, 14,480 student participants, 1,546 colleges, institutional rankings, and score distributions.",
+    inLanguage: "en-US",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -49,6 +51,60 @@ export function generateWebSiteSchema() {
       },
       "query-input": "required name=search_term_string",
     },
+  };
+}
+
+export function generateDatasetSchema(metadata?: DatasetMetadata | null) {
+  const teamCount = metadata?.uniqueTeams || 4334;
+  const playerCount = metadata?.uniquePlayers || 14480;
+  const orgCount = metadata?.uniqueOrganizations || 1546;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "Amazon ML Challenge 2026 Leaderboard Dataset Snapshot",
+    description: `Complete historical dataset snapshot of the Amazon ML Challenge 2026 public leaderboard containing ${teamCount.toLocaleString()} student teams, ${playerCount.toLocaleString()} participants, and ${orgCount.toLocaleString()} academic institutions.`,
+    url: SITE_URL,
+    identifier: `amazon-ml-challenge-2026-snapshot-${CHALLENGE_ID}`,
+    keywords: [
+      "Amazon ML Challenge 2026",
+      "Machine Learning Competition",
+      "Leaderboard Dataset",
+      "Student Engineering Teams",
+      "College Rankings",
+    ],
+    temporalCoverage: "2026",
+    creator: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    isAccessibleForFree: true,
+    license: "https://creativecommons.org/licenses/by/4.0/",
+  };
+}
+
+export function generateWebPageSchema(options: {
+  title: string;
+  description: string;
+  pathname: string;
+  datePublished?: string;
+  dateModified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: options.title,
+    description: options.description,
+    url: getCanonicalUrl(options.pathname),
+    inLanguage: "en-US",
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    ...(options.datePublished ? { datePublished: options.datePublished } : {}),
+    ...(options.dateModified ? { dateModified: options.dateModified } : {}),
   };
 }
 
