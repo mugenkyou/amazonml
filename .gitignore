@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+
+# Environment Variables
+.env
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Data (Raw and Processed)
+# Un-comment if you wish to ignore scraped data in git:
+# data/raw/*.json
+# data/processed/*.csv
+# data/processed/*.json
+
+# Node & Next.js
+node_modules/
+.next/
+web/node_modules/
+web/.next/
+web/out/
+*.tsbuildinfo
+next-env.d.ts
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}{{ team.team_name }} - Team Details - Unstop ML Challenge{% endblock %}
+
+{% block content %}
+<div class="container">
+  
+  <div class="page-top-nav">
+    <a href="{{ url_for('index') }}" class="back-link">
+      &larr; Back to Leaderboard
+    </a>
+  </div>
+
+  <div class="team-profile-card">
+    <div class="team-header-row">
+      <div class="team-identity">
+        <span class="rank-badge rank-badge-{{ team.rank if team.rank in ['1', '2', '3'] else 'other' }} rank-badge-lg">
+          Rank #{{ team.rank if team.rank else '—' }}
+        </span>
+        <div>
+          <h1 class="team-heading">{{ team.team_name if team.team_name else 'Unnamed Team' }}</h1>
+          <span class="team-id-badge">ID: {{ team.team_id }}</span>
+        </div>
+      </div>
+      <div class="team-score-highlight font-mono">
+        <div class="score-label">Final Score</div>
+        <div class="score-val">{{ team.score if team.score else '0.000000' }}</div>
+      </div>
+    </div>
+
+    <div class="team-meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">Submission Finish Time</span>
+        <span class="meta-value font-mono">{{ team.finish_time if team.finish_time else 'Not available' }}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Has Played</span>
+        <span class="meta-value">{{ 'Yes' if team.has_played in ['True', 'true', '1'] else ('No' if team.has_played in ['False', 'false', '0'] else 'Unknown') }}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Proctoring Score</span>
+        <span class="meta-value">{{ team.proctoring_score if team.proctoring_score else 'N/A' }}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Blacklist Status</span>
+        <span class="meta-value">
+          {% if team.is_blacklisted in ['True', 'true', '1'] %}
+            <span class="badge badge-danger">Blacklisted</span>
+          {% else %}
+            <span class="badge badge-success">Clean</span>
+          {% endif %}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Organizations Represented -->
+  <div class="section-card">
+    <h2 class="section-title">Organizations Represented ({{ team.organizations | length }})</h2>
+    {% if team.organizations %}
+      <div class="org-tags-list org-tags-lg">
+        {% for org in team.organizations %}
+          <a href="{{ url_for('search', q=org) }}" class="org-badge org-badge-lg" title="View all teams from {{ org }}">
+            🏛️ {{ org }}
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-muted">No organization affiliated with this team.</p>
+    {% endif %}
+  </div>
+
+  <!-- Team Members Roster -->
+  <div class="section-card">
+    <h2 class="section-title">Team Members ({{ team.players | length }})</h2>
+    {% if team.players %}
+      <div class="roster-grid">
+        {% for player in team.players %}
+          <div class="player-card">
+            <div class="player-avatar">
+              👤
+            </div>
+            <div class="player-info">
+              <h3 class="player-name">{{ player.player_name if player.player_name else 'Anonymous Player' }}</h3>
+              <div class="player-org">
+                {% if player.organization %}
+                  <a href="{{ url_for('search', q=player.organization) }}" class="player-org-link">
+                    {{ player.organization }}
+                  </a>
+                {% else %}
+                  <span class="text-muted">Organization not specified</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-muted">No individual player data registered for this team.</p>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

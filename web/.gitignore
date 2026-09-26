@@ -1,0 +1,19 @@
+# Next.js
+.next/
+out/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env*.local
+
+# Typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Generated Web Data (keep in git or regenerate during build)
+# data/generated/
