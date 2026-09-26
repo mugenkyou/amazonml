@@ -21,13 +21,13 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full border-b border-[#E3E3E3] bg-white">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Identity */}
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#131921] text-white">
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#131921] text-white shadow-xs group-hover:bg-[#232F3E] transition-colors">
             <Trophy className="h-4 w-4 text-[#FF9900]" />
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-sm sm:text-base font-bold tracking-tight text-[#111111]">
-              Amazon ML Challenge Explorer
+            <span className="text-sm sm:text-base font-bold tracking-tight text-[#111111] group-hover:text-[#E47911] transition-colors">
+              AmazonML Challenge Explorer
             </span>
             <span className="hidden text-[11px] font-mono text-[#767676] sm:inline-block">
               Challenge 290344
@@ -45,13 +45,13 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative flex items-center gap-1.5 h-full px-3 text-xs sm:text-sm font-medium transition-colors ${
+                className={`relative flex items-center gap-1.5 h-full px-3.5 text-xs sm:text-sm font-medium transition-colors ${
                   isActive
-                    ? "text-[#111111] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#FF9900]"
-                    : "text-[#5F6368] hover:text-[#111111] hover:bg-[#F7F7F7]"
+                    ? "text-[#E47911] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[3px] after:bg-[#FF9900]"
+                    : "text-[#5F6368] hover:text-[#E47911] hover:bg-[#FFF7E6]"
                 }`}
               >
-                <item.icon className={`h-3.5 w-3.5 ${isActive ? "text-[#E47911]" : "text-[#767676]"}`} />
+                <item.icon className={`h-3.5 w-3.5 ${isActive ? "text-[#FF9900]" : "text-[#767676]"}`} />
                 <span>{item.label}</span>
               </Link>
             );
@@ -68,7 +68,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden rounded p-1.5 text-[#5F6368] hover:bg-[#F7F7F7] hover:text-[#111111]"
+            className="md:hidden rounded p-1.5 text-[#5F6368] hover:bg-[#FFF7E6] hover:text-[#E47911]"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -90,11 +90,11 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium ${
                   isActive
-                    ? "bg-[#FFF3E0] text-[#E47911] font-semibold"
+                    ? "bg-[#FFF3E0] text-[#E47911] font-semibold border-l-3 border-[#FF9900]"
                     : "text-[#5F6368] hover:bg-white hover:text-[#111111]"
                 }`}
               >
-                <item.icon className="h-4 w-4" />
+                <item.icon className="h-4 w-4 text-[#FF9900]" />
                 <span>{item.label}</span>
               </Link>
             );

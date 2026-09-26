@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Building2, Trophy, ArrowLeft, GitCompare } from "lucide-react";
+import { Building2, Trophy, ArrowLeft, GitCompare, Users, Award } from "lucide-react";
 import { getAllOrganizations } from "@/lib/data";
 import { getOrganizationStats } from "@/lib/analytics";
 import { TeamCard } from "@/components/team-card";
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: OrgPageProps): Promise<Metada
     title: `${stats.organization.name} - Leaderboard & Metrics`,
     description: `View ${stats.teamCount} teams, best rank #${stats.bestRank || "—"}, top score ${stats.bestScore?.toFixed(6) || "—"}, and player members from ${stats.organization.name}.`,
     openGraph: {
-      title: `${stats.organization.name} - ML Challenge Performance`,
+      title: `${stats.organization.name} - Amazon ML Challenge Performance`,
       description: `Explore rankings, scores, and ${stats.teamCount} student teams from ${stats.organization.name}.`,
     },
   };
@@ -63,7 +63,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
       <div className="mb-4 flex items-center justify-between">
         <Link
           href="/organizations"
-          className="inline-flex items-center gap-1 text-xs font-semibold text-[#007185] hover:text-[#C7511F] hover:underline"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#007185] hover:text-[#E47911] hover:underline transition-colors"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>Back to All Colleges</span>
@@ -71,20 +71,20 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
 
         <Link
           href={`/compare?orgs=${stats.organization.slug}`}
-          className="inline-flex items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors"
+          className="inline-flex items-center gap-1.5 rounded-md border border-[#F5C26B] bg-[#FFF3E0] px-3 py-1.5 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all"
         >
           <GitCompare className="h-3.5 w-3.5" />
           <span>Compare College</span>
         </Link>
       </div>
 
-      {/* Organization Header */}
-      <div className="rounded-md border border-[#E3E3E3] bg-white p-5 shadow-subtle">
+      {/* Organization Header Card with Orange Accent */}
+      <div className="rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-5 shadow-subtle">
         <div className="flex items-start gap-3.5">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-[#131921] text-white">
-            <Building2 className="h-5 w-5 text-[#FF9900]" />
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#FFF3E0] border border-[#F5C26B]/50 text-[#E47911]">
+            <Building2 className="h-6 w-6 text-[#FF9900]" />
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
               {stats.organization.name}
             </h1>
@@ -95,8 +95,8 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
         </div>
 
         {/* Compact Metric Strip */}
-        <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6 border-t border-[#E3E3E3] pt-4">
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+        <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6 border-t border-[#EAEAEA] pt-4">
+          <div className="rounded-md bg-[#FFF7E6] border border-[#F5C26B]/50 p-2.5">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Teams
             </span>
@@ -105,7 +105,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
             </div>
           </div>
 
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Players
             </span>
@@ -114,8 +114,8 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
             </div>
           </div>
 
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+          <div className="rounded-md bg-[#FFF3E0] border border-[#F5C26B]/60 p-2.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#E47911] block">
               Best Rank
             </span>
             <div className="mt-0.5 text-base font-bold font-mono text-[#E47911]">
@@ -123,7 +123,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
             </div>
           </div>
 
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Best Score
             </span>
@@ -132,7 +132,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
             </div>
           </div>
 
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Average Score
             </span>
@@ -141,7 +141,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
             </div>
           </div>
 
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Top 10 Finishes
             </span>
@@ -166,8 +166,10 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
       {/* Teams List */}
       <div className="mt-8">
         <div className="flex items-center justify-between border-b border-[#E3E3E3] pb-2.5 mb-4">
-          <h2 className="text-sm font-bold text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-            <Trophy className="h-4 w-4 text-[#E47911]" />
+          <h2 className="text-xs font-bold uppercase tracking-wider text-[#111111] flex items-center gap-2">
+            <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+              <Trophy className="h-3.5 w-3.5 text-[#FF9900]" />
+            </div>
             <span>Affiliated Teams ({stats.teams.length})</span>
           </h2>
           <span className="text-xs text-[#767676] font-mono">Sorted by Official Contest Rank</span>

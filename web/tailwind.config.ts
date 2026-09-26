@@ -26,8 +26,10 @@ export default {
         amazon: {
           orange: "#FF9900",
           orangeDark: "#E47911",
+          orangeLight: "#FFF7E6",
           orangeSoft: "#FFF3E0",
-          orangeBorder: "#F5C27A",
+          orangeBorder: "#F5C26B",
+          orangeBorderSoft: "#F5C27A",
           navy: "#131921",
           navyLight: "#232F3E",
           teal: "#007185",

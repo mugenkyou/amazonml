@@ -9,7 +9,7 @@ interface TeamTableProps {
 
 export function TeamTable({ teams }: TeamTableProps) {
   return (
-    <div className="overflow-hidden rounded-md border border-[#E3E3E3] bg-white shadow-subtle">
+    <div className="overflow-hidden rounded-lg border border-[#E3E3E3] bg-white shadow-subtle">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs sm:text-sm">
           <thead className="border-b border-[#E3E3E3] bg-[#F7F7F7] text-[11px] font-bold uppercase tracking-wider text-[#5F6368]">
@@ -30,14 +30,14 @@ export function TeamTable({ teams }: TeamTableProps) {
               const isTop3 = ["1", "2", "3"].includes(rankNum);
 
               return (
-                <tr key={team.teamId} className="transition-colors hover:bg-[#F9F9F9]">
+                <tr key={team.teamId} className="transition-colors hover:bg-[#FFFDF9]">
                   <td className="whitespace-nowrap py-3 pl-4 pr-2 text-center">
                     <span
                       className={`inline-flex h-6 min-w-6 items-center justify-center rounded px-1.5 text-xs font-bold font-mono ${
                         isTopRank
                           ? "bg-[#FF9900] text-[#111111]"
                           : isTop3
-                          ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A]"
+                          ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
                           : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
                       }`}
                     >
@@ -71,8 +71,8 @@ export function TeamTable({ teams }: TeamTableProps) {
                               href={`/organizations/${slug}`}
                               className={`rounded px-1.5 py-0.5 text-[11px] transition-colors ${
                                 isMatched
-                                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-medium"
-                                  : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3] hover:text-[#111111]"
+                                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B] font-medium"
+                                  : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3] hover:border-[#FF9900] hover:text-[#111111]"
                               }`}
                             >
                               {org}

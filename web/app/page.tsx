@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import { Trophy, Users, Building2, BarChart2, GitFork, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Trophy, Users, Building2, BarChart2, GitFork, ArrowRight, CheckCircle2, Award } from "lucide-react";
 import { SearchBar } from "@/components/search-bar";
 import { OrganizationResults } from "@/components/organization-results";
 import { getAllOrganizations, getDatasetMetadata } from "@/lib/data";
@@ -32,16 +32,24 @@ export default async function HomePage({ searchParams }: PageProps) {
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      {/* Compact Hero */}
-      <section className="pt-8 pb-5 text-center sm:pt-10 sm:pb-6">
+      {/* Hero Section with subtle warm accent */}
+      <section className="relative mt-4 rounded-xl border border-[#E3E3E3] bg-gradient-to-b from-[#FFFDF9] via-white to-white px-4 pt-8 pb-6 text-center sm:px-8 sm:pt-10 sm:pb-7 shadow-xs">
+        {/* Subtle orange top accent line */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[3px] w-24 bg-[#FF9900] rounded-b-full" />
+
+        <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-3 py-1 text-xs font-semibold text-[#E47911] mb-3">
+          <Award className="h-3.5 w-3.5" />
+          <span>Official Contest Snapshot • 3,398 Teams</span>
+        </div>
+
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#111111]">
-          Explore the ML Challenge Leaderboard
+          Explore the Amazon ML Challenge Leaderboard
         </h1>
         <p className="mt-2 text-xs sm:text-sm text-[#5F6368] max-w-xl mx-auto">
-          Search teams, organizations, rankings, scores, and participant rosters from the local competition dataset.
+          Search teams, organizations, rankings, scores, and participant rosters from the offline competition dataset.
         </p>
 
-        {/* Primary Search Experience wrapped in Suspense */}
+        {/* Primary Search Experience */}
         <div className="mt-5 max-w-2xl mx-auto">
           <Suspense
             fallback={
@@ -57,82 +65,88 @@ export default async function HomePage({ searchParams }: PageProps) {
         </div>
 
         {/* Compact Horizontal Statistics Strip */}
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-3 text-xs text-[#5F6368] font-mono border-t border-[#E3E3E3] pt-4 max-w-3xl mx-auto">
-          <span className="flex items-center gap-1">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-[#5F6368] font-mono border-t border-[#EAEAEA] pt-4 max-w-3xl mx-auto">
+          <span className="flex items-center gap-1.5 bg-[#FFF7E6] border border-[#F5C26B] px-2.5 py-1 rounded-md">
+            <Trophy className="h-3.5 w-3.5 text-[#FF9900]" />
             <strong className="text-[#111111]">{metadata.uniqueTeams.toLocaleString()}</strong> Teams
           </span>
-          <span className="text-[#D5D5D5]">•</span>
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-1 rounded-md">
+            <Users className="h-3.5 w-3.5 text-[#5F6368]" />
             <strong className="text-[#111111]">{metadata.uniquePlayers.toLocaleString()}</strong> Participants
           </span>
-          <span className="text-[#D5D5D5]">•</span>
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-1 rounded-md">
+            <Building2 className="h-3.5 w-3.5 text-[#5F6368]" />
             <strong className="text-[#111111]">{metadata.uniqueOrganizations.toLocaleString()}</strong> Colleges
           </span>
-          <span className="text-[#D5D5D5]">•</span>
-          <span className="inline-flex items-center gap-1 text-[#067D62] font-sans font-medium">
-            <CheckCircle2 className="h-3 w-3" />
+          <span className="inline-flex items-center gap-1 text-[#067D62] font-sans font-medium px-2 py-1">
+            <CheckCircle2 className="h-3.5 w-3.5" />
             <span>Complete Snapshot</span>
           </span>
         </div>
       </section>
 
-      {/* Feature Navigation Cards (Only shown when not searching) */}
+      {/* Feature Navigation Cards with Orange Identity */}
       {!query && (
         <section className="my-6">
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-3">
             <Link
               href="/leaderboard"
-              className="group rounded-md border border-[#E3E3E3] bg-white p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FAFAFA] transition-all"
+              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
             >
-              <div className="flex items-center justify-between">
-                <div className="flex h-8 w-8 items-center justify-center rounded bg-[#F7F7F7] text-[#111111]">
-                  <BarChart2 className="h-4 w-4 text-[#E47911]" />
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]/50 group-hover:bg-[#FF9900] group-hover:text-[#111111] transition-colors">
+                    <BarChart2 className="h-4 w-4" />
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
                 </div>
-                <ArrowRight className="h-3.5 w-3.5 text-[#767676] group-hover:translate-x-0.5 group-hover:text-[#111111] transition-transform" />
+                <h3 className="mt-3 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
+                  Full Leaderboard
+                </h3>
+                <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
+                  Filter contest standings by rank ranges (Top 10 to 100) and team size.
+                </p>
               </div>
-              <h3 className="mt-2.5 text-xs font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
-                Full Leaderboard
-              </h3>
-              <p className="mt-0.5 text-[11px] text-[#767676]">
-                Filter contest standings by rank ranges (Top 10 to 100) and team size.
-              </p>
             </Link>
 
             <Link
               href="/organizations"
-              className="group rounded-md border border-[#E3E3E3] bg-white p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FAFAFA] transition-all"
+              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
             >
-              <div className="flex items-center justify-between">
-                <div className="flex h-8 w-8 items-center justify-center rounded bg-[#F7F7F7] text-[#111111]">
-                  <Building2 className="h-4 w-4 text-[#E47911]" />
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]/50 group-hover:bg-[#FF9900] group-hover:text-[#111111] transition-colors">
+                    <Building2 className="h-4 w-4" />
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
                 </div>
-                <ArrowRight className="h-3.5 w-3.5 text-[#767676] group-hover:translate-x-0.5 group-hover:text-[#111111] transition-transform" />
+                <h3 className="mt-3 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
+                  Organizations Directory
+                </h3>
+                <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
+                  Browse 1,350 colleges with team counts, player numbers, and rankings.
+                </p>
               </div>
-              <h3 className="mt-2.5 text-xs font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
-                Organizations Directory
-              </h3>
-              <p className="mt-0.5 text-[11px] text-[#767676]">
-                Browse 1,350 colleges with team counts, player numbers, and rankings.
-              </p>
             </Link>
 
             <Link
               href="/cross-college"
-              className="group rounded-md border border-[#E3E3E3] bg-white p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FAFAFA] transition-all"
+              className="group relative flex flex-col justify-between rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-4 shadow-subtle hover:border-[#FF9900] hover:bg-[#FFFDF9] hover:shadow-card transition-all"
             >
-              <div className="flex items-center justify-between">
-                <div className="flex h-8 w-8 items-center justify-center rounded bg-[#F7F7F7] text-[#111111]">
-                  <GitFork className="h-4 w-4 text-[#E47911]" />
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]/50 group-hover:bg-[#FF9900] group-hover:text-[#111111] transition-colors">
+                    <GitFork className="h-4 w-4" />
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-[#767676] group-hover:translate-x-1 group-hover:text-[#E47911] transition-all" />
                 </div>
-                <ArrowRight className="h-3.5 w-3.5 text-[#767676] group-hover:translate-x-0.5 group-hover:text-[#111111] transition-transform" />
+                <h3 className="mt-3 text-sm font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
+                  Cross-College Teams
+                </h3>
+                <p className="mt-1 text-xs text-[#5F6368] leading-relaxed">
+                  Discover teams formed by collaborative members across universities.
+                </p>
               </div>
-              <h3 className="mt-2.5 text-xs font-bold text-[#111111] group-hover:text-[#E47911] transition-colors">
-                Cross-College Teams
-              </h3>
-              <p className="mt-0.5 text-[11px] text-[#767676]">
-                Discover teams formed by collaborative members across universities.
-              </p>
             </Link>
           </div>
         </section>
@@ -142,13 +156,15 @@ export default async function HomePage({ searchParams }: PageProps) {
       <section className="mt-6">
         {!query && (
           <div className="flex items-center justify-between border-b border-[#E3E3E3] pb-2.5 mb-4">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#5F6368] flex items-center gap-1.5">
-              <Trophy className="h-3.5 w-3.5 text-[#E47911]" />
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#111111] flex items-center gap-2">
+              <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+                <Trophy className="h-3.5 w-3.5 text-[#FF9900]" />
+              </div>
               <span>Leaderboard Preview (Top Ranked Teams)</span>
             </h2>
             <Link
               href="/leaderboard"
-              className="inline-flex items-center gap-1 text-xs font-semibold text-[#007185] hover:text-[#C7511F] hover:underline"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-[#007185] hover:text-[#E47911] hover:underline"
             >
               <span>View Full Leaderboard (3,398 Teams)</span>
               <ArrowRight className="h-3 w-3" />

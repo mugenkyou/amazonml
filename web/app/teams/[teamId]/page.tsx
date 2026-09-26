@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck } from "lucide-react";
+import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award } from "lucide-react";
 import { getAllTeams, getTeamById } from "@/lib/data";
 import { slugifyOrganization } from "@/lib/normalize";
 import { TeamMembers } from "@/components/team-members";
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: TeamPageProps): Promise<Metad
 
   return {
     title: `${team.teamName} (Rank #${team.rank}) - Team Profile`,
-    description: `Official leaderboard performance: rank #${team.rank}, score ${team.score}, finish time, and player roster for ${team.teamName} in the Unstop ML Challenge.`,
+    description: `Official leaderboard performance: rank #${team.rank}, score ${team.score}, finish time, and player roster for ${team.teamName} in the Amazon ML Challenge.`,
     openGraph: {
       title: `${team.teamName} - Rank #${team.rank} on ML Leaderboard`,
       description: `Score: ${team.score} | Members: ${team.players.map((p) => p.name).join(", ")}`,
@@ -57,7 +57,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
       <div className="mb-4">
         <Link
           href="/"
-          className="inline-flex items-center gap-1 text-xs font-semibold text-[#007185] hover:text-[#C7511F] hover:underline"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#007185] hover:text-[#E47911] hover:underline transition-colors"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>Back to Leaderboard</span>
@@ -65,15 +65,15 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
       </div>
 
       {/* Main Team Profile Card */}
-      <div className="rounded-md border border-[#E3E3E3] bg-white p-6 shadow-subtle">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#E3E3E3]">
-          <div className="flex items-center gap-3">
+      <div className="rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-6 shadow-subtle">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#EAEAEA]">
+          <div className="flex items-center gap-3.5">
             <span
-              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded text-base font-bold font-mono ${
+              className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-base font-bold font-mono shadow-xs ${
                 isTopRank
                   ? "bg-[#FF9900] text-[#111111]"
                   : isTop3
-                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A]"
+                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
                   : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
               }`}
             >
@@ -91,7 +91,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
           </div>
 
           {/* Score Box */}
-          <div className="rounded border border-[#E3E3E3] bg-[#F7F7F7] px-4 py-2.5 text-left sm:text-right">
+          <div className="rounded-lg border border-[#F5C26B] bg-[#FFF7E6] px-4 py-2.5 text-left sm:text-right shadow-xs">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Official Leaderboard Score
             </span>
@@ -103,7 +103,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
 
         {/* Metadata Grid */}
         <div className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Finish Time
             </span>
@@ -112,7 +112,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             </span>
           </div>
 
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Has Played
             </span>
@@ -122,7 +122,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             </span>
           </div>
 
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Proctoring Score
             </span>
@@ -131,7 +131,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             </span>
           </div>
 
-          <div className="rounded bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
+          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
             <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
               Verification Status
             </span>
@@ -144,9 +144,11 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
       </div>
 
       {/* Organizations Represented */}
-      <div className="mt-6 rounded-md border border-[#E3E3E3] bg-white p-5 shadow-subtle">
-        <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-1.5 mb-3">
-          <Building2 className="h-4 w-4 text-[#767676]" />
+      <div className="mt-6 rounded-lg border border-[#E3E3E3] bg-white p-5 shadow-subtle">
+        <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2 mb-3">
+          <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+            <Building2 className="h-3.5 w-3.5 text-[#FF9900]" />
+          </div>
           <span>Institutions Represented ({team.organizations.length})</span>
         </h2>
 
@@ -158,7 +160,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
                 <Link
                   key={org}
                   href={`/organizations/${slug}`}
-                  className="inline-flex items-center gap-1.5 rounded border border-[#E3E3E3] bg-[#F7F7F7] px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:text-[#E47911] transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-md border border-[#E3E3E3] bg-[#F7F7F7] px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF7E6] hover:text-[#E47911] transition-colors"
                 >
                   <Building2 className="h-3 w-3 text-[#767676]" />
                   <span>{org}</span>
@@ -172,9 +174,11 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
       </div>
 
       {/* Team Members Roster */}
-      <div className="mt-6 rounded-md border border-[#E3E3E3] bg-white p-5 shadow-subtle">
-        <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-1.5 mb-3">
-          <Users className="h-4 w-4 text-[#767676]" />
+      <div className="mt-6 rounded-lg border border-[#E3E3E3] bg-white p-5 shadow-subtle">
+        <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2 mb-3">
+          <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+            <Users className="h-3.5 w-3.5 text-[#FF9900]" />
+          </div>
           <span>Team Roster ({team.players.length} members)</span>
         </h2>
 

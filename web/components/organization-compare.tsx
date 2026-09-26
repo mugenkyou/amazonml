@@ -52,14 +52,15 @@ export function OrganizationCompare({
   return (
     <div className="space-y-6">
       {/* College Selection & Add Dropdown */}
-      <div className="rounded-md border border-[#E3E3E3] bg-white p-4 shadow-subtle">
+      <div className="rounded-lg border border-[#E3E3E3] border-t-2 border-t-[#FF9900] bg-white p-4 shadow-subtle">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider">
-              Selected Organizations ({initialComparisons.length}/5)
+            <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
+              <Building2 className="h-3.5 w-3.5 text-[#FF9900]" />
+              <span>Selected Organizations ({initialComparisons.length}/5)</span>
             </h2>
             <p className="text-[11px] text-[#767676] mt-0.5">
-              Select 2 to 5 colleges to compare their competition metrics.
+              Select 2 to 5 colleges to compare their competition metrics side-by-side.
             </p>
           </div>
 
@@ -68,7 +69,7 @@ export function OrganizationCompare({
               <button
                 type="button"
                 onClick={() => setShowSearch(!showSearch)}
-                className="inline-flex items-center gap-1.5 rounded bg-[#FF9900] px-3 py-1.5 text-xs font-semibold text-[#111111] hover:bg-[#E47911] transition-colors"
+                className="inline-flex items-center gap-1.5 rounded bg-[#FF9900] px-3 py-1.5 text-xs font-semibold text-[#111111] hover:bg-[#E47911] transition-colors shadow-xs"
               >
                 <Plus className="h-3.5 w-3.5" />
                 <span>Add College</span>
@@ -84,7 +85,7 @@ export function OrganizationCompare({
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search college name..."
                   autoFocus
-                  className="w-full rounded border border-[#D5D5D5] bg-white px-2.5 py-1.5 text-xs text-[#111111] placeholder-[#767676] outline-none focus:border-[#FF9900]"
+                  className="w-full rounded border border-[#D5D5D5] bg-white px-2.5 py-1.5 text-xs text-[#111111] placeholder-[#767676] outline-none focus:border-[#FF9900] focus:ring-1 focus:ring-[#FF9900]"
                 />
 
                 <div className="mt-1.5 max-h-56 overflow-y-auto space-y-0.5">
@@ -93,7 +94,7 @@ export function OrganizationCompare({
                       key={org.slug}
                       type="button"
                       onClick={() => handleAddOrg(org.slug)}
-                      className="flex w-full items-center justify-between rounded px-2.5 py-1.5 text-left text-xs text-[#111111] hover:bg-[#F7F7F7] transition-colors"
+                      className="flex w-full items-center justify-between rounded px-2.5 py-1.5 text-left text-xs text-[#111111] hover:bg-[#FFF7E6] hover:text-[#E47911] transition-colors"
                     >
                       <span className="truncate max-w-[200px] font-medium">{org.name}</span>
                       <span className="text-[10px] font-mono text-[#767676]">
@@ -112,9 +113,9 @@ export function OrganizationCompare({
           {initialComparisons.map((item) => (
             <span
               key={item.organization.slug}
-              className="inline-flex items-center gap-1.5 rounded border border-[#F5C27A] bg-[#FFF3E0] px-2.5 py-1 text-xs font-medium text-[#E47911]"
+              className="inline-flex items-center gap-1.5 rounded border border-[#F5C26B] bg-[#FFF7E6] px-2.5 py-1 text-xs font-medium text-[#E47911]"
             >
-              <Building2 className="h-3 w-3" />
+              <Building2 className="h-3 w-3 text-[#FF9900]" />
               <span>{item.organization.name}</span>
               {selectedSlugs.length > 2 && (
                 <button
@@ -133,27 +134,27 @@ export function OrganizationCompare({
 
       {/* Comparison Table */}
       {initialComparisons.length >= 2 ? (
-        <div className="overflow-hidden rounded-md border border-[#E3E3E3] bg-white shadow-subtle">
+        <div className="overflow-hidden rounded-lg border border-[#E3E3E3] bg-white shadow-subtle">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm border-collapse">
               <thead>
                 <tr className="border-b border-[#E3E3E3] bg-[#F7F7F7]">
-                  <th className="py-3 pl-4 pr-3 text-[11px] font-bold uppercase tracking-wider text-[#5F6368] w-48">
+                  <th className="py-3.5 pl-4 pr-3 text-[11px] font-bold uppercase tracking-wider text-[#5F6368] w-48">
                     Metric
                   </th>
                   {initialComparisons.map((c) => (
                     <th
                       key={c.organization.slug}
-                      className="px-3 py-3 text-xs font-bold text-[#111111] min-w-[180px]"
+                      className="px-3 py-3.5 text-xs font-bold text-[#111111] min-w-[180px]"
                     >
                       <div className="flex flex-col">
                         <Link
                           href={`/organizations/${c.organization.slug}`}
-                          className="font-bold text-[#007185] hover:text-[#C7511F] hover:underline transition-colors"
+                          className="font-bold text-[#111111] hover:text-[#E47911] hover:underline transition-colors"
                         >
                           {c.organization.name}
                         </Link>
-                        <span className="text-[11px] font-mono text-[#767676] font-normal mt-0.5">
+                        <span className="text-[11px] font-mono text-[#E47911] font-semibold mt-0.5">
                           {c.teamCount} Teams
                         </span>
                       </div>
@@ -162,7 +163,7 @@ export function OrganizationCompare({
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#E3E3E3] text-[#111111]">
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Total Teams
                   </td>
@@ -173,7 +174,7 @@ export function OrganizationCompare({
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Total Players
                   </td>
@@ -184,18 +185,20 @@ export function OrganizationCompare({
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Best Contest Rank
                   </td>
                   {initialComparisons.map((c) => (
                     <td key={c.organization.slug} className="px-3 py-3 font-mono font-bold text-[#E47911]">
-                      {c.bestRank !== null ? `#${c.bestRank}` : "—"}
+                      <span className="rounded bg-[#FFF3E0] border border-[#F5C26B]/50 px-2 py-0.5">
+                        {c.bestRank !== null ? `#${c.bestRank}` : "—"}
+                      </span>
                     </td>
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Best Score
                   </td>
@@ -206,7 +209,7 @@ export function OrganizationCompare({
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Average Score
                   </td>
@@ -217,7 +220,7 @@ export function OrganizationCompare({
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Median Score
                   </td>
@@ -228,7 +231,7 @@ export function OrganizationCompare({
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Top 10 Finishes
                   </td>
@@ -239,7 +242,7 @@ export function OrganizationCompare({
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Top 50 Finishes
                   </td>
@@ -250,7 +253,7 @@ export function OrganizationCompare({
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Average Team Size
                   </td>
@@ -261,7 +264,7 @@ export function OrganizationCompare({
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Multi-College Teams
                   </td>
@@ -272,7 +275,7 @@ export function OrganizationCompare({
                   ))}
                 </tr>
 
-                <tr>
+                <tr className="hover:bg-[#FFFDF9]">
                   <td className="py-3 pl-4 pr-3 text-xs font-semibold text-[#5F6368]">
                     Roster
                   </td>
@@ -280,7 +283,7 @@ export function OrganizationCompare({
                     <td key={c.organization.slug} className="px-3 py-3">
                       <Link
                         href={`/organizations/${c.organization.slug}`}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-[#007185] hover:text-[#C7511F] hover:underline"
+                        className="inline-flex items-center gap-1 rounded border border-[#FF9900] bg-[#FFF3E0] px-2.5 py-1 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all"
                       >
                         <span>View {c.teamCount} Teams</span>
                         <ArrowRight className="h-3 w-3" />
