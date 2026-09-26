@@ -7,7 +7,7 @@ import type { Organization, OrganizationStats, Team } from "./types";
 export const SITE_URL = "https://amazonmlchallengeexplorer.vercel.app";
 export const SITE_NAME = "Amazon ML Challenge Explorer";
 export const SITE_TAGLINE = "Independent Leaderboard & College Performance Explorer";
-export const CHALLENGE_NAME = "Amazon ML Challenge 2024";
+export const CHALLENGE_NAME = "Amazon ML Challenge 2026";
 export const CHALLENGE_ID = "290344";
 
 export function getCanonicalUrl(pathname: string = ""): string {
@@ -40,7 +40,7 @@ export function generateWebSiteSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Explore, search, and analyze the historical Amazon ML Challenge 2024 leaderboard dataset. Discover teams, student participants, rankings, and university performance.",
+      "Explore, search, and analyze the historical Amazon ML Challenge 2026 leaderboard dataset. Discover teams, student participants, rankings, and university performance.",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -62,10 +62,10 @@ export function generateOrganizationSchema(
     "@type": "EducationalOrganization",
     name: org.name,
     url: orgUrl,
-    description: `Academic institution with ${org.teamCount} participating student teams and ${org.playerCount} registered members in the Amazon ML Challenge 2024 dataset.`,
+    description: `Academic institution with ${org.teamCount} participating student teams and ${org.playerCount} registered members in the Amazon ML Challenge 2026 dataset.`,
     ...(stats?.bestRank
       ? {
-          award: `Best Leaderboard Rank #${stats.bestRank} in Amazon ML Challenge 2024`,
+          award: `Best Leaderboard Rank #${stats.bestRank} in Amazon ML Challenge 2026`,
         }
       : {}),
   };
@@ -81,7 +81,7 @@ export function generateTeamSchema(team: Team) {
     "@type": "ItemPage",
     name: `${team.teamName} - Rank #${team.rank} on Amazon ML Challenge Leaderboard`,
     url: teamUrl,
-    description: `Leaderboard record for team ${team.teamName} (Contest ID: ${team.teamId}) in the Amazon ML Challenge 2024. Rank #${team.rank}, score: ${team.score}. Affiliation: ${affiliations || "Independent"}. Members: ${memberNames}.`,
+    description: `Leaderboard record for team ${team.teamName} (Contest ID: ${team.teamId}) in the Amazon ML Challenge 2026. Rank #${team.rank}, score: ${team.score}. Affiliation: ${affiliations || "Independent"}. Members: ${memberNames}.`,
     mainEntity: {
       "@type": "Thing",
       name: team.teamName,

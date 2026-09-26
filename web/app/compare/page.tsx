@@ -8,14 +8,14 @@ import { JsonLd } from "@/components/json-ld";
 import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Compare Colleges & University Performance • Amazon ML Challenge 2024",
+  title: "Compare Colleges & University Performance • Amazon ML Challenge 2026",
   description:
-    "Side-by-side performance analytics between engineering colleges and universities in the Amazon ML Challenge 2024. Compare team volume, participant count, and score percentiles.",
+    "Side-by-side performance analytics between engineering colleges and universities in the Amazon ML Challenge 2026. Compare team volume, participant count, and score percentiles.",
   alternates: {
     canonical: "/compare",
   },
   openGraph: {
-    title: "Compare Colleges • Amazon ML Challenge 2024",
+    title: "Compare Colleges • Amazon ML Challenge 2026",
     description:
       "Factual side-by-side institutional comparisons from the Amazon ML Challenge leaderboard.",
     url: `${SITE_URL}/compare`,
@@ -73,7 +73,7 @@ export default async function ComparePage({ searchParams }: ComparePageProps) {
           Institutional Comparison Tool
         </h1>
         <p className="text-xs text-[#5F6368] mt-0.5 max-w-2xl">
-          Factual side-by-side performance metrics calculated from official competition submissions in the Amazon ML Challenge 2024.
+          Factual side-by-side performance metrics calculated from official competition submissions in the Amazon ML Challenge 2026.
         </p>
       </div>
 

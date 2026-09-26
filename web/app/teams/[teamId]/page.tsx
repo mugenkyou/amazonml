@@ -43,19 +43,19 @@ export async function generateMetadata({ params }: TeamPageProps): Promise<Metad
   const memberList = team.players.map((p) => p.name).join(", ");
 
   return {
-    title: `${teamName} (Rank #${team.rank}) • Amazon ML Challenge 2024 Leaderboard`,
+    title: `${teamName} (Rank #${team.rank}) • Amazon ML Challenge 2026 Leaderboard`,
     description: `Official contest profile for ${teamName} (Contest ID: ${team.teamId}). Rank #${team.rank}, score ${team.score}, finished ${team.finishTime || "N/A"}. Members: ${memberList}. Affiliation: ${affiliations}.`,
     alternates: {
       canonical: canonicalPath,
     },
     openGraph: {
-      title: `${teamName} - Rank #${team.rank} | Amazon ML Challenge 2024`,
+      title: `${teamName} - Rank #${team.rank} | Amazon ML Challenge 2026`,
       description: `Score: ${team.score} | Affiliations: ${affiliations} | Members: ${memberList}`,
       url: getCanonicalUrl(canonicalPath),
     },
     twitter: {
       card: "summary_large_image",
-      title: `${teamName} - Rank #${team.rank} | Amazon ML Challenge 2024`,
+      title: `${teamName} - Rank #${team.rank} | Amazon ML Challenge 2026`,
       description: `Score: ${team.score} | Affiliations: ${affiliations} | Members: ${memberList}`,
     },
   };
@@ -131,7 +131,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
                 {team.teamName}
               </h1>
               <p className="text-[10px] sm:text-xs text-[#767676] font-mono mt-0.5">
-                Contest Team ID: <code>{team.teamId}</code> • Challenge 2024
+                Contest Team ID: <code>{team.teamId}</code> • Challenge 2026
               </p>
             </div>
           </div>

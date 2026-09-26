@@ -73,7 +73,7 @@ export function Footer() {
           </div>
 
           <span className="text-[#767676]">
-            Historical Snapshot Date: Finalized 2024
+            Historical Snapshot Date: Finalized 2026
           </span>
         </div>
 

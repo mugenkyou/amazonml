@@ -24,16 +24,16 @@ import { generateBreadcrumbSchema, getCanonicalUrl, SITE_NAME, SITE_URL } from "
 import type { SearchMode } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "Amazon ML Challenge 2024 Leaderboard Explorer • Teams, Colleges & Scores",
+  title: "Amazon ML Challenge 2026 Leaderboard Explorer • Teams, Colleges & Scores",
   description:
-    "Search and explore the complete Amazon ML Challenge 2024 leaderboard dataset. Discover 3,398 teams, 11,394 participants, and 1,350 participating colleges with full rankings and score distributions.",
+    "Search and explore the complete Amazon ML Challenge 2026 leaderboard dataset. Discover 3,398 teams, 11,394 participants, and 1,350 participating colleges with full rankings and score distributions.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Amazon ML Challenge 2024 Leaderboard Explorer",
+    title: "Amazon ML Challenge 2026 Leaderboard Explorer",
     description:
-      "Independent search engine and analytics platform for 3,398 teams and 1,350 colleges in the Amazon ML Challenge 2024.",
+      "Independent search engine and analytics platform for 3,398 teams and 1,350 colleges in the Amazon ML Challenge 2026.",
     url: SITE_URL,
   },
 };

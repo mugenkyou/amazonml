@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} • Leaderboard, College Rankings & Team Rosters`,
   },
   description:
-    "Explore and search the complete Amazon ML Challenge 2024 leaderboard dataset. Find 3,398 teams, 11,394 student participants, 1,350 colleges, institutional rankings, and score distributions.",
+    "Explore and search the complete Amazon ML Challenge 2026 leaderboard dataset. Find 3,398 teams, 11,394 student participants, 1,350 colleges, institutional rankings, and score distributions.",
   keywords: [
-    "Amazon ML Challenge 2024 leaderboard",
+    "Amazon ML Challenge 2026 leaderboard",
     "Amazon ML Challenge leaderboard",
     "Amazon ML Challenge teams",
     "Amazon ML Challenge participants",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     "Amazon ML Challenge scores",
     "Amazon ML Challenge college rankings",
     "Amazon ML Challenge team rankings",
-    "Amazon ML Challenge 2024 teams",
-    "Amazon ML Challenge 2024 participants",
-    "Amazon ML Challenge 2024 colleges",
+    "Amazon ML Challenge 2026 teams",
+    "Amazon ML Challenge 2026 participants",
+    "Amazon ML Challenge 2026 colleges",
     "Amazon ML Challenge leaderboard by college",
     "Amazon ML Challenge cross college teams",
     "Amazon ML Challenge Explorer",
@@ -73,13 +73,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} • Leaderboard & College Performance`,
     description:
-      "Search and analyze 3,398 teams and 1,350 colleges from the Amazon ML Challenge 2024 leaderboard snapshot.",
+      "Search and analyze 3,398 teams and 1,350 colleges from the Amazon ML Challenge 2026 leaderboard snapshot.",
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} • Leaderboard & College Performance`,
     description:
-      "Search and analyze 3,398 teams and 1,350 colleges from the Amazon ML Challenge 2024 leaderboard snapshot.",
+      "Search and analyze 3,398 teams and 1,350 colleges from the Amazon ML Challenge 2026 leaderboard snapshot.",
   },
 };
 

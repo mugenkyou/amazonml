@@ -45,19 +45,19 @@ export async function generateMetadata({ params }: OrgPageProps): Promise<Metada
   const bestScoreText = stats.bestScore ? `Best Score ${stats.bestScore.toFixed(6)}` : "";
 
   return {
-    title: `${orgName} • Amazon ML Challenge 2024 Leaderboard & Student Teams`,
-    description: `Performance metrics for ${orgName} in the Amazon ML Challenge 2024: ${stats.teamCount} student teams, ${stats.playerCount} participants, ${bestRankText}, ${bestScoreText}.`,
+    title: `${orgName} • Amazon ML Challenge 2026 Leaderboard & Student Teams`,
+    description: `Performance metrics for ${orgName} in the Amazon ML Challenge 2026: ${stats.teamCount} student teams, ${stats.playerCount} participants, ${bestRankText}, ${bestScoreText}.`,
     alternates: {
       canonical: canonicalPath,
     },
     openGraph: {
-      title: `${orgName} - Amazon ML Challenge 2024 Performance`,
+      title: `${orgName} - Amazon ML Challenge 2026 Performance`,
       description: `Explore ${stats.teamCount} teams, participant rosters, rankings, and score distributions for ${orgName}.`,
       url: getCanonicalUrl(canonicalPath),
     },
     twitter: {
       card: "summary_large_image",
-      title: `${orgName} - Amazon ML Challenge 2024 Performance`,
+      title: `${orgName} - Amazon ML Challenge 2026 Performance`,
       description: `Explore ${stats.teamCount} teams, participant rosters, rankings, and score distributions for ${orgName}.`,
     },
   };
@@ -135,7 +135,7 @@ export default async function OrganizationPage({ params }: OrgPageProps) {
               {stats.organization.name}
             </h1>
             <p className="text-[10px] sm:text-xs text-[#767676] font-mono mt-0.5 truncate">
-              Institution ID / Slug: <code>{stats.organization.slug}</code> • Challenge 2024
+              Institution ID / Slug: <code>{stats.organization.slug}</code> • Challenge 2026
             </p>
           </div>
         </div>

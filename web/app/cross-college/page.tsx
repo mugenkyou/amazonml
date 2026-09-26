@@ -7,14 +7,14 @@ import { JsonLd } from "@/components/json-ld";
 import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Cross-College Collaborative Teams • Amazon ML Challenge 2024",
+  title: "Cross-College Collaborative Teams • Amazon ML Challenge 2026",
   description:
-    "Discover competition teams formed by student members collaborating across multiple academic institutions in the Amazon ML Challenge 2024.",
+    "Discover competition teams formed by student members collaborating across multiple academic institutions in the Amazon ML Challenge 2026.",
   alternates: {
     canonical: "/cross-college",
   },
   openGraph: {
-    title: "Cross-College Teams • Amazon ML Challenge 2024",
+    title: "Cross-College Teams • Amazon ML Challenge 2026",
     description:
       "Explore inter-university collaborative teams from multiple colleges and institutions.",
     url: `${SITE_URL}/cross-college`,

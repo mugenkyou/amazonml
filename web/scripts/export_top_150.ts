@@ -13,7 +13,7 @@ const top150 = teams.slice(0, 150);
 const lines: string[] = [];
 
 lines.push("====================================================================================================");
-lines.push("               AMAZON ML CHALLENGE 2024 (UNSTOP CHALLENGE 290344) — TOP 150 LEADERBOARD TEAMS       ");
+lines.push("               AMAZON ML CHALLENGE 2026 (UNSTOP CHALLENGE 290344) — TOP 150 LEADERBOARD TEAMS       ");
 lines.push("====================================================================================================");
 lines.push("");
 lines.push("----------------------------------------------------------------------------------------------------");

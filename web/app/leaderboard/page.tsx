@@ -9,14 +9,14 @@ import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
 import type { SearchResultTeam } from "@/lib/types";
 
 export const metadata: Metadata = {
-  title: "Amazon ML Challenge 2024 Leaderboard • Full Official Standings & Scores",
+  title: "Amazon ML Challenge 2026 Leaderboard • Full Official Standings & Scores",
   description:
-    "Explore the complete 3,398-team rankings and official scores from the Amazon ML Challenge 2024. Filter standings by rank tiers (Top 10, Top 25, Top 50, Top 100) and team roster size.",
+    "Explore the complete 3,398-team rankings and official scores from the Amazon ML Challenge 2026. Filter standings by rank tiers (Top 10, Top 25, Top 50, Top 100) and team roster size.",
   alternates: {
     canonical: "/leaderboard",
   },
   openGraph: {
-    title: "Amazon ML Challenge 2024 Official Standings & Leaderboard",
+    title: "Amazon ML Challenge 2026 Official Standings & Leaderboard",
     description:
       "Browse official standings, scores, team rosters, and finish times for all 3,398 teams in the Amazon ML Challenge.",
     url: `${SITE_URL}/leaderboard`,
@@ -111,7 +111,7 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E3E3E3] pb-3.5">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
-            Amazon ML Challenge 2024 Leaderboard
+            Amazon ML Challenge 2026 Leaderboard
           </h1>
           <p className="text-xs text-[#5F6368] mt-0.5 font-mono">
             Displaying {total.toLocaleString()} teams ranked by official competition score.

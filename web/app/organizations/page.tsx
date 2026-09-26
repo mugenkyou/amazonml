@@ -8,14 +8,14 @@ import { JsonLd } from "@/components/json-ld";
 import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Amazon ML Challenge 2024 College & University Directory (1,350 Institutions)",
+  title: "Amazon ML Challenge 2026 College & University Directory (1,350 Institutions)",
   description:
-    "Explore the complete index of 1,350 colleges, universities, and technical institutes participating in the Amazon ML Challenge 2024. View team counts, student rosters, rankings, and performance metrics.",
+    "Explore the complete index of 1,350 colleges, universities, and technical institutes participating in the Amazon ML Challenge 2026. View team counts, student rosters, rankings, and performance metrics.",
   alternates: {
     canonical: "/organizations",
   },
   openGraph: {
-    title: "Amazon ML Challenge 2024 Colleges & Universities Index",
+    title: "Amazon ML Challenge 2026 Colleges & Universities Index",
     description:
       "Directory of 1,350 participating academic institutions in the Amazon ML Challenge with full student team rosters and rankings.",
     url: `${SITE_URL}/organizations`,
