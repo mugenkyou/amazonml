@@ -298,7 +298,7 @@ def sync_to_web_json(
         len(cycle_changes),
     )
 
-    # 8. Write web JSON files
+    # 8. Write web JSON files (Local / Offline Cache)
     with open(web_generated_dir / "teams.json", "w", encoding="utf-8") as f:
         json.dump(teams_list, f, indent=2, ensure_ascii=False)
 
@@ -314,6 +314,27 @@ def sync_to_web_json(
     with open(web_generated_dir / "metadata.json", "w", encoding="utf-8") as f:
         json.dump(web_metadata, f, indent=2, ensure_ascii=False)
 
+    # 9. Sync to Supabase PostgreSQL (Live Data Layer)
+    supabase_url = os.environ.get("SUPABASE_URL") or os.environ.get("NEXT_PUBLIC_SUPABASE_URL")
+    supabase_key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY") or os.environ.get("SUPABASE_KEY")
+    supabase_sync_result = None
+
+    if supabase_url and supabase_key:
+        try:
+            from .supabase_sync import sync_dataset_to_supabase
+            from supabase import create_client
+            client = create_client(supabase_url, supabase_key)
+            flat_players = [p for plist in players_by_team.values() for p in plist]
+            supabase_sync_result = sync_dataset_to_supabase(
+                teams_list=teams_list,
+                players_list=flat_players,
+                organizations_list=organizations_list,
+                supabase_client=client,
+            )
+            logger.info("Supabase live sync completed: %s", supabase_sync_result.get("status"))
+        except Exception as sb_err:
+            logger.error("Supabase sync encountered error: %s", sb_err, exc_info=True)
+
     logger.info(
         "Successfully generated web JSON artifacts: %d teams, %d organizations, %d inter-college teams, %d indexed org keys",
         len(teams_list),
@@ -327,6 +348,7 @@ def sync_to_web_json(
         "orgs_count": len(organizations_list),
         "inter_college_teams_count": len(inter_college_teams),
         "org_index_count": len(org_index),
+        "supabase_sync": supabase_sync_result,
         "web_generated_dir": str(web_generated_dir),
     }
 
