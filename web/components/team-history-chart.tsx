@@ -61,41 +61,16 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
       ? firstPoint.rank - latestPoint.rank
       : 0;
 
-  // Dynamic Upward / Downward Trend Detection
+  // Metric State
   const isScoreMetric = metric === "score";
-  const isGoingUp = isScoreMetric ? netScoreDiff > 0.000001 : netRankDiff > 0;
-  const isGoingDown = isScoreMetric ? netScoreDiff < -0.000001 : netRankDiff < 0;
+  const isGain = isScoreMetric ? netScoreDiff > 0.000001 : netRankDiff > 0;
+  const isDrop = isScoreMetric ? netScoreDiff < -0.000001 : netRankDiff < 0;
 
-  // Theme Palette based on trend (Green if going UP!)
-  const strokeColor = isGoingUp
-    ? "#10B981"
-    : isGoingDown
-    ? "#E11D48"
-    : "#E47911";
-
-  const stopColor = isGoingUp
-    ? "#10B981"
-    : isGoingDown
-    ? "#F43F5E"
-    : "#FF9900";
-
-  const dotFill = isGoingUp
-    ? "#059669"
-    : isGoingDown
-    ? "#BE123C"
-    : "#E47911";
-
-  const glowBg = isGoingUp
-    ? "#D1FAE5"
-    : isGoingDown
-    ? "#FFE4E6"
-    : "#FFF3E0";
-
-  const glowBorder = isGoingUp
-    ? "#10B981"
-    : isGoingDown
-    ? "#E11D48"
-    : "#FF9900";
+  // Amazon Theme Colors
+  const strokeColor = "#E47911"; // Amazon Signature Deep Orange
+  const strokeAccent = "#FF9900"; // Amazon Primary Bright Orange
+  const shadowColor = "#FF9900";
+  const glowBg = "#FFF3E0";
 
   // Dimensions
   const width = 700;
@@ -176,16 +151,8 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
         <div>
           <div className="flex items-center gap-2 flex-wrap">
             <h3 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2">
-              <div
-                className={`flex h-5 w-5 items-center justify-center rounded ${
-                  isGoingUp
-                    ? "bg-emerald-100 text-emerald-700"
-                    : isGoingDown
-                    ? "bg-rose-100 text-rose-700"
-                    : "bg-[#FFF3E0] text-[#E47911]"
-                }`}
-              >
-                <TrendingUp className="h-3.5 w-3.5" />
+              <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+                <TrendingUp className="h-3.5 w-3.5 text-[#FF9900]" />
               </div>
               <span>Performance Timeline ({points.length} Checkpoints)</span>
             </h3>
@@ -194,14 +161,14 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
             {points.length > 1 && (
               <span
                 className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-mono font-bold border shadow-2xs ${
-                  isGoingUp
+                  isGain
                     ? "bg-emerald-50 border-emerald-200 text-emerald-700"
-                    : isGoingDown
+                    : isDrop
                     ? "bg-rose-50 border-rose-200 text-rose-700"
-                    : "bg-gray-50 border-gray-200 text-gray-700"
+                    : "bg-[#FFF3E0] border-[#F5C26B] text-[#E47911]"
                 }`}
               >
-                {isGoingUp ? (
+                {isGain ? (
                   <>
                     <ArrowUpRight className="h-3.5 w-3.5" />
                     <span>
@@ -210,7 +177,7 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
                         : `▲ +${netRankDiff} Ranks Climbed`}
                     </span>
                   </>
-                ) : isGoingDown ? (
+                ) : isDrop ? (
                   <>
                     <ArrowDownRight className="h-3.5 w-3.5" />
                     <span>
@@ -241,15 +208,11 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
             onClick={() => setMetric("score")}
             className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
               metric === "score"
-                ? isGoingUp
-                  ? "bg-white text-emerald-700 shadow-2xs font-bold border border-emerald-200"
-                  : isGoingDown
-                  ? "bg-white text-rose-700 shadow-2xs font-bold border border-rose-200"
-                  : "bg-white text-[#E47911] shadow-2xs font-bold border border-[#F5C26B]"
+                ? "bg-white text-[#E47911] shadow-2xs font-bold border border-[#F5C26B]"
                 : "text-[#5F6368] hover:text-[#111111]"
             }`}
           >
-            <Sparkles className="h-3.5 w-3.5" />
+            <Sparkles className="h-3.5 w-3.5 text-[#FF9900]" />
             <span>F1-Score Graph</span>
           </button>
 
@@ -258,15 +221,11 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
             onClick={() => setMetric("rank")}
             className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
               metric === "rank"
-                ? isGoingUp
-                  ? "bg-white text-emerald-700 shadow-2xs font-bold border border-emerald-200"
-                  : isGoingDown
-                  ? "bg-white text-rose-700 shadow-2xs font-bold border border-rose-200"
-                  : "bg-white text-[#E47911] shadow-2xs font-bold border border-[#F5C26B]"
+                ? "bg-white text-[#E47911] shadow-2xs font-bold border border-[#F5C26B]"
                 : "text-[#5F6368] hover:text-[#111111]"
             }`}
           >
-            <Trophy className="h-3.5 w-3.5" />
+            <Trophy className="h-3.5 w-3.5 text-[#FF9900]" />
             <span>Rank Graph</span>
           </button>
         </div>
@@ -274,20 +233,12 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
 
       {/* Active Hover Inspection Badge with Diff Breakdown */}
       {activePoint && (
-        <div
-          className={`mb-3.5 flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3.5 py-2 text-xs transition-colors ${
-            isGoingUp
-              ? "bg-gradient-to-r from-[#F0FDF4] to-[#FFFFFF] border-emerald-300"
-              : isGoingDown
-              ? "bg-gradient-to-r from-[#FFF1F2] to-[#FFFFFF] border-rose-300"
-              : "bg-gradient-to-r from-[#FFFDF9] to-[#FDFDFD] border-[#F5C26B]"
-          }`}
-        >
+        <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[#F5C26B] bg-gradient-to-r from-[#FFFDF8] via-[#FFF8EE] to-[#FFFFFF] px-3.5 py-2 text-xs transition-colors shadow-2xs">
           <div className="flex items-center gap-2 font-mono">
-            <span className="flex items-center gap-1 text-[#767676] font-sans">
-              <Calendar className="h-3.5 w-3.5 text-[#5F6368]" />
+            <span className="flex items-center gap-1.5 text-[#767676] font-sans">
+              <Calendar className="h-3.5 w-3.5 text-[#FF9900]" />
               <span className="font-semibold text-[#111111]">{activePoint.dateStr}</span>
-              <span>{activePoint.timeStr}</span>
+              <span className="text-[#888888]">{activePoint.timeStr}</span>
             </span>
           </div>
 
@@ -342,11 +293,18 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
           aria-label={`${metric === "score" ? "Score" : "Rank"} timeline graph for ${teamName}`}
         >
           <defs>
+            {/* Amazon Light Orange Under Shadow Area Gradient */}
             <linearGradient id={chartGradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={stopColor} stopOpacity="0.32" />
-              <stop offset="85%" stopColor={stopColor} stopOpacity="0.03" />
-              <stop offset="100%" stopColor={stopColor} stopOpacity="0" />
+              <stop offset="0%" stopColor="#FF9900" stopOpacity="0.38" />
+              <stop offset="35%" stopColor="#FF9900" stopOpacity="0.18" />
+              <stop offset="75%" stopColor="#FF9900" stopOpacity="0.05" />
+              <stop offset="100%" stopColor="#FF9900" stopOpacity="0.0" />
             </linearGradient>
+
+            {/* Glowing Drop Shadow Filter for Line */}
+            <filter id={`${chartGradientId}-glow`} x="-10%" y="-10%" width="120%" height="150%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#FF9900" floodOpacity="0.35" />
+            </filter>
           </defs>
 
           {/* Grid lines */}
@@ -384,20 +342,21 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
             );
           })}
 
-          {/* Area Fill */}
+          {/* Light Orange Area Fill (Under Shadow) */}
           {areaPath && (
             <path d={areaPath} fill={`url(#${chartGradientId})`} className="transition-all duration-300" />
           )}
 
-          {/* Connecting Line */}
+          {/* Signature Amazon Orange Line with Glow Shadow */}
           {linePath && (
             <path
               d={linePath}
               fill="none"
               stroke={strokeColor}
-              strokeWidth="2.5"
+              strokeWidth="2.75"
               strokeLinecap="round"
               strokeLinejoin="round"
+              filter={`url(#${chartGradientId}-glow)`}
               className="transition-all duration-300"
             />
           )}
@@ -457,10 +416,10 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
                   <circle
                     cx={c.x}
                     cy={c.y}
-                    r="8"
+                    r="8.5"
                     fill={glowBg}
-                    stroke={glowBorder}
-                    strokeWidth="1.5"
+                    stroke={strokeAccent}
+                    strokeWidth="1.75"
                     className="animate-pulse"
                   />
                 )}
@@ -470,7 +429,7 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
                   cx={c.x}
                   cy={c.y}
                   r={isHovered ? 5 : 3.5}
-                  fill={isHovered ? dotFill : strokeColor}
+                  fill={isHovered ? strokeColor : strokeAccent}
                   stroke="#FFFFFF"
                   strokeWidth="2"
                   className="transition-all duration-150"
@@ -479,7 +438,7 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
                 {/* Floating Value Pill Above Point */}
                 <text
                   x={c.x}
-                  y={c.y - 9}
+                  y={c.y - 10}
                   textAnchor="middle"
                   className={`text-[9px] font-mono font-bold transition-opacity ${
                     isHovered
@@ -499,13 +458,8 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
       <div className="mt-2.5 pt-2 border-t border-[#F5F5F5] flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#767676]">
         <div className="flex items-center gap-3">
           <span className="flex items-center gap-1.5 font-medium">
-            <span
-              className="h-2.5 w-2.5 rounded-full inline-block"
-              style={{ backgroundColor: strokeColor }}
-            />
-            <span>
-              {isGoingUp ? "Upward Score Trend (Green)" : isGoingDown ? "Downward Trend" : "Score Checkpoints"}
-            </span>
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FF9900] inline-block shadow-2xs" />
+            <span>Score Checkpoints</span>
           </span>
           <span className="flex items-center gap-1">
             <span className="text-emerald-700 font-bold">▲</span>
