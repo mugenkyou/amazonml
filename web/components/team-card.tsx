@@ -61,7 +61,7 @@ export function TeamCard({ team }: TeamCardProps) {
               </span>
             </div>
             <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
-            <ShareButton teamId={team.teamId} teamName={team.teamName} size="sm" />
+            <ShareButton teamId={team.teamId} teamName={team.teamName} team={team} size="sm" />
           </div>
         </div>
 

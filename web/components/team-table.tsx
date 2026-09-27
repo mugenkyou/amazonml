@@ -146,7 +146,7 @@ function MobileExpandableTeamCard({ team }: { team: SearchResultTeam }) {
           </div>
           <div className="flex items-center gap-1">
             <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
-            <ShareButton teamId={team.teamId} teamName={team.teamName} size="sm" />
+            <ShareButton teamId={team.teamId} teamName={team.teamName} team={team} size="sm" />
           </div>
         </div>
       </div>
@@ -354,6 +354,7 @@ export function TeamTable({ teams }: TeamTableProps) {
                         <ShareButton
                           teamId={team.teamId}
                           teamName={team.teamName}
+                          team={team}
                           size="sm"
                         />
                         <Link
