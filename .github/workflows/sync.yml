@@ -50,5 +50,6 @@ jobs:
             echo "No data changes detected. Skipping commit."
           else
             git commit -m "chore(data): automated leaderboard sync update"
+            git pull --rebase origin main
             git push origin main
           fi

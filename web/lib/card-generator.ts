@@ -203,12 +203,12 @@ export function renderShareCardToCanvas(
   // Calculate net movements across history if current step delta is 0
   const oldestCheckpoint = history && history.length > 1 ? history[history.length - 1] : null;
   const netRankMovement =
-    oldestCheckpoint && oldestCheckpoint.rank !== null && team.rank !== null
+    oldestCheckpoint && oldestCheckpoint.rank != null && team.rank != null
       ? Number(oldestCheckpoint.rank) - Number(team.rank)
       : 0;
   const netScoreMovement =
-    oldestCheckpoint && oldestCheckpoint.score !== null && team.score !== null
-      ? parseFloat(team.score) - parseFloat(oldestCheckpoint.score)
+    oldestCheckpoint && oldestCheckpoint.score != null && team.score != null
+      ? parseFloat(String(team.score)) - parseFloat(String(oldestCheckpoint.score))
       : 0;
 
   if (cardType === "both") {
