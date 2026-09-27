@@ -98,67 +98,85 @@ function MobileExpandableTeamCard({ team }: { team: SearchResultTeam }) {
           : "border-[#E3E3E3]"
       }`}
     >
-      {/* Level 1: Primary Scan Header (Rank, Name, Score, Bookmark) */}
-      <div className="flex items-start justify-between gap-2.5">
+      {/* Level 1: Primary Scan Header (Rank, Name, Members) */}
+      <div className="flex items-start justify-between gap-2">
         <div className="flex items-start gap-2.5 min-w-0 flex-1">
-          <div className="flex flex-col items-center gap-1 shrink-0">
-            <span
-              className={`inline-flex h-7 min-w-7 items-center justify-center rounded-md px-1.5 text-xs font-bold font-mono shadow-2xs ${
-                isTopRank
-                  ? "bg-[#FF9900] text-[#111111]"
-                  : isTop3
-                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
-                  : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
-              }`}
-            >
-              #{rankNum}
-            </span>
-            <RankMovementBadge rankDelta={team.rankDelta} status={team.status} scoreDelta={team.scoreDelta} />
-          </div>
+          <span
+            className={`inline-flex h-7 min-w-7 shrink-0 items-center justify-center rounded-md px-1.5 text-xs font-bold font-mono shadow-2xs ${
+              isTopRank
+                ? "bg-[#FF9900] text-[#111111]"
+                : isTop3
+                ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+            }`}
+          >
+            #{rankNum}
+          </span>
           <div className="min-w-0 flex-1">
             <Link
               href={`/teams/${team.teamId}`}
-              className="font-bold text-sm text-[#111111] hover:text-[#E47911] transition-colors break-words line-clamp-2 block leading-snug"
+              className="font-bold text-sm text-[#111111] hover:text-[#E47911] transition-colors break-words line-clamp-2 block leading-tight"
             >
               {team.teamName}
             </Link>
-            {/* Level 2: Compact summary */}
-            <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#767676] mt-1 flex-wrap">
-              <span>
-                {memberCount} {memberCount === 1 ? "member" : "members"}
-              </span>
-              <span>·</span>
-              <span>
-                {orgCount} {orgCount === 1 ? "college" : "colleges"}
-              </span>
+            <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#767676] mt-0.5">
+              <span>{memberCount} {memberCount === 1 ? "member" : "members"}</span>
+              {orgCount > 0 && (
+                <>
+                  <span>•</span>
+                  <span>{orgCount} {orgCount === 1 ? "college" : "colleges"}</span>
+                </>
+              )}
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-end gap-1.5 shrink-0">
-          <div className="text-right">
-            <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">
-              Score
-            </span>
+        {/* Quick Share / Bookmark */}
+        <div className="flex items-center gap-1 shrink-0">
+          <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
+          <ShareButton teamId={team.teamId} teamName={team.teamName} team={team} size="sm" />
+        </div>
+      </div>
+
+      {/* Level 2: Core Metrics Pill Grid (F1-Score & Rank Movement) */}
+      <div className="mt-3 grid grid-cols-2 gap-2 rounded-lg bg-[#F9F9F9] border border-[#EBEBEB] p-2.5">
+        <div>
+          <span className="text-[9px] uppercase font-bold text-[#767676] tracking-wider block">
+            F1 Score
+          </span>
+          <div className="flex items-center gap-1.5 mt-0.5">
             <span className="font-mono font-bold text-sm text-[#111111]">
               {team.score || "0.000000"}
             </span>
+            {team.scoreDelta !== undefined && team.scoreDelta > 0.000001 && (
+              <span className="text-[10px] font-bold text-emerald-700 font-mono">
+                +{Number(team.scoreDelta).toFixed(4)}
+              </span>
+            )}
           </div>
-          <div className="flex items-center gap-1">
-            <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
-            <ShareButton teamId={team.teamId} teamName={team.teamName} team={team} size="sm" />
+        </div>
+
+        <div>
+          <span className="text-[9px] uppercase font-bold text-[#767676] tracking-wider block">
+            Rank Standing
+          </span>
+          <div className="flex items-center gap-1.5 mt-0.5">
+            <span className="font-mono font-bold text-sm text-[#111111]">
+              #{rankNum}
+            </span>
+            <RankMovementBadge rankDelta={team.rankDelta} status={team.status} scoreDelta={team.scoreDelta} />
           </div>
         </div>
       </div>
 
-      {/* Level 2 Controls: Expand Toggle & Quick Link */}
-      <div className="mt-3 flex items-center justify-between border-t border-[#F0F0F0] pt-2 text-xs">
+      {/* Level 3 Controls: Expand Details Toggle & Full View Action (44px min-height) */}
+      <div className="mt-3 flex items-center justify-between gap-2 border-t border-[#F0F0F0] pt-2 text-xs">
         <button
           type="button"
           onClick={() => setIsExpanded(!isExpanded)}
           aria-expanded={isExpanded}
           aria-controls={cardId}
-          className="inline-flex min-h-[36px] items-center gap-1 font-semibold text-[#007185] hover:text-[#E47911] transition-colors py-1 px-1.5 rounded active:bg-[#F0F0F0] cursor-pointer"
+          className="inline-flex min-h-[40px] items-center gap-1 font-semibold text-[#007185] hover:text-[#E47911] transition-colors py-1.5 px-2 rounded active:bg-[#F0F0F0] cursor-pointer"
         >
           <span>{isExpanded ? "Hide Details" : "View Details"}</span>
           {isExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
@@ -166,10 +184,10 @@ function MobileExpandableTeamCard({ team }: { team: SearchResultTeam }) {
 
         <Link
           href={`/teams/${team.teamId}`}
-          className="inline-flex min-h-[36px] items-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-all shadow-2xs"
+          className="inline-flex min-h-[40px] items-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-3 py-1.5 text-xs font-bold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-all shadow-2xs"
         >
-          <span>Open Team</span>
-          <ArrowRight className="h-3 w-3" />
+          <span>View Team</span>
+          <ArrowRight className="h-3.5 w-3.5" />
         </Link>
       </div>
 

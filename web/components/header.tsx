@@ -369,205 +369,204 @@ export function Header() {
 
           {/* Drawer Content */}
           <div className="relative z-10 max-h-[calc(100vh-3.5rem)] overflow-y-auto border-b border-[#E3E3E3] bg-white shadow-2xl animate-in slide-in-from-top-2 duration-200">
-            <div className="p-3 space-y-2">
-              {/* Explorer / Home */}
-              <Link
-                href="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 min-h-[44px] text-sm transition-colors ${
-                  pathname === "/"
-                    ? "bg-[#FFF3E0] text-[#E47911] font-bold border border-[#F5C26B]"
-                    : "text-[#111111] hover:bg-[#F7F7F7]"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`flex h-8 w-8 items-center justify-center rounded-lg ${
-                      pathname === "/"
-                        ? "bg-[#FF9900] text-[#111111]"
-                        : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+            <div className="p-3.5 space-y-4">
+              {/* Group 1: Leaderboard */}
+              <div>
+                <div className="px-2 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-[#767676]">
+                  Leaderboards
+                </div>
+                <div className="space-y-1">
+                  <Link
+                    href="/leaderboard"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                      pathname === "/leaderboard"
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
                     }`}
                   >
-                    <Compass className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <div className="font-semibold leading-tight">Explorer</div>
-                    <div className="text-[11px] text-[#767676] font-normal">
-                      Search teams, members & colleges
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911]">
+                        <Trophy className="h-4 w-4 text-[#FF9900]" />
+                      </div>
+                      <span>Teams Standings</span>
                     </div>
-                  </div>
-                </div>
-                <ChevronRight className={`h-4 w-4 ${pathname === "/" ? "text-[#E47911]" : "text-[#A0A0A0]"}`} />
-              </Link>
+                    <span className="font-mono text-[10px] text-[#767676] bg-[#F0F0F0] px-1.5 py-0.5 rounded">
+                      4,334
+                    </span>
+                  </Link>
 
-              {/* Leaderboard Section (Accordion / Grouped) */}
-              <div className="rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] overflow-hidden">
-                <button
-                  type="button"
-                  onClick={() => setMobileLeaderboardExpanded(!mobileLeaderboardExpanded)}
-                  className="w-full flex items-center justify-between px-3.5 py-2.5 text-sm font-bold text-[#111111] hover:bg-[#F0F0F0] transition-colors"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#FF9900]/15 text-[#E47911] border border-[#FF9900]/30">
-                      <Trophy className="h-3.5 w-3.5" />
-                    </div>
-                    <span>Leaderboards</span>
-                  </div>
-                  <ChevronDown
-                    className={`h-4 w-4 text-[#767676] transition-transform duration-200 ${
-                      mobileLeaderboardExpanded ? "rotate-180" : ""
+                  <Link
+                    href="/movers"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                      pathname === "/movers"
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
                     }`}
-                  />
-                </button>
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#ECFDF5] text-emerald-700">
+                        <span className="text-emerald-600 font-bold">▲</span>
+                      </div>
+                      <span>Biggest Movers</span>
+                    </div>
+                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                      LIVE
+                    </span>
+                  </Link>
 
-                {mobileLeaderboardExpanded && (
-                  <div className="p-1.5 space-y-1 bg-white border-t border-[#EAEAEA]">
-                    {leaderboardSubItems.map((item) => {
-                      const isItemActive =
-                        item.href === "/leaderboard"
-                          ? pathname === "/leaderboard"
-                          : item.href === "/leaderboard/colleges"
-                          ? pathname === "/leaderboard/colleges" || pathname === "/colleges"
-                          : pathname === "/leaderboard/inter-college" || pathname === "/cross-college";
+                  <Link
+                    href="/leaderboard/colleges"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                      pathname === "/leaderboard/colleges"
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911]">
+                        <Building2 className="h-4 w-4 text-[#FF9900]" />
+                      </div>
+                      <span>Colleges Leaderboard</span>
+                    </div>
+                    <span className="font-mono text-[10px] text-[#767676] bg-[#F0F0F0] px-1.5 py-0.5 rounded">
+                      1,546
+                    </span>
+                  </Link>
 
-                      const IconComponent = item.icon;
+                  <Link
+                    href="/leaderboard/inter-college"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                      pathname === "/leaderboard/inter-college"
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911]">
+                        <GitFork className="h-4 w-4 text-[#FF9900]" />
+                      </div>
+                      <span>Inter-College Teams</span>
+                    </div>
+                    <span className="font-mono text-[10px] text-[#E47911] bg-[#FFF3E0] px-1.5 py-0.5 rounded border border-[#F5C26B]/60">
+                      Multi-Univ
+                    </span>
+                  </Link>
 
-                      return (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-xs transition-colors ${
-                            isItemActive
-                              ? "bg-[#FFF3E0] text-[#E47911] font-bold border border-[#F5C26B]"
-                              : "text-[#111111] hover:bg-[#F7F7F7]"
-                          }`}
-                        >
-                          <div className="flex items-center gap-2.5 min-w-0">
-                            <div
-                              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md ${
-                                isItemActive
-                                  ? "bg-[#FF9900] text-[#111111]"
-                                  : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
-                              }`}
-                            >
-                              <IconComponent className="h-3.5 w-3.5" />
-                            </div>
-                            <div className="min-w-0">
-                              <div className="font-semibold truncate">{item.label}</div>
-                              <div className="text-[10px] text-[#767676] font-normal truncate">
-                                {item.description}
-                              </div>
-                            </div>
-                          </div>
-                          {item.badge && (
-                            <span className="shrink-0 font-mono text-[9px] px-1.5 py-0.5 rounded bg-[#F0F0F0] text-[#5F6368] border border-[#E3E3E3] ml-2">
-                              {item.badge}
-                            </span>
-                          )}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
+                  <Link
+                    href="/leaderboard/women-teams"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                      pathname === "/leaderboard/women-teams"
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911]">
+                        <Users className="h-4 w-4 text-[#FF9900]" />
+                      </div>
+                      <span>Women-Only Teams</span>
+                    </div>
+                    <span className="font-mono text-[10px] text-[#767676] bg-[#F0F0F0] px-1.5 py-0.5 rounded">
+                      27
+                    </span>
+                  </Link>
+                </div>
               </div>
 
-              {/* Directory */}
-              <Link
-                href="/organizations"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 min-h-[44px] text-sm transition-colors ${
-                  pathname.startsWith("/organizations")
-                    ? "bg-[#FFF3E0] text-[#E47911] font-bold border border-[#F5C26B]"
-                    : "text-[#111111] hover:bg-[#F7F7F7]"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`flex h-8 w-8 items-center justify-center rounded-lg ${
+              {/* Group 2: Explore */}
+              <div className="pt-2 border-t border-[#F0F0F0]">
+                <div className="px-2 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-[#767676]">
+                  Explore & Analytics
+                </div>
+                <div className="space-y-1">
+                  <Link
+                    href="/"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                      pathname === "/"
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]">
+                        <Compass className="h-4 w-4" />
+                      </div>
+                      <span>Search & Explorer</span>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-[#767676]" />
+                  </Link>
+
+                  <Link
+                    href="/organizations"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
                       pathname.startsWith("/organizations")
-                        ? "bg-[#FF9900] text-[#111111]"
-                        : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
                     }`}
                   >
-                    <Building className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <div className="font-semibold leading-tight">Colleges Directory</div>
-                    <div className="text-[11px] text-[#767676] font-normal">
-                      Browse 1,546 academic institutions
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]">
+                        <Building className="h-4 w-4" />
+                      </div>
+                      <span>Colleges Directory</span>
                     </div>
-                  </div>
-                </div>
-                <ChevronRight className={`h-4 w-4 ${pathname.startsWith("/organizations") ? "text-[#E47911]" : "text-[#A0A0A0]"}`} />
-              </Link>
+                    <ChevronRight className="h-4 w-4 text-[#767676]" />
+                  </Link>
 
-              {/* Compare */}
-              <Link
-                href="/compare"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 min-h-[44px] text-sm transition-colors ${
-                  pathname.startsWith("/compare")
-                    ? "bg-[#FFF3E0] text-[#E47911] font-bold border border-[#F5C26B]"
-                    : "text-[#111111] hover:bg-[#F7F7F7]"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`flex h-8 w-8 items-center justify-center rounded-lg ${
+                  <Link
+                    href="/compare"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
                       pathname.startsWith("/compare")
-                        ? "bg-[#FF9900] text-[#111111]"
-                        : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
                     }`}
                   >
-                    <BarChart3 className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <div className="font-semibold leading-tight">Compare Colleges</div>
-                    <div className="text-[11px] text-[#767676] font-normal">
-                      Side-by-side performance metrics
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]">
+                        <BarChart3 className="h-4 w-4" />
+                      </div>
+                      <span>Compare Colleges</span>
                     </div>
-                  </div>
+                    <ChevronRight className="h-4 w-4 text-[#767676]" />
+                  </Link>
                 </div>
-                <ChevronRight className={`h-4 w-4 ${pathname.startsWith("/compare") ? "text-[#E47911]" : "text-[#A0A0A0]"}`} />
-              </Link>
+              </div>
 
-              {/* Saved Teams */}
-              <Link
-                href="/saved"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 min-h-[44px] text-sm transition-colors ${
-                  pathname.startsWith("/saved")
-                    ? "bg-[#FFF3E0] text-[#E47911] font-bold border border-[#F5C26B]"
-                    : "text-[#111111] hover:bg-[#F7F7F7]"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`flex h-8 w-8 items-center justify-center rounded-lg ${
-                      pathname.startsWith("/saved")
-                        ? "bg-[#FF9900] text-[#111111]"
-                        : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
-                    }`}
-                  >
-                    <Bookmark className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <div className="font-semibold leading-tight flex items-center gap-1.5">
-                      <span>Saved Teams</span>
-                      {isLoaded && count > 0 && (
-                        <span className="rounded-full bg-[#FF9900] text-[#111111] px-1.5 py-0.2 text-[10px] font-mono font-bold">
-                          {count}
-                        </span>
-                      )}
-                    </div>
-                    <div className="text-[11px] text-[#767676] font-normal">
-                      Your bookmarked teams & rankings
-                    </div>
-                  </div>
+              {/* Group 3: My Saved Teams */}
+              <div className="pt-2 border-t border-[#F0F0F0]">
+                <div className="px-2 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-[#767676]">
+                  My Space
                 </div>
-                <ChevronRight className={`h-4 w-4 ${pathname.startsWith("/saved") ? "text-[#E47911]" : "text-[#A0A0A0]"}`} />
-              </Link>
+                <Link
+                  href="/saved"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                    pathname.startsWith("/saved")
+                      ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                      : "text-[#111111] hover:bg-[#F7F7F7]"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911]">
+                      <Bookmark className="h-4 w-4 text-[#FF9900] fill-[#FF9900]" />
+                    </div>
+                    <span>Saved Bookmarked Teams</span>
+                  </div>
+                  {isLoaded && count > 0 && (
+                    <span className="rounded-full bg-[#FF9900] text-[#111111] px-2 py-0.5 text-[10px] font-mono font-bold">
+                      {count}
+                    </span>
+                  )}
+                </Link>
+              </div>
             </div>
 
             {/* Mobile Footer Status Tag */}
@@ -577,7 +576,7 @@ export function Header() {
                 <span>4,334 Teams Indexed</span>
               </span>
               <span className="font-mono text-[11px] text-[#767676]">
-                Challenge ID: 290344
+                Snapshot 2026
               </span>
             </div>
           </div>

@@ -173,7 +173,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
 
           {/* Score Box & Save / Share / Copy Link Actions */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 self-stretch sm:self-auto justify-between sm:justify-end">
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
               <TeamSaveAction teamId={team.teamId} teamName={team.teamName} />
               <ShareButton
                 teamId={team.teamId}
@@ -186,9 +186,9 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
               <CopyLinkButton teamId={team.teamId} variant="button" />
             </div>
 
-            <div className="rounded-lg border border-[#F5C26B] bg-[#FFF7E6] px-3.5 py-1.5 sm:py-2 text-right shadow-xs min-w-[120px]">
-              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-                Score
+            <div className="rounded-lg border border-[#F5C26B] bg-[#FFF7E6] px-3.5 py-2 text-left sm:text-right shadow-xs min-w-[120px] flex sm:block items-center justify-between">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+                F1 Score
               </span>
               <span className="text-lg sm:text-2xl font-bold font-mono text-[#111111] block">
                 {team.score || "0.000000"}

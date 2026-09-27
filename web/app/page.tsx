@@ -76,24 +76,24 @@ export default async function HomePage({ searchParams }: PageProps) {
     <div className="mx-auto max-w-7xl px-3.5 sm:px-6 lg:px-8">
       <JsonLd data={breadcrumbSchema} />
 
-      {/* Hero Section */}
-      <section className="relative mt-3 sm:mt-4 rounded-xl border border-[#E3E3E3] bg-gradient-to-b from-[#FFFDF9] via-white to-white px-3.5 py-6 sm:px-8 sm:py-8 text-center shadow-xs">
+      {/* Hero Section (Mobile-First Responsive) */}
+      <section className="relative mt-2 sm:mt-4 rounded-xl border border-[#E3E3E3] bg-gradient-to-b from-[#FFFDF9] via-white to-white p-4 sm:px-8 sm:py-8 text-center shadow-xs">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[3px] w-20 sm:w-28 bg-[#FF9900] rounded-b-full" />
 
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-semibold text-[#E47911] mb-2 sm:mb-3">
-          <Award className="h-3.5 w-3.5" />
-          <span>Official Contest Snapshot • 4,334 Teams • 1,546 Colleges</span>
+        <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-2.5 py-0.5 text-[10px] sm:text-xs font-semibold text-[#E47911] mb-2">
+          <Award className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+          <span>Amazon ML Challenge 2026 Snapshot</span>
         </div>
 
-        <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#111111] leading-tight">
-          Explore the Amazon ML Challenge Leaderboard
+        <h1 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-[#111111] leading-tight">
+          Live Leaderboard Explorer
         </h1>
-        <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-[#5F6368] max-w-2xl mx-auto leading-relaxed">
-          Search teams, student participants, colleges, and scores from the complete historical competition snapshot.
+        <p className="mt-1 text-xs sm:text-sm text-[#5F6368] max-w-2xl mx-auto leading-normal">
+          Search teams, student participants, colleges, and track historical score progression.
         </p>
 
-        {/* Primary Search Experience */}
-        <div className="mt-4 sm:mt-5 max-w-2xl mx-auto">
+        {/* Primary Search Bar */}
+        <div className="mt-3.5 sm:mt-5 max-w-2xl mx-auto">
           <Suspense
             fallback={
               <div className="h-11 w-full animate-pulse rounded-lg bg-[#F7F7F7] border border-[#D5D5D5]" />
@@ -108,30 +108,30 @@ export default async function HomePage({ searchParams }: PageProps) {
           </Suspense>
         </div>
 
-        {/* Statistics 2x2 Grid (Mobile) / Horizontal Strip (Desktop) */}
-        <div className="mt-4 sm:mt-5 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-[#5F6368] font-mono border-t border-[#EAEAEA] pt-3.5 sm:pt-4 max-w-3xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 bg-[#FFF7E6] border border-[#F5C26B] px-2.5 py-2 sm:py-1.5 rounded-lg sm:rounded-md text-center sm:text-left shadow-2xs">
-            <Trophy className="h-3.5 w-3.5 text-[#FF9900] shrink-0" />
-            <span className="truncate">
-              <strong className="text-[#111111]">{metadata.uniqueTeams.toLocaleString()}</strong> Teams
-            </span>
+        {/* Statistics Strip & Leaderboard Action */}
+        <div className="mt-3.5 sm:mt-5 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-[#EAEAEA] pt-3 sm:pt-4 max-w-3xl mx-auto">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 w-full sm:w-auto text-xs font-mono">
+            <div className="flex flex-col items-center justify-center bg-[#FFF7E6] border border-[#F5C26B] px-2 py-1.5 rounded-lg text-center">
+              <span className="font-bold text-[#111111] text-xs sm:text-sm">{metadata.uniqueTeams.toLocaleString()}</span>
+              <span className="text-[10px] text-[#767676] font-sans">Teams</span>
+            </div>
+            <div className="flex flex-col items-center justify-center bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-1.5 rounded-lg text-center">
+              <span className="font-bold text-[#111111] text-xs sm:text-sm">{metadata.uniquePlayers.toLocaleString()}</span>
+              <span className="text-[10px] text-[#767676] font-sans">Members</span>
+            </div>
+            <div className="flex flex-col items-center justify-center bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-1.5 rounded-lg text-center">
+              <span className="font-bold text-[#111111] text-xs sm:text-sm">{metadata.uniqueOrganizations.toLocaleString()}</span>
+              <span className="text-[10px] text-[#767676] font-sans">Colleges</span>
+            </div>
           </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-2 sm:py-1.5 rounded-lg sm:rounded-md text-center sm:text-left shadow-2xs">
-            <Users className="h-3.5 w-3.5 text-[#5F6368] shrink-0" />
-            <span className="truncate">
-              <strong className="text-[#111111]">{metadata.uniquePlayers.toLocaleString()}</strong> Participants
-            </span>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-2 sm:py-1.5 rounded-lg sm:rounded-md text-center sm:text-left shadow-2xs">
-            <Building2 className="h-3.5 w-3.5 text-[#5F6368] shrink-0" />
-            <span className="truncate">
-              <strong className="text-[#111111]">{metadata.uniqueOrganizations.toLocaleString()}</strong> Colleges
-            </span>
-          </div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 text-[#067D62] font-sans font-medium px-2.5 py-2 sm:py-1.5 bg-[#ECFDF3] border border-[#A6F4C5] rounded-lg sm:rounded-md text-center sm:text-left shadow-2xs">
-            <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-            <span className="text-[11px] sm:text-xs">114/114 Verified</span>
-          </div>
+
+          <Link
+            href="/leaderboard"
+            className="w-full sm:w-auto inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-lg bg-[#FF9900] px-5 py-2.5 text-xs sm:text-sm font-bold text-[#111111] hover:bg-[#FFAC33] active:scale-95 transition-all shadow-xs"
+          >
+            <span>View Full Leaderboard</span>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 

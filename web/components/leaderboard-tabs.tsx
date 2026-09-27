@@ -17,10 +17,10 @@ export function LeaderboardTabs({
   womenTeamsCount = 27,
 }: LeaderboardTabsProps) {
   return (
-    <div className="flex items-center gap-1.5 sm:gap-2 border-b border-[#E3E3E3] mb-4 overflow-x-auto no-scrollbar">
+    <div className="flex items-center gap-1.5 sm:gap-2 border-b border-[#E3E3E3] mb-4 overflow-x-auto no-scrollbar scroll-smooth">
       <Link
         href="/leaderboard"
-        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+        className={`inline-flex min-h-[44px] items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap shrink-0 ${
           activeTab === "teams"
             ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
             : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
@@ -41,7 +41,7 @@ export function LeaderboardTabs({
 
       <Link
         href="/leaderboard/colleges"
-        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+        className={`inline-flex min-h-[44px] items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap shrink-0 ${
           activeTab === "colleges"
             ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
             : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
@@ -64,19 +64,20 @@ export function LeaderboardTabs({
 
       <Link
         href="/movers"
-        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+        className={`inline-flex min-h-[44px] items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap shrink-0 ${
           activeTab === "movers"
             ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
             : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
         }`}
       >
         <span className="text-[#FF9900] font-bold">▲</span>
-        <span>Biggest Movers</span>
+        <span className="hidden sm:inline">Biggest Movers</span>
+        <span className="sm:hidden">Movers</span>
       </Link>
 
       <Link
         href="/leaderboard/inter-college"
-        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+        className={`inline-flex min-h-[44px] items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap shrink-0 ${
           activeTab === "inter-college"
             ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
             : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
@@ -85,7 +86,8 @@ export function LeaderboardTabs({
         <GitFork
           className={`h-4 w-4 shrink-0 ${activeTab === "inter-college" ? "text-[#FF9900]" : "text-[#767676]"}`}
         />
-        <span>Inter-College Teams</span>
+        <span className="hidden sm:inline">Inter-College Teams</span>
+        <span className="sm:hidden">Inter-College</span>
         {interCollegeCount !== undefined && (
           <span
             className={`rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
@@ -101,14 +103,15 @@ export function LeaderboardTabs({
 
       <Link
         href="/leaderboard/women-teams"
-        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+        className={`inline-flex min-h-[44px] items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap shrink-0 ${
           activeTab === "women-teams"
             ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
             : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
         }`}
       >
         <span className={`text-sm font-black ${activeTab === "women-teams" ? "text-[#FF9900]" : "text-[#767676]"}`}>♀</span>
-        <span>Women-Only Teams</span>
+        <span className="hidden sm:inline">Women-Only Teams</span>
+        <span className="sm:hidden">Women</span>
         <span
           className={`rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
             activeTab === "women-teams"

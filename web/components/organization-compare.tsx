@@ -212,7 +212,7 @@ export function OrganizationCompare({
                   <div className="mt-3 pt-2 border-t border-[#F0F0F0]">
                     <Link
                       href={`/organizations/${c.organization.slug}`}
-                      className="inline-flex min-h-[36px] w-full items-center justify-center gap-1 rounded-md border border-[#FF9900] bg-[#FFF3E0] px-3 py-1.5 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all"
+                      className="inline-flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-md border border-[#FF9900] bg-[#FFF3E0] px-3 py-2 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all"
                     >
                       <span>View All {c.teamCount} Teams</span>
                       <ArrowRight className="h-3.5 w-3.5" />
