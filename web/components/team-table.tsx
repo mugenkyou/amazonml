@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, User, Building2, Clock, Users } from "lucide-react";
 import { slugifyOrganization } from "@/lib/normalize";
+import { BookmarkButton } from "@/components/bookmark-button";
 import type { SearchResultTeam } from "@/lib/types";
 
 interface TeamTableProps {
@@ -36,8 +37,8 @@ export function TeamTable({ teams }: TeamTableProps) {
                   : "border-[#E3E3E3]"
               }`}
             >
-              {/* Header: Rank + Team + Score */}
-              <div className="flex items-start justify-between gap-2.5">
+              {/* Header: Rank + Team + Score + Bookmark */}
+              <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-2 min-w-0 flex-1">
                   <span
                     className={`inline-flex h-7 min-w-7 shrink-0 items-center justify-center rounded px-1.5 text-xs font-bold font-mono shadow-xs ${
@@ -63,11 +64,14 @@ export function TeamTable({ teams }: TeamTableProps) {
                   </div>
                 </div>
 
-                <div className="text-right shrink-0 bg-[#FFF7E6] border border-[#F5C26B]/40 rounded px-2 py-0.5">
-                  <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">Score</span>
-                  <span className="text-xs font-bold font-mono text-[#111111]">
-                    {team.score || "0.000000"}
-                  </span>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className="text-right bg-[#FFF7E6] border border-[#F5C26B]/40 rounded px-2 py-0.5">
+                    <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">Score</span>
+                    <span className="text-xs font-bold font-mono text-[#111111]">
+                      {team.score || "0.000000"}
+                    </span>
+                  </div>
+                  <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
                 </div>
               </div>
 
@@ -244,13 +248,16 @@ export function TeamTable({ teams }: TeamTableProps) {
                       </div>
                     </td>
                     <td className="whitespace-nowrap py-3 pl-2 pr-4 text-right text-xs">
-                      <Link
-                        href={`/teams/${team.teamId}`}
-                        className="inline-flex min-h-[32px] items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2 py-1 font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors text-xs"
-                      >
-                        <span>View</span>
-                        <ArrowRight className="h-3 w-3" />
-                      </Link>
+                      <div className="inline-flex items-center justify-end gap-1.5">
+                        <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
+                        <Link
+                          href={`/teams/${team.teamId}`}
+                          className="inline-flex min-h-[32px] items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors text-xs shadow-2xs"
+                        >
+                          <span>View</span>
+                          <ArrowRight className="h-3 w-3" />
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 );

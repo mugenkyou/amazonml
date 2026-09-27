@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Users, Clock, ArrowRight, Building2, User, Trophy, ShieldCheck } from "lucide-react";
 import { slugifyOrganization } from "@/lib/normalize";
+import { BookmarkButton } from "@/components/bookmark-button";
 import type { SearchResultTeam } from "@/lib/types";
 
 interface TeamCardProps {
@@ -24,8 +25,8 @@ export function TeamCard({ team }: TeamCardProps) {
       }`}
     >
       <div>
-        {/* Header: Rank + Team + Score */}
-        <div className="flex items-start justify-between gap-2.5">
+        {/* Header: Rank + Team + Score + Bookmark */}
+        <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-2 min-w-0 flex-1">
             <span
               className={`inline-flex h-7 min-w-7 shrink-0 items-center justify-center rounded px-1.5 text-xs font-bold font-mono shadow-xs ${
@@ -49,11 +50,14 @@ export function TeamCard({ team }: TeamCardProps) {
             </div>
           </div>
 
-          <div className="text-right shrink-0">
-            <span className="text-[9px] uppercase font-bold text-[#767676] block">Score</span>
-            <span className="text-xs sm:text-sm font-bold font-mono text-[#111111]">
-              {team.score || "0.000000"}
-            </span>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <div className="text-right">
+              <span className="text-[9px] uppercase font-bold text-[#767676] block">Score</span>
+              <span className="text-xs sm:text-sm font-bold font-mono text-[#111111]">
+                {team.score || "0.000000"}
+              </span>
+            </div>
+            <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
           </div>
         </div>
 

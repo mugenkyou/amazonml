@@ -15,7 +15,9 @@ import {
   Building,
   BarChart3,
   Users,
+  Bookmark,
 } from "lucide-react";
+import { useSavedTeams } from "@/hooks/useSavedTeams";
 
 interface LeaderboardSubItem {
   label: string;
@@ -28,6 +30,7 @@ interface LeaderboardSubItem {
 
 export function Header() {
   const pathname = usePathname();
+  const { count, isLoaded } = useSavedTeams();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [leaderboardDropdownOpen, setLeaderboardDropdownOpen] = useState(false);
   const [mobileLeaderboardExpanded, setMobileLeaderboardExpanded] = useState(true);
@@ -304,6 +307,24 @@ export function Header() {
             <BarChart3 className={`h-4 w-4 shrink-0 ${pathname.startsWith("/compare") ? "text-[#FF9900]" : "text-[#767676]"}`} />
             <span>Compare</span>
           </Link>
+
+          {/* 5. Saved Teams */}
+          <Link
+            href="/saved"
+            className={`relative flex items-center gap-1.5 h-full px-3 text-xs lg:text-sm font-medium transition-colors ${
+              pathname.startsWith("/saved")
+                ? "text-[#E47911] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[3px] after:bg-[#FF9900]"
+                : "text-[#5F6368] hover:text-[#E47911] hover:bg-[#FFF7E6]/70"
+            }`}
+          >
+            <Bookmark className={`h-4 w-4 shrink-0 ${pathname.startsWith("/saved") ? "text-[#FF9900] fill-[#FF9900]" : "text-[#767676]"}`} />
+            <span>Saved</span>
+            {isLoaded && count > 0 && (
+              <span className="rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-1.5 py-0.2 text-[10px] font-mono font-bold text-[#E47911]">
+                {count}
+              </span>
+            )}
+          </Link>
         </nav>
 
         {/* Right side snapshot indicator & Mobile Menu Toggle */}
@@ -499,6 +520,43 @@ export function Header() {
                   </div>
                 </div>
                 <ChevronRight className={`h-4 w-4 ${pathname.startsWith("/compare") ? "text-[#E47911]" : "text-[#A0A0A0]"}`} />
+              </Link>
+
+              {/* Saved Teams */}
+              <Link
+                href="/saved"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 min-h-[44px] text-sm transition-colors ${
+                  pathname.startsWith("/saved")
+                    ? "bg-[#FFF3E0] text-[#E47911] font-bold border border-[#F5C26B]"
+                    : "text-[#111111] hover:bg-[#F7F7F7]"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`flex h-8 w-8 items-center justify-center rounded-lg ${
+                      pathname.startsWith("/saved")
+                        ? "bg-[#FF9900] text-[#111111]"
+                        : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+                    }`}
+                  >
+                    <Bookmark className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <div className="font-semibold leading-tight flex items-center gap-1.5">
+                      <span>Saved Teams</span>
+                      {isLoaded && count > 0 && (
+                        <span className="rounded-full bg-[#FF9900] text-[#111111] px-1.5 py-0.2 text-[10px] font-mono font-bold">
+                          {count}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-[11px] text-[#767676] font-normal">
+                      Your bookmarked teams & rankings
+                    </div>
+                  </div>
+                </div>
+                <ChevronRight className={`h-4 w-4 ${pathname.startsWith("/saved") ? "text-[#E47911]" : "text-[#A0A0A0]"}`} />
               </Link>
             </div>
 

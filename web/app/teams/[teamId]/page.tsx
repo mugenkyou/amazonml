@@ -6,6 +6,7 @@ import { getAllTeams, getTeamById } from "@/lib/data";
 import { slugifyOrganization } from "@/lib/normalize";
 import { isInterCollegeTeam } from "@/lib/inter-college";
 import { TeamMembers } from "@/components/team-members";
+import { TeamSaveAction } from "@/components/team-save-action";
 import { JsonLd } from "@/components/json-ld";
 import {
   generateBreadcrumbSchema,
@@ -164,14 +165,18 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             </div>
           </div>
 
-          {/* Score Box */}
-          <div className="rounded-lg border border-[#F5C26B] bg-[#FFF7E6] px-3.5 py-2 text-left sm:text-right shadow-xs self-start sm:self-auto w-full sm:w-auto">
-            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-              Official Leaderboard Score
-            </span>
-            <span className="text-xl sm:text-2xl font-bold font-mono text-[#111111] block mt-0.5">
-              {team.score || "0.000000"}
-            </span>
+          {/* Score Box & Save Action */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 self-start sm:self-auto w-full sm:w-auto">
+            <TeamSaveAction teamId={team.teamId} teamName={team.teamName} />
+
+            <div className="rounded-lg border border-[#F5C26B] bg-[#FFF7E6] px-3.5 py-2 text-left sm:text-right shadow-xs w-full sm:w-auto">
+              <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+                Official Leaderboard Score
+              </span>
+              <span className="text-xl sm:text-2xl font-bold font-mono text-[#111111] block mt-0.5">
+                {team.score || "0.000000"}
+              </span>
+            </div>
           </div>
         </div>
 

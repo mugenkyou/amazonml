@@ -17,8 +17,9 @@ import {
 } from "lucide-react";
 import { SearchBar } from "@/components/search-bar";
 import { OrganizationResults } from "@/components/organization-results";
+import { SavedTeamsSection } from "@/components/saved-teams-section";
 import { JsonLd } from "@/components/json-ld";
-import { getAllOrganizations, getDatasetMetadata } from "@/lib/data";
+import { getAllOrganizations, getAllTeams, getDatasetMetadata } from "@/lib/data";
 import { searchTeams } from "@/lib/search";
 import { generateBreadcrumbSchema, getCanonicalUrl, SITE_NAME, SITE_URL } from "@/lib/seo";
 import type { SearchMode } from "@/lib/types";
@@ -59,6 +60,7 @@ export default async function HomePage({ searchParams }: PageProps) {
 
   const metadata = getDatasetMetadata();
   const allOrganizations = getAllOrganizations();
+  const allTeams = getAllTeams();
   const popularOrganizations = allOrganizations.slice(0, 6);
 
   const searchResponse = searchTeams(query, {
@@ -132,6 +134,9 @@ export default async function HomePage({ searchParams }: PageProps) {
           </div>
         </div>
       </section>
+
+      {/* Saved Teams Section (Appears automatically when user has bookmarked teams) */}
+      <SavedTeamsSection allTeams={allTeams} />
 
       {/* Feature Navigation Cards */}
       {!query && (
