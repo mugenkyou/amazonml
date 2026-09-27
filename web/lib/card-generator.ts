@@ -191,10 +191,25 @@ export function renderShareCardToCanvas(
   // 2. CENTERPIECE METRICS (RANK & F1 SCORE)
   // -------------------------------------------------------------
   const rankVal = team.rank ? String(team.rank) : "—";
-  const scoreVal = team.score ? String(team.score) : "0.000000";
+  const scoreVal = team.score
+    ? !isNaN(parseFloat(team.score))
+      ? parseFloat(team.score).toFixed(6)
+      : team.score
+    : "0.000000";
   const rDelta = team.rankDelta ?? 0;
   const sDelta = team.scoreDelta ?? 0;
   const isNew = team.status === "new";
+
+  // Calculate net movements across history if current step delta is 0
+  const oldestCheckpoint = history && history.length > 1 ? history[history.length - 1] : null;
+  const netRankMovement =
+    oldestCheckpoint && oldestCheckpoint.rank !== null && team.rank !== null
+      ? Number(oldestCheckpoint.rank) - Number(team.rank)
+      : 0;
+  const netScoreMovement =
+    oldestCheckpoint && oldestCheckpoint.score !== null && team.score !== null
+      ? parseFloat(team.score) - parseFloat(oldestCheckpoint.score)
+      : 0;
 
   if (cardType === "both") {
     const colWidth = (contentWidth - 48) / 2; // ~444px
@@ -217,16 +232,22 @@ export function renderShareCardToCanvas(
     ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
     if (isNew) {
       ctx.fillStyle = "#2563EB";
-      ctx.fillText("★ NEW ENTRY", col1X, rankDeltaY);
+      ctx.fillText(`★ NEW ENTRY · #${rankVal}`, col1X, rankDeltaY);
     } else if (rDelta > 0) {
       ctx.fillStyle = "#059669";
       ctx.fillText(`▲ +${rDelta} positions`, col1X, rankDeltaY);
     } else if (rDelta < 0) {
       ctx.fillStyle = "#DC2626";
       ctx.fillText(`▼ ${Math.abs(rDelta)} positions`, col1X, rankDeltaY);
+    } else if (netRankMovement > 0) {
+      ctx.fillStyle = "#059669";
+      ctx.fillText(`▲ +${netRankMovement} overall climb`, col1X, rankDeltaY);
+    } else if (netRankMovement < 0) {
+      ctx.fillStyle = "#DC2626";
+      ctx.fillText(`▼ ${Math.abs(netRankMovement)} overall change`, col1X, rankDeltaY);
     } else {
-      ctx.fillStyle = "#64748B";
-      ctx.fillText("— No change", col1X, rankDeltaY);
+      ctx.fillStyle = "#059669";
+      ctx.fillText(`— Maintained Rank #${rankVal}`, col1X, rankDeltaY);
     }
     ctx.restore();
 
@@ -246,7 +267,7 @@ export function renderShareCardToCanvas(
     ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
     if (isNew) {
       ctx.fillStyle = "#2563EB";
-      ctx.fillText("First recorded checkpoint", col2X, scoreDeltaY);
+      ctx.fillText(`★ Initial: ${scoreVal}`, col2X, scoreDeltaY);
     } else if (sDelta > 0.000001) {
       ctx.fillStyle = "#059669";
       ctx.fillText(`+${sDelta.toFixed(6)}`, col2X, scoreDeltaY);
@@ -259,9 +280,13 @@ export function renderShareCardToCanvas(
       ctx.font = "500 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
       ctx.fillStyle = "#64748B";
       ctx.fillText("  since previous sync", col2X + ctx.measureText(`${sDelta.toFixed(6)}`).width + 25, scoreDeltaY + 3);
+    } else if (Math.abs(netScoreMovement) > 0.000001) {
+      ctx.fillStyle = netScoreMovement > 0 ? "#059669" : "#DC2626";
+      const sign = netScoreMovement > 0 ? "+" : "";
+      ctx.fillText(`${sign}${netScoreMovement.toFixed(6)} total change`, col2X, scoreDeltaY);
     } else {
       ctx.fillStyle = "#64748B";
-      ctx.fillText("— No score change", col2X, scoreDeltaY);
+      ctx.fillText(`— Maintained ${scoreVal}`, col2X, scoreDeltaY);
     }
     ctx.restore();
 
@@ -282,16 +307,22 @@ export function renderShareCardToCanvas(
     ctx.font = "bold 24px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
     if (isNew) {
       ctx.fillStyle = "#2563EB";
-      ctx.fillText("★ NEW TO LEADERBOARD", marginX, rankDeltaY);
+      ctx.fillText(`★ NEW ENTRY · Rank #${rankVal}`, marginX, rankDeltaY);
     } else if (rDelta > 0) {
       ctx.fillStyle = "#059669";
       ctx.fillText(`▲ +${rDelta} positions climbed`, marginX, rankDeltaY);
     } else if (rDelta < 0) {
       ctx.fillStyle = "#DC2626";
       ctx.fillText(`▼ ${Math.abs(rDelta)} positions dropped`, marginX, rankDeltaY);
+    } else if (netRankMovement > 0) {
+      ctx.fillStyle = "#059669";
+      ctx.fillText(`▲ +${netRankMovement} overall climb`, marginX, rankDeltaY);
+    } else if (netRankMovement < 0) {
+      ctx.fillStyle = "#DC2626";
+      ctx.fillText(`▼ ${Math.abs(netRankMovement)} overall change`, marginX, rankDeltaY);
     } else {
-      ctx.fillStyle = "#64748B";
-      ctx.fillText("— No rank movement from previous sync", marginX, rankDeltaY);
+      ctx.fillStyle = "#059669";
+      ctx.fillText(`— Maintained Rank #${rankVal}`, marginX, rankDeltaY);
     }
     ctx.restore();
 
@@ -312,16 +343,20 @@ export function renderShareCardToCanvas(
     ctx.font = "bold 24px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
     if (isNew) {
       ctx.fillStyle = "#2563EB";
-      ctx.fillText("First recorded score checkpoint", marginX, scoreDeltaY);
+      ctx.fillText(`★ Initial Score: ${scoreVal}`, marginX, scoreDeltaY);
     } else if (sDelta > 0.000001) {
       ctx.fillStyle = "#059669";
       ctx.fillText(`+${sDelta.toFixed(6)} score gain since previous sync`, marginX, scoreDeltaY);
     } else if (sDelta < -0.000001) {
       ctx.fillStyle = "#DC2626";
       ctx.fillText(`${sDelta.toFixed(6)} score delta since previous sync`, marginX, scoreDeltaY);
+    } else if (Math.abs(netScoreMovement) > 0.000001) {
+      ctx.fillStyle = netScoreMovement > 0 ? "#059669" : "#DC2626";
+      const sign = netScoreMovement > 0 ? "+" : "";
+      ctx.fillText(`${sign}${netScoreMovement.toFixed(6)} total score change`, marginX, scoreDeltaY);
     } else {
       ctx.fillStyle = "#64748B";
-      ctx.fillText("— No score change from previous sync", marginX, scoreDeltaY);
+      ctx.fillText(`— Maintained ${scoreVal}`, marginX, scoreDeltaY);
     }
     ctx.restore();
 
