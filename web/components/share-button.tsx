@@ -10,6 +10,7 @@ interface ShareButtonProps {
   teamName: string;
   team?: Partial<Team> & { teamId: string | number; teamName: string };
   initialHistory?: HistoricalObservation[];
+  label?: string;
   size?: "sm" | "md" | "lg";
   variant?: "icon" | "pill" | "button";
   className?: string;
@@ -21,6 +22,7 @@ export function ShareButton({
   teamName,
   team,
   initialHistory,
+  label = "Share Stats",
   size = "md",
   variant = "icon",
   className = "",
@@ -54,7 +56,7 @@ export function ShareButton({
           className={`inline-flex min-h-[38px] items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all shadow-xs cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-[#FF9900]/50 active:scale-95 bg-[#F7F7F7] text-[#111111] border border-[#D5D5D5] hover:bg-[#FFF7E6] hover:text-[#E47911] hover:border-[#FF9900] ${className}`}
         >
           <ArrowUpRight className="h-4 w-4 text-[#767676]" />
-          <span>Share</span>
+          <span>{label}</span>
         </button>
 
         {isModalOpen && (

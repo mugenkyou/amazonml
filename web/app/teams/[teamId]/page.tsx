@@ -8,6 +8,7 @@ import { isInterCollegeTeam } from "@/lib/inter-college";
 import { TeamMembers } from "@/components/team-members";
 import { TeamSaveAction } from "@/components/team-save-action";
 import { ShareButton } from "@/components/share-button";
+import { CopyLinkButton } from "@/components/copy-link-button";
 import { TeamHistoryChart } from "@/components/team-history-chart";
 import { JsonLd } from "@/components/json-ld";
 import {
@@ -170,17 +171,19 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             </div>
           </div>
 
-          {/* Score Box & Save / Share Actions */}
+          {/* Score Box & Save / Share / Copy Link Actions */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 self-stretch sm:self-auto justify-between sm:justify-end">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <TeamSaveAction teamId={team.teamId} teamName={team.teamName} />
               <ShareButton
                 teamId={team.teamId}
                 teamName={team.teamName}
                 team={team}
                 initialHistory={teamHistory?.history}
+                label="Share Stats"
                 variant="button"
               />
+              <CopyLinkButton teamId={team.teamId} variant="button" />
             </div>
 
             <div className="rounded-lg border border-[#F5C26B] bg-[#FFF7E6] px-3.5 py-1.5 sm:py-2 text-right shadow-xs min-w-[120px]">
