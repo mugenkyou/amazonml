@@ -30,17 +30,17 @@ export const CARD_HEIGHT = 1350;
 
 /**
  * Formats a snapshot timestamp into a human-readable string:
- * e.g. "27 Sep 2026 · 4:42 PM IST"
+ * e.g. "Sep 27, 2026 · 5:22 PM IST"
  */
 export function formatSnapshotTimestamp(dateInput?: string | Date | null): string {
   if (!dateInput) {
     const now = new Date();
     return `${now.toLocaleDateString("en-US", {
-      day: "numeric",
       month: "short",
+      day: "numeric",
       year: "numeric",
     })} · ${now.toLocaleTimeString("en-US", {
-      hour: "2-digit",
+      hour: "numeric",
       minute: "2-digit",
     })} IST`;
   }
@@ -51,12 +51,12 @@ export function formatSnapshotTimestamp(dateInput?: string | Date | null): strin
   }
 
   const dateStr = d.toLocaleDateString("en-US", {
-    day: "numeric",
     month: "short",
+    day: "numeric",
     year: "numeric",
   });
   const timeStr = d.toLocaleTimeString("en-US", {
-    hour: "2-digit",
+    hour: "numeric",
     minute: "2-digit",
   });
 
@@ -98,7 +98,7 @@ function wrapText(
 }
 
 /**
- * Renders the full 1080x1350 share card onto a Canvas 2D Context.
+ * Renders the full 1080x1350 editorial share card onto a Canvas 2D Context.
  */
 export function renderShareCardToCanvas(
   canvas: HTMLCanvasElement,
@@ -111,343 +111,263 @@ export function renderShareCardToCanvas(
 
   const { team, history = [], cardType, graphType, customTimestamp } = options;
 
-  // 1. Background Fill (Crisp Clean White with Subtle Warm Ambient Glow)
-  ctx.fillStyle = "#FFFFFF";
+  // 1. Background Fill (Crisp Clean Warm White Minimal Editorial)
+  ctx.fillStyle = "#FCFCFB";
   ctx.fillRect(0, 0, CARD_WIDTH, CARD_HEIGHT);
 
-  // Subtle Warm Top Glow
-  const glowGradient = ctx.createRadialGradient(
-    CARD_WIDTH / 2,
-    -100,
-    50,
-    CARD_WIDTH / 2,
-    -100,
-    800
-  );
-  glowGradient.addColorStop(0, "rgba(255, 153, 0, 0.08)");
-  glowGradient.addColorStop(0.6, "rgba(255, 243, 224, 0.03)");
-  glowGradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-  ctx.fillStyle = glowGradient;
-  ctx.fillRect(0, 0, CARD_WIDTH, 600);
-
-  // Top Signature Amazon Orange Accent Bar
+  // Top Signature Accent Bar (6px Amazon Orange Gradient)
   const barGradient = ctx.createLinearGradient(0, 0, CARD_WIDTH, 0);
   barGradient.addColorStop(0, "#FF9900");
   barGradient.addColorStop(0.5, "#FFB84D");
   barGradient.addColorStop(1, "#E47911");
   ctx.fillStyle = barGradient;
-  ctx.fillRect(0, 0, CARD_WIDTH, 12);
+  ctx.fillRect(0, 0, CARD_WIDTH, 6);
 
-  // 2. Header Section
-  const marginX = 64;
-  let cursorY = 60;
+  const marginX = 72;
+  const contentWidth = CARD_WIDTH - marginX * 2; // 936px
 
-  // Subtitle / Competition Pill
+  // Helper for subtle divider lines
+  const drawDivider = (y: number) => {
+    ctx.save();
+    ctx.strokeStyle = "#E5E7EB";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(marginX, y);
+    ctx.lineTo(CARD_WIDTH - marginX, y);
+    ctx.stroke();
+    ctx.restore();
+  };
+
+  const hasGraph = graphType !== "none" && history && history.length > 0;
+
+  // Layout distribution parameters
+  let cursorY = 64;
+
+  // -------------------------------------------------------------
+  // 1. HEADER SECTION
+  // -------------------------------------------------------------
+  // Eyebrow
   ctx.save();
-  ctx.fillStyle = "#FFF3E0";
-  ctx.strokeStyle = "#F5C26B";
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.roundRect(marginX, cursorY, 320, 38, 8);
-  ctx.fill();
-  ctx.stroke();
-
   ctx.fillStyle = "#E47911";
   ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-  ctx.textBaseline = "middle";
-  ctx.fillText("AMAZON ML CHALLENGE 2026", marginX + 16, cursorY + 19);
-
-  // Unofficial Pill on right
-  const unoffPillX = CARD_WIDTH - marginX - 190;
-  ctx.fillStyle = "#F7F7F7";
-  ctx.strokeStyle = "#E3E3E3";
-  ctx.beginPath();
-  ctx.roundRect(unoffPillX, cursorY, 190, 38, 8);
-  ctx.fill();
-  ctx.stroke();
-
-  ctx.fillStyle = "#5F6368";
-  ctx.font = "600 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-  ctx.fillText("UNOFFICIAL EXPLORER", unoffPillX + 14, cursorY + 19);
+  ctx.textBaseline = "top";
+  ctx.fillText("AMAZON ML CHALLENGE 2026", marginX, cursorY);
   ctx.restore();
 
-  cursorY += 68;
+  cursorY += 28;
 
-  // 3. Team Name (Large, crisp dark obsidian, auto-wrapping)
+  // Dominant Team Name
   ctx.save();
-  ctx.fillStyle = "#111111";
-  ctx.font = "900 48px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+  ctx.fillStyle = "#0F172A";
+  ctx.font = "900 62px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.textBaseline = "top";
-  const nameLines = wrapText(ctx, team.teamName || `Team #${team.teamId}`, CARD_WIDTH - marginX * 2, 2);
+  const nameLines = wrapText(ctx, team.teamName || `Team #${team.teamId}`, contentWidth, 2);
   for (const line of nameLines) {
     ctx.fillText(line, marginX, cursorY);
-    cursorY += 56;
+    cursorY += 68;
   }
   ctx.restore();
 
-  cursorY += 4;
-
-  // Team ID & Subtitle
+  // Subtitle (Affiliation / Team ID)
+  cursorY += 2;
   ctx.save();
-  ctx.fillStyle = "#767676";
-  ctx.font = "500 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
+  ctx.fillStyle = "#64748B";
+  ctx.font = "500 17px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.textBaseline = "top";
-  ctx.fillText(`Contest Team ID: ${team.teamId} • Leaderboard Profile`, marginX, cursorY);
+
+  const orgs = team.organizations || [];
+  const subtitleText =
+    orgs.length > 0
+      ? `${orgs.join(" · ")} • Contest ID: ${team.teamId}`
+      : `Contest Team ID: ${team.teamId} • Leaderboard Profile`;
+  ctx.fillText(subtitleText, marginX, cursorY);
   ctx.restore();
 
-  cursorY += 34;
+  cursorY += 36;
+  drawDivider(cursorY);
+  cursorY += hasGraph ? 36 : 56;
 
-  // 4. Team Members List (Roster Chips)
-  const players = team.players || [];
-  if (players.length > 0) {
-    ctx.save();
-    ctx.font = "bold 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-    ctx.fillStyle = "#767676";
-    ctx.textBaseline = "top";
-    ctx.fillText("PARTICIPANT ROSTER", marginX, cursorY);
-    cursorY += 22;
-
-    let chipX = marginX;
-    let chipY = cursorY;
-    const maxChipWidth = CARD_WIDTH - marginX * 2;
-
-    for (let i = 0; i < Math.min(players.length, 4); i++) {
-      const p = players[i];
-      const memberName = p.name || `Member ${i + 1}`;
-      ctx.font = "600 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-      const textWidth = ctx.measureText(memberName).width;
-      const chipWidth = textWidth + 42;
-
-      if (chipX + chipWidth > marginX + maxChipWidth) {
-        chipX = marginX;
-        chipY += 44;
-      }
-
-      // Chip background
-      ctx.fillStyle = "#F7F7F7";
-      ctx.strokeStyle = "#E3E3E3";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.roundRect(chipX, chipY, chipWidth, 36, 18);
-      ctx.fill();
-      ctx.stroke();
-
-      // Avatar circle dot
-      ctx.fillStyle = "#FF9900";
-      ctx.beginPath();
-      ctx.arc(chipX + 16, chipY + 18, 5, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Member name text
-      ctx.fillStyle = "#111111";
-      ctx.textBaseline = "middle";
-      ctx.fillText(memberName, chipX + 28, chipY + 18);
-
-      chipX += chipWidth + 12;
-    }
-    cursorY = chipY + 54;
-    ctx.restore();
-  } else {
-    cursorY += 15;
-  }
-
-  // 5. Main Metrics Section (Rank & F1 Score)
+  // -------------------------------------------------------------
+  // 2. CENTERPIECE METRICS (RANK & F1 SCORE)
+  // -------------------------------------------------------------
   const rankVal = team.rank ? String(team.rank) : "—";
   const scoreVal = team.score ? String(team.score) : "0.000000";
   const rDelta = team.rankDelta ?? 0;
   const sDelta = team.scoreDelta ?? 0;
   const isNew = team.status === "new";
 
-  const boxWidth = cardType === "both" ? (CARD_WIDTH - marginX * 2 - 24) / 2 : CARD_WIDTH - marginX * 2;
-  const boxHeight = 175;
-
-  // Helper for drawing clean white metric boxes
-  const drawMetricBox = (
-    x: number,
-    y: number,
-    w: number,
-    h: number,
-    label: string,
-    value: string,
-    deltaPill: { text: string; type: "up" | "down" | "flat" | "new" }
-  ) => {
-    ctx.save();
-    // Card Container
-    ctx.fillStyle = "#FFFFFF";
-    ctx.strokeStyle = "#E3E3E3";
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.roundRect(x, y, w, h, 20);
-    ctx.fill();
-    ctx.stroke();
-
-    // Top Orange Highlight Border
-    ctx.fillStyle = "#FF9900";
-    ctx.beginPath();
-    ctx.roundRect(x, y, w, 5, [20, 20, 0, 0]);
-    ctx.fill();
-
-    // Subtle inner warm gradient
-    const innerGlow = ctx.createLinearGradient(x, y, x + w, y + h);
-    innerGlow.addColorStop(0, "rgba(255, 247, 230, 0.35)");
-    innerGlow.addColorStop(1, "rgba(255, 255, 255, 0)");
-    ctx.fillStyle = innerGlow;
-    ctx.beginPath();
-    ctx.roundRect(x, y + 5, w, h - 5, [0, 0, 20, 20]);
-    ctx.fill();
-
-    // Label
-    ctx.fillStyle = "#5F6368";
-    ctx.font = "bold 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-    ctx.textBaseline = "top";
-    ctx.fillText(label.toUpperCase(), x + 24, y + 22);
-
-    // Value
-    ctx.fillStyle = "#111111";
-    ctx.font = "900 46px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
-    ctx.textBaseline = "top";
-    ctx.fillText(value, x + 24, y + 50);
-
-    // Delta Pill
-    const pillY = y + 116;
-    ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-    const pWidth = ctx.measureText(deltaPill.text).width + 24;
-
-    let pBg = "#F3F4F6";
-    let pBorder = "#E5E7EB";
-    let pColor = "#4B5563";
-
-    if (deltaPill.type === "up") {
-      pBg = "#ECFDF5";
-      pBorder = "#A7F3D0";
-      pColor = "#047857";
-    } else if (deltaPill.type === "down") {
-      pBg = "#FFF1F2";
-      pBorder = "#FECDD3";
-      pColor = "#BE123C";
-    } else if (deltaPill.type === "new") {
-      pBg = "#EFF6FF";
-      pBorder = "#BFDBFE";
-      pColor = "#1D4ED8";
-    }
-
-    ctx.fillStyle = pBg;
-    ctx.strokeStyle = pBorder;
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.roundRect(x + 24, pillY, pWidth, 32, 16);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = pColor;
-    ctx.textBaseline = "middle";
-    ctx.fillText(deltaPill.text, x + 36, pillY + 16);
-    ctx.restore();
-  };
-
   if (cardType === "both") {
-    // Rank Box
-    const rankDeltaText = isNew
-      ? "★ NEW ENTRY"
-      : rDelta > 0
-      ? `▲ +${rDelta} Positions`
-      : rDelta < 0
-      ? `▼ ${rDelta} Positions`
-      : "— No Rank Change";
-    const rankDeltaType = isNew ? "new" : rDelta > 0 ? "up" : rDelta < 0 ? "down" : "flat";
+    const colWidth = (contentWidth - 48) / 2; // ~444px
+    const col1X = marginX;
+    const col2X = marginX + colWidth + 48;
 
-    drawMetricBox(marginX, cursorY, boxWidth, boxHeight, "Leaderboard Rank", `#${rankVal}`, {
-      text: rankDeltaText,
-      type: rankDeltaType,
-    });
+    // --- Column 1: Rank ---
+    ctx.save();
+    ctx.fillStyle = "#64748B";
+    ctx.font = "bold 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    ctx.textBaseline = "top";
+    ctx.fillText("RANK", col1X, cursorY);
 
-    // Score Box
-    const scoreDeltaText = isNew
-      ? "★ INITIAL SCORE"
-      : sDelta > 0.000001
-      ? `+${sDelta.toFixed(6)} Gain`
-      : sDelta < -0.000001
-      ? `${sDelta.toFixed(6)} Change`
-      : "— No Score Delta";
-    const scoreDeltaType = isNew ? "new" : sDelta > 0.000001 ? "up" : sDelta < -0.000001 ? "down" : "flat";
+    ctx.fillStyle = rankVal === "1" ? "#E47911" : "#0F172A";
+    ctx.font = "900 110px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
+    ctx.fillText(`#${rankVal}`, col1X, cursorY + 24);
 
-    drawMetricBox(marginX + boxWidth + 24, cursorY, boxWidth, boxHeight, "Contest F1-Score", scoreVal, {
-      text: scoreDeltaText,
-      type: scoreDeltaType,
-    });
+    // Rank Movement
+    const rankDeltaY = cursorY + 144;
+    ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    if (isNew) {
+      ctx.fillStyle = "#2563EB";
+      ctx.fillText("★ NEW ENTRY", col1X, rankDeltaY);
+    } else if (rDelta > 0) {
+      ctx.fillStyle = "#059669";
+      ctx.fillText(`▲ +${rDelta} positions`, col1X, rankDeltaY);
+    } else if (rDelta < 0) {
+      ctx.fillStyle = "#DC2626";
+      ctx.fillText(`▼ ${Math.abs(rDelta)} positions`, col1X, rankDeltaY);
+    } else {
+      ctx.fillStyle = "#64748B";
+      ctx.fillText("— No change", col1X, rankDeltaY);
+    }
+    ctx.restore();
+
+    // --- Column 2: F1 Score ---
+    ctx.save();
+    ctx.fillStyle = "#64748B";
+    ctx.font = "bold 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    ctx.textBaseline = "top";
+    ctx.fillText("F1 SCORE", col2X, cursorY);
+
+    ctx.fillStyle = "#0F172A";
+    ctx.font = "900 78px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
+    ctx.fillText(scoreVal, col2X, cursorY + 44);
+
+    // F1 Movement
+    const scoreDeltaY = cursorY + 144;
+    ctx.font = "bold 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    if (isNew) {
+      ctx.fillStyle = "#2563EB";
+      ctx.fillText("First recorded checkpoint", col2X, scoreDeltaY);
+    } else if (sDelta > 0.000001) {
+      ctx.fillStyle = "#059669";
+      ctx.fillText(`+${sDelta.toFixed(6)}`, col2X, scoreDeltaY);
+      ctx.font = "500 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+      ctx.fillStyle = "#64748B";
+      ctx.fillText("  since previous sync", col2X + ctx.measureText(`+${sDelta.toFixed(6)}`).width + 25, scoreDeltaY + 3);
+    } else if (sDelta < -0.000001) {
+      ctx.fillStyle = "#DC2626";
+      ctx.fillText(`${sDelta.toFixed(6)}`, col2X, scoreDeltaY);
+      ctx.font = "500 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+      ctx.fillStyle = "#64748B";
+      ctx.fillText("  since previous sync", col2X + ctx.measureText(`${sDelta.toFixed(6)}`).width + 25, scoreDeltaY + 3);
+    } else {
+      ctx.fillStyle = "#64748B";
+      ctx.fillText("— No score change", col2X, scoreDeltaY);
+    }
+    ctx.restore();
+
+    cursorY += 190;
   } else if (cardType === "rank") {
-    const rankDeltaText = isNew
-      ? "★ NEW TO LEADERBOARD"
-      : rDelta > 0
-      ? `▲ Climbed ${rDelta} positions`
-      : rDelta < 0
-      ? `▼ Dropped ${Math.abs(rDelta)} positions`
-      : "— Unchanged from previous sync";
-    const rankDeltaType = isNew ? "new" : rDelta > 0 ? "up" : rDelta < 0 ? "down" : "flat";
+    // Rank Only Hero
+    ctx.save();
+    ctx.fillStyle = "#64748B";
+    ctx.font = "bold 18px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    ctx.textBaseline = "top";
+    ctx.fillText("OFFICIAL CONTEST RANK", marginX, cursorY);
 
-    drawMetricBox(marginX, cursorY, boxWidth, boxHeight, "Official Leaderboard Rank", `#${rankVal}`, {
-      text: rankDeltaText,
-      type: rankDeltaType,
-    });
+    ctx.fillStyle = rankVal === "1" ? "#E47911" : "#0F172A";
+    ctx.font = "900 130px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
+    ctx.fillText(`#${rankVal}`, marginX, cursorY + 26);
+
+    const rankDeltaY = cursorY + 168;
+    ctx.font = "bold 24px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    if (isNew) {
+      ctx.fillStyle = "#2563EB";
+      ctx.fillText("★ NEW TO LEADERBOARD", marginX, rankDeltaY);
+    } else if (rDelta > 0) {
+      ctx.fillStyle = "#059669";
+      ctx.fillText(`▲ +${rDelta} positions climbed`, marginX, rankDeltaY);
+    } else if (rDelta < 0) {
+      ctx.fillStyle = "#DC2626";
+      ctx.fillText(`▼ ${Math.abs(rDelta)} positions dropped`, marginX, rankDeltaY);
+    } else {
+      ctx.fillStyle = "#64748B";
+      ctx.fillText("— No rank movement from previous sync", marginX, rankDeltaY);
+    }
+    ctx.restore();
+
+    cursorY += 215;
   } else if (cardType === "score") {
-    const scoreDeltaText = isNew
-      ? "★ INITIAL SCORE"
-      : sDelta > 0.000001
-      ? `▲ +${sDelta.toFixed(6)} Score Improvement`
-      : sDelta < -0.000001
-      ? `▼ ${sDelta.toFixed(6)} Score Change`
-      : "— No change from previous sync";
-    const scoreDeltaType = isNew ? "new" : sDelta > 0.000001 ? "up" : sDelta < -0.000001 ? "down" : "flat";
+    // Score Only Hero
+    ctx.save();
+    ctx.fillStyle = "#64748B";
+    ctx.font = "bold 18px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    ctx.textBaseline = "top";
+    ctx.fillText("OFFICIAL F1 SCORE", marginX, cursorY);
 
-    drawMetricBox(marginX, cursorY, boxWidth, boxHeight, "Official F1-Score", scoreVal, {
-      text: scoreDeltaText,
-      type: scoreDeltaType,
-    });
+    ctx.fillStyle = "#0F172A";
+    ctx.font = "900 100px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
+    ctx.fillText(scoreVal, marginX, cursorY + 30);
+
+    const scoreDeltaY = cursorY + 150;
+    ctx.font = "bold 24px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    if (isNew) {
+      ctx.fillStyle = "#2563EB";
+      ctx.fillText("First recorded score checkpoint", marginX, scoreDeltaY);
+    } else if (sDelta > 0.000001) {
+      ctx.fillStyle = "#059669";
+      ctx.fillText(`+${sDelta.toFixed(6)} score gain since previous sync`, marginX, scoreDeltaY);
+    } else if (sDelta < -0.000001) {
+      ctx.fillStyle = "#DC2626";
+      ctx.fillText(`${sDelta.toFixed(6)} score delta since previous sync`, marginX, scoreDeltaY);
+    } else {
+      ctx.fillStyle = "#64748B";
+      ctx.fillText("— No score change from previous sync", marginX, scoreDeltaY);
+    }
+    ctx.restore();
+
+    cursorY += 195;
   }
 
-  cursorY += boxHeight + 30;
+  cursorY += hasGraph ? 24 : 48;
+  drawDivider(cursorY);
+  cursorY += hasGraph ? 32 : 56;
 
-  // 6. Historical Graph Container (Clean Light Card)
-  const graphContainerHeight = 360;
-  const graphContainerWidth = CARD_WIDTH - marginX * 2;
+  // -------------------------------------------------------------
+  // 3. HISTORICAL GRAPH SECTION OR EXPANDED PERFORMANCE STATS
+  // -------------------------------------------------------------
+  if (hasGraph) {
+    const graphTitle = graphType === "rank" ? "RANK PROGRESSION" : "F1 SCORE PROGRESSION";
+    const graphHeight = 330;
 
-  ctx.save();
-  ctx.fillStyle = "#FAFAFA";
-  ctx.strokeStyle = "#E3E3E3";
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.roundRect(marginX, cursorY, graphContainerWidth, graphContainerHeight, 20);
-  ctx.fill();
-  ctx.stroke();
+    // Graph Title & Checkpoints Count
+    ctx.save();
+    ctx.fillStyle = "#0F172A";
+    ctx.font = "bold 18px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    ctx.textBaseline = "top";
+    ctx.fillText(graphTitle, marginX, cursorY);
 
-  // Graph Header
-  ctx.fillStyle = "#111111";
-  ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-  ctx.textBaseline = "top";
-  const graphTitle =
-    graphType === "rank"
-      ? "📈 RANK PROGRESSION (CHECKPOINTS)"
-      : graphType === "score"
-      ? "✨ F1-SCORE PROGRESSION (CHECKPOINTS)"
-      : "📊 PERFORMANCE TIMELINE";
-  ctx.fillText(graphTitle, marginX + 24, cursorY + 20);
+    ctx.fillStyle = "#64748B";
+    ctx.font = "500 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
+    ctx.textAlign = "right";
+    ctx.fillText(`${history.length} checkpoints`, CARD_WIDTH - marginX, cursorY);
+    ctx.restore();
 
-  if (graphType !== "none" && history && history.length > 0) {
-    // Render Vector Line Graph onto Canvas
+    cursorY += 34;
+
+    // Render Vector Line Chart onto Canvas
     const sortedData = history.slice().sort((a, b) => {
       return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
     });
 
     const gPadding = {
-      top: cursorY + 64,
-      bottom: cursorY + graphContainerHeight - 44,
-      left: marginX + 68,
-      right: marginX + graphContainerWidth - 32,
+      top: cursorY + 20,
+      bottom: cursorY + graphHeight - 48,
+      left: marginX + 64,
+      right: CARD_WIDTH - marginX - 16,
     };
     const gWidth = gPadding.right - gPadding.left;
     const gHeight = gPadding.bottom - gPadding.top;
 
-    // Extract values
     const points = sortedData.map((d, index) => {
       const sVal = d.score !== null ? parseFloat(d.score) : 0;
       const rVal = d.rank !== null ? d.rank : null;
@@ -455,7 +375,10 @@ export function renderShareCardToCanvas(
       const dateStr = isNaN(dateObj.getTime())
         ? d.timestamp.split("+")[0]
         : dateObj.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-      return { index, rank: rVal, score: sVal, dateStr, raw: d };
+      const timeStr = isNaN(dateObj.getTime())
+        ? ""
+        : dateObj.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+      return { index, rank: rVal, score: sVal, dateStr, timeStr, raw: d };
     });
 
     const isRankGraph = graphType === "rank";
@@ -474,10 +397,11 @@ export function renderShareCardToCanvas(
     const effMin = isRankGraph ? Math.max(1, minVal - paddingRatio) : Math.max(0, minVal - paddingRatio);
     const effMax = maxVal + paddingRatio;
 
-    // Grid lines
-    ctx.strokeStyle = "#EAEAEA";
+    // Grid Lines & Clean Y-Axis
+    ctx.save();
+    ctx.strokeStyle = "#E5E7EB";
     ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
+    ctx.setLineDash([4, 5]);
 
     for (let i = 0; i <= 3; i++) {
       const ratio = i / 3;
@@ -487,15 +411,17 @@ export function renderShareCardToCanvas(
       ctx.lineTo(gPadding.right, gridY);
       ctx.stroke();
 
-      ctx.fillStyle = "#888888";
-      ctx.font = "12px -apple-system, BlinkMacSystemFont, monospace";
+      ctx.fillStyle = "#94A3B8";
+      ctx.font = "500 13px -apple-system, BlinkMacSystemFont, monospace";
       ctx.textBaseline = "middle";
+      ctx.textAlign = "right";
       const labelVal = isRankGraph
         ? `#${Math.round(effMin + ratio * (effMax - effMin))}`
         : (effMax - ratio * (effMax - effMin)).toFixed(4);
-      ctx.fillText(labelVal, marginX + 16, gridY);
+      ctx.fillText(labelVal, gPadding.left - 14, gridY);
     }
     ctx.setLineDash([]);
+    ctx.restore();
 
     // Compute coordinates
     const coords = points.map((p) => {
@@ -513,12 +439,13 @@ export function renderShareCardToCanvas(
       return { x, y, point: p };
     });
 
-    // Light Orange Area Fill under curve
+    // Area Fill
     if (coords.length > 1) {
+      ctx.save();
       const areaGradient = ctx.createLinearGradient(0, gPadding.top, 0, gPadding.bottom);
-      areaGradient.addColorStop(0, "rgba(255, 153, 0, 0.28)");
-      areaGradient.addColorStop(0.5, "rgba(255, 153, 0, 0.08)");
-      areaGradient.addColorStop(1, "rgba(255, 153, 0, 0.0)");
+      areaGradient.addColorStop(0, "rgba(228, 121, 17, 0.16)");
+      areaGradient.addColorStop(0.6, "rgba(228, 121, 17, 0.04)");
+      areaGradient.addColorStop(1, "rgba(228, 121, 17, 0.0)");
 
       ctx.fillStyle = areaGradient;
       ctx.beginPath();
@@ -530,9 +457,11 @@ export function renderShareCardToCanvas(
       ctx.lineTo(coords[0].x, gPadding.bottom);
       ctx.closePath();
       ctx.fill();
+      ctx.restore();
     }
 
-    // Line Path (Signature Amazon Orange)
+    // Line Path
+    ctx.save();
     ctx.strokeStyle = "#E47911";
     ctx.lineWidth = 4;
     ctx.lineCap = "round";
@@ -544,83 +473,158 @@ export function renderShareCardToCanvas(
     }
     ctx.stroke();
 
-    // Data Points & Labels
+    // Data Points
     for (let i = 0; i < coords.length; i++) {
       const c = coords[i];
-
-      // Point Dot (Orange with White border)
       ctx.fillStyle = "#FF9900";
       ctx.strokeStyle = "#FFFFFF";
       ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.arc(c.x, c.y, 6.5, 0, Math.PI * 2);
+      ctx.arc(c.x, c.y, 6, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
-
-      // X-axis date
-      const skipLabel = coords.length > 6 && i % 2 !== 0 && i !== coords.length - 1;
-      if (!skipLabel) {
-        ctx.fillStyle = "#666666";
-        ctx.font = "12px -apple-system, BlinkMacSystemFont, monospace";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "top";
-        ctx.fillText(c.point.dateStr, c.x, gPadding.bottom + 12);
-      }
     }
-    ctx.textAlign = "left";
+
+    // X-Axis Start and End Timestamps
+    if (coords.length > 0) {
+      const first = coords[0];
+      const last = coords[coords.length - 1];
+
+      ctx.fillStyle = "#64748B";
+      ctx.font = "500 14px -apple-system, BlinkMacSystemFont, monospace";
+      ctx.textBaseline = "top";
+      ctx.textAlign = "left";
+      ctx.fillText(`${first.point.dateStr} ${first.point.timeStr}`, first.x, gPadding.bottom + 14);
+
+      if (coords.length > 1) {
+        ctx.textAlign = "right";
+        ctx.fillText(`${last.point.dateStr} ${last.point.timeStr}`, last.x, gPadding.bottom + 14);
+      }
+      ctx.textAlign = "left";
+    }
+    ctx.restore();
+
+    cursorY += graphHeight;
   } else {
-    // Fallback when no graph selected or history empty
-    ctx.fillStyle = "#767676";
-    ctx.font = "500 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(
-      graphType === "none"
-        ? "Graph display turned off in share settings."
-        : "Historical snapshots recording in progress.",
-      marginX + graphContainerWidth / 2,
-      cursorY + graphContainerHeight / 2
-    );
-    ctx.textAlign = "left";
+    // -------------------------------------------------------------
+    // NO GRAPH STATE — DYNAMICALLY REBALANCED PERFORMANCE METRICS
+    // -------------------------------------------------------------
+    ctx.save();
+    ctx.fillStyle = "#0F172A";
+    ctx.font = "bold 18px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    ctx.textBaseline = "top";
+    ctx.fillText("COMPETITION STANDING BREAKDOWN", marginX, cursorY);
+    ctx.restore();
+
+    cursorY += 38;
+
+    // 3 Clean Summary Stat Columns
+    const statColW = (contentWidth - 48) / 3;
+    const statsData = [
+      { label: "STANDINGS PERCENTILE", val: team.rank ? `Top ${(Math.max(1, Math.round((Number(team.rank) / 4334) * 100)))}%` : "Top Tier" },
+      { label: "TOTAL TEAMS", val: "4,334 Teams" },
+      { label: "STATUS", val: isNew ? "New Entry" : "Active" },
+    ];
+
+    statsData.forEach((s, idx) => {
+      const colX = marginX + idx * (statColW + 24);
+      ctx.save();
+      ctx.fillStyle = "#64748B";
+      ctx.font = "bold 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+      ctx.textBaseline = "top";
+      ctx.fillText(s.label, colX, cursorY);
+
+      ctx.fillStyle = "#0F172A";
+      ctx.font = "900 32px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
+      ctx.fillText(s.val, colX, cursorY + 24);
+      ctx.restore();
+    });
+
+    cursorY += 80;
   }
+
+  cursorY += hasGraph ? 24 : 48;
+  drawDivider(cursorY);
+  cursorY += hasGraph ? 32 : 54;
+
+  // -------------------------------------------------------------
+  // 4. TEAM MEMBERS SECTION
+  // -------------------------------------------------------------
+  const players = team.players || [];
+  ctx.save();
+  ctx.fillStyle = "#64748B";
+  ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+  ctx.textBaseline = "top";
+  ctx.fillText("TEAM MEMBERS", marginX, cursorY);
   ctx.restore();
 
-  cursorY += graphContainerHeight + 32;
+  cursorY += 28;
 
-  // 7. Snapshot Timestamp Bar
+  if (players.length > 0) {
+    ctx.save();
+    ctx.fillStyle = "#0F172A";
+    ctx.font = "600 22px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    ctx.textBaseline = "top";
+
+    if (players.length <= 2) {
+      const line1 = players.map((p) => p.name).join("   ·   ");
+      ctx.fillText(line1, marginX, cursorY);
+      cursorY += 34;
+    } else if (players.length <= 4) {
+      const row1 = players.slice(0, 2).map((p) => p.name).join("   ·   ");
+      const row2 = players.slice(2, 4).map((p) => p.name).join("   ·   ");
+      ctx.fillText(row1, marginX, cursorY);
+      cursorY += 34;
+      ctx.fillText(row2, marginX, cursorY);
+      cursorY += 34;
+    } else {
+      const row1 = players.slice(0, 2).map((p) => p.name).join("   ·   ");
+      const row2 = `${players.slice(2, 4).map((p) => p.name).join("   ·   ")}   ·   +${players.length - 4} more`;
+      ctx.fillText(row1, marginX, cursorY);
+      cursorY += 34;
+      ctx.fillText(row2, marginX, cursorY);
+      cursorY += 34;
+    }
+    ctx.restore();
+  } else {
+    ctx.save();
+    ctx.fillStyle = "#64748B";
+    ctx.font = "500 18px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+    ctx.textBaseline = "top";
+    ctx.fillText("Solo participant / Independent challenger", marginX, cursorY);
+    ctx.restore();
+    cursorY += 34;
+  }
+
+  cursorY += hasGraph ? 24 : 44;
+  drawDivider(cursorY);
+  cursorY += 24;
+
+  // -------------------------------------------------------------
+  // 5. FOOTER SECTION
+  // -------------------------------------------------------------
   const snapshotFormatted = formatSnapshotTimestamp(customTimestamp || team.lastUpdated);
   ctx.save();
-  ctx.fillStyle = "#5F6368";
-  ctx.font = "500 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+  ctx.fillStyle = "#64748B";
+  ctx.font = "500 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
   ctx.textBaseline = "top";
-  ctx.fillText(`Leaderboard Snapshot: ${snapshotFormatted}`, marginX, cursorY);
+  ctx.fillText(`Updated ${snapshotFormatted}`, marginX, cursorY);
 
-  // Link Text
-  const linkText = `amazonmlchallengeexplorer.vercel.app/teams/${team.teamId}`;
-  ctx.fillStyle = "#E47911";
-  ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
+  ctx.fillStyle = "#0F172A";
+  ctx.font = "bold 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.textAlign = "right";
-  ctx.fillText(linkText, CARD_WIDTH - marginX, cursorY);
-  ctx.textAlign = "left";
+  ctx.fillText("Amazon ML Challenge Explorer", CARD_WIDTH - marginX, cursorY);
   ctx.restore();
 
-  cursorY += 36;
+  cursorY += 26;
 
-  // 8. Bottom Disclaimer Footer
+  // Subtle bottom disclaimer
   ctx.save();
-  ctx.strokeStyle = "#EAEAEA";
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(marginX, cursorY);
-  ctx.lineTo(CARD_WIDTH - marginX, cursorY);
-  ctx.stroke();
-
-  cursorY += 18;
-  ctx.fillStyle = "#888888";
-  ctx.font = "12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+  ctx.fillStyle = "#94A3B8";
+  ctx.font = "500 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.textBaseline = "top";
   ctx.fillText(
-    "Unofficial leaderboard visualization & analytics · Amazon ML Challenge 2026",
+    "Unofficial leaderboard visualization · Data from captured leaderboard snapshots",
     marginX,
     cursorY
   );
