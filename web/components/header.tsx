@@ -53,7 +53,7 @@ export function Header() {
       href: "/leaderboard/women-teams",
       icon: Users,
       description: "Dedicated category for verified all-female competitor teams",
-      badge: "29 Teams",
+      badge: "27 Teams",
     },
     {
       label: "College Rankings",

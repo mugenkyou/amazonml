@@ -14,7 +14,7 @@ export function LeaderboardTabs({
   teamCount = 4334,
   collegeCount = 1546,
   interCollegeCount,
-  womenTeamsCount = 29,
+  womenTeamsCount = 27,
 }: LeaderboardTabsProps) {
   return (
     <div className="flex items-center gap-1.5 sm:gap-2 border-b border-[#E3E3E3] mb-4 overflow-x-auto no-scrollbar">

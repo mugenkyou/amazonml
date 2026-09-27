@@ -343,28 +343,28 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
                 <div className="p-4 sm:p-5 space-y-3">
                   {/* Card Header */}
                   <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-start gap-2.5">
-                      <span
-                        className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg font-mono font-black text-sm shadow-xs ${
-                          isTop100
-                            ? "bg-[#FF9900] text-[#111111]"
-                            : "bg-[#131921] text-white"
-                        }`}
-                      >
-                        #{team.sortRank}
-                      </span>
-                      <div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <Link
                           href={`/teams/${team.teamId}`}
-                          className="font-bold text-gray-900 hover:text-[#E47911] transition-colors line-clamp-1 text-sm sm:text-base"
+                          className="font-bold text-gray-900 hover:text-[#E47911] transition-colors text-base sm:text-lg tracking-tight truncate"
                         >
                           {team.teamName}
                         </Link>
-                        <div className="flex items-center gap-2 text-[11px] font-mono text-gray-500 mt-0.5">
-                          <span>ID: <strong>{team.teamId}</strong></span>
-                          <span>•</span>
-                          <span className="font-bold text-gray-800">Score: {team.score}</span>
-                        </div>
+                        <span
+                          className={`inline-flex items-center px-2 py-0.5 rounded-md font-mono font-bold text-xs shadow-2xs ${
+                            isTop100
+                              ? "bg-[#FF9900] text-[#111111]"
+                              : "bg-gray-100 text-gray-800 border border-gray-200"
+                          }`}
+                        >
+                          #{team.sortRank}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 text-[11px] font-mono text-gray-500 mt-1">
+                        <span>ID: <strong className="text-gray-700">{team.teamId}</strong></span>
+                        <span>•</span>
+                        <span>Score: <strong className="text-gray-900">{team.score}</strong></span>
                       </div>
                     </div>
 
