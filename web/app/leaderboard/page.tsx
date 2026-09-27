@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Users, Trophy, ChevronLeft, ChevronRight, LayoutGrid, Table as TableIcon, Home } from "lucide-react";
 import { LeaderboardTabs } from "@/components/leaderboard-tabs";
 import { filterLeaderboard } from "@/lib/analytics";
-import { getDatasetMetadata } from "@/lib/data";
+import { getDatasetMetadata, formatISTTimestamp } from "@/lib/data";
 import { TeamCard } from "@/components/team-card";
 import { TeamTable } from "@/components/team-table";
 import { JsonLd } from "@/components/json-ld";
@@ -126,7 +126,7 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
                 <span className="text-[#D5D5D5] hidden sm:inline">•</span>
                 <span className="inline-flex items-center gap-1 text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Synced: {new Date(metadata.collectionFinishedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}</span>
+                  <span>Synced: {formatISTTimestamp(metadata.collectionFinishedAt)}</span>
                 </span>
               </>
             )}

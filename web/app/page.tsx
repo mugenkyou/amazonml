@@ -19,7 +19,7 @@ import { SearchBar } from "@/components/search-bar";
 import { OrganizationResults } from "@/components/organization-results";
 import { SavedTeamsSection } from "@/components/saved-teams-section";
 import { JsonLd } from "@/components/json-ld";
-import { getAllOrganizations, getAllTeams, getDatasetMetadata } from "@/lib/data";
+import { getAllOrganizations, getAllTeams, getDatasetMetadata, formatISTTimestamp } from "@/lib/data";
 import { searchTeams } from "@/lib/search";
 import { generateBreadcrumbSchema, getCanonicalUrl, SITE_NAME, SITE_URL } from "@/lib/seo";
 import type { SearchMode } from "@/lib/types";
@@ -88,7 +88,7 @@ export default async function HomePage({ searchParams }: PageProps) {
 
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-0.5 text-[10px] sm:text-xs font-mono font-medium text-[#5F6368]">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Last Synced: {metadata.collectionFinishedAt ? new Date(metadata.collectionFinishedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" }) : "Live Checkpoint Active"}</span>
+            <span>Last Synced: {metadata.collectionFinishedAt ? formatISTTimestamp(metadata.collectionFinishedAt) : "Live Checkpoint Active"}</span>
           </div>
         </div>
 

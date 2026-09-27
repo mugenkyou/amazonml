@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award, Home, GitFork, Clock, TrendingUp, History, Calendar, ArrowUpRight, ArrowDownRight, Minus } from "lucide-react";
-import { getAllTeams, getTeamById, getTeamHistory } from "@/lib/data";
+import { getAllTeams, getTeamById, getTeamHistory, formatISTTimestamp } from "@/lib/data";
 import { slugifyOrganization } from "@/lib/normalize";
 import { isInterCollegeTeam } from "@/lib/inter-college";
 import { TeamMembers } from "@/components/team-members";
@@ -371,10 +371,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
               <tbody className="divide-y divide-[#EBEBEB] bg-white text-[#111111]">
                 {historyEntries.map((h, idx) => {
                   const isLatest = idx === 0;
-                  const dateObj = new Date(h.timestamp);
-                  const timeFormatted = isNaN(dateObj.getTime())
-                    ? h.timestamp.split("+")[0]
-                    : dateObj.toLocaleString();
+                  const timeFormatted = formatISTTimestamp(h.timestamp) || (h.timestamp ? h.timestamp.split("+")[0] : "—");
 
                   return (
                     <tr key={h.snapshotId || idx} className={isLatest ? "bg-[#FFFDF9]" : ""}>
