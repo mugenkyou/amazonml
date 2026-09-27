@@ -1,29 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getTeamById, getTeamChanges } from "@/lib/data";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ teamId: string }> }
-) {
+interface RouteParams {
+  params: Promise<{
+    teamId: string;
+  }>;
+}
+
+export async function GET(request: NextRequest, { params }: RouteParams) {
   const { teamId } = await params;
-  if (!teamId) {
-    return NextResponse.json({ error: "Team ID is required" }, { status: 400 });
+  const team = getTeamById(teamId);
+
+  if (!team) {
+    return NextResponse.json({ error: "Team not found", teamId }, { status: 404 });
   }
 
   const changes = getTeamChanges(teamId);
-  const currentTeam = getTeamById(teamId);
-
-  return NextResponse.json(
-    {
-      teamId: String(teamId),
-      teamName: currentTeam?.teamName || changes[0]?.teamName || "Unknown Team",
-      count: changes.length,
-      changes,
-    },
-    {
-      headers: {
-        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
-      },
-    }
-  );
+  return NextResponse.json({
+    teamId,
+    teamName: team.teamName,
+    changes,
+  });
 }
