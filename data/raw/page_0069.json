@@ -3,15 +3,985 @@
     "current_page": 69,
     "data": [
       {
-        "id": 213653763,
+        "id": 212249181,
         "opportunity_association_id": 1593683,
-        "user_id": 25675972,
-        "team_id": 59346375,
+        "user_id": 25880282,
+        "team_id": 58926720,
         "evaluator_id": null,
         "team_regn_id": null,
-        "time": 168719,
-        "finish_time": "2026-09-27 06:58:38+05:30",
-        "score": "0.958616",
+        "time": 128849,
+        "finish_time": "2026-09-27 11:58:11+05:30",
+        "score": "0.962732",
+        "rank": "1874",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 58926720,
+          "team_name": "Fantastic Four",
+          "players": [
+            {
+              "name": "Agadh Amit Khanolkar",
+              "organisation": "SRM University"
+            },
+            {
+              "name": "Purva Jain",
+              "organisation": "SRM UNIVERSITY KTR"
+            },
+            {
+              "name": "Srushti Ranjeet More",
+              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
+            },
+            {
+              "name": "Sneh Binod Prasad",
+              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213693976,
+        "opportunity_association_id": 1593683,
+        "user_id": 7973280,
+        "team_id": 59372423,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 194758,
+        "finish_time": "2026-09-27 16:52:32+05:30",
+        "score": "0.962704",
+        "rank": "1875",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59372423,
+          "team_name": "Simply Lovely",
+          "players": [
+            {
+              "name": "Kushagra",
+              "organisation": "Symbiosis Institute of Technology (SIT), Pune"
+            },
+            {
+              "name": "Yash Pande",
+              "organisation": "Symbiosis Institute of Technology (SIT), Pune"
+            },
+            {
+              "name": "Om Dhamame",
+              "organisation": "Symbiosis Institute of Technology (SIT), Pune"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213651955,
+        "opportunity_association_id": 1593683,
+        "user_id": 20837919,
+        "team_id": 59349270,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 145955,
+        "finish_time": "2026-09-27 01:48:34+05:30",
+        "score": "0.962698",
+        "rank": "1876",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59349270,
+          "team_name": "Single Squad",
+          "players": [
+            {
+              "name": "Yash Gudiyal",
+              "organisation": "Graphic Era Hill University (GEHU), Dehradun Campus"
+            },
+            {
+              "name": "vandana bhandari",
+              "organisation": "Graphic Era Hill University (GEHU), Dehradun Campus"
+            },
+            {
+              "name": "Abhinav Rawat",
+              "organisation": "Graphic Era Hill University (GEHU), Dehradun Campus"
+            },
+            {
+              "name": "Anshul Panwar",
+              "organisation": "Graphic Era Hill University (GEHU), Dehradun Campus"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212892104,
+        "opportunity_association_id": 1593683,
+        "user_id": 4192395,
+        "team_id": 59285812,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 150742,
+        "finish_time": "2026-09-27 04:33:45+05:30",
+        "score": "0.962693",
+        "rank": "1877",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59285812,
+          "team_name": "MAAD",
+          "players": [
+            {
+              "name": "Anbarasi P",
+              "organisation": "Indian Institute of Technology (IIT), Madras"
+            },
+            {
+              "name": "Sai Mahima Jilla",
+              "organisation": "Indian Institute of Technology (IIT), Madras"
+            },
+            {
+              "name": "Aadithyan",
+              "organisation": "Indian Institute of Technology (IIT), Madras"
+            },
+            {
+              "name": "Deepak S",
+              "organisation": "Indian Institute of Technology (IIT), Madras"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213429398,
+        "opportunity_association_id": 1593683,
+        "user_id": 27312802,
+        "team_id": 59304685,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 86899,
+        "finish_time": "2026-09-26 18:42:34+05:30",
+        "score": "0.96267",
+        "rank": "1878",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59304685,
+          "team_name": "Zero",
+          "players": [
+            {
+              "name": "Yashvardhan Shah",
+              "organisation": "Vellore Institute of Technology (VIT), Vellore"
+            },
+            {
+              "name": "Sanuj Sudhakar Dhote",
+              "organisation": "Vellore Institute of Technology (VIT), Vellore"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212779327,
+        "opportunity_association_id": 1593683,
+        "user_id": 16112980,
+        "team_id": 59215080,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 140028,
+        "finish_time": "2026-09-26 14:59:58+05:30",
+        "score": "0.962618",
+        "rank": "1879",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59215080,
+          "team_name": "IITK-AEUAS",
+          "players": [
+            {
+              "name": "Md Tahseen Aslam",
+              "organisation": "Indian Institute of Technology (IIT), Kanpur"
+            },
+            {
+              "name": "BHASKAR RAJAURA",
+              "organisation": "Indian Institute of Technology (IIT), Kanpur"
+            },
+            {
+              "name": "Kumar Harshit",
+              "organisation": "Indian Institute of Technology (IIT), Kanpur"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212868502,
+        "opportunity_association_id": 1593683,
+        "user_id": 29180976,
+        "team_id": 58982483,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 135908,
+        "finish_time": "2026-09-27 12:46:48+05:30",
+        "score": "0.962597",
+        "rank": "1880",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 58982483,
+          "team_name": "ChipiChipiChapaChapa",
+          "players": [
+            {
+              "name": "Ahad Ulla Baig",
+              "organisation": "M S Ramaiah Institute of Technology (MSRIT), Bangalore"
+            },
+            {
+              "name": "Charithra G",
+              "organisation": "Ramaiah Institute of Technology, Bengaluru, Karnataka"
+            },
+            {
+              "name": "Divisha Gera",
+              "organisation": "M S Ramaiah Institute of Technology (MSRIT), Bangalore"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212745642,
+        "opportunity_association_id": 1593683,
+        "user_id": 12700783,
+        "team_id": 59196708,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 228969,
+        "finish_time": "2026-09-27 17:32:20+05:30",
+        "score": "0.962574",
+        "rank": "1881",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59196708,
+          "team_name": "tendonitis",
+          "players": [
+            {
+              "name": "Adarsh Kundu",
+              "organisation": "Birla Institute of Technology & Science, Pilani Campus"
+            },
+            {
+              "name": "Aarnav Piparsania",
+              "organisation": "Birla Institute of Technology & Science, Pilani Campus"
+            },
+            {
+              "name": "Samarth Soni",
+              "organisation": "Birla Institute of Technology & Science, Pilani Campus"
+            },
+            {
+              "name": "Ashish Peddi",
+              "organisation": "Birla Institute of Technology & Science, Pilani Campus"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213697219,
+        "opportunity_association_id": 1593683,
+        "user_id": 25869976,
+        "team_id": 58986062,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 229088,
+        "finish_time": "2026-09-27 17:05:26+05:30",
+        "score": "0.96254",
+        "rank": "1882",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 58986062,
+          "team_name": "AstraX",
+          "players": [
+            {
+              "name": "Drashti Ajit Jain",
+              "organisation": "Shree LR Tiwari College Of Engineering"
+            },
+            {
+              "name": "Jayesh Dayaram Chaudhary",
+              "organisation": "Shree LR Tiwari College Of Engineering"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213472167,
+        "opportunity_association_id": 1593683,
+        "user_id": 29641348,
+        "team_id": 59306843,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 103254,
+        "finish_time": "2026-09-27 02:27:10+05:30",
+        "score": "0.9625",
+        "rank": "1883",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59306843,
+          "team_name": "AI Regiment",
+          "players": [
+            {
+              "name": "Akash Maurya",
+              "organisation": "Bennett University"
+            },
+            {
+              "name": "Krishna Gaur",
+              "organisation": "Bennett University"
+            },
+            {
+              "name": "Priyanshi Goyal",
+              "organisation": "Bennett University"
+            },
+            {
+              "name": "VANSH JOSHI",
+              "organisation": "Bennett University"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212881592,
+        "opportunity_association_id": 1593683,
+        "user_id": 8022739,
+        "team_id": 59282108,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 225963,
+        "finish_time": "2026-09-27 17:44:45+05:30",
+        "score": "0.962452",
+        "rank": "1884",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59282108,
+          "team_name": "idk",
+          "players": [
+            {
+              "name": "Harshit Jha",
+              "organisation": "Delhi Technological University (DTU), New Delhi"
+            },
+            {
+              "name": "Arnav Ashish Sharma",
+              "organisation": "Delhi Technological University (DTU), New Delhi"
+            },
+            {
+              "name": "Divyansh Sharma",
+              "organisation": "Delhi Technological University (DTU), New Delhi"
+            },
+            {
+              "name": "Joyce Frank",
+              "organisation": "Delhi Technological University (DTU), New Delhi"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212742986,
+        "opportunity_association_id": 1593683,
+        "user_id": 20857999,
+        "team_id": 59194096,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 91496,
+        "finish_time": "2026-09-26 12:17:56+05:30",
+        "score": "0.962449",
+        "rank": "1885",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59194096,
+          "team_name": "Accuracy Addicts",
+          "players": [
+            {
+              "name": "Ved Sharma",
+              "organisation": "Birla Institute of Technology (BIT), Mesra, Ranchi"
+            },
+            {
+              "name": "Alok Kumar",
+              "organisation": "Birla Institute of Technology, Mesra, Ranchi"
+            },
+            {
+              "name": "Himanshu Prasad",
+              "organisation": "Birla Institute of Technology (BIT), Mesra, Ranchi"
+            },
+            {
+              "name": "Abhishek Kumar",
+              "organisation": "Birla Institute of Technology (BIT), Mesra, Ranchi"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213683910,
+        "opportunity_association_id": 1593683,
+        "user_id": 19566640,
+        "team_id": 59364299,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 98731,
+        "finish_time": "2026-09-26 21:58:35+05:30",
+        "score": "0.962438",
+        "rank": "1886",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59364299,
+          "team_name": "Nex",
+          "players": [
+            {
+              "name": "Nandana Umesh",
+              "organisation": "Jyothy Institute of Technology, Thathaguni, Karnataka"
+            },
+            {
+              "name": "Kruthik JIT",
+              "organisation": "Visvesvaraya Technological University (VTU), Belagavi, Karnataka"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213473445,
+        "opportunity_association_id": 1593683,
+        "user_id": 12489161,
+        "team_id": 59038385,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 162910,
+        "finish_time": "2026-09-27 09:00:43+05:30",
+        "score": "0.962426",
+        "rank": "1887",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59038385,
+          "team_name": "Shannon",
+          "players": [
+            {
+              "name": "Vedant Maheshwari",
+              "organisation": "Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore"
+            },
+            {
+              "name": "AKASH BARDIA",
+              "organisation": "Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore"
+            },
+            {
+              "name": "Siddarth Gupta",
+              "organisation": "Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213427586,
+        "opportunity_association_id": 1593683,
+        "user_id": 30981964,
+        "team_id": 59295492,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 183071,
+        "finish_time": "2026-09-27 12:00:33+05:30",
+        "score": "0.962422",
+        "rank": "1888",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59295492,
+          "team_name": "Neural Nomads",
+          "players": [
+            {
+              "name": "Ashmita Chaturvedi",
+              "organisation": "Pranveer Singh Institute of Technology (PSIT), Kanpur"
+            },
+            {
+              "name": "Ashutosh Chaturvedi",
+              "organisation": "Pranveer Singh Institute of Technology (PSIT), Kanpur"
+            },
+            {
+              "name": "Archesh Kumar Yadav",
+              "organisation": "Pranveer Singh Institute of Technology (PSIT), Kanpur"
+            },
+            {
+              "name": "Adarsh Yadav",
+              "organisation": "Pranveer Singh Institute of Technology (PSIT), Kanpur"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212793366,
+        "opportunity_association_id": 1593683,
+        "user_id": 30211267,
+        "team_id": 58975873,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 185960,
+        "finish_time": "2026-09-27 15:44:31+05:30",
+        "score": "0.962395",
+        "rank": "1889",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 58975873,
+          "team_name": "orchestrators",
+          "players": [
+            {
+              "name": "Ashna Adeel Siddiqui",
+              "organisation": "Scaler School of Technology, Bengaluru, Karnataka"
+            },
+            {
+              "name": "Shivendu Kumar",
+              "organisation": "Scaler School of Technology, Bengaluru, Karnataka"
+            },
+            {
+              "name": "Tasha Abdul Kalam Azad",
+              "organisation": "Scaler School of Technology, Bengaluru, Karnataka"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212051804,
+        "opportunity_association_id": 1593683,
+        "user_id": 33188935,
+        "team_id": 58730400,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 254728,
+        "finish_time": "2026-09-26 22:46:18+05:30",
+        "score": "0.962393",
+        "rank": "1890",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 58730400,
+          "team_name": "unemployed_iiti",
+          "players": [
+            {
+              "name": "Thippani Sai Ganesh",
+              "organisation": "Indian Institute of Technology (IIT), Indore"
+            },
+            {
+              "name": "Boda Likhithraj",
+              "organisation": "Indian Institute of Technology (IIT), Indore"
+            },
+            {
+              "name": "Nithin Bachupally",
+              "organisation": "Indian Institute of Technology (IIT), Indore"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213854264,
+        "opportunity_association_id": 1593683,
+        "user_id": 22451383,
+        "team_id": 59383395,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 177682,
+        "finish_time": "2026-09-27 14:20:45+05:30",
+        "score": "0.962365",
+        "rank": "1891",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59383395,
+          "team_name": "PYROFLUX",
+          "players": [
+            {
+              "name": "Dhamagatla Rohith Kumar",
+              "organisation": "Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore"
+            },
+            {
+              "name": "ankith",
+              "organisation": "Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212695159,
+        "opportunity_association_id": 1593683,
+        "user_id": 24849274,
+        "team_id": 58835223,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 88678,
+        "finish_time": "2026-09-27 17:45:27+05:30",
+        "score": "0.962344",
+        "rank": "1892",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 58835223,
+          "team_name": ".ssp",
+          "players": [
+            {
+              "name": "Pasupuleti Ragini",
+              "organisation": "National Institute of Technology (NIT), Andhra Pradesh"
+            },
+            {
+              "name": "Buddhana Pallavi",
+              "organisation": "National Institute of Technology (NIT), Andhra Pradesh"
+            },
+            {
+              "name": "Sahitya Kushwaha",
+              "organisation": "National Institute of Technology (NIT), Andhra Pradesh"
+            },
+            {
+              "name": "Nilla Sailaja Sai",
+              "organisation": "Indian Institute of Technology (IIT), Dharwad"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213477256,
+        "opportunity_association_id": 1593683,
+        "user_id": 30624090,
+        "team_id": 59257751,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 68257,
+        "finish_time": "2026-09-27 17:25:11+05:30",
+        "score": "0.962333",
         "rank": "1893",
         "rating": null,
         "better_performance": null,
@@ -34,38 +1004,38 @@
         "reject_reason": null,
         "need_review_comment": null,
         "team": {
-          "id": 59346375,
-          "team_name": "Gradient Minds",
+          "id": 59257751,
+          "team_name": "luther",
           "players": [
             {
-              "name": "P Ganesh",
-              "organisation": "ITM University (ITM), Gwalior"
+              "name": "RAM CHARAN KARTHIK REDDY",
+              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
             },
             {
-              "name": "Nunnam Ganesh",
-              "organisation": "Vasireddy Venkatdri Institute Of Technology (VVIT), Guntur"
+              "name": "Ramaraju Bethalam",
+              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
             },
             {
-              "name": "Pavan ganesh Varanasi",
-              "organisation": "Aditya College of Engineering and Technology"
+              "name": "PEDDAGANGANNA GARI SUDEEP REDDY",
+              "organisation": "SRM Insitute of Science and Technology"
             },
             {
-              "name": "Nimmana Narendra",
-              "organisation": "Sagi Rama Krishnam Raju Engineering College (SRKREC), Bhimavaram"
+              "name": "A Hari Nagi Reddy",
+              "organisation": "SRM University Kattankulathur"
             }
           ]
         }
       },
       {
-        "id": 213860293,
+        "id": 212874177,
         "opportunity_association_id": 1593683,
-        "user_id": 19385023,
-        "team_id": 59464216,
+        "user_id": 32992068,
+        "team_id": 59260580,
         "evaluator_id": null,
         "team_regn_id": null,
-        "time": 173937,
-        "finish_time": "2026-09-27 04:05:46+05:30",
-        "score": "0.958613",
+        "time": 214755,
+        "finish_time": "2026-09-27 12:11:41+05:30",
+        "score": "0.962287",
         "rank": "1894",
         "rating": null,
         "better_performance": null,
@@ -88,30 +1058,38 @@
         "reject_reason": null,
         "need_review_comment": null,
         "team": {
-          "id": 59464216,
-          "team_name": "weshowspeed",
+          "id": 59260580,
+          "team_name": "Pythia",
           "players": [
             {
-              "name": "Rehan Farishta",
-              "organisation": "Indian Institute of Information Technology (IIIT), Allahabad"
+              "name": "Yash sinha",
+              "organisation": "Vellore Institute of Technology (VIT), Vellore"
             },
             {
-              "name": "Ayush Anand",
-              "organisation": "Indian Institute of Information Technology (IIIT), Allahabad"
+              "name": "Agrim Dev",
+              "organisation": "Vellore Institute of Technology (VIT), Vellore"
+            },
+            {
+              "name": "Rishikesh Singh",
+              "organisation": "Vellore Institute of Technology (VIT), Vellore"
+            },
+            {
+              "name": "Divyansh Verma",
+              "organisation": "Vellore Institute of Technology (VIT), Vellore"
             }
           ]
         }
       },
       {
-        "id": 213634457,
+        "id": 213677977,
         "opportunity_association_id": 1593683,
-        "user_id": 7318786,
-        "team_id": 59333111,
+        "user_id": 19268238,
+        "team_id": 59362628,
         "evaluator_id": null,
         "team_regn_id": null,
-        "time": 223571,
-        "finish_time": "2026-09-27 15:13:46+05:30",
-        "score": "0.958611",
+        "time": 109979,
+        "finish_time": "2026-09-26 20:49:20+05:30",
+        "score": "0.962241",
         "rank": "1895",
         "rating": null,
         "better_performance": null,
@@ -134,38 +1112,88 @@
         "reject_reason": null,
         "need_review_comment": null,
         "team": {
-          "id": 59333111,
-          "team_name": "4RA",
+          "id": 59362628,
+          "team_name": "Algo Decoders",
           "players": [
             {
-              "name": "Rishav Kant",
-              "organisation": "Birla Institute of Technology (BIT), Mesra, Ranchi"
+              "name": "Aditya Kumar Singh",
+              "organisation": "Walchand College of Engineering (WCE), Sangli"
             },
             {
-              "name": "Roshan Raj",
-              "organisation": "Birla Institute of Technology (BIT), Mesra, Ranchi"
+              "name": "Tejas Dhembe",
+              "organisation": "Walchand College of Engineering (WCE), Sangli"
             },
             {
-              "name": "Aryan Gupta",
-              "organisation": "Birla Institute of Technology (BIT), Mesra, Ranchi"
+              "name": "Viraj Wankhede",
+              "organisation": "Walchand College of Engineering (WCE), Sangli"
             },
             {
-              "name": "Rajan Kumar Vishwakarma",
-              "organisation": "Birla Institute of Technology (BIT), Mesra, Ranchi"
+              "name": "Krutika Dhanjode",
+              "organisation": "Walchand College of Engineering (WCE), Sangli"
             }
           ]
         }
       },
       {
-        "id": 213467658,
+        "id": 213658209,
         "opportunity_association_id": 1593683,
-        "user_id": 33289668,
-        "team_id": 59141884,
+        "user_id": 20510394,
+        "team_id": 59351262,
         "evaluator_id": null,
         "team_regn_id": null,
-        "time": 101430,
-        "finish_time": "2026-09-27 13:44:11+05:30",
-        "score": "0.958577",
+        "time": 75821,
+        "finish_time": "2026-09-27 15:35:23+05:30",
+        "score": "0.962241",
+        "rank": "1895",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 59351262,
+          "team_name": "SkandaBan",
+          "players": [
+            {
+              "name": "Pradyumna Vasudevan",
+              "organisation": "Indian Institute of Technology (IIT), Kharagpur"
+            },
+            {
+              "name": "Garv Mangla",
+              "organisation": "Indian Institute of Technology (IIT), Kharagpur"
+            },
+            {
+              "name": "Mohit Gautam",
+              "organisation": "Indian Institute of Technology (IIT), Kharagpur"
+            }
+          ]
+        }
+      },
+      {
+        "id": 213696470,
+        "opportunity_association_id": 1593683,
+        "user_id": 31310270,
+        "team_id": 59376134,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 233263,
+        "finish_time": "2026-09-27 17:30:45+05:30",
+        "score": "0.962229",
         "rank": "1896",
         "rating": null,
         "better_performance": null,
@@ -188,30 +1216,38 @@
         "reject_reason": null,
         "need_review_comment": null,
         "team": {
-          "id": 59141884,
-          "team_name": "Rasgulla>GulabJamun",
+          "id": 59376134,
+          "team_name": "Aspect Ratio",
           "players": [
             {
-              "name": "Abhinav Rao B",
-              "organisation": "PES University (PESU), Bengaluru"
+              "name": "Ananya Bhonsle",
+              "organisation": "DES Pune University"
             },
             {
-              "name": "Abhiram Agaram",
-              "organisation": "PES University (PESU), Bengaluru"
+              "name": "Nishant Patil",
+              "organisation": "DES Pune University"
+            },
+            {
+              "name": "Kushal Jadhav",
+              "organisation": "DES Pune University"
+            },
+            {
+              "name": "Ayush Padwal",
+              "organisation": "DES Pune University"
             }
           ]
         }
       },
       {
-        "id": 212879844,
+        "id": 212644612,
         "opportunity_association_id": 1593683,
-        "user_id": 8022735,
-        "team_id": 59207494,
+        "user_id": 20101298,
+        "team_id": 59112120,
         "evaluator_id": null,
         "team_regn_id": null,
-        "time": 223709,
-        "finish_time": "2026-09-27 15:17:23+05:30",
-        "score": "0.958506",
+        "time": 191208,
+        "finish_time": "2026-09-27 15:45:08+05:30",
+        "score": "0.962227",
         "rank": "1897",
         "rating": null,
         "better_performance": null,
@@ -234,34 +1270,34 @@
         "reject_reason": null,
         "need_review_comment": null,
         "team": {
-          "id": 59207494,
-          "team_name": "r/mak",
+          "id": 59112120,
+          "team_name": "The_Paradigm_Shifters",
           "players": [
             {
-              "name": "Rishang Yadav",
-              "organisation": "Indian Institute of Technology (IIT), Mandi"
+              "name": "Amey Khodake",
+              "organisation": "Sanjivani college of engineering kopargaon"
             },
             {
-              "name": "Karanpreet Singh Dhaliwal",
-              "organisation": "Indian Institute of Technology (IIT), Mandi"
+              "name": "Abhishek Chavan",
+              "organisation": "Sanjivani college of engineering kopargaon"
             },
             {
-              "name": "Mehul Sharma",
-              "organisation": "Indian Institute of Technology (IIT), Mandi"
+              "name": "Yash Vijay Dabhade",
+              "organisation": "Sanjivani college of engineering kopargaon"
             }
           ]
         }
       },
       {
-        "id": 212847959,
+        "id": 213845497,
         "opportunity_association_id": 1593683,
-        "user_id": 8009029,
-        "team_id": 59178791,
+        "user_id": 19119591,
+        "team_id": 59450777,
         "evaluator_id": null,
         "team_regn_id": null,
-        "time": 175562,
-        "finish_time": "2026-09-27 01:13:29+05:30",
-        "score": "0.958483",
+        "time": 92360,
+        "finish_time": "2026-09-26 17:32:43+05:30",
+        "score": "0.9622",
         "rank": "1898",
         "rating": null,
         "better_performance": null,
@@ -284,34 +1320,30 @@
         "reject_reason": null,
         "need_review_comment": null,
         "team": {
-          "id": 59178791,
-          "team_name": "NewGenLabs",
+          "id": 59450777,
+          "team_name": "CPCC",
           "players": [
             {
-              "name": "Raghav Bansal",
-              "organisation": "Indian Institute of Technology, Banaras Hindu University (IIT - BHU)"
+              "name": "Ashmit Janjirkar",
+              "organisation": "Shri Vile Parle Kelavani Mandal's Dwarkadas J. Sanghvi College of Engineering (DJSCE), Mumbai"
             },
             {
-              "name": "DISHA BHADAURIA",
-              "organisation": "Maulana Azad National Institute of Technology (MANIT), Bhopal"
-            },
-            {
-              "name": "Muskan Singh",
-              "organisation": "Maulana Azad National Institute of Technology (MANIT), Bhopal"
+              "name": "Neal Mhatre",
+              "organisation": "Mukesh Patel School of Technology Management & Engineering"
             }
           ]
         }
       },
       {
-        "id": 213442216,
+        "id": 213692523,
         "opportunity_association_id": 1593683,
-        "user_id": 28273423,
-        "team_id": 59093562,
+        "user_id": 7950849,
+        "team_id": 59375566,
         "evaluator_id": null,
         "team_regn_id": null,
-        "time": 222446,
-        "finish_time": "2026-09-27 14:23:47+05:30",
-        "score": "0.958459",
+        "time": 115835,
+        "finish_time": "2026-09-27 05:48:43+05:30",
+        "score": "0.96218",
         "rank": "1899",
         "rating": null,
         "better_performance": null,
@@ -334,30 +1366,34 @@
         "reject_reason": null,
         "need_review_comment": null,
         "team": {
-          "id": 59093562,
-          "team_name": "BuilderLabs",
+          "id": 59375566,
+          "team_name": "placeholder",
           "players": [
             {
-              "name": "Priyanshu Raj",
-              "organisation": "Lakshmi Narain College of Technology & Science (LNCTS), Bhopal"
+              "name": "Devansh Sachin Agrawal",
+              "organisation": "Indian Institute of Technology (IIT), Kharagpur"
             },
             {
-              "name": "Pratyush Kothari",
-              "organisation": "Lakshmi Narain College of Technology & Science (LNCTS), Bhopal"
+              "name": "Pranit Chaudhary",
+              "organisation": "Indian Institute of Technology (IIT), Kharagpur"
+            },
+            {
+              "name": "Pakhi Praful Jain",
+              "organisation": "Indian Institute of Technology (IIT), Kharagpur"
             }
           ]
         }
       },
       {
-        "id": 212689507,
+        "id": 212767040,
         "opportunity_association_id": 1593683,
-        "user_id": 12978217,
-        "team_id": 59160678,
+        "user_id": 26598188,
+        "team_id": 59129065,
         "evaluator_id": null,
         "team_regn_id": null,
-        "time": 79472,
-        "finish_time": "2026-09-26 08:06:26+05:30",
-        "score": "0.958453",
+        "time": 178793,
+        "finish_time": "2026-09-27 14:19:57+05:30",
+        "score": "0.962171",
         "rank": "1900",
         "rating": null,
         "better_performance": null,
@@ -380,34 +1416,88 @@
         "reject_reason": null,
         "need_review_comment": null,
         "team": {
-          "id": 59160678,
-          "team_name": "Idea Labs",
+          "id": 59129065,
+          "team_name": "kava",
           "players": [
             {
-              "name": "Sivaangayarkanni Sathyan",
-              "organisation": "Sri Eshwar College of Engineering (SECE)"
+              "name": "Arjun Anand",
+              "organisation": "PES University (PESU), Bengaluru"
             },
             {
-              "name": "Swetha J P",
-              "organisation": "Sri Eshwar College of Engineering (SECE)"
+              "name": "Bandlamudi Vihas",
+              "organisation": "PES University (PESU), Bengaluru"
             },
             {
-              "name": "Harshitha V",
-              "organisation": "Sri Eshwar College of Engineering (SECE)"
+              "name": "Sri Kalyan Ippili",
+              "organisation": "PES University (PESU), Bengaluru"
+            },
+            {
+              "name": "Aman Das",
+              "organisation": "PES University (PESU), Bengaluru"
             }
           ]
         }
       },
       {
-        "id": 213634335,
+        "id": 212537515,
         "opportunity_association_id": 1593683,
-        "user_id": 25954803,
-        "team_id": 59252710,
+        "user_id": 20888183,
+        "team_id": 58916909,
         "evaluator_id": null,
         "team_regn_id": null,
-        "time": 112930,
-        "finish_time": "2026-09-26 07:35:20+05:30",
-        "score": "0.958404",
+        "time": 172700,
+        "finish_time": "2026-09-27 16:23:31+05:30",
+        "score": "0.962171",
+        "rank": "1900",
+        "rating": null,
+        "better_performance": null,
+        "has_played": "2026-09-27 23:59:49+05:30",
+        "proctoring_score": "0",
+        "last_seen": null,
+        "batch_id": null,
+        "acceptance_status": null,
+        "percentile": null,
+        "is_blacklisted": false,
+        "need_review": null,
+        "selected_at": null,
+        "comments": null,
+        "selected": null,
+        "panel_decision": null,
+        "submission_group": null,
+        "updated_by": null,
+        "evaluated": null,
+        "report_file": null,
+        "reject_reason": null,
+        "need_review_comment": null,
+        "team": {
+          "id": 58916909,
+          "team_name": "UsAgainstBots",
+          "players": [
+            {
+              "name": "Naram Sethu Harsha Vardhan",
+              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
+            },
+            {
+              "name": "GOPALAN SRINIVASAN JITHESH",
+              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
+            },
+            {
+              "name": "Shyamm SR",
+              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
+            }
+          ]
+        }
+      },
+      {
+        "id": 212385529,
+        "opportunity_association_id": 1593683,
+        "user_id": 22847976,
+        "team_id": 58964038,
+        "evaluator_id": null,
+        "team_regn_id": null,
+        "time": 148994,
+        "finish_time": "2026-09-27 17:02:36+05:30",
+        "score": "0.962118",
         "rank": "1901",
         "rating": null,
         "better_performance": null,
@@ -430,1094 +1520,20 @@
         "reject_reason": null,
         "need_review_comment": null,
         "team": {
-          "id": 59252710,
-          "team_name": "SSquare",
+          "id": 58964038,
+          "team_name": "Code Blocks",
           "players": [
             {
-              "name": "Raswanth B M",
-              "organisation": "Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore"
+              "name": "Rayyan Ahmad",
+              "organisation": "Netaji Subhas University of Technology (NSUT), Delhi"
             },
             {
-              "name": "Sathrish S",
-              "organisation": "Amrita Vishwa Vidyapeetham, Ettimadai, Coimbatore"
-            }
-          ]
-        }
-      },
-      {
-        "id": 213667404,
-        "opportunity_association_id": 1593683,
-        "user_id": 8908494,
-        "team_id": 59291020,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 136203,
-        "finish_time": "2026-09-27 08:34:36+05:30",
-        "score": "0.958375",
-        "rank": "1902",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59291020,
-          "team_name": "ML WARS",
-          "players": [
-            {
-              "name": "Subarna Maity",
-              "organisation": "Indian Institute of Technology (IIT), Kharagpur"
+              "name": "Aniket Meena",
+              "organisation": "Netaji Subhas University of Technology (NSUT), Delhi"
             },
             {
-              "name": "Nikhil Verma",
-              "organisation": "Indian Institute of Technology (IIT), Kharagpur"
-            }
-          ]
-        }
-      },
-      {
-        "id": 213653343,
-        "opportunity_association_id": 1593683,
-        "user_id": 27669491,
-        "team_id": 59349948,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 163458,
-        "finish_time": "2026-09-27 12:57:38+05:30",
-        "score": "0.958206",
-        "rank": "1903",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59349948,
-          "team_name": "return NULL",
-          "players": [
-            {
-              "name": "Dhanya K Suvarna",
-              "organisation": "NMAM Institute of Technology (NMAMIT), Nitte"
-            },
-            {
-              "name": "Raizel Neva Dsilva",
-              "organisation": "NMAM Institute of Technology (NMAMIT), Nitte"
-            },
-            {
-              "name": "Srujan kulkarni",
-              "organisation": "NMAM Institute of Technology (NMAMIT), Nitte"
-            },
-            {
-              "name": "Manvith Devadiga",
-              "organisation": "NMAM Institute of Technology (NMAMIT), Nitte"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212424930,
-        "opportunity_association_id": 1593683,
-        "user_id": 11533676,
-        "team_id": 58890075,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 189000,
-        "finish_time": "2026-09-26 04:30:50+05:30",
-        "score": "0.958201",
-        "rank": "1904",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 58890075,
-          "team_name": "Neural Nexus",
-          "players": [
-            {
-              "name": "Pradeep Singh",
-              "organisation": "Indian Institute of Information Technology (IIIT), Bhopal"
-            },
-            {
-              "name": "Rudranil Roy",
-              "organisation": "Indian Institute of Information Technology (IIIT), Bhopal"
-            },
-            {
-              "name": "Mahak Lachhwani",
-              "organisation": "Indian Institute of Information Technology (IIIT), Bhopal"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212866854,
-        "opportunity_association_id": 1593683,
-        "user_id": 20667345,
-        "team_id": 59222093,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 30698,
-        "finish_time": "2026-09-26 22:36:41+05:30",
-        "score": "0.958172",
-        "rank": "1905",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59222093,
-          "team_name": "MLTRIUM",
-          "players": [
-            {
-              "name": "Shikhar Shukla",
-              "organisation": "Indian Institute of Technology, Banaras Hindu University (IIT - BHU)"
-            },
-            {
-              "name": "Junaid Ali",
-              "organisation": "Indian Institute of Technology, Banaras Hindu University (IIT - BHU)"
-            },
-            {
-              "name": "Ayush Kumar Singh",
-              "organisation": "Indian Institute of Technology, Banaras Hindu University (IIT - BHU)"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212698021,
-        "opportunity_association_id": 1593683,
-        "user_id": 31212846,
-        "team_id": 59096596,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 62266,
-        "finish_time": "2026-09-27 14:49:00+05:30",
-        "score": "0.958167",
-        "rank": "1906",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59096596,
-          "team_name": "Chernobyl",
-          "players": [
-            {
-              "name": "Bismay Samal",
-              "organisation": "National Institute of Technology (NIT), Rourkela"
-            },
-            {
-              "name": "MOHIT RANJAN NAIK",
-              "organisation": "National Institute of Technology (NIT), Rourkela"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212696469,
-        "opportunity_association_id": 1593683,
-        "user_id": 12175041,
-        "team_id": 58931394,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 89955,
-        "finish_time": "2026-09-26 13:23:49+05:30",
-        "score": "0.958156",
-        "rank": "1907",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 58931394,
-          "team_name": "Debug Divas",
-          "players": [
-            {
-              "name": "Harshitha P Salian",
-              "organisation": "NMAM Institute of Technology (NMAMIT), Karkala NITTE (Deemed to be University), Mangaluru, Karnataka"
-            },
-            {
-              "name": "Sahana",
-              "organisation": "NMAM Institute of Technology (NMAMIT), Nitte"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212873958,
-        "opportunity_association_id": 1593683,
-        "user_id": 21004427,
-        "team_id": 59196524,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 84573,
-        "finish_time": "2026-09-26 23:30:31+05:30",
-        "score": "0.958138",
-        "rank": "1908",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59196524,
-          "team_name": "TechGS",
-          "players": [
-            {
-              "name": "Satvik Yechuri",
-              "organisation": "Birla Institute of Technology & Science, Pilani Campus"
-            },
-            {
-              "name": "ADIT BARDIYA",
-              "organisation": "Birla Institute of Technology & Science, Pilani Campus"
-            },
-            {
-              "name": "Preetham Sivalingam",
-              "organisation": "Birla Institute of Technology & Science, Pilani Campus"
-            },
-            {
-              "name": "Rayirth Singh",
-              "organisation": "Birla Institute of Technology & Science, Pilani Campus"
-            }
-          ]
-        }
-      },
-      {
-        "id": 213480580,
-        "opportunity_association_id": 1593683,
-        "user_id": 20847053,
-        "team_id": 59325712,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 223389,
-        "finish_time": "2026-09-27 15:01:51+05:30",
-        "score": "0.958123",
-        "rank": "1909",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59325712,
-          "team_name": "Pixel Pirates",
-          "players": [
-            {
-              "name": "Saumya Kumar",
-              "organisation": "Rishihood University"
-            },
-            {
-              "name": "Vipul Sharma",
-              "organisation": "Newton School Of Technology, Rishihood University"
-            },
-            {
-              "name": "Krishiv",
-              "organisation": "Newton School of Technology (Rishihood University)"
-            }
-          ]
-        }
-      },
-      {
-        "id": 213470766,
-        "opportunity_association_id": 1593683,
-        "user_id": 26260439,
-        "team_id": 59313269,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 187357,
-        "finish_time": "2026-09-27 15:28:30+05:30",
-        "score": "0.958121",
-        "rank": "1910",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59313269,
-          "team_name": "Mental Math",
-          "players": [
-            {
-              "name": "More Aditya",
-              "organisation": "Indian Institute of Petroleum and Energy (IIPE), Andhra Pradesh"
-            },
-            {
-              "name": "Suryansh Singh",
-              "organisation": "Harcourt Butler Technical University (HBTU), Kanpur"
-            },
-            {
-              "name": "Vaibhav Singh",
-              "organisation": "Jaypee Institute of Information Technology (JIIT), Noida"
-            },
-            {
-              "name": "Prakhar Dixit",
-              "organisation": "Harcourt Butler Technical University (HBTU), Kanpur"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212345030,
-        "opportunity_association_id": 1593683,
-        "user_id": 10299996,
-        "team_id": 58934890,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 152495,
-        "finish_time": "2026-09-26 19:22:09+05:30",
-        "score": "0.958119",
-        "rank": "1911",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 58934890,
-          "team_name": "SPAnChill",
-          "players": [
-            {
-              "name": "Shivangi Kumari",
-              "organisation": "Birsa Institute of Technology (BIT), Sindri"
-            },
-            {
-              "name": "Aastha Agarwal",
-              "organisation": "Birsa Institute of Technology (BIT), Sindri"
-            },
-            {
-              "name": "Punam Kumari",
-              "organisation": "Birsa Institute of Technology (BIT), Sindri"
-            }
-          ]
-        }
-      },
-      {
-        "id": 213681148,
-        "opportunity_association_id": 1593683,
-        "user_id": 9047698,
-        "team_id": 59366525,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 173155,
-        "finish_time": "2026-09-27 00:14:42+05:30",
-        "score": "0.958035",
-        "rank": "1912",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59366525,
-          "team_name": "Team Hackie",
-          "players": [
-            {
-              "name": "Saumya Jain",
-              "organisation": "MKSSS's Cummins College of Engineering for Women (CCOEW), Pune"
-            },
-            {
-              "name": "Vaishnavi Pandule",
-              "organisation": "MKSSS's Cummins College of Engineering for Women (CCOEW), Pune"
-            },
-            {
-              "name": "Aarya Gawade",
-              "organisation": "MKSSS's Cummins College of Engineering for Women (CCOEW), Pune"
-            },
-            {
-              "name": "Ishwari Shekade",
-              "organisation": "MKSSS's Cummins College of Engineering for Women (CCOEW), Pune"
-            }
-          ]
-        }
-      },
-      {
-        "id": 213673499,
-        "opportunity_association_id": 1593683,
-        "user_id": 27034946,
-        "team_id": 59321703,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 157688,
-        "finish_time": "2026-09-27 15:36:27+05:30",
-        "score": "0.958035",
-        "rank": "1912",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59321703,
-          "team_name": "Momomiyas",
-          "players": [
-            {
-              "name": "Naitik Agarwal",
-              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
-            },
-            {
-              "name": "Hemish Jain",
-              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
-            },
-            {
-              "name": "Anik Das",
-              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
-            },
-            {
-              "name": "Sri Karthikeya Bhagavatula",
-              "organisation": "SRM Institute of Science and Technology (SRMIST), Kattankulathur, Chennai"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212779206,
-        "opportunity_association_id": 1593683,
-        "user_id": 19440987,
-        "team_id": 59183381,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 167773,
-        "finish_time": "2026-09-27 06:18:17+05:30",
-        "score": "0.958014",
-        "rank": "1913",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59183381,
-          "team_name": "BezzosIsBack",
-          "players": [
-            {
-              "name": "Akshat Gupta",
-              "organisation": "Thapar Institute of Engineering and Technology (TIET), Patiala"
-            },
-            {
-              "name": "Pratham Handa",
-              "organisation": "Thapar Institute of Engineering and Technology (TIET), Patiala"
-            },
-            {
-              "name": "Priyanshi",
-              "organisation": "Thapar Institute of Engineering and Technology (TIET), Patiala"
-            },
-            {
-              "name": "Shivansh Srivastava",
-              "organisation": "Thapar Institute of Engineering and Technology (TIET), Patiala"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212879055,
-        "opportunity_association_id": 1593683,
-        "user_id": 30819101,
-        "team_id": 59280341,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 27744,
-        "finish_time": "2026-09-25 21:47:16+05:30",
-        "score": "0.957978",
-        "rank": "1914",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59280341,
-          "team_name": "Threat Nexus",
-          "players": [
-            {
-              "name": "Antriksh",
-              "organisation": "Thapar Institute of Engineering and Technology (TIET), Patiala"
-            },
-            {
-              "name": "Harshita",
-              "organisation": "Thapar University (TU), Patiala, Punjab, India"
-            },
-            {
-              "name": "Sparsh Khandelwal",
-              "organisation": "Thapar Institute of Engineering and Technology (TIET), Patiala"
-            },
-            {
-              "name": "Avleen Kaur",
-              "organisation": "Thapar University (TU), Patiala, Punjab, India"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212175009,
-        "opportunity_association_id": 1593683,
-        "user_id": 7695500,
-        "team_id": 58874986,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 169455,
-        "finish_time": "2026-09-27 09:42:13+05:30",
-        "score": "0.957965",
-        "rank": "1915",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 58874986,
-          "team_name": "Amazon ML Challengers",
-          "players": [
-            {
-              "name": "Dharaneeswar Reddy Avula",
-              "organisation": "Rajiv Gandhi University of Knowledge Technologies (RGUKT), Nuzvid"
-            },
-            {
-              "name": "Manuru Karthik",
-              "organisation": "Rajiv Gandhi University of Knowledge Technologies (RGUKT), Nuzvid"
-            },
-            {
-              "name": "Tummalacherla Balavardhan",
-              "organisation": "Rajiv Gandhi University of Knowledge Technologies (RGUKT), Nuzvid"
-            },
-            {
-              "name": "Tadikonda Manoj Kumar",
-              "organisation": "Rajiv Gandhi University of Knowledge Technologies (RGUKT), Nuzvid"
-            }
-          ]
-        }
-      },
-      {
-        "id": 213859919,
-        "opportunity_association_id": 1593683,
-        "user_id": 22683331,
-        "team_id": 59463686,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 171294,
-        "finish_time": "2026-09-27 15:35:58+05:30",
-        "score": "0.957864",
-        "rank": "1916",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59463686,
-          "team_name": "AWSD",
-          "players": [
-            {
-              "name": "Akshat saini",
-              "organisation": "Bennett University"
-            },
-            {
-              "name": "Shivam Chowdhary",
-              "organisation": "Bennett University"
-            },
-            {
-              "name": "Aditya Singh",
-              "organisation": "Delhi Skill and Entrepreneurship University (DSEU),New Delhi"
-            },
-            {
-              "name": "Manash Khandelwal",
-              "organisation": "Bennett University (BU), Greater Noida"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212695427,
-        "opportunity_association_id": 1593683,
-        "user_id": 23350176,
-        "team_id": 58837832,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 207507,
-        "finish_time": "2026-09-27 11:11:07+05:30",
-        "score": "0.957856",
-        "rank": "1917",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 58837832,
-          "team_name": "demaark",
-          "players": [
-            {
-              "name": "Devansh Kanojiya",
-              "organisation": "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat"
-            },
-            {
-              "name": "Manas Verma",
-              "organisation": "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat"
-            },
-            {
-              "name": "Nitya Singh",
-              "organisation": "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat"
-            }
-          ]
-        }
-      },
-      {
-        "id": 213688052,
-        "opportunity_association_id": 1593683,
-        "user_id": 33361709,
-        "team_id": 59371449,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 149219,
-        "finish_time": "2026-09-27 10:13:53+05:30",
-        "score": "0.957823",
-        "rank": "1918",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59371449,
-          "team_name": "MergeConflict",
-          "players": [
-            {
-              "name": "Angelina Georgy",
-              "organisation": "CMR Institute of Technology (CMRIT), Bangalore"
-            },
-            {
-              "name": "Akshita Bhuvanagiri",
-              "organisation": "CMR Institute of Technology (CMRIT), Bangalore"
-            },
-            {
-              "name": "Priyanka Kaviraj",
-              "organisation": "CMR Institute of Technology (CMRIT), Bangalore"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212038500,
-        "opportunity_association_id": 1593683,
-        "user_id": 4651349,
-        "team_id": 58679879,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 187306,
-        "finish_time": "2026-09-27 14:26:25+05:30",
-        "score": "0.957784",
-        "rank": "1919",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 58679879,
-          "team_name": "Astra",
-          "players": [
-            {
-              "name": "Shruti Kosurkar",
-              "organisation": "Priyadarshini College of Engineering (PEC), Nagpur, Maharashtra"
-            },
-            {
-              "name": "Gauri Kosurkar",
-              "organisation": "Indian Institute of Technology"
-            },
-            {
-              "name": "Sneha Pathak",
-              "organisation": "Dr. Vithalrao Vikhe Patil College of Engineering (DVVPCEA), Ahmednagar"
-            }
-          ]
-        }
-      },
-      {
-        "id": 213824524,
-        "opportunity_association_id": 1593683,
-        "user_id": 12571000,
-        "team_id": 59304608,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 58859,
-        "finish_time": "2026-09-27 09:28:47+05:30",
-        "score": "0.957775",
-        "rank": "1920",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59304608,
-          "team_name": "Radiant",
-          "players": [
-            {
-              "name": "Chiranjib Dash",
-              "organisation": "Vellore Institute of Technology (VIT), Vellore"
-            },
-            {
-              "name": "Aditya Jaiswal",
-              "organisation": "Vellore Institute of Technology (VIT), Vellore"
-            },
-            {
-              "name": "Annete Maria Vinoy",
-              "organisation": "Vellore Institute of Technology (VIT), Vellore"
-            }
-          ]
-        }
-      },
-      {
-        "id": 212874201,
-        "opportunity_association_id": 1593683,
-        "user_id": 19210891,
-        "team_id": 59279226,
-        "evaluator_id": null,
-        "team_regn_id": null,
-        "time": 213184,
-        "finish_time": "2026-09-27 11:35:12+05:30",
-        "score": "0.957771",
-        "rank": "1921",
-        "rating": null,
-        "better_performance": null,
-        "has_played": "2026-09-27 23:59:49+05:30",
-        "proctoring_score": "0",
-        "last_seen": null,
-        "batch_id": null,
-        "acceptance_status": null,
-        "percentile": null,
-        "is_blacklisted": false,
-        "need_review": null,
-        "selected_at": null,
-        "comments": null,
-        "selected": null,
-        "panel_decision": null,
-        "submission_group": null,
-        "updated_by": null,
-        "evaluated": null,
-        "report_file": null,
-        "reject_reason": null,
-        "need_review_comment": null,
-        "team": {
-          "id": 59279226,
-          "team_name": "Raven_Claw",
-          "players": [
-            {
-              "name": "Sree Ram Roshan A S",
-              "organisation": "Kumaraguru College of Technology (KCT), Coimbatore"
-            },
-            {
-              "name": "Shailesh Gowtham V",
-              "organisation": "Kumaraguru College of Technology (KCT), Coimbatore"
-            },
-            {
-              "name": "Surya Prasad M",
-              "organisation": "Kumaraguru College of Technology (KCT), Coimbatore"
-            },
-            {
-              "name": "Nitheeswaran M",
-              "organisation": "Kumaraguru College of Technology (KCT), Coimbatore"
+              "name": "Ritu Raj Swami",
+              "organisation": "Netaji Subhas University of Technology (NSUT), Delhi"
             }
           ]
         }
@@ -1525,8 +1541,8 @@
     ],
     "first_page_url": "https://api.unstop.com/api/public/live-leaderboard/290344/CodeContest?page=1",
     "from": 2041,
-    "last_page": 260,
-    "last_page_url": "https://api.unstop.com/api/public/live-leaderboard/290344/CodeContest?page=260",
+    "last_page": 279,
+    "last_page_url": "https://api.unstop.com/api/public/live-leaderboard/290344/CodeContest?page=279",
     "links": [
       {
         "url": "https://api.unstop.com/api/public/live-leaderboard/290344/CodeContest?page=68",
@@ -1589,13 +1605,13 @@
         "active": false
       },
       {
-        "url": "https://api.unstop.com/api/public/live-leaderboard/290344/CodeContest?page=259",
-        "label": "259",
+        "url": "https://api.unstop.com/api/public/live-leaderboard/290344/CodeContest?page=278",
+        "label": "278",
         "active": false
       },
       {
-        "url": "https://api.unstop.com/api/public/live-leaderboard/290344/CodeContest?page=260",
-        "label": "260",
+        "url": "https://api.unstop.com/api/public/live-leaderboard/290344/CodeContest?page=279",
+        "label": "279",
         "active": false
       },
       {
@@ -1609,7 +1625,7 @@
     "per_page": 30,
     "prev_page_url": "https://api.unstop.com/api/public/live-leaderboard/290344/CodeContest?page=68",
     "to": 2070,
-    "total": 7785
+    "total": 8349
   },
   "association": {
     "id": 1593683,
@@ -1673,8 +1689,8 @@
         "hint": null,
         "constraints": null,
         "created_at": "2026-08-24T16:46:49+05:30",
-        "updated_at": "2026-09-27T12:58:03+05:30",
-        "display_text": "<p>Teams will receive the problem statement and dataset on Day 1 and have until Day 3 to submit their solutions. Teams can track their performance through the leaderboard, which will reflect team rankings live over the course of this challenge. There will be a private leaderboard that will be revealed after the hackathon, based on your final solution submission and validation on the complete test dataset.<br /><br /><strong>Note:</strong> &nbsp;You are allowed a maximum of <strong class=\"x7amdea\">15 successful submissions</strong> during the hackathon.<br /><br /><strong>Please refer to this video for a better understanding of the problem statement: <a href=\"https://d8it4huxumps7.cloudfront.net/files/6ab509c5b7036_ml_challenge_2026_video.mp4\">Click Here</a></strong></p>",
+        "updated_at": "2026-09-27T16:30:38+05:30",
+        "display_text": "<p>Teams will receive the problem statement and dataset on Day 1 and have until Day 3 to submit their solutions. Teams can track their performance through the leaderboard, which will reflect team rankings live over the course of this challenge. There will be a private leaderboard that will be revealed after the hackathon, based on your final solution submission and validation on the complete test dataset.<br /><br /><strong>Note:</strong> &nbsp;You are allowed a maximum of <strong class=\"x7amdea\">17 successful submissions</strong> during the hackathon.<br /><br /><strong>Please refer to this video for a better understanding of the problem statement: <a href=\"https://d8it4huxumps7.cloudfront.net/files/6ab509c5b7036_ml_challenge_2026_video.mp4\">Click Here</a></strong></p>",
         "start_date": "2026-09-25T00:00:50+05:30",
         "end_date": "2026-09-27T23:59:49+05:30",
         "duration": "2 days 23:59:00",
@@ -1701,7 +1717,7 @@
         "update_compiler": 0,
         "code_quality_metrics": 0,
         "no_of_submissions_file_allowed": 1,
-        "allowed_submission_per_round": 15,
+        "allowed_submission_per_round": 17,
         "show_file_upload_section": false,
         "hide_score_in_submission": false,
         "languages": [],
