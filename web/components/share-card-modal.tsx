@@ -265,7 +265,7 @@ export function ShareCardModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/75 backdrop-blur-xs p-0 sm:p-4 overflow-y-auto animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-xs p-0 sm:p-4 overflow-y-auto animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="share-modal-title"
@@ -275,19 +275,19 @@ export function ShareCardModal({
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-4xl rounded-t-2xl sm:rounded-2xl border border-[#2D3748] bg-[#131921] text-white shadow-2xl flex flex-col max-h-[92vh] sm:max-h-[88vh] overflow-hidden animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200"
+        className="relative w-full max-w-4xl rounded-t-2xl sm:rounded-2xl border border-[#E3E3E3] border-t-[4px] border-t-[#FF9900] bg-white text-[#111111] shadow-2xl flex flex-col max-h-[92vh] sm:max-h-[88vh] overflow-hidden animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200"
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#232F3E] shrink-0 bg-[#0F141C]">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-[#EAEAEA] shrink-0 bg-[#FFFDF9]">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF9900]/15 text-[#FF9900] border border-[#FF9900]/30">
-              <Share2 className="h-4 w-4" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]">
+              <Share2 className="h-4 w-4 text-[#FF9900]" />
             </div>
             <div>
-              <h2 id="share-modal-title" className="text-sm sm:text-base font-bold text-white leading-tight">
+              <h2 id="share-modal-title" className="text-sm sm:text-base font-bold text-[#111111] leading-tight">
                 Share Team Performance Card
               </h2>
-              <p className="text-[11px] text-[#A0AEC0] mt-0.5">
+              <p className="text-[11px] text-[#767676] mt-0.5">
                 Generate a social poster (1080×1350) for {team.teamName}
               </p>
             </div>
@@ -297,19 +297,19 @@ export function ShareCardModal({
             type="button"
             onClick={onClose}
             aria-label="Close dialog"
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-[#A0AEC0] hover:text-white hover:bg-[#232F3E] transition-colors cursor-pointer"
+            className="flex h-8 w-8 items-center justify-center rounded-lg text-[#767676] hover:text-[#111111] hover:bg-[#F0F0F0] transition-colors cursor-pointer"
           >
             <X className="h-4 w-4" />
           </button>
         </div>
 
         {/* Modal Body: Split View (Options on Left/Top, Preview on Right/Bottom) */}
-        <div className="flex-1 overflow-y-auto grid grid-cols-1 md:grid-cols-12 gap-5 p-4 sm:p-6">
+        <div className="flex-1 overflow-y-auto grid grid-cols-1 md:grid-cols-12 gap-5 p-4 sm:p-6 bg-white">
           {/* Left Column: Customization Controls */}
           <div className="md:col-span-6 flex flex-col gap-4">
             {/* 1. Card Type Selection */}
-            <div className="rounded-xl border border-[#2D3748] bg-[#1A222D] p-3.5 sm:p-4">
-              <label className="text-xs font-bold text-[#E2E8F0] uppercase tracking-wider flex items-center gap-2 mb-2.5">
+            <div className="rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] p-3.5 sm:p-4">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2 mb-2.5">
                 <Layers className="h-3.5 w-3.5 text-[#FF9900]" />
                 <span>Card Layout Type</span>
               </label>
@@ -320,8 +320,8 @@ export function ShareCardModal({
                   onClick={() => setCardType("both")}
                   className={`flex flex-col items-center justify-center rounded-lg border p-2.5 text-center transition-all cursor-pointer ${
                     cardType === "both"
-                      ? "border-[#FF9900] bg-[#FF9900]/15 text-white font-bold ring-1 ring-[#FF9900]"
-                      : "border-[#2D3748] bg-[#131921] text-[#A0AEC0] hover:border-[#4A5568] hover:text-white"
+                      ? "border-[#FF9900] bg-[#FFF3E0] text-[#E47911] font-bold ring-1 ring-[#FF9900] shadow-xs"
+                      : "border-[#D5D5D5] bg-white text-[#5F6368] hover:border-[#FF9900] hover:text-[#111111] hover:bg-[#FFFDF9]"
                   }`}
                 >
                   <div className="flex items-center gap-1 mb-1 text-[#FF9900]">
@@ -329,7 +329,7 @@ export function ShareCardModal({
                     <Sparkles className="h-3.5 w-3.5" />
                   </div>
                   <span className="text-xs">Rank + F1</span>
-                  <span className="text-[9px] text-[#718096] mt-0.5">Recommended</span>
+                  <span className="text-[9px] text-[#767676] mt-0.5">Recommended</span>
                 </button>
 
                 <button
@@ -337,13 +337,13 @@ export function ShareCardModal({
                   onClick={() => setCardType("rank")}
                   className={`flex flex-col items-center justify-center rounded-lg border p-2.5 text-center transition-all cursor-pointer ${
                     cardType === "rank"
-                      ? "border-[#FF9900] bg-[#FF9900]/15 text-white font-bold ring-1 ring-[#FF9900]"
-                      : "border-[#2D3748] bg-[#131921] text-[#A0AEC0] hover:border-[#4A5568] hover:text-white"
+                      ? "border-[#FF9900] bg-[#FFF3E0] text-[#E47911] font-bold ring-1 ring-[#FF9900] shadow-xs"
+                      : "border-[#D5D5D5] bg-white text-[#5F6368] hover:border-[#FF9900] hover:text-[#111111] hover:bg-[#FFFDF9]"
                   }`}
                 >
                   <Trophy className="h-4 w-4 mb-1 text-[#FF9900]" />
                   <span className="text-xs">Rank Only</span>
-                  <span className="text-[9px] text-[#718096] mt-0.5">#{team.rank || "—"}</span>
+                  <span className="text-[9px] text-[#767676] mt-0.5">#{team.rank || "—"}</span>
                 </button>
 
                 <button
@@ -351,26 +351,26 @@ export function ShareCardModal({
                   onClick={() => setCardType("score")}
                   className={`flex flex-col items-center justify-center rounded-lg border p-2.5 text-center transition-all cursor-pointer ${
                     cardType === "score"
-                      ? "border-[#FF9900] bg-[#FF9900]/15 text-white font-bold ring-1 ring-[#FF9900]"
-                      : "border-[#2D3748] bg-[#131921] text-[#A0AEC0] hover:border-[#4A5568] hover:text-white"
+                      ? "border-[#FF9900] bg-[#FFF3E0] text-[#E47911] font-bold ring-1 ring-[#FF9900] shadow-xs"
+                      : "border-[#D5D5D5] bg-white text-[#5F6368] hover:border-[#FF9900] hover:text-[#111111] hover:bg-[#FFFDF9]"
                   }`}
                 >
                   <Sparkles className="h-4 w-4 mb-1 text-[#FF9900]" />
                   <span className="text-xs">F1 Score</span>
-                  <span className="text-[9px] text-[#718096] mt-0.5">{team.score?.slice(0, 6) || "0.00"}</span>
+                  <span className="text-[9px] text-[#767676] mt-0.5">{team.score?.slice(0, 6) || "0.00"}</span>
                 </button>
               </div>
             </div>
 
             {/* 2. Graph Display Selection */}
-            <div className="rounded-xl border border-[#2D3748] bg-[#1A222D] p-3.5 sm:p-4">
-              <label className="text-xs font-bold text-[#E2E8F0] uppercase tracking-wider flex items-center justify-between mb-2.5">
+            <div className="rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] p-3.5 sm:p-4">
+              <label className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center justify-between mb-2.5">
                 <span className="flex items-center gap-2">
                   <TrendingUp className="h-3.5 w-3.5 text-[#FF9900]" />
                   <span>Timeline Graph</span>
                 </span>
                 {history.length > 0 && (
-                  <span className="text-[10px] font-mono text-[#FF9900] font-normal bg-[#FF9900]/10 px-1.5 py-0.2 rounded border border-[#FF9900]/20">
+                  <span className="text-[10px] font-mono text-[#E47911] font-semibold bg-[#FFF3E0] px-2 py-0.5 rounded border border-[#F5C26B]">
                     {history.length} checkpoints
                   </span>
                 )}
@@ -382,13 +382,13 @@ export function ShareCardModal({
                   onClick={() => setGraphType("score")}
                   className={`flex flex-col items-center justify-center rounded-lg border p-2.5 text-center transition-all cursor-pointer ${
                     graphType === "score"
-                      ? "border-[#FF9900] bg-[#FF9900]/15 text-white font-bold ring-1 ring-[#FF9900]"
-                      : "border-[#2D3748] bg-[#131921] text-[#A0AEC0] hover:border-[#4A5568] hover:text-white"
+                      ? "border-[#FF9900] bg-[#FFF3E0] text-[#E47911] font-bold ring-1 ring-[#FF9900] shadow-xs"
+                      : "border-[#D5D5D5] bg-white text-[#5F6368] hover:border-[#FF9900] hover:text-[#111111] hover:bg-[#FFFDF9]"
                   }`}
                 >
                   <Sparkles className="h-4 w-4 mb-1 text-[#FF9900]" />
                   <span className="text-xs">F1 History</span>
-                  <span className="text-[9px] text-[#718096] mt-0.5">Score Curve</span>
+                  <span className="text-[9px] text-[#767676] mt-0.5">Score Curve</span>
                 </button>
 
                 <button
@@ -396,13 +396,13 @@ export function ShareCardModal({
                   onClick={() => setGraphType("rank")}
                   className={`flex flex-col items-center justify-center rounded-lg border p-2.5 text-center transition-all cursor-pointer ${
                     graphType === "rank"
-                      ? "border-[#FF9900] bg-[#FF9900]/15 text-white font-bold ring-1 ring-[#FF9900]"
-                      : "border-[#2D3748] bg-[#131921] text-[#A0AEC0] hover:border-[#4A5568] hover:text-white"
+                      ? "border-[#FF9900] bg-[#FFF3E0] text-[#E47911] font-bold ring-1 ring-[#FF9900] shadow-xs"
+                      : "border-[#D5D5D5] bg-white text-[#5F6368] hover:border-[#FF9900] hover:text-[#111111] hover:bg-[#FFFDF9]"
                   }`}
                 >
                   <Trophy className="h-4 w-4 mb-1 text-[#FF9900]" />
                   <span className="text-xs">Rank History</span>
-                  <span className="text-[9px] text-[#718096] mt-0.5">Rank Curve</span>
+                  <span className="text-[9px] text-[#767676] mt-0.5">Rank Curve</span>
                 </button>
 
                 <button
@@ -410,30 +410,30 @@ export function ShareCardModal({
                   onClick={() => setGraphType("none")}
                   className={`flex flex-col items-center justify-center rounded-lg border p-2.5 text-center transition-all cursor-pointer ${
                     graphType === "none"
-                      ? "border-[#FF9900] bg-[#FF9900]/15 text-white font-bold ring-1 ring-[#FF9900]"
-                      : "border-[#2D3748] bg-[#131921] text-[#A0AEC0] hover:border-[#4A5568] hover:text-white"
+                      ? "border-[#FF9900] bg-[#FFF3E0] text-[#E47911] font-bold ring-1 ring-[#FF9900] shadow-xs"
+                      : "border-[#D5D5D5] bg-white text-[#5F6368] hover:border-[#FF9900] hover:text-[#111111] hover:bg-[#FFFDF9]"
                   }`}
                 >
-                  <Activity className="h-4 w-4 mb-1 text-[#718096]" />
+                  <Activity className="h-4 w-4 mb-1 text-[#767676]" />
                   <span className="text-xs">No Graph</span>
-                  <span className="text-[9px] text-[#718096] mt-0.5">Clean Compact</span>
+                  <span className="text-[9px] text-[#767676] mt-0.5">Clean Compact</span>
                 </button>
               </div>
             </div>
 
             {/* Quick Summary Specs */}
-            <div className="rounded-xl border border-[#2D3748] bg-[#131921] p-3 text-xs text-[#A0AEC0] space-y-1.5">
+            <div className="rounded-xl border border-[#E3E3E3] bg-white p-3 text-xs text-[#5F6368] space-y-1.5 shadow-2xs">
               <div className="flex items-center justify-between text-[11px]">
                 <span>Poster Aspect Ratio:</span>
-                <span className="font-mono text-white font-bold">1080 × 1350 (4:5)</span>
+                <span className="font-mono text-[#111111] font-bold">1080 × 1350 (4:5)</span>
               </div>
               <div className="flex items-center justify-between text-[11px]">
                 <span>Optimized Platforms:</span>
-                <span className="text-white">Instagram, WhatsApp, X, LinkedIn</span>
+                <span className="text-[#111111] font-medium">Instagram, WhatsApp, X, LinkedIn</span>
               </div>
               <div className="flex items-center justify-between text-[11px]">
                 <span>Canonical Link:</span>
-                <span className="font-mono text-[#FF9900] truncate max-w-[200px]">/teams/{team.teamId}</span>
+                <span className="font-mono text-[#E47911] font-semibold truncate max-w-[200px]">/teams/{team.teamId}</span>
               </div>
             </div>
 
@@ -442,8 +442,8 @@ export function ShareCardModal({
               <div
                 className={`rounded-lg px-3 py-2 text-xs font-semibold flex items-center gap-2 animate-in fade-in duration-150 ${
                   feedback.type === "success"
-                    ? "bg-emerald-950/80 border border-emerald-500/40 text-emerald-300"
-                    : "bg-rose-950/80 border border-rose-500/40 text-rose-300"
+                    ? "bg-emerald-50 border border-emerald-300 text-emerald-800"
+                    : "bg-rose-50 border border-rose-300 text-rose-800"
                 }`}
               >
                 <Check className="h-3.5 w-3.5 shrink-0" />
@@ -455,12 +455,12 @@ export function ShareCardModal({
           {/* Right Column: High-Res Interactive Live Preview */}
           <div className="md:col-span-6 flex flex-col items-center justify-center">
             <div className="w-full flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold text-[#A0AEC0] uppercase tracking-wider flex items-center gap-1.5">
+              <span className="text-[11px] font-bold text-[#5F6368] uppercase tracking-wider flex items-center gap-1.5">
                 <ImageIcon className="h-3.5 w-3.5 text-[#FF9900]" />
                 <span>Live Card Preview</span>
               </span>
               {isGenerating && (
-                <span className="text-[10px] text-[#FF9900] flex items-center gap-1">
+                <span className="text-[10px] text-[#E47911] flex items-center gap-1 font-semibold">
                   <Loader2 className="h-3 w-3 animate-spin" />
                   <span>Updating...</span>
                 </span>
@@ -468,7 +468,7 @@ export function ShareCardModal({
             </div>
 
             {/* Responsive Card Preview Container (White Edition) */}
-            <div className="relative w-full max-w-[320px] sm:max-w-[340px] aspect-[4/5] rounded-xl overflow-hidden border border-[#CBD5E1] shadow-2xl bg-white flex items-center justify-center group">
+            <div className="relative w-full max-w-[320px] sm:max-w-[340px] aspect-[4/5] rounded-xl overflow-hidden border border-[#D5D5D5] shadow-xl bg-white flex items-center justify-center group">
               {previewDataUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -477,9 +477,9 @@ export function ShareCardModal({
                   className="w-full h-full object-contain select-none"
                 />
               ) : (
-                <div className="flex flex-col items-center justify-center p-6 text-center text-[#718096]">
+                <div className="flex flex-col items-center justify-center p-6 text-center text-[#767676]">
                   <Loader2 className="h-8 w-8 text-[#FF9900] animate-spin mb-2" />
-                  <p className="text-xs font-medium text-[#4A5568]">Generating your performance card...</p>
+                  <p className="text-xs font-medium text-[#5F6368]">Generating your performance card...</p>
                 </div>
               )}
             </div>
@@ -487,15 +487,15 @@ export function ShareCardModal({
         </div>
 
         {/* Modal Footer Actions */}
-        <div className="px-5 py-3.5 border-t border-[#232F3E] bg-[#0F141C] flex flex-wrap items-center justify-between gap-2.5 shrink-0">
+        <div className="px-5 py-3.5 border-t border-[#EAEAEA] bg-[#F7F7F7] flex flex-wrap items-center justify-between gap-2.5 shrink-0">
           <div className="flex items-center gap-2">
             <button
               type="button"
               onClick={handleCopyLink}
               title="Copy canonical team link"
-              className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-[#2D3748] bg-[#1A222D] px-3 py-1.5 text-xs font-semibold text-[#E2E8F0] hover:bg-[#2A3441] hover:text-white transition-colors cursor-pointer"
+              className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-[#D5D5D5] bg-white px-3 py-1.5 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors cursor-pointer shadow-xs"
             >
-              <Copy className="h-3.5 w-3.5 text-[#A0AEC0]" />
+              <Copy className="h-3.5 w-3.5 text-[#767676]" />
               <span>Copy Link</span>
             </button>
 
@@ -503,7 +503,7 @@ export function ShareCardModal({
               type="button"
               onClick={handleCopyImage}
               title="Copy image to clipboard"
-              className="hidden sm:inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-[#2D3748] bg-[#1A222D] px-3 py-1.5 text-xs font-semibold text-[#E2E8F0] hover:bg-[#2A3441] hover:text-white transition-colors cursor-pointer"
+              className="hidden sm:inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-[#D5D5D5] bg-white px-3 py-1.5 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors cursor-pointer shadow-xs"
             >
               <ImageIcon className="h-3.5 w-3.5 text-[#FF9900]" />
               <span>Copy Image</span>
@@ -514,7 +514,7 @@ export function ShareCardModal({
             <button
               type="button"
               onClick={handleDownload}
-              className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-[#FF9900]/40 bg-[#FF9900]/15 px-3.5 py-1.5 text-xs font-bold text-[#FFB84D] hover:bg-[#FF9900]/25 transition-colors cursor-pointer shadow-xs active:scale-95"
+              className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg border border-[#F5C26B] bg-[#FFF3E0] px-3.5 py-1.5 text-xs font-bold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all cursor-pointer shadow-xs active:scale-95"
             >
               <Download className="h-3.5 w-3.5" />
               <span>Download PNG</span>
@@ -523,7 +523,7 @@ export function ShareCardModal({
             <button
               type="button"
               onClick={handleNativeShare}
-              className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg bg-[#FF9900] px-4 py-1.5 text-xs font-bold text-[#111111] hover:bg-[#FFAC33] transition-all cursor-pointer shadow-md active:scale-95"
+              className="inline-flex min-h-[38px] items-center gap-1.5 rounded-lg bg-[#FF9900] px-4 py-1.5 text-xs font-bold text-[#111111] hover:bg-[#E47911] hover:text-white transition-all cursor-pointer shadow-sm active:scale-95"
             >
               <Share2 className="h-4 w-4" />
               <span>Share Performance</span>
