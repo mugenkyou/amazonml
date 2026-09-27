@@ -109,25 +109,25 @@ export default async function HomePage({ searchParams }: PageProps) {
         </div>
 
         {/* Statistics Strip & Leaderboard Action */}
-        <div className="mt-3.5 sm:mt-5 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-[#EAEAEA] pt-3 sm:pt-4 max-w-3xl mx-auto">
-          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 w-full sm:w-auto text-xs font-mono">
-            <div className="flex flex-col items-center justify-center bg-[#FFF7E6] border border-[#F5C26B] px-2 py-1.5 rounded-lg text-center">
-              <span className="font-bold text-[#111111] text-xs sm:text-sm">{metadata.uniqueTeams.toLocaleString()}</span>
-              <span className="text-[10px] text-[#767676] font-sans">Teams</span>
+        <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-[#EAEAEA] pt-3.5 sm:pt-4 max-w-2xl mx-auto">
+          <div className="flex items-center gap-2 text-xs font-mono justify-center sm:justify-start">
+            <div className="flex flex-1 sm:flex-initial flex-col items-center justify-center bg-[#FFF7E6] border border-[#F5C26B] px-3.5 py-1.5 rounded-lg text-center min-w-[76px] sm:min-w-[84px] shadow-2xs">
+              <span className="font-bold text-[#111111] text-xs sm:text-sm font-mono">{metadata.uniqueTeams.toLocaleString()}</span>
+              <span className="text-[10px] text-[#767676] font-sans font-medium">Teams</span>
             </div>
-            <div className="flex flex-col items-center justify-center bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-1.5 rounded-lg text-center">
-              <span className="font-bold text-[#111111] text-xs sm:text-sm">{metadata.uniquePlayers.toLocaleString()}</span>
-              <span className="text-[10px] text-[#767676] font-sans">Members</span>
+            <div className="flex flex-1 sm:flex-initial flex-col items-center justify-center bg-[#F7F7F7] border border-[#E3E3E3] px-3.5 py-1.5 rounded-lg text-center min-w-[76px] sm:min-w-[84px] shadow-2xs">
+              <span className="font-bold text-[#111111] text-xs sm:text-sm font-mono">{metadata.uniquePlayers.toLocaleString()}</span>
+              <span className="text-[10px] text-[#767676] font-sans font-medium">Members</span>
             </div>
-            <div className="flex flex-col items-center justify-center bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-1.5 rounded-lg text-center">
-              <span className="font-bold text-[#111111] text-xs sm:text-sm">{metadata.uniqueOrganizations.toLocaleString()}</span>
-              <span className="text-[10px] text-[#767676] font-sans">Colleges</span>
+            <div className="flex flex-1 sm:flex-initial flex-col items-center justify-center bg-[#F7F7F7] border border-[#E3E3E3] px-3.5 py-1.5 rounded-lg text-center min-w-[76px] sm:min-w-[84px] shadow-2xs">
+              <span className="font-bold text-[#111111] text-xs sm:text-sm font-mono">{metadata.uniqueOrganizations.toLocaleString()}</span>
+              <span className="text-[10px] text-[#767676] font-sans font-medium">Colleges</span>
             </div>
           </div>
 
           <Link
             href="/leaderboard"
-            className="w-full sm:w-auto inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-lg bg-[#FF9900] px-5 py-2.5 text-xs sm:text-sm font-bold text-[#111111] hover:bg-[#FFAC33] active:scale-95 transition-all shadow-xs"
+            className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-lg bg-[#FF9900] px-5 py-2.5 text-xs sm:text-sm font-bold text-[#111111] hover:bg-[#FFAC33] active:scale-95 transition-all shadow-xs shrink-0"
           >
             <span>View Full Leaderboard</span>
             <ArrowRight className="h-4 w-4" />
