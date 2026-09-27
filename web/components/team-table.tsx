@@ -13,6 +13,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ShareButton } from "@/components/share-button";
 import { slugifyOrganization } from "@/lib/normalize";
 import type { SearchResultTeam } from "@/lib/types";
 
@@ -82,7 +83,10 @@ function MobileExpandableTeamCard({ team }: { team: SearchResultTeam }) {
               {team.score || "0.000000"}
             </span>
           </div>
-          <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
+          <div className="flex items-center gap-1">
+            <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
+            <ShareButton teamId={team.teamId} teamName={team.teamName} size="sm" />
+          </div>
         </div>
       </div>
 
@@ -274,7 +278,7 @@ export function TeamTable({ teams }: TeamTableProps) {
                       {team.finishTime ? team.finishTime.split("+")[0] : "—"}
                     </td>
 
-                    {/* Action: Bookmark + View Details */}
+                    {/* Action: Bookmark + Share + View Details */}
                     <td className="whitespace-nowrap py-3.5 pl-2 pr-4 text-right text-xs">
                       <div className="inline-flex items-center justify-end gap-1.5">
                         <BookmarkButton
@@ -282,6 +286,11 @@ export function TeamTable({ teams }: TeamTableProps) {
                           teamName={team.teamName}
                           size="sm"
                           showFeedback
+                        />
+                        <ShareButton
+                          teamId={team.teamId}
+                          teamName={team.teamName}
+                          size="sm"
                         />
                         <Link
                           href={`/teams/${team.teamId}`}

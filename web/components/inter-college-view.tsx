@@ -35,6 +35,7 @@ import type {
 } from "@/lib/inter-college";
 import { LeaderboardTabs } from "@/components/leaderboard-tabs";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ShareButton } from "@/components/share-button";
 
 interface InterCollegeViewProps {
   initialResult: InterCollegeQueryResult;
@@ -435,7 +436,10 @@ export function InterCollegeView({ initialResult }: InterCollegeViewProps) {
               {team.score || "0.000000"}
             </span>
           </div>
-          <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
+          <div className="flex items-center gap-1">
+            <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
+            <ShareButton teamId={team.teamId} teamName={team.teamName} size="sm" />
+          </div>
         </div>
       </div>
 
@@ -619,13 +623,26 @@ export function InterCollegeView({ initialResult }: InterCollegeViewProps) {
 
                         {/* Action Link */}
                         <td className="whitespace-nowrap py-3 pl-2 pr-4 text-right">
-                          <Link
-                            href={`/teams/${team.teamId}`}
-                            className="inline-flex min-h-[32px] items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors shadow-2xs"
-                          >
-                            <span>View</span>
-                            <ArrowRight className="h-3 w-3" />
-                          </Link>
+                          <div className="inline-flex items-center justify-end gap-1.5">
+                            <BookmarkButton
+                              teamId={team.teamId}
+                              teamName={team.teamName}
+                              size="sm"
+                              showFeedback
+                            />
+                            <ShareButton
+                              teamId={team.teamId}
+                              teamName={team.teamName}
+                              size="sm"
+                            />
+                            <Link
+                              href={`/teams/${team.teamId}`}
+                              className="inline-flex min-h-[32px] items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors shadow-2xs"
+                            >
+                              <span>View</span>
+                              <ArrowRight className="h-3 w-3" />
+                            </Link>
+                          </div>
                         </td>
                       </tr>
                     );

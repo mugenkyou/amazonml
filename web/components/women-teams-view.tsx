@@ -28,6 +28,7 @@ import type {
 } from "@/lib/women-teams";
 import { LeaderboardTabs } from "@/components/leaderboard-tabs";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ShareButton } from "@/components/share-button";
 
 interface WomenTeamsViewProps {
   initialResult: WomenTeamQueryResult;
@@ -377,8 +378,13 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
                       </div>
                     </div>
 
-                    <div className="shrink-0 pt-0.5">
+                    <div className="shrink-0 pt-0.5 flex items-center gap-1">
                       <BookmarkButton
+                        teamId={team.teamId}
+                        teamName={team.teamName}
+                        size="sm"
+                      />
+                      <ShareButton
                         teamId={team.teamId}
                         teamName={team.teamName}
                         size="sm"
@@ -488,6 +494,7 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
                     <td className="whitespace-nowrap py-3.5 pl-2 pr-4 text-right text-xs">
                       <div className="inline-flex items-center justify-end gap-1.5">
                         <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" />
+                        <ShareButton teamId={team.teamId} teamName={team.teamName} size="sm" />
                         <Link
                           href={`/teams/${team.teamId}`}
                           className="inline-flex min-h-[32px] items-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-2.5 py-1 font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors text-xs shadow-2xs"

@@ -6,6 +6,7 @@ import { Bookmark, ArrowRight, Trash2 } from "lucide-react";
 import { useSavedTeams } from "@/hooks/useSavedTeams";
 import { TeamCard } from "@/components/team-card";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ShareButton } from "@/components/share-button";
 import type { Team, SearchResultTeam } from "@/lib/types";
 
 interface SavedTeamsSectionProps {
@@ -125,8 +126,9 @@ export function SavedTeamsSection({ allTeams }: SavedTeamsSectionProps) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-1.5 shrink-0">
+              <div className="flex items-center gap-1 shrink-0">
                 <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" />
+                <ShareButton teamId={team.teamId} teamName={team.teamName} size="sm" />
                 <Link
                   href={`/teams/${team.teamId}`}
                   className="inline-flex min-h-[32px] items-center gap-0.5 rounded border border-[#D5D5D5] bg-white px-2 py-1 text-xs font-semibold text-[#111111] hover:bg-[#FFF3E0] hover:text-[#E47911] hover:border-[#FF9900] transition-colors"

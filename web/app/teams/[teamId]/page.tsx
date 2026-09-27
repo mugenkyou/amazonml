@@ -7,6 +7,7 @@ import { slugifyOrganization } from "@/lib/normalize";
 import { isInterCollegeTeam } from "@/lib/inter-college";
 import { TeamMembers } from "@/components/team-members";
 import { TeamSaveAction } from "@/components/team-save-action";
+import { ShareButton } from "@/components/share-button";
 import { JsonLd } from "@/components/json-ld";
 import {
   generateBreadcrumbSchema,
@@ -165,9 +166,12 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             </div>
           </div>
 
-          {/* Score Box & Save Action */}
-          <div className="flex flex-row sm:flex-row items-center gap-2.5 self-stretch sm:self-auto justify-between sm:justify-end">
-            <TeamSaveAction teamId={team.teamId} teamName={team.teamName} />
+          {/* Score Box & Save / Share Actions */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 self-stretch sm:self-auto justify-between sm:justify-end">
+            <div className="flex items-center gap-2">
+              <TeamSaveAction teamId={team.teamId} teamName={team.teamName} />
+              <ShareButton teamId={team.teamId} teamName={team.teamName} variant="button" />
+            </div>
 
             <div className="rounded-lg border border-[#F5C26B] bg-[#FFF7E6] px-3.5 py-1.5 sm:py-2 text-right shadow-xs min-w-[120px]">
               <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">

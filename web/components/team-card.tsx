@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Users, Clock, ArrowRight, Building2, User, Trophy, ShieldCheck } from "lucide-react";
 import { slugifyOrganization } from "@/lib/normalize";
 import { BookmarkButton } from "@/components/bookmark-button";
+import { ShareButton } from "@/components/share-button";
 import type { SearchResultTeam } from "@/lib/types";
 
 interface TeamCardProps {
@@ -25,7 +26,7 @@ export function TeamCard({ team }: TeamCardProps) {
       }`}
     >
       <div>
-        {/* Header: Rank + Team + Score + Bookmark */}
+        {/* Header: Rank + Team + Score + Bookmark & Share */}
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-start gap-2.5 min-w-0 flex-1">
             <span
@@ -52,7 +53,7 @@ export function TeamCard({ team }: TeamCardProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-1 shrink-0">
             <div className="text-right">
               <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">Score</span>
               <span className="text-xs sm:text-sm font-bold font-mono text-[#111111]">
@@ -60,6 +61,7 @@ export function TeamCard({ team }: TeamCardProps) {
               </span>
             </div>
             <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
+            <ShareButton teamId={team.teamId} teamName={team.teamName} size="sm" />
           </div>
         </div>
 
