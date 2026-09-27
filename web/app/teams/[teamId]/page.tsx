@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award, Home, GitFork } from "lucide-react";
+import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award, Home, GitFork, Clock } from "lucide-react";
 import { getAllTeams, getTeamById } from "@/lib/data";
 import { slugifyOrganization } from "@/lib/normalize";
 import { isInterCollegeTeam } from "@/lib/inter-college";
@@ -85,7 +85,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
   const teamSchema = generateTeamSchema(team);
 
   return (
-    <div className="mx-auto max-w-5xl px-3.5 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+    <div className="mx-auto max-w-5xl px-3.5 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-12">
       <JsonLd data={[breadcrumbSchema, teamSchema]} />
 
       {/* Visual Breadcrumb Navigation */}
@@ -111,7 +111,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
       </nav>
 
       {/* Back Navigation */}
-      <div className="mb-3.5 flex items-center justify-between">
+      <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2">
         <Link
           href="/leaderboard"
           className="inline-flex min-h-[36px] items-center gap-1.5 text-xs font-semibold text-[#007185] hover:text-[#E47911] hover:underline transition-colors"
@@ -126,17 +126,17 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
             className="inline-flex min-h-[32px] items-center gap-1 text-xs font-semibold text-[#E47911] hover:underline"
           >
             <GitFork className="h-3.5 w-3.5" />
-            <span>Explore Inter-College Standings →</span>
+            <span>Inter-College Standings →</span>
           </Link>
         )}
       </div>
 
-      {/* Main Team Profile Card */}
-      <div className="rounded-lg border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-4 sm:p-6 shadow-subtle">
+      {/* Level 1: Primary Team Profile & Rank Card */}
+      <div className="rounded-xl border border-[#E3E3E3] border-t-[3px] border-t-[#FF9900] bg-white p-4 sm:p-6 shadow-subtle">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 pb-4 sm:pb-5 border-b border-[#EAEAEA]">
-          <div className="flex items-start sm:items-center gap-3">
+          <div className="flex items-start sm:items-center gap-3 min-w-0 flex-1">
             <span
-              className={`flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-lg text-sm sm:text-base font-bold font-mono shadow-xs ${
+              className={`flex h-11 w-11 sm:h-13 sm:w-13 shrink-0 items-center justify-center rounded-xl text-base sm:text-lg font-bold font-mono shadow-xs ${
                 isTopRank
                   ? "bg-[#FF9900] text-[#111111]"
                   : isTop3
@@ -149,81 +149,72 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
 
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-[#111111] leading-tight break-words">
+                <h1 className="text-lg sm:text-2xl font-black tracking-tight text-[#111111] leading-tight break-words">
                   {team.teamName}
                 </h1>
                 {isInterCollege && (
                   <span className="inline-flex items-center gap-1 rounded bg-[#FFF3E0] border border-[#F5C26B] px-2 py-0.5 text-[10px] font-bold text-[#E47911] font-mono uppercase tracking-wider shadow-2xs">
                     <GitFork className="h-3 w-3 text-[#FF9900]" />
-                    <span>INTER-COLLEGE TEAM</span>
+                    <span>INTER-COLLEGE</span>
                   </span>
                 )}
               </div>
-              <p className="text-[10px] sm:text-xs text-[#767676] font-mono mt-0.5">
+              <p className="text-[11px] sm:text-xs text-[#767676] font-mono mt-0.5">
                 Contest Team ID: <code>{team.teamId}</code> • Challenge 2026
               </p>
             </div>
           </div>
 
           {/* Score Box & Save Action */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 self-start sm:self-auto w-full sm:w-auto">
+          <div className="flex flex-row sm:flex-row items-center gap-2.5 self-stretch sm:self-auto justify-between sm:justify-end">
             <TeamSaveAction teamId={team.teamId} teamName={team.teamName} />
 
-            <div className="rounded-lg border border-[#F5C26B] bg-[#FFF7E6] px-3.5 py-2 text-left sm:text-right shadow-xs w-full sm:w-auto">
+            <div className="rounded-lg border border-[#F5C26B] bg-[#FFF7E6] px-3.5 py-1.5 sm:py-2 text-right shadow-xs min-w-[120px]">
               <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-                Official Leaderboard Score
+                Score
               </span>
-              <span className="text-xl sm:text-2xl font-bold font-mono text-[#111111] block mt-0.5">
+              <span className="text-lg sm:text-2xl font-bold font-mono text-[#111111] block">
                 {team.score || "0.000000"}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Metadata Grid */}
-        <div className="mt-4 sm:mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
-          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
-            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-              Finish Time
-            </span>
-            <span className="text-xs font-mono text-[#111111] font-medium mt-0.5 block truncate">
-              {team.finishTime ? team.finishTime.replace("+05:30", " IST") : "Not recorded"}
-            </span>
-          </div>
+        {/* Team Overview Summary Chips */}
+        <div className="mt-3.5 flex flex-wrap items-center gap-2 text-xs">
+          <span className="inline-flex items-center gap-1.5 rounded-md bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-1 text-[#111111] font-semibold">
+            <Users className="h-3.5 w-3.5 text-[#5F6368]" />
+            <span>{team.players.length} {team.players.length === 1 ? "Member" : "Members"}</span>
+          </span>
 
-          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
-            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-              Submission Status
-            </span>
-            <span className="text-xs font-medium text-[#067D62] mt-0.5 flex items-center gap-1">
-              <CheckCircle2 className="h-3.5 w-3.5" />
-              <span>{team.hasPlayed ? "Scored & Finalized" : "Registered"}</span>
-            </span>
-          </div>
+          <span className="inline-flex items-center gap-1.5 rounded-md bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-1 text-[#111111] font-semibold">
+            <Building2 className="h-3.5 w-3.5 text-[#FF9900]" />
+            <span>{team.organizations.length} {team.organizations.length === 1 ? "College" : "Colleges"}</span>
+          </span>
 
-          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
-            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-              Proctoring Score
+          {team.finishTime && (
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-1 text-[#5F6368] font-mono text-[11px]">
+              <Clock className="h-3.5 w-3.5 text-[#767676]" />
+              <span>{team.finishTime.replace("+05:30", " IST")}</span>
             </span>
-            <span className="text-xs font-mono text-[#111111] mt-0.5 block">
-              {team.proctoringScore ? team.proctoringScore : "Passed (Standard)"}
-            </span>
-          </div>
-
-          <div className="rounded-md bg-[#F7F7F7] border border-[#E3E3E3] p-2.5">
-            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-              Verification Status
-            </span>
-            <span className="text-xs font-medium text-[#067D62] mt-0.5 flex items-center gap-1">
-              <ShieldCheck className="h-3.5 w-3.5" />
-              <span>Verified Record</span>
-            </span>
-          </div>
+          )}
         </div>
       </div>
 
-      {/* Participating Colleges / Academic Institutions Represented */}
-      <div className="mt-5 sm:mt-6 rounded-lg border border-[#E3E3E3] bg-white p-4 sm:p-5 shadow-subtle">
+      {/* Participant Roster */}
+      <div className="mt-5 sm:mt-6 rounded-xl border border-[#E3E3E3] bg-white p-4 sm:p-5 shadow-subtle">
+        <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2 mb-3">
+          <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+            <Users className="h-3.5 w-3.5 text-[#FF9900]" />
+          </div>
+          <span>Participant Roster ({team.players.length} members)</span>
+        </h2>
+
+        <TeamMembers players={team.players} />
+      </div>
+
+      {/* Academic Institutions Represented */}
+      <div className="mt-5 sm:mt-6 rounded-xl border border-[#E3E3E3] bg-white p-4 sm:p-5 shadow-subtle">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2">
             <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
@@ -250,9 +241,9 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
                 <Link
                   key={org}
                   href={`/organizations/${slug}`}
-                  className="inline-flex min-h-[32px] items-center gap-1.5 rounded-md border border-[#E3E3E3] bg-[#F7F7F7] px-2.5 py-1 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors"
+                  className="inline-flex min-h-[36px] items-center gap-1.5 rounded-md border border-[#E3E3E3] bg-[#F7F7F7] px-3 py-1.5 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors break-words max-w-full"
                 >
-                  <Building2 className="h-3 w-3 text-[#767676]" />
+                  <Building2 className="h-3.5 w-3.5 text-[#767676] shrink-0" />
                   <span>{org}</span>
                 </Link>
               );
@@ -263,16 +254,51 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
         )}
       </div>
 
-      {/* Team Members Roster */}
-      <div className="mt-5 sm:mt-6 rounded-lg border border-[#E3E3E3] bg-white p-4 sm:p-5 shadow-subtle">
-        <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2 mb-3">
-          <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
-            <Users className="h-3.5 w-3.5 text-[#FF9900]" />
-          </div>
-          <span>Participant Roster ({team.players.length} members)</span>
+      {/* Additional Competition Metadata & Verification */}
+      <div className="mt-5 sm:mt-6 rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] p-4 sm:p-5 shadow-subtle">
+        <h2 className="text-xs font-bold text-[#5F6368] uppercase tracking-wider mb-3">
+          Competition Record & Verification Details
         </h2>
 
-        <TeamMembers players={team.players} />
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 text-xs">
+          <div className="rounded-lg bg-white border border-[#E3E3E3] p-2.5">
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+              Finish Time
+            </span>
+            <span className="text-xs font-mono text-[#111111] font-medium mt-0.5 block truncate">
+              {team.finishTime ? team.finishTime.replace("+05:30", " IST") : "Not recorded"}
+            </span>
+          </div>
+
+          <div className="rounded-lg bg-white border border-[#E3E3E3] p-2.5">
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+              Submission Status
+            </span>
+            <span className="text-xs font-medium text-[#067D62] mt-0.5 flex items-center gap-1">
+              <CheckCircle2 className="h-3.5 w-3.5" />
+              <span>{team.hasPlayed ? "Scored & Finalized" : "Registered"}</span>
+            </span>
+          </div>
+
+          <div className="rounded-lg bg-white border border-[#E3E3E3] p-2.5">
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+              Proctoring Score
+            </span>
+            <span className="text-xs font-mono text-[#111111] mt-0.5 block">
+              {team.proctoringScore ? team.proctoringScore : "Passed (Standard)"}
+            </span>
+          </div>
+
+          <div className="rounded-lg bg-white border border-[#E3E3E3] p-2.5">
+            <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+              Verification Status
+            </span>
+            <span className="text-xs font-medium text-[#067D62] mt-0.5 flex items-center gap-1">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              <span>Verified Record</span>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

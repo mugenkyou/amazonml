@@ -12,6 +12,8 @@ import {
   Search,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Sparkles,
   Scale,
   Info,
@@ -32,6 +34,7 @@ import type {
   InterCollegeTeam,
 } from "@/lib/inter-college";
 import { LeaderboardTabs } from "@/components/leaderboard-tabs";
+import { BookmarkButton } from "@/components/bookmark-button";
 
 interface InterCollegeViewProps {
   initialResult: InterCollegeQueryResult;
@@ -374,118 +377,145 @@ export function InterCollegeView({ initialResult }: InterCollegeViewProps) {
           <span className="hidden sm:inline-block">
             Sort: <strong>{activeSortObj.label}</strong>
           </span>
+        </div>function MobileInterCollegeCard({ team }: { team: InterCollegeTeam }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const rankNum = team.rank || "—";
+  const isTopRank = rankNum === "1";
+  const isTop3 = ["1", "2", "3"].includes(rankNum);
+  const detailsId = `inter-college-details-${team.teamId}`;
+
+  return (
+    <article
+      className={`rounded-xl border bg-white p-3.5 shadow-2xs transition-all ${
+        isTopRank
+          ? "border-[#F5C26B] border-t-[3px] border-t-[#FF9900] bg-gradient-to-b from-[#FFFDF9] to-white"
+          : isTop3
+          ? "border-[#F5C26B] border-t-2 border-t-[#FF9900]"
+          : "border-[#E3E3E3]"
+      }`}
+    >
+      {/* Level 1: Primary Scan Header */}
+      <div className="flex items-start justify-between gap-2.5">
+        <div className="flex items-start gap-2.5 min-w-0 flex-1">
+          <span
+            className={`inline-flex h-8 min-w-8 shrink-0 items-center justify-center rounded-lg px-2 text-xs font-bold font-mono shadow-2xs ${
+              isTopRank
+                ? "bg-[#FF9900] text-[#111111]"
+                : isTop3
+                ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A]"
+                : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+            }`}
+          >
+            #{rankNum}
+          </span>
+          <div className="min-w-0 flex-1">
+            <Link
+              href={`/teams/${team.teamId}`}
+              className="font-bold text-sm text-[#111111] hover:text-[#E47911] transition-colors leading-tight line-clamp-2 block break-words"
+            >
+              {team.teamName}
+            </Link>
+            <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#767676] mt-1 flex-wrap">
+              <span className="inline-flex items-center gap-1 text-[#E47911] font-semibold">
+                <GitFork className="h-3 w-3" />
+                <span>{team.collegeCount} Colleges</span>
+              </span>
+              <span>·</span>
+              <span>{team.players.length} members</span>
+            </div>
+          </div>
         </div>
 
+        <div className="flex flex-col items-end gap-1.5 shrink-0">
+          <div className="text-right bg-[#FFF7E6] border border-[#F5C26B]/50 rounded-md px-2 py-0.5">
+            <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">
+              Score
+            </span>
+            <span className="text-xs font-bold font-mono text-[#111111]">
+              {team.score || "0.000000"}
+            </span>
+          </div>
+          <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" showFeedback />
+        </div>
+      </div>
+
+      {/* Participating Colleges Badges */}
+      <div className="mt-2.5 space-y-1">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
+          Participating Institutions:
+        </span>
+        <div className="flex flex-wrap gap-1">
+          {team.organizations.map((org) => (
+            <Link
+              key={org.slug}
+              href={`/organizations/${org.slug}`}
+              className="inline-flex items-center gap-1 rounded bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-0.5 text-[11px] text-[#5F6368] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors max-w-full break-words"
+            >
+              <Building2 className="h-3 w-3 text-[#767676] shrink-0" />
+              <span className="line-clamp-1">{org.name}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Level 2 Controls: Expand Toggle & Open Team Link */}
+      <div className="mt-3 flex items-center justify-between border-t border-[#F0F0F0] pt-2 text-xs">
+        <button
+          type="button"
+          onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
+          aria-controls={detailsId}
+          className="inline-flex min-h-[36px] items-center gap-1 font-semibold text-[#007185] hover:text-[#E47911] transition-colors py-1 px-1.5 rounded active:bg-[#F0F0F0] cursor-pointer"
+        >
+          <span>{isExpanded ? "Hide Members" : "View Members"}</span>
+          {isExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+        </button>
+
+        <Link
+          href={`/teams/${team.teamId}`}
+          className="inline-flex min-h-[36px] items-center gap-1 rounded-md border border-[#FF9900] bg-[#FFF3E0] px-3 py-1 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all shadow-2xs"
+        >
+          <span>Open Team</span>
+          <ArrowRight className="h-3 w-3" />
+        </Link>
+      </div>
+
+      {/* Level 3: Expandable Members List */}
+      {isExpanded && (
+        <div
+          id={detailsId}
+          className="mt-3 space-y-1.5 rounded-lg bg-[#FAFAFA] border border-[#EAEAEA] p-3 text-xs animate-in fade-in-0 duration-150"
+        >
+          <div className="flex items-center gap-1 font-bold text-[11px] uppercase tracking-wider text-[#5F6368] mb-1">
+            <Users className="h-3.5 w-3.5 text-[#E47911]" />
+            <span>Roster Members & Affiliations</span>
+          </div>
+          {team.players.map((p, idx) => (
+            <div
+              key={`${p.name}-${idx}`}
+              className="flex items-center justify-between text-xs bg-white rounded border border-[#EBEBEB] px-2 py-1 gap-2"
+            >
+              <span className="font-medium text-[#111111] truncate">{p.name}</span>
+              <span className="text-[10px] text-[#767676] truncate max-w-[150px] shrink-0 font-mono text-right">
+                {p.organization}
+              </span>
+            </div>
+          ))}
+          <div className="pt-1 text-[10px] font-mono text-[#767676]">
+            Contest ID: {team.teamId}
+          </div>
+        </div>
+      )}
+    </article>
+  );
+}
+
         {/* 1. Mobile Cards View (< md screens) */}
-        <div className="md:hidden space-y-3">
+        <div className="md:hidden space-y-2.5">
           {teams.length > 0 ? (
-            teams.map((team) => {
-              const rankNum = team.rank || "—";
-              const isTopRank = rankNum === "1";
-              const isTop3 = ["1", "2", "3"].includes(rankNum);
-
-              return (
-                <article
-                  key={team.teamId}
-                  className={`rounded-xl border bg-white p-3.5 sm:p-4 shadow-subtle transition-all hover:border-[#FF9900] ${
-                    isTopRank
-                      ? "border-[#F5C26B] border-t-[3px] border-t-[#FF9900] bg-gradient-to-b from-[#FFFDF9] to-white"
-                      : isTop3
-                      ? "border-[#F5C26B] border-t-2 border-t-[#FF9900]"
-                      : "border-[#E3E3E3]"
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-2.5">
-                    <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                      <span
-                        className={`inline-flex h-8 min-w-8 shrink-0 items-center justify-center rounded-lg px-2 text-xs font-bold font-mono shadow-2xs ${
-                          isTopRank
-                            ? "bg-[#FF9900] text-[#111111]"
-                            : isTop3
-                            ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A]"
-                            : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
-                        }`}
-                      >
-                        #{rankNum}
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <Link
-                          href={`/teams/${team.teamId}`}
-                          className="font-bold text-sm text-[#111111] hover:text-[#E47911] transition-colors leading-tight line-clamp-1"
-                        >
-                          {team.teamName}
-                        </Link>
-                        <span className="text-[10px] font-mono text-[#767676] block mt-0.5">
-                          ID: {team.teamId}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="text-right shrink-0 bg-[#FFF7E6] border border-[#F5C26B]/50 rounded-md px-2 py-1">
-                      <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">
-                        Score
-                      </span>
-                      <span className="text-xs font-bold font-mono text-[#111111]">
-                        {team.score || "0.000000"}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* College Count Pill */}
-                  <div className="mt-2.5 flex items-center gap-1.5">
-                    <span className="inline-flex items-center gap-1 rounded bg-[#FFF3E0] border border-[#F5C26B]/70 px-2 py-0.5 text-[10px] font-bold text-[#E47911] font-mono">
-                      <GitFork className="h-3 w-3" />
-                      <span>{team.collegeCount} Colleges</span>
-                    </span>
-                    <span className="text-[10px] text-[#767676] font-mono">
-                      ({team.players.length} members)
-                    </span>
-                  </div>
-
-                  {/* Participating Colleges List */}
-                  <div className="mt-2.5 space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] block">
-                      Participating Institutions:
-                    </span>
-                    <div className="flex flex-wrap gap-1">
-                      {team.organizations.map((org) => (
-                        <Link
-                          key={org.slug}
-                          href={`/organizations/${org.slug}`}
-                          className="inline-flex items-center gap-1 rounded bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-0.5 text-[11px] text-[#5F6368] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors max-w-full truncate"
-                        >
-                          <Building2 className="h-3 w-3 text-[#767676] shrink-0" />
-                          <span className="truncate">{org.name}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Team Members */}
-                  <div className="mt-2.5 border-t border-[#F0F0F0] pt-2 space-y-0.5">
-                    {team.players.map((p, idx) => (
-                      <div key={`${p.name}-${idx}`} className="flex items-center justify-between text-[10px] text-[#5F6368] gap-1">
-                        <span className="font-medium text-[#111111] truncate">{p.name}</span>
-                        <span className="text-[9px] text-[#767676] truncate max-w-[150px] shrink-0 font-mono">
-                          {p.organization}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Action Link */}
-                  <div className="mt-3 pt-2 border-t border-[#F0F0F0] flex justify-end">
-                    <Link
-                      href={`/teams/${team.teamId}`}
-                      className="inline-flex min-h-[36px] items-center gap-1 rounded-md border border-[#FF9900] bg-[#FFF3E0] px-3.5 py-1 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all active:scale-95"
-                    >
-                      <span>View Team</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  </div>
-                </article>
-              );
-            })
+            teams.map((team) => (
+              <MobileInterCollegeCard key={team.teamId} team={team} />
+            ))
           ) : (
             <div className="rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] p-8 text-center text-xs text-[#767676]">
               No inter-college teams match the search or filter criteria.

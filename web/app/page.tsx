@@ -108,29 +108,29 @@ export default async function HomePage({ searchParams }: PageProps) {
           </Suspense>
         </div>
 
-        {/* Statistics Strip */}
-        <div className="mt-5 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-[#5F6368] font-mono border-t border-[#EAEAEA] pt-4 max-w-3xl mx-auto">
-          <div className="flex items-center justify-center gap-1.5 bg-[#FFF7E6] border border-[#F5C26B] px-2 py-1.5 rounded-md">
+        {/* Statistics 2x2 Grid (Mobile) / Horizontal Strip (Desktop) */}
+        <div className="mt-4 sm:mt-5 grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-[#5F6368] font-mono border-t border-[#EAEAEA] pt-3.5 sm:pt-4 max-w-3xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 bg-[#FFF7E6] border border-[#F5C26B] px-2.5 py-2 sm:py-1.5 rounded-lg sm:rounded-md text-center sm:text-left shadow-2xs">
             <Trophy className="h-3.5 w-3.5 text-[#FF9900] shrink-0" />
             <span className="truncate">
               <strong className="text-[#111111]">{metadata.uniqueTeams.toLocaleString()}</strong> Teams
             </span>
           </div>
-          <div className="flex items-center justify-center gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-1.5 rounded-md">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-2 sm:py-1.5 rounded-lg sm:rounded-md text-center sm:text-left shadow-2xs">
             <Users className="h-3.5 w-3.5 text-[#5F6368] shrink-0" />
             <span className="truncate">
               <strong className="text-[#111111]">{metadata.uniquePlayers.toLocaleString()}</strong> Participants
             </span>
           </div>
-          <div className="flex items-center justify-center gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-1.5 rounded-md">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-2 sm:py-1.5 rounded-lg sm:rounded-md text-center sm:text-left shadow-2xs">
             <Building2 className="h-3.5 w-3.5 text-[#5F6368] shrink-0" />
             <span className="truncate">
               <strong className="text-[#111111]">{metadata.uniqueOrganizations.toLocaleString()}</strong> Colleges
             </span>
           </div>
-          <div className="flex items-center justify-center gap-1 text-[#067D62] font-sans font-medium px-2 py-1.5 bg-[#ECFDF3] border border-[#A6F4C5] rounded-md">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 text-[#067D62] font-sans font-medium px-2.5 py-2 sm:py-1.5 bg-[#ECFDF3] border border-[#A6F4C5] rounded-lg sm:rounded-md text-center sm:text-left shadow-2xs">
             <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
-            <span className="text-[11px] sm:text-xs">114/114 Pages Snapshot</span>
+            <span className="text-[11px] sm:text-xs">114/114 Verified</span>
           </div>
         </div>
       </section>

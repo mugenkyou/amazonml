@@ -84,21 +84,21 @@ export function ConsentBanner() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="privacy-preferences-title"
-            className="w-full max-w-md rounded-xl border border-[#E3E3E3] bg-white p-5 sm:p-6 shadow-2xl"
+            className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-xl border border-[#E3E3E3] bg-white p-4 sm:p-6 shadow-2xl"
           >
             <div className="flex items-center justify-between border-b border-[#EAEAEA] pb-3 mb-4">
-              <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+              <div className="flex items-center gap-2 min-w-0">
+                <div className="flex h-7 w-7 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911] shrink-0">
                   <SlidersHorizontal className="h-4 w-4 text-[#FF9900]" />
                 </div>
-                <h2 id="privacy-preferences-title" className="text-sm sm:text-base font-bold text-[#111111]">
-                  Privacy & Analytics Preferences
+                <h2 id="privacy-preferences-title" className="text-sm sm:text-base font-bold text-[#111111] truncate">
+                  Privacy Preferences
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={() => setShowPreferences(false)}
-                className="rounded-lg p-1 text-[#767676] hover:bg-[#F7F7F7] hover:text-[#111111]"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-[#767676] hover:bg-[#F7F7F7] hover:text-[#111111] shrink-0 cursor-pointer"
                 aria-label="Close preferences"
               >
                 <X className="h-4 w-4" />

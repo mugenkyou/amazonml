@@ -346,7 +346,7 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <Link
                           href={`/teams/${team.teamId}`}
-                          className="font-bold text-gray-900 hover:text-[#E47911] transition-colors text-sm sm:text-base tracking-tight truncate max-w-[200px] xs:max-w-[240px] sm:max-w-[180px] md:max-w-[220px]"
+                          className="font-bold text-gray-900 hover:text-[#E47911] transition-colors text-sm sm:text-base tracking-tight break-words line-clamp-2"
                         >
                           {team.teamName}
                         </Link>

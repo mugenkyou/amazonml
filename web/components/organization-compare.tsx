@@ -126,7 +126,7 @@ export function OrganizationCompare({
                 <button
                   type="button"
                   onClick={() => handleRemoveOrg(item.organization.slug)}
-                  className="flex h-5 w-5 shrink-0 items-center justify-center rounded hover:bg-[#FFE0B2] text-[#E47911]"
+                  className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded hover:bg-[#FFE0B2] text-[#E47911] cursor-pointer"
                   title="Remove from comparison"
                   aria-label={`Remove ${item.organization.name}`}
                 >

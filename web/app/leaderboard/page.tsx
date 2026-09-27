@@ -149,20 +149,20 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
         </div>
       </div>
 
-      {/* Filter Toolbar */}
-      <div className="mt-3.5 rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-3 shadow-subtle space-y-2.5">
+      {/* Filter Toolbar - Mobile Horizontal Scrollable / Desktop Wrap */}
+      <div className="mt-3.5 rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] p-3 shadow-2xs space-y-2.5">
         {/* Rank Range Filter */}
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
-            <Trophy className="h-3.5 w-3.5 text-[#E47911]" /> Rank Tier:
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1 shrink-0">
+            <Trophy className="h-3.5 w-3.5 text-[#E47911]" /> Tier:
           </span>
           {rankOptions.map((opt) => (
             <Link
               key={opt.value}
               href={buildFilterUrl({ rank: opt.value, page: 1 })}
-              className={`inline-flex min-h-[32px] items-center rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+              className={`inline-flex min-h-[34px] items-center rounded-md px-2.5 py-1 text-xs font-semibold whitespace-nowrap transition-colors shrink-0 ${
                 rank === opt.value
-                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-semibold"
+                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-bold"
                   : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
               }`}
             >
@@ -172,17 +172,17 @@ export default async function LeaderboardPage({ searchParams }: LeaderboardPageP
         </div>
 
         {/* Team Size Filter */}
-        <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-[#EBEBEB]">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1">
-            <Users className="h-3.5 w-3.5 text-[#5F6368]" /> Team Size:
+        <div className="flex items-center gap-1.5 overflow-x-auto pt-2 pb-0.5 border-t border-[#EBEBEB] no-scrollbar">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#5F6368] mr-1 flex items-center gap-1 shrink-0">
+            <Users className="h-3.5 w-3.5 text-[#5F6368]" /> Size:
           </span>
           {sizeOptions.map((opt) => (
             <Link
               key={opt.value}
               href={buildFilterUrl({ size: opt.value, page: 1 })}
-              className={`inline-flex min-h-[32px] items-center rounded-md px-2.5 py-1 text-xs font-medium transition-colors ${
+              className={`inline-flex min-h-[34px] items-center rounded-md px-2.5 py-1 text-xs font-semibold whitespace-nowrap transition-colors shrink-0 ${
                 size === opt.value
-                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-semibold"
+                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A] font-bold"
                   : "bg-white text-[#5F6368] border border-[#D5D5D5] hover:border-[#FF9900] hover:text-[#111111]"
               }`}
             >

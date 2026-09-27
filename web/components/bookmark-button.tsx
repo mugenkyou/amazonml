@@ -77,7 +77,7 @@ export function BookmarkButton({
       onClick={handleClick}
       aria-label={ariaLabel}
       title={title}
-      className={`relative flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-lg transition-all select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FF9900]/50 active:scale-95 ${
+      className={`relative inline-flex min-h-[44px] min-w-[44px] sm:min-h-[36px] sm:min-w-[36px] h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-lg transition-all select-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FF9900]/50 active:scale-95 ${
         saved
           ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B] hover:bg-[#FFE0B2]"
           : "text-[#767676] hover:text-[#111111] hover:bg-[#F7F7F7] border border-transparent hover:border-[#E3E3E3]"

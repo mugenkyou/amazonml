@@ -11,6 +11,8 @@ import {
   Search,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   BarChart3,
   Award,
   Sparkles,
@@ -86,6 +88,150 @@ const TIER_OPTIONS = [
 ];
 
 const QUICK_PRESETS = ["IIT", "BITS", "NIT", "IIIT", "VIT", "Amrita", "Rishihood"];
+
+function MobileCollegeCard({ college }: { college: CollegeLeaderboardEntry }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const isTopRank = college.rank === 1;
+  const isTop3 = college.rank <= 3;
+  const isTop10 = college.rank <= 10;
+  const detailsId = `college-stats-${college.slug}`;
+
+  return (
+    <div
+      className={`rounded-xl border bg-white p-3.5 shadow-2xs transition-all ${
+        isTopRank
+          ? "border-[#F5C26B] border-t-[3px] border-t-[#FF9900] bg-gradient-to-b from-[#FFFDF9] to-white"
+          : isTop3
+          ? "border-[#F5C26B] border-t-2 border-t-[#FF9900]"
+          : "border-[#E3E3E3]"
+      }`}
+    >
+      {/* Level 1: Primary Identification */}
+      <div className="flex items-start justify-between gap-2.5">
+        <div className="flex items-start gap-2.5 min-w-0 flex-1">
+          <span
+            className={`inline-flex h-8 min-w-8 shrink-0 items-center justify-center rounded-lg px-2 text-xs font-bold font-mono shadow-2xs ${
+              isTopRank
+                ? "bg-[#FF9900] text-[#111111]"
+                : isTop3
+                ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A]"
+                : isTop10
+                ? "bg-[#F7F7F7] text-[#111111] border border-[#E3E3E3] font-bold"
+                : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+            }`}
+          >
+            #{college.rank}
+          </span>
+          <div className="min-w-0 flex-1">
+            <Link
+              href={`/organizations/${college.slug}`}
+              className="font-bold text-sm text-[#111111] hover:text-[#E47911] transition-colors leading-tight line-clamp-2 block break-words"
+            >
+              {college.name}
+            </Link>
+            {/* Level 2: Compact Metrics Row */}
+            <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#767676] mt-1 flex-wrap">
+              <span>{college.teamCount.toLocaleString()} teams</span>
+              <span>·</span>
+              <span>{college.playerCount.toLocaleString()} participants</span>
+              {college.bestRank !== null && (
+                <>
+                  <span>·</span>
+                  <span className="text-[#067D62] font-semibold">Best #{college.bestRank}</span>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Score Badge */}
+        <div className="text-right shrink-0 bg-[#FFF7E6] border border-[#F5C26B]/50 rounded-md px-2 py-1">
+          <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">
+            Score
+          </span>
+          <span className="text-xs font-bold font-mono text-[#E47911]">
+            {college.overallScore.toFixed(1)}
+          </span>
+        </div>
+      </div>
+
+      {/* Action Row: Expand Details Toggle & Open Profile Link */}
+      <div className="mt-3 flex items-center justify-between border-t border-[#F0F0F0] pt-2 text-xs">
+        <button
+          type="button"
+          onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
+          aria-controls={detailsId}
+          className="inline-flex min-h-[36px] items-center gap-1 font-semibold text-[#007185] hover:text-[#E47911] transition-colors py-1 px-1.5 rounded active:bg-[#F0F0F0] cursor-pointer"
+        >
+          <span>{isExpanded ? "Less statistics" : "More statistics"}</span>
+          {isExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+        </button>
+
+        <Link
+          href={`/organizations/${college.slug}`}
+          className="inline-flex min-h-[36px] items-center gap-1 rounded-md border border-[#FF9900] bg-[#FFF3E0] px-3 py-1 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all shadow-2xs"
+        >
+          <span>View College</span>
+          <ArrowRight className="h-3 w-3" />
+        </Link>
+      </div>
+
+      {/* Level 3: Expandable Secondary Statistics */}
+      {isExpanded && (
+        <div
+          id={detailsId}
+          className="mt-3 grid grid-cols-2 gap-2 rounded-lg bg-[#FAFAFA] border border-[#EAEAEA] p-3 text-xs animate-in fade-in-0 duration-150"
+        >
+          <div className="rounded bg-white p-2 border border-[#EBEBEB]">
+            <span className="text-[10px] font-medium text-[#767676] block">
+              Top 5 Teams Avg
+            </span>
+            <span className="font-mono font-semibold text-[#111111]">
+              {college.top5AvgRank !== null ? `Rank ${college.top5AvgRank}` : "—"}
+            </span>
+          </div>
+
+          <div className="rounded bg-white p-2 border border-[#EBEBEB]">
+            <span className="text-[10px] font-medium text-[#767676] block">
+              Average Team Rank
+            </span>
+            <span className="font-mono font-semibold text-[#111111]">
+              {college.avgRank !== null ? `Rank ${college.avgRank}` : "—"}
+            </span>
+          </div>
+
+          <div className="rounded bg-white p-2 border border-[#EBEBEB]">
+            <span className="text-[10px] font-medium text-[#767676] block">
+              Top 10 Finishes
+            </span>
+            <span className="font-mono font-bold text-[#067D62]">
+              {college.top10Count > 0 ? `${college.top10Count} teams` : "None"}
+            </span>
+          </div>
+
+          <div className="rounded bg-white p-2 border border-[#EBEBEB]">
+            <span className="text-[10px] font-medium text-[#767676] block">
+              Inter-College Teams
+            </span>
+            <span className="font-mono font-bold text-[#007185]">
+              {college.crossCollegeTeamCount > 0 ? (
+                <Link
+                  href={`/leaderboard/inter-college?college=${college.slug}`}
+                  className="hover:underline text-[#E47911]"
+                >
+                  {college.crossCollegeTeamCount} teams →
+                </Link>
+              ) : (
+                "0"
+              )}
+            </span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardViewProps) {
   const router = useRouter();
@@ -560,137 +706,15 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
         </div>
       )}
 
-      {/* 1. Mobile Cards View (< md) */}
-      <div className="md:hidden space-y-3">
+      {/* 1. Mobile Cards View (< md) with Progressive Disclosure */}
+      <div className="md:hidden space-y-2.5">
         {colleges.length > 0 ? (
-          colleges.map((college) => {
-            const isTopRank = college.rank === 1;
-            const isTop3 = college.rank <= 3;
-            const isTop10 = college.rank <= 10;
-
-            return (
-              <div
-                key={college.slug}
-                className={`rounded-xl border bg-white p-3.5 shadow-subtle transition-all hover:border-[#FF9900] ${
-                  isTopRank
-                    ? "border-[#F5C26B] border-t-[3px] border-t-[#FF9900] bg-gradient-to-b from-[#FFFDF9] to-white"
-                    : isTop3
-                    ? "border-[#F5C26B] border-t-2 border-t-[#FF9900]"
-                    : "border-[#E3E3E3]"
-                }`}
-              >
-                <div className="flex items-start justify-between gap-2.5">
-                  <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                    <span
-                      className={`inline-flex h-8 min-w-8 shrink-0 items-center justify-center rounded-lg px-2 text-xs font-bold font-mono shadow-2xs ${
-                        isTopRank
-                          ? "bg-[#FF9900] text-[#111111]"
-                          : isTop3
-                          ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C27A]"
-                          : isTop10
-                          ? "bg-[#F7F7F7] text-[#111111] border border-[#E3E3E3] font-bold"
-                          : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
-                      }`}
-                    >
-                      #{college.rank}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <Link
-                        href={`/organizations/${college.slug}`}
-                        className="font-bold text-sm text-[#111111] hover:text-[#E47911] transition-colors leading-tight line-clamp-2"
-                      >
-                        {college.name}
-                      </Link>
-                      <span className="text-[10px] font-mono text-[#767676] block mt-0.5 truncate">
-                        {college.slug}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Overall Performance / Metric Badge */}
-                  <div className="text-right shrink-0 bg-[#FFF7E6] border border-[#F5C26B]/50 rounded-md px-2 py-1">
-                    <span className="text-[9px] uppercase font-bold text-[#767676] block leading-none">
-                      Score
-                    </span>
-                    <span className="text-xs font-bold font-mono text-[#E47911]">
-                      {college.overallScore.toFixed(1)}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Mobile Statistics 2x2 Grid */}
-                <div className="mt-3 grid grid-cols-2 gap-1.5 border-t border-[#F0F0F0] pt-2.5 text-xs">
-                  <div className="rounded bg-[#F7F7F7] p-2 border border-[#EAEAEA]">
-                    <span className="text-[10px] font-medium text-[#767676] block">
-                      Teams & Rosters
-                    </span>
-                    <span className="font-mono font-bold text-[#111111]">
-                      {college.teamCount.toLocaleString()} teams • {college.playerCount} students
-                    </span>
-                    {college.crossCollegeTeamCount > 0 && (
-                      <Link
-                        href={`/leaderboard/inter-college?college=${college.slug}`}
-                        className="inline-flex items-center gap-1 text-[10px] text-[#E47911] font-mono font-semibold hover:underline mt-0.5"
-                      >
-                        <GitFork className="h-2.5 w-2.5" />
-                        <span>{college.crossCollegeTeamCount} Inter-College Team{college.crossCollegeTeamCount > 1 ? "s" : ""}</span>
-                      </Link>
-                    )}
-                  </div>
-
-                  <div className="rounded bg-[#F7F7F7] p-2 border border-[#EAEAEA]">
-                    <span className="text-[10px] font-medium text-[#767676] block">
-                      Best Leaderboard Rank
-                    </span>
-                    <span className="font-mono font-bold text-[#067D62]">
-                      {college.bestRank !== null ? `#${college.bestRank}` : "—"}
-                    </span>
-                  </div>
-
-                  <div className="rounded bg-[#F7F7F7] p-2 border border-[#EAEAEA]">
-                    <span className="text-[10px] font-medium text-[#767676] block">
-                      Top 5 Teams Avg
-                    </span>
-                    <span className="font-mono font-semibold text-[#111111]">
-                      {college.top5AvgRank !== null ? `Rank ${college.top5AvgRank}` : "—"}
-                    </span>
-                  </div>
-
-                  <div className="rounded bg-[#F7F7F7] p-2 border border-[#EAEAEA]">
-                    <span className="text-[10px] font-medium text-[#767676] block">
-                      Average Team Rank
-                    </span>
-                    <span className="font-mono font-semibold text-[#111111]">
-                      {college.avgRank !== null ? `Rank ${college.avgRank}` : "—"}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Mobile Action Link */}
-                <div className="mt-3 pt-2.5 border-t border-[#F0F0F0] flex items-center justify-between">
-                  <div className="text-[10px] font-mono text-[#767676]">
-                    {college.top10Count > 0 ? (
-                      <span className="text-[#067D62] font-semibold">
-                        ★ {college.top10Count} Top-10 Finish{college.top10Count > 1 ? "es" : ""}
-                      </span>
-                    ) : (
-                      <span>Score: {college.bestScore ? college.bestScore.toFixed(4) : "—"}</span>
-                    )}
-                  </div>
-                  <Link
-                    href={`/organizations/${college.slug}`}
-                    className="inline-flex min-h-[36px] items-center gap-1 rounded-md border border-[#FF9900] bg-[#FFF3E0] px-3 py-1 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all active:scale-95"
-                  >
-                    <span>View College Profile</span>
-                    <ArrowRight className="h-3 w-3" />
-                  </Link>
-                </div>
-              </div>
-            );
-          })
+          colleges.map((college) => (
+            <MobileCollegeCard key={college.slug} college={college} />
+          ))
         ) : (
-          <div className="rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] p-8 text-center text-xs text-[#767676]">
-            No institutions match the search criteria.
+          <div className="rounded-xl border border-[#E3E3E3] bg-white p-8 text-center text-xs text-[#767676]">
+            No colleges matched your search or tier filter.
           </div>
         )}
       </div>

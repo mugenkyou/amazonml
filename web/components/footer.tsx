@@ -6,12 +6,66 @@ export function Footer() {
   const meta = getDatasetMetadata();
 
   return (
-    <footer className="mt-auto border-t border-[#E3E3E3] bg-[#F7F7F7] py-8 sm:py-10 text-xs text-[#5F6368]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-6">
-        {/* Top Grid: Brand + Organized Links */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pb-6 border-b border-[#E3E3E3]">
+    <footer className="mt-auto border-t border-[#E3E3E3] bg-[#F7F7F7] py-6 sm:py-10 text-xs text-[#5F6368]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-5 sm:space-y-6">
+        {/* Mobile Compact Footer Header */}
+        <div className="md:hidden space-y-3 pb-4 border-b border-[#E3E3E3]">
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#131921] text-white">
+              <Trophy className="h-4 w-4 text-[#FF9900]" />
+            </div>
+            <span className="text-sm font-bold text-[#111111]">
+              Amazon ML Challenge Explorer
+            </span>
+          </Link>
+          <p className="text-[11px] text-[#767676] leading-relaxed">
+            Independent explorer & institutional analytics for the historical 2026 dataset snapshot.
+          </p>
+
+          {/* Quick Flat Link Pills on Mobile for clean touch interaction */}
+          <div className="flex flex-wrap gap-x-3 gap-y-2 pt-1 text-xs font-semibold text-[#111111]">
+            <Link href="/leaderboard" className="hover:text-[#E47911] py-1">
+              Leaderboard
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link href="/leaderboard/colleges" className="hover:text-[#E47911] py-1">
+              Colleges
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link href="/leaderboard/inter-college" className="hover:text-[#E47911] py-1">
+              Inter-College
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link href="/organizations" className="hover:text-[#E47911] py-1">
+              Directory
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link href="/compare" className="hover:text-[#E47911] py-1">
+              Compare
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link href="/about" className="hover:text-[#E47911] py-1">
+              About
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link href="/methodology" className="hover:text-[#E47911] py-1">
+              Methodology
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link href="/privacy" className="hover:text-[#E47911] py-1">
+              Privacy
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link href="/terms" className="hover:text-[#E47911] py-1">
+              Terms
+            </Link>
+          </div>
+        </div>
+
+        {/* Desktop Multi-Column Top Grid (hidden on mobile, visible on md+) */}
+        <div className="hidden md:grid md:grid-cols-4 gap-6 pb-6 border-b border-[#E3E3E3]">
           {/* Brand & Dataset Snapshot Tag */}
-          <div className="space-y-2.5 sm:col-span-2 md:col-span-1">
+          <div className="space-y-2.5">
             <Link href="/" className="flex items-center gap-2 group">
               <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#131921] text-white">
                 <Trophy className="h-4 w-4 text-[#FF9900]" />
@@ -123,29 +177,29 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Middle Stats Strip */}
-        <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded bg-white border border-[#E3E3E3] px-2.5 py-1">
+        {/* Stats Strip */}
+        <div className="flex flex-wrap items-center justify-between gap-2.5 text-[11px] font-mono">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <span className="rounded bg-white border border-[#E3E3E3] px-2 py-0.5 sm:px-2.5 sm:py-1">
               Teams: <strong className="text-[#111111]">{meta.uniqueTeams.toLocaleString()}</strong>
             </span>
-            <span className="rounded bg-white border border-[#E3E3E3] px-2.5 py-1">
+            <span className="rounded bg-white border border-[#E3E3E3] px-2 py-0.5 sm:px-2.5 sm:py-1">
               Participants: <strong className="text-[#111111]">{meta.uniquePlayers.toLocaleString()}</strong>
             </span>
-            <span className="rounded bg-white border border-[#E3E3E3] px-2.5 py-1">
+            <span className="rounded bg-white border border-[#E3E3E3] px-2 py-0.5 sm:px-2.5 sm:py-1">
               Colleges: <strong className="text-[#111111]">{meta.uniqueOrganizations.toLocaleString()}</strong>
             </span>
           </div>
 
           <span className="text-[#767676]">
-            Challenge ID: <code>{meta.challengeId}</code> • Dataset Finalized 2026
+            Snapshot 2026 • ID: <code>{meta.challengeId}</code>
           </span>
         </div>
 
         {/* Disclaimer Notice */}
-        <div className="pt-2 text-[11px] text-[#767676] leading-relaxed border-t border-[#EAEAEA]">
+        <div className="pt-2 text-[10px] sm:text-[11px] text-[#767676] leading-relaxed border-t border-[#EAEAEA]">
           <p>
-            <strong>Disclaimer:</strong> Amazon ML Challenge Explorer is an independent data exploration platform created for educational and archival exploration. This website is not affiliated with, endorsed by, or sponsored by Amazon, Unstop, or the official challenge organizers. All trademarks and dataset copyrights belong to their respective holders.
+            <strong>Disclaimer:</strong> Amazon ML Challenge Explorer is an independent data exploration platform created for educational and archival exploration. This website is not affiliated with, endorsed by, or sponsored by Amazon, Unstop, or the official challenge organizers.
           </p>
         </div>
       </div>
