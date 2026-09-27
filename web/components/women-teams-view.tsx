@@ -328,6 +328,7 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
           {initialResult.teams.map((team) => {
             const isTop100 = team.sortRank <= 100;
             const isTop500 = team.sortRank <= 500;
+            const primaryCollege = team.distinctColleges?.[0]?.name || team.players?.[0]?.organization || "";
 
             return (
               <div
@@ -341,7 +342,7 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
                 }`}
               >
                 <div className="p-4 sm:p-5 space-y-3">
-                  {/* Card Header */}
+                  {/* Card Header: Team Name, Rank & Bookmark */}
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
@@ -361,10 +362,16 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
                           #{team.sortRank}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 text-[11px] font-mono text-gray-500 mt-1">
+                      <div className="flex items-center gap-2 text-[11px] font-mono text-gray-500 mt-1 flex-wrap">
                         <span>ID: <strong className="text-gray-700">{team.teamId}</strong></span>
                         <span>•</span>
-                        <span>Score: <strong className="text-gray-900">{team.score}</strong></span>
+                        <span>Score: <strong className="text-gray-900 font-bold">{team.score}</strong></span>
+                        {team.finishTime && (
+                          <>
+                            <span>•</span>
+                            <span>Finish: <strong className="text-gray-700">{team.finishTime.split("+")[0]}</strong></span>
+                          </>
+                        )}
                       </div>
                     </div>
 
@@ -391,37 +398,27 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
                     )}
                   </div>
 
-                  {/* Roster Members */}
-                  <div className="space-y-1.5 pt-1">
-                    <div className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
-                      Roster:
+                  {/* College / Institution Affiliation */}
+                  {primaryCollege && (
+                    <div className="text-xs text-gray-600 flex items-center gap-1.5 bg-gray-50 p-2 rounded-lg border border-gray-100">
+                      <Building2 className="h-3.5 w-3.5 text-gray-400 shrink-0" />
+                      <span className="truncate text-[11px] font-medium">
+                        {team.distinctColleges.length > 1
+                          ? `${primaryCollege} (+${team.distinctColleges.length - 1} more)`
+                          : primaryCollege}
+                      </span>
                     </div>
-                    <div className="space-y-1">
-                      {(team.players || []).map((player, idx) => (
-                        <div
-                          key={idx}
-                          className="p-2 rounded-lg bg-gray-50 border border-gray-100 flex flex-col text-xs"
-                        >
-                          <span className="font-bold text-gray-900 truncate">
-                            {player.name}
-                          </span>
-                          <span className="text-[11px] text-gray-500 truncate mt-0.5">
-                            {player.organization || "Independent Participant"}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Card Footer Link */}
                 <div className="px-4 py-2.5 bg-gray-50/80 border-t border-gray-100 flex items-center justify-between text-xs font-semibold rounded-b-xl">
-                  <span className="text-gray-500 text-[11px]">Amazon ML 2026</span>
+                  <span className="text-gray-500 text-[11px] font-mono">Amazon ML 2026</span>
                   <Link
                     href={`/teams/${team.teamId}`}
-                    className="text-[#E47911] hover:text-[#111111] inline-flex items-center gap-1 transition-colors"
+                    className="text-[#E47911] hover:text-[#111111] inline-flex items-center gap-1 transition-colors font-bold"
                   >
-                    <span>View Team Page</span>
+                    <span>View Details</span>
                     <ArrowRight className="h-3 w-3" />
                   </Link>
                 </div>
@@ -436,21 +433,28 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
             <table className="w-full text-left text-xs sm:text-sm">
               <thead className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase text-[10px] tracking-wider">
                 <tr>
-                  <th className="py-3 px-4">Rank</th>
-                  <th className="py-3 px-4">Team Name & Track</th>
-                  <th className="py-3 px-4">Score</th>
-                  <th className="py-3 px-4">Members</th>
-                  <th className="py-3 px-4">Colleges</th>
-                  <th className="py-3 px-4 text-right">Actions</th>
+                  <th scope="col" className="py-3.5 pl-4 pr-2 text-center w-16">Rank</th>
+                  <th scope="col" className="px-4 py-3.5">Team Name & Track</th>
+                  <th scope="col" className="px-4 py-3.5 text-right">Score</th>
+                  <th scope="col" className="px-4 py-3.5 text-right">Finish Time</th>
+                  <th scope="col" className="py-3.5 pl-2 pr-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100 font-medium text-gray-800">
+              <tbody className="divide-y divide-[#EAEAEA] font-medium text-gray-800">
                 {initialResult.teams.map((team) => (
-                  <tr key={team.teamId} className="hover:bg-gray-50/70 transition-colors">
-                    <td className="py-3 px-4 font-mono font-bold text-gray-900 whitespace-nowrap">
-                      #{team.sortRank}
+                  <tr key={team.teamId} className="hover:bg-[#FFFDF9] transition-colors">
+                    <td className="whitespace-nowrap py-3.5 pl-4 pr-2 text-center">
+                      <span
+                        className={`inline-flex h-6 min-w-6 items-center justify-center rounded px-1.5 text-xs font-bold font-mono ${
+                          team.sortRank <= 100
+                            ? "bg-[#FF9900] text-[#111111] shadow-xs"
+                            : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+                        }`}
+                      >
+                        #{team.sortRank}
+                      </span>
                     </td>
-                    <td className="py-3 px-4">
+                    <td className="px-4 py-3.5">
                       <div className="flex items-center gap-2">
                         <Link
                           href={`/teams/${team.teamId}`}
@@ -458,36 +462,34 @@ export function WomenTeamsView({ initialResult }: WomenTeamsViewProps) {
                         >
                           {team.teamName}
                         </Link>
-                        <span className="px-1.5 py-0.2 rounded bg-[#FFF3E0] border border-[#F5C26B] text-[9px] font-bold text-[#E47911] font-mono">
+                        <span className="px-1.5 py-0.5 rounded bg-[#FFF3E0] border border-[#F5C26B] text-[9px] font-bold text-[#E47911] font-mono">
                           ♀ WOMEN
                         </span>
+                        {team.memberCount > 0 && (
+                          <span className="text-[10px] text-gray-500 font-mono bg-gray-100 px-1.5 py-0.5 rounded">
+                            {team.memberCount} {team.memberCount === 1 ? "member" : "members"}
+                          </span>
+                        )}
                       </div>
                       <div className="text-[11px] font-mono text-gray-400 mt-0.5">
                         ID: {team.teamId}
                       </div>
                     </td>
-                    <td className="py-3 px-4 font-mono font-bold text-gray-900 whitespace-nowrap">
+                    <td className="whitespace-nowrap px-4 py-3.5 font-mono font-bold text-right text-sm text-gray-900">
                       {team.score}
                     </td>
-                    <td className="py-3 px-4">
-                      <div className="text-xs text-gray-800">
-                        {(team.players || []).map((p) => p.name).join(", ")}
-                      </div>
+                    <td className="whitespace-nowrap px-4 py-3.5 text-xs font-mono text-right text-gray-500">
+                      {team.finishTime ? team.finishTime.split("+")[0] : "—"}
                     </td>
-                    <td className="py-3 px-4 text-xs text-gray-500 max-w-xs truncate">
-                      {(team.players || [])
-                        .map((p) => p.organization)
-                        .filter(Boolean)
-                        .join(" • ") || "Independent"}
-                    </td>
-                    <td className="py-3 px-4 text-right whitespace-nowrap">
-                      <div className="flex items-center justify-end gap-1.5">
+                    <td className="whitespace-nowrap py-3.5 pl-2 pr-4 text-right text-xs">
+                      <div className="inline-flex items-center justify-end gap-1.5">
                         <BookmarkButton teamId={team.teamId} teamName={team.teamName} size="sm" />
                         <Link
                           href={`/teams/${team.teamId}`}
-                          className="px-2.5 py-1 bg-gray-100 hover:bg-[#FF9900] hover:text-[#111111] rounded-md text-xs font-bold text-gray-700 transition-colors"
+                          className="inline-flex min-h-[32px] items-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-2.5 py-1 font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors text-xs shadow-2xs"
                         >
-                          View
+                          <span>View Details</span>
+                          <ArrowRight className="h-3 w-3" />
                         </Link>
                       </div>
                     </td>
