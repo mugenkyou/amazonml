@@ -111,36 +111,32 @@ export function renderShareCardToCanvas(
 
   const { team, history = [], cardType, graphType, customTimestamp } = options;
 
-  // 1. Background Fill (Premium Deep Dark Navy with Subtle Gradient)
-  const bgGradient = ctx.createLinearGradient(0, 0, 0, CARD_HEIGHT);
-  bgGradient.addColorStop(0, "#0D1117");
-  bgGradient.addColorStop(0.4, "#131B26");
-  bgGradient.addColorStop(1, "#0A0D12");
-  ctx.fillStyle = bgGradient;
+  // 1. Background Fill (Crisp Clean White with Subtle Warm Ambient Glow)
+  ctx.fillStyle = "#FFFFFF";
   ctx.fillRect(0, 0, CARD_WIDTH, CARD_HEIGHT);
 
-  // Subtle Mesh / Accent Lighting Glow at the Top
+  // Subtle Warm Top Glow
   const glowGradient = ctx.createRadialGradient(
     CARD_WIDTH / 2,
     -100,
     50,
     CARD_WIDTH / 2,
     -100,
-    700
+    800
   );
-  glowGradient.addColorStop(0, "rgba(255, 153, 0, 0.28)");
-  glowGradient.addColorStop(0.5, "rgba(228, 121, 17, 0.08)");
-  glowGradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+  glowGradient.addColorStop(0, "rgba(255, 153, 0, 0.08)");
+  glowGradient.addColorStop(0.6, "rgba(255, 243, 224, 0.03)");
+  glowGradient.addColorStop(1, "rgba(255, 255, 255, 0)");
   ctx.fillStyle = glowGradient;
   ctx.fillRect(0, 0, CARD_WIDTH, 600);
 
-  // Top Glowing Accent Bar (Amazon Orange)
+  // Top Signature Amazon Orange Accent Bar
   const barGradient = ctx.createLinearGradient(0, 0, CARD_WIDTH, 0);
   barGradient.addColorStop(0, "#FF9900");
   barGradient.addColorStop(0.5, "#FFB84D");
   barGradient.addColorStop(1, "#E47911");
   ctx.fillStyle = barGradient;
-  ctx.fillRect(0, 0, CARD_WIDTH, 10);
+  ctx.fillRect(0, 0, CARD_WIDTH, 12);
 
   // 2. Header Section
   const marginX = 64;
@@ -148,38 +144,38 @@ export function renderShareCardToCanvas(
 
   // Subtitle / Competition Pill
   ctx.save();
-  ctx.fillStyle = "rgba(255, 153, 0, 0.12)";
-  ctx.strokeStyle = "rgba(255, 153, 0, 0.35)";
+  ctx.fillStyle = "#FFF3E0";
+  ctx.strokeStyle = "#F5C26B";
   ctx.lineWidth = 1.5;
   ctx.beginPath();
   ctx.roundRect(marginX, cursorY, 320, 38, 8);
   ctx.fill();
   ctx.stroke();
 
-  ctx.fillStyle = "#FF9900";
+  ctx.fillStyle = "#E47911";
   ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.textBaseline = "middle";
   ctx.fillText("AMAZON ML CHALLENGE 2026", marginX + 16, cursorY + 19);
 
   // Unofficial Pill on right
   const unoffPillX = CARD_WIDTH - marginX - 190;
-  ctx.fillStyle = "rgba(255, 255, 255, 0.06)";
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
+  ctx.fillStyle = "#F7F7F7";
+  ctx.strokeStyle = "#E3E3E3";
   ctx.beginPath();
   ctx.roundRect(unoffPillX, cursorY, 190, 38, 8);
   ctx.fill();
   ctx.stroke();
 
-  ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+  ctx.fillStyle = "#5F6368";
   ctx.font = "600 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.fillText("UNOFFICIAL EXPLORER", unoffPillX + 14, cursorY + 19);
   ctx.restore();
 
   cursorY += 68;
 
-  // 3. Team Name (Large, crisp, auto-wrapping)
+  // 3. Team Name (Large, crisp dark obsidian, auto-wrapping)
   ctx.save();
-  ctx.fillStyle = "#FFFFFF";
+  ctx.fillStyle = "#111111";
   ctx.font = "900 48px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.textBaseline = "top";
   const nameLines = wrapText(ctx, team.teamName || `Team #${team.teamId}`, CARD_WIDTH - marginX * 2, 2);
@@ -193,10 +189,10 @@ export function renderShareCardToCanvas(
 
   // Team ID & Subtitle
   ctx.save();
-  ctx.fillStyle = "rgba(255, 255, 255, 0.45)";
+  ctx.fillStyle = "#767676";
   ctx.font = "500 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
   ctx.textBaseline = "top";
-  ctx.fillText(`Contest Team ID: ${team.teamId}`, marginX, cursorY);
+  ctx.fillText(`Contest Team ID: ${team.teamId} • Leaderboard Profile`, marginX, cursorY);
   ctx.restore();
 
   cursorY += 34;
@@ -206,9 +202,9 @@ export function renderShareCardToCanvas(
   if (players.length > 0) {
     ctx.save();
     ctx.font = "bold 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+    ctx.fillStyle = "#767676";
     ctx.textBaseline = "top";
-    ctx.fillText("TEAM ROSTER", marginX, cursorY);
+    ctx.fillText("PARTICIPANT ROSTER", marginX, cursorY);
     cursorY += 22;
 
     let chipX = marginX;
@@ -220,7 +216,7 @@ export function renderShareCardToCanvas(
       const memberName = p.name || `Member ${i + 1}`;
       ctx.font = "600 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
       const textWidth = ctx.measureText(memberName).width;
-      const chipWidth = textWidth + 40;
+      const chipWidth = textWidth + 42;
 
       if (chipX + chipWidth > marginX + maxChipWidth) {
         chipX = marginX;
@@ -228,8 +224,8 @@ export function renderShareCardToCanvas(
       }
 
       // Chip background
-      ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.12)";
+      ctx.fillStyle = "#F7F7F7";
+      ctx.strokeStyle = "#E3E3E3";
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.roundRect(chipX, chipY, chipWidth, 36, 18);
@@ -243,7 +239,7 @@ export function renderShareCardToCanvas(
       ctx.fill();
 
       // Member name text
-      ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+      ctx.fillStyle = "#111111";
       ctx.textBaseline = "middle";
       ctx.fillText(memberName, chipX + 28, chipY + 18);
 
@@ -265,7 +261,7 @@ export function renderShareCardToCanvas(
   const boxWidth = cardType === "both" ? (CARD_WIDTH - marginX * 2 - 24) / 2 : CARD_WIDTH - marginX * 2;
   const boxHeight = 175;
 
-  // Helper for drawing metric boxes
+  // Helper for drawing clean white metric boxes
   const drawMetricBox = (
     x: number,
     y: number,
@@ -277,56 +273,62 @@ export function renderShareCardToCanvas(
   ) => {
     ctx.save();
     // Card Container
-    ctx.fillStyle = "rgba(255, 255, 255, 0.035)";
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+    ctx.fillStyle = "#FFFFFF";
+    ctx.strokeStyle = "#E3E3E3";
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.roundRect(x, y, w, h, 20);
     ctx.fill();
     ctx.stroke();
 
-    // Inner subtle glow at top-left
+    // Top Orange Highlight Border
+    ctx.fillStyle = "#FF9900";
+    ctx.beginPath();
+    ctx.roundRect(x, y, w, 5, [20, 20, 0, 0]);
+    ctx.fill();
+
+    // Subtle inner warm gradient
     const innerGlow = ctx.createLinearGradient(x, y, x + w, y + h);
-    innerGlow.addColorStop(0, "rgba(255, 153, 0, 0.07)");
-    innerGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
+    innerGlow.addColorStop(0, "rgba(255, 247, 230, 0.35)");
+    innerGlow.addColorStop(1, "rgba(255, 255, 255, 0)");
     ctx.fillStyle = innerGlow;
     ctx.beginPath();
-    ctx.roundRect(x, y, w, h, 20);
+    ctx.roundRect(x, y + 5, w, h - 5, [0, 0, 20, 20]);
     ctx.fill();
 
     // Label
-    ctx.fillStyle = "rgba(255, 255, 255, 0.55)";
+    ctx.fillStyle = "#5F6368";
     ctx.font = "bold 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
     ctx.textBaseline = "top";
-    ctx.fillText(label.toUpperCase(), x + 24, y + 20);
+    ctx.fillText(label.toUpperCase(), x + 24, y + 22);
 
     // Value
-    ctx.fillStyle = "#FFFFFF";
+    ctx.fillStyle = "#111111";
     ctx.font = "900 46px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
     ctx.textBaseline = "top";
-    ctx.fillText(value, x + 24, y + 48);
+    ctx.fillText(value, x + 24, y + 50);
 
     // Delta Pill
     const pillY = y + 116;
     ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
     const pWidth = ctx.measureText(deltaPill.text).width + 24;
 
-    let pBg = "rgba(255, 255, 255, 0.06)";
-    let pBorder = "rgba(255, 255, 255, 0.12)";
-    let pColor = "rgba(255, 255, 255, 0.7)";
+    let pBg = "#F3F4F6";
+    let pBorder = "#E5E7EB";
+    let pColor = "#4B5563";
 
     if (deltaPill.type === "up") {
-      pBg = "rgba(16, 185, 129, 0.15)";
-      pBorder = "rgba(16, 185, 129, 0.35)";
-      pColor = "#34D399";
+      pBg = "#ECFDF5";
+      pBorder = "#A7F3D0";
+      pColor = "#047857";
     } else if (deltaPill.type === "down") {
-      pBg = "rgba(244, 63, 94, 0.15)";
-      pBorder = "rgba(244, 63, 94, 0.35)";
-      pColor = "#FB7185";
+      pBg = "#FFF1F2";
+      pBorder = "#FECDD3";
+      pColor = "#BE123C";
     } else if (deltaPill.type === "new") {
-      pBg = "rgba(59, 130, 246, 0.15)";
-      pBorder = "rgba(59, 130, 246, 0.35)";
-      pColor = "#60A5FA";
+      pBg = "#EFF6FF";
+      pBorder = "#BFDBFE";
+      pColor = "#1D4ED8";
     }
 
     ctx.fillStyle = pBg;
@@ -405,13 +407,13 @@ export function renderShareCardToCanvas(
 
   cursorY += boxHeight + 30;
 
-  // 6. Historical Graph Container
+  // 6. Historical Graph Container (Clean Light Card)
   const graphContainerHeight = 360;
   const graphContainerWidth = CARD_WIDTH - marginX * 2;
 
   ctx.save();
-  ctx.fillStyle = "rgba(255, 255, 255, 0.025)";
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+  ctx.fillStyle = "#FAFAFA";
+  ctx.strokeStyle = "#E3E3E3";
   ctx.lineWidth = 1.5;
   ctx.beginPath();
   ctx.roundRect(marginX, cursorY, graphContainerWidth, graphContainerHeight, 20);
@@ -419,7 +421,7 @@ export function renderShareCardToCanvas(
   ctx.stroke();
 
   // Graph Header
-  ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
+  ctx.fillStyle = "#111111";
   ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.textBaseline = "top";
   const graphTitle =
@@ -439,7 +441,7 @@ export function renderShareCardToCanvas(
     const gPadding = {
       top: cursorY + 64,
       bottom: cursorY + graphContainerHeight - 44,
-      left: marginX + 64,
+      left: marginX + 68,
       right: marginX + graphContainerWidth - 32,
     };
     const gWidth = gPadding.right - gPadding.left;
@@ -473,7 +475,7 @@ export function renderShareCardToCanvas(
     const effMax = maxVal + paddingRatio;
 
     // Grid lines
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
+    ctx.strokeStyle = "#EAEAEA";
     ctx.lineWidth = 1;
     ctx.setLineDash([4, 4]);
 
@@ -485,7 +487,7 @@ export function renderShareCardToCanvas(
       ctx.lineTo(gPadding.right, gridY);
       ctx.stroke();
 
-      ctx.fillStyle = "rgba(255, 255, 255, 0.35)";
+      ctx.fillStyle = "#888888";
       ctx.font = "12px -apple-system, BlinkMacSystemFont, monospace";
       ctx.textBaseline = "middle";
       const labelVal = isRankGraph
@@ -511,11 +513,11 @@ export function renderShareCardToCanvas(
       return { x, y, point: p };
     });
 
-    // Area fill under curve
+    // Light Orange Area Fill under curve
     if (coords.length > 1) {
       const areaGradient = ctx.createLinearGradient(0, gPadding.top, 0, gPadding.bottom);
-      areaGradient.addColorStop(0, "rgba(255, 153, 0, 0.35)");
-      areaGradient.addColorStop(0.5, "rgba(255, 153, 0, 0.12)");
+      areaGradient.addColorStop(0, "rgba(255, 153, 0, 0.28)");
+      areaGradient.addColorStop(0.5, "rgba(255, 153, 0, 0.08)");
       areaGradient.addColorStop(1, "rgba(255, 153, 0, 0.0)");
 
       ctx.fillStyle = areaGradient;
@@ -530,8 +532,8 @@ export function renderShareCardToCanvas(
       ctx.fill();
     }
 
-    // Line Path
-    ctx.strokeStyle = "#FF9900";
+    // Line Path (Signature Amazon Orange)
+    ctx.strokeStyle = "#E47911";
     ctx.lineWidth = 4;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
@@ -546,19 +548,19 @@ export function renderShareCardToCanvas(
     for (let i = 0; i < coords.length; i++) {
       const c = coords[i];
 
-      // Point Dot
+      // Point Dot (Orange with White border)
       ctx.fillStyle = "#FF9900";
       ctx.strokeStyle = "#FFFFFF";
-      ctx.lineWidth = 2.5;
+      ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.arc(c.x, c.y, 6, 0, Math.PI * 2);
+      ctx.arc(c.x, c.y, 6.5, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
 
       // X-axis date
       const skipLabel = coords.length > 6 && i % 2 !== 0 && i !== coords.length - 1;
       if (!skipLabel) {
-        ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+        ctx.fillStyle = "#666666";
         ctx.font = "12px -apple-system, BlinkMacSystemFont, monospace";
         ctx.textAlign = "center";
         ctx.textBaseline = "top";
@@ -568,7 +570,7 @@ export function renderShareCardToCanvas(
     ctx.textAlign = "left";
   } else {
     // Fallback when no graph selected or history empty
-    ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
+    ctx.fillStyle = "#767676";
     ctx.font = "500 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -588,15 +590,15 @@ export function renderShareCardToCanvas(
   // 7. Snapshot Timestamp Bar
   const snapshotFormatted = formatSnapshotTimestamp(customTimestamp || team.lastUpdated);
   ctx.save();
-  ctx.fillStyle = "rgba(255, 255, 255, 0.55)";
+  ctx.fillStyle = "#5F6368";
   ctx.font = "500 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.textBaseline = "top";
   ctx.fillText(`Leaderboard Snapshot: ${snapshotFormatted}`, marginX, cursorY);
 
-  // Verified Checkmark
+  // Link Text
   const linkText = `amazonmlchallengeexplorer.vercel.app/teams/${team.teamId}`;
-  ctx.fillStyle = "#FF9900";
-  ctx.font = "600 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
+  ctx.fillStyle = "#E47911";
+  ctx.font = "bold 15px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace";
   ctx.textAlign = "right";
   ctx.fillText(linkText, CARD_WIDTH - marginX, cursorY);
   ctx.textAlign = "left";
@@ -606,7 +608,7 @@ export function renderShareCardToCanvas(
 
   // 8. Bottom Disclaimer Footer
   ctx.save();
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+  ctx.strokeStyle = "#EAEAEA";
   ctx.lineWidth = 1;
   ctx.beginPath();
   ctx.moveTo(marginX, cursorY);
@@ -614,7 +616,7 @@ export function renderShareCardToCanvas(
   ctx.stroke();
 
   cursorY += 18;
-  ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+  ctx.fillStyle = "#888888";
   ctx.font = "12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
   ctx.textBaseline = "top";
   ctx.fillText(

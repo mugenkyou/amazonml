@@ -467,8 +467,8 @@ export function ShareCardModal({
               )}
             </div>
 
-            {/* Responsive Card Preview Container */}
-            <div className="relative w-full max-w-[320px] sm:max-w-[340px] aspect-[4/5] rounded-xl overflow-hidden border border-[#3A4556] shadow-2xl bg-[#0D1117] flex items-center justify-center group">
+            {/* Responsive Card Preview Container (White Edition) */}
+            <div className="relative w-full max-w-[320px] sm:max-w-[340px] aspect-[4/5] rounded-xl overflow-hidden border border-[#CBD5E1] shadow-2xl bg-white flex items-center justify-center group">
               {previewDataUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
@@ -477,9 +477,9 @@ export function ShareCardModal({
                   className="w-full h-full object-contain select-none"
                 />
               ) : (
-                <div className="flex flex-col items-center justify-center p-6 text-center text-[#A0AEC0]">
+                <div className="flex flex-col items-center justify-center p-6 text-center text-[#718096]">
                   <Loader2 className="h-8 w-8 text-[#FF9900] animate-spin mb-2" />
-                  <p className="text-xs font-medium">Generating your performance card...</p>
+                  <p className="text-xs font-medium text-[#4A5568]">Generating your performance card...</p>
                 </div>
               )}
             </div>
