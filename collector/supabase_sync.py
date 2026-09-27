@@ -162,9 +162,19 @@ def sync_dataset_to_supabase(
             previous_team_count=prev_team_count,
         )
 
-        # Step 4: Normalize Organizations
+        # Step 4: Normalize Organizations (Preserving Existing Slugs)
+        existing_org_slugs: Dict[str, str] = {}
+        used_slugs: Set[str] = set()
+        try:
+            db_orgs = supabase_client.table("organizations").select("organization_key, slug").execute()
+            if db_orgs.data:
+                for r in db_orgs.data:
+                    existing_org_slugs[r["organization_key"]] = r["slug"]
+                    used_slugs.add(r["slug"])
+        except Exception:
+            pass
+
         orgs_by_norm: Dict[str, Dict[str, Any]] = {}
-        slug_counts: Dict[str, int] = {}
 
         for o in organizations_list:
             name = o.get("organization", "").strip() or o.get("name", "").strip()
@@ -178,13 +188,17 @@ def sync_dataset_to_supabase(
             pc = int(o.get("player_count", 0) or o.get("playerCount", 0) or 0)
 
             if norm not in orgs_by_norm:
-                slug_base = re.sub(r"[^a-z0-9]+", "-", norm).strip("-") or "org"
-                if slug_base in slug_counts:
-                    slug_counts[slug_base] += 1
-                    slug = f"{slug_base}-{slug_counts[slug_base]}"
+                if norm in existing_org_slugs:
+                    slug = existing_org_slugs[norm]
                 else:
-                    slug_counts[slug_base] = 1
-                    slug = slug_base
+                    slug_base = re.sub(r"[^a-z0-9]+", "-", norm).strip("-") or "org"
+                    candidate = slug_base
+                    counter = 1
+                    while candidate in used_slugs:
+                        counter += 1
+                        candidate = f"{slug_base}-{counter}"
+                    used_slugs.add(candidate)
+                    slug = candidate
 
                 orgs_by_norm[norm] = {
                     "organization_key": norm,
@@ -213,13 +227,18 @@ def sync_dataset_to_supabase(
             p_name = p.get("player_name", "").strip() or p.get("name", "").strip() or "Participant"
 
             if p_norm and p_norm not in orgs_by_norm:
-                slug_base = re.sub(r"[^a-z0-9]+", "-", p_norm).strip("-") or "org"
-                if slug_base in slug_counts:
-                    slug_counts[slug_base] += 1
-                    slug = f"{slug_base}-{slug_counts[slug_base]}"
+                if p_norm in existing_org_slugs:
+                    slug = existing_org_slugs[p_norm]
                 else:
-                    slug_counts[slug_base] = 1
-                    slug = slug_base
+                    slug_base = re.sub(r"[^a-z0-9]+", "-", p_norm).strip("-") or "org"
+                    candidate = slug_base
+                    counter = 1
+                    while candidate in used_slugs:
+                        counter += 1
+                        candidate = f"{slug_base}-{counter}"
+                    used_slugs.add(candidate)
+                    slug = candidate
+
                 orgs_by_norm[p_norm] = {
                     "organization_key": p_norm,
                     "organization_name": p_org,
