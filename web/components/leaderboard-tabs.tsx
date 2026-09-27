@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { Trophy, Building2, GitFork } from "lucide-react";
+import { Trophy, Building2, GitFork, Users } from "lucide-react";
 
 interface LeaderboardTabsProps {
-  activeTab: "teams" | "colleges" | "inter-college";
+  activeTab: "teams" | "colleges" | "inter-college" | "women-teams";
   teamCount?: number;
   collegeCount?: number;
   interCollegeCount?: number;
+  womenTeamsCount?: number;
 }
 
 export function LeaderboardTabs({
@@ -13,6 +14,7 @@ export function LeaderboardTabs({
   teamCount = 4334,
   collegeCount = 1546,
   interCollegeCount,
+  womenTeamsCount = 29,
 }: LeaderboardTabsProps) {
   return (
     <div className="flex items-center gap-1.5 sm:gap-2 border-b border-[#E3E3E3] mb-4 overflow-x-auto no-scrollbar">
@@ -84,6 +86,28 @@ export function LeaderboardTabs({
           </span>
         )}
       </Link>
+
+      <Link
+        href="/leaderboard/women-teams"
+        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+          activeTab === "women-teams"
+            ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
+            : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
+        }`}
+      >
+        <span className={`text-sm font-black ${activeTab === "women-teams" ? "text-[#FF9900]" : "text-[#767676]"}`}>♀</span>
+        <span>Women-Only Teams</span>
+        <span
+          className={`rounded px-1.5 py-0.5 text-[10px] font-mono font-bold ${
+            activeTab === "women-teams"
+              ? "bg-[#FF9900] text-[#111111]"
+              : "bg-[#F0F0F0] text-[#5F6368]"
+          }`}
+        >
+          {womenTeamsCount.toLocaleString()}
+        </span>
+      </Link>
     </div>
   );
 }
+

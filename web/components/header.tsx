@@ -48,6 +48,14 @@ export function Header() {
       badge: "4,334 Teams",
     },
     {
+      label: "Women-Only Teams",
+      shortLabel: "Women Teams",
+      href: "/leaderboard/women-teams",
+      icon: Users,
+      description: "Dedicated category for verified all-female competitor teams",
+      badge: "29 Teams",
+    },
+    {
       label: "College Rankings",
       shortLabel: "Colleges",
       href: "/leaderboard/colleges",
@@ -69,7 +77,9 @@ export function Header() {
   const isLeaderboardActive =
     pathname.startsWith("/leaderboard") ||
     pathname.startsWith("/colleges") ||
-    pathname.startsWith("/cross-college");
+    pathname.startsWith("/cross-college") ||
+    pathname.startsWith("/women-teams") ||
+    pathname.startsWith("/women-only-teams");
 
   // Handle dropdown mouse enter/leave with grace period
   const handleMouseEnter = () => {

@@ -3,6 +3,30 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/women-only-teams",
+        destination: "/leaderboard/women-teams",
+        permanent: true,
+      },
+      {
+        source: "/women-teams",
+        destination: "/leaderboard/women-teams",
+        permanent: true,
+      },
+      {
+        source: "/womenteams",
+        destination: "/leaderboard/women-teams",
+        permanent: true,
+      },
+      {
+        source: "/women-only",
+        destination: "/leaderboard/women-teams",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
@@ -31,3 +55,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+

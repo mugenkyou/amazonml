@@ -111,6 +111,8 @@ export default function RootLayout({
           content="5w8gnos2EMpvOaxww-8unXKrbq22ddUe_Wd82N-liqA"
         />
         <JsonLd data={[websiteSchema, datasetSchema]} />
+      </head>
+      <body className="min-h-screen bg-white font-sans text-[#111111] antialiased flex flex-col selection:bg-amber-100 selection:text-amber-900">
         {/* Privacy-conscious Google Tag with default consent denied */}
         <Script id="google-consent-default" strategy="beforeInteractive">
           {`
@@ -129,8 +131,6 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-77BY7EW1V3"
           strategy="afterInteractive"
         />
-      </head>
-      <body className="min-h-screen bg-white font-sans text-[#111111] antialiased flex flex-col selection:bg-amber-100 selection:text-amber-900">
         <Header />
         <main className="flex-1 pb-16">{children}</main>
         <Footer />
