@@ -2,8 +2,9 @@ name: Auto-Sync Leaderboard Data
 
 on:
   schedule:
-    # Runs automatically every 10 minutes
-    - cron: '*/10 * * * *'
+    # Runs automatically every 5-10 minutes with offset fallback to prevent GitHub schedule drops
+    - cron: '0,10,20,30,40,50 * * * *'
+    - cron: '5,15,25,35,45,55 * * * *'
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 permissions:
