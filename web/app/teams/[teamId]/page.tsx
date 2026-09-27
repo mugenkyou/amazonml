@@ -8,6 +8,7 @@ import { isInterCollegeTeam } from "@/lib/inter-college";
 import { TeamMembers } from "@/components/team-members";
 import { TeamSaveAction } from "@/components/team-save-action";
 import { ShareButton } from "@/components/share-button";
+import { TeamHistoryChart } from "@/components/team-history-chart";
 import { JsonLd } from "@/components/json-ld";
 import {
   generateBreadcrumbSchema,
@@ -260,6 +261,13 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
           <p className="text-xs text-[#767676]">Independent team / No institutional affiliation specified.</p>
         )}
       </div>
+
+      {/* Interactive Line Graph of Rank/Score Progression */}
+      {teamHistory?.history && teamHistory.history.length > 0 && (
+        <div className="mt-5 sm:mt-6">
+          <TeamHistoryChart history={teamHistory.history} teamName={team.teamName} />
+        </div>
+      )}
 
       {/* Historical Score & Rank Progression */}
       <div className="mt-5 sm:mt-6 rounded-xl border border-[#E3E3E3] bg-white p-4 sm:p-5 shadow-subtle">
