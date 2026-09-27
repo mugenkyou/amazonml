@@ -365,20 +365,45 @@ def run_migration(dry_run: bool = False, batch_size: int = 500) -> Dict[str, Any
             "proctoring_score": t.get("proctoring_score", "").strip(),
             "is_blacklisted": is_blacklisted,
             "is_inter_college": is_inter_college,
-            "college_count": college_count,
             "status": "active",
             "is_active": True,
         })
 
+    # 3.5 Ensure any team referenced by players exists in teams_to_insert
+    for tid, plist in players_by_team.items():
+        if tid not in seen_team_ids:
+            seen_team_ids.add(tid)
+            teams_to_insert.append({
+                "team_id": tid,
+                "team_name": f"Team {tid}",
+                "rank": None,
+                "sort_rank": 9999999,
+                "f1_score": 0.0,
+                "f1_score_str": "0.000000",
+                "previous_rank": None,
+                "previous_f1_score": None,
+                "previous_f1_score_str": None,
+                "rank_delta": 0,
+                "score_delta": 0.0,
+                "finish_time": "",
+                "has_played": False,
+                "proctoring_score": "",
+                "is_blacklisted": False,
+                "is_inter_college": False,
+                "college_count": 1,
+                "status": "archive",
+                "is_active": False,
+            })
+
     # Sort teams by sort_rank
     teams_to_insert.sort(key=lambda x: (x["sort_rank"], x["team_name"]))
 
-    # 4. Flatten all players for insert
+    # 4. Flatten all players for insert (ensuring team_id exists in teams_to_insert)
     all_players_to_insert: List[Dict[str, Any]] = []
     seen_player_keys: Set[str] = set()
     for plist in players_by_team.values():
         for p in plist:
-            if p["player_key"] not in seen_player_keys:
+            if p["team_id"] in seen_team_ids and p["player_key"] not in seen_player_keys:
                 seen_player_keys.add(p["player_key"])
                 all_players_to_insert.append(p)
 

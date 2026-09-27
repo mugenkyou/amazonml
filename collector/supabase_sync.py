@@ -241,12 +241,9 @@ def sync_dataset_to_supabase(
             }
             players_by_team[tid].append(player_record)
 
-            if player_key not in seen_player_keys:
-                seen_player_keys.add(player_key)
-                all_players_to_upsert.append(player_record)
-
         # Step 6: Process Teams with Deltas
         teams_to_upsert: List[Dict[str, Any]] = []
+        seen_team_ids: Set[str] = set()
         snapshot_scores_to_insert: List[Dict[str, Any]] = []
         teams_changed_count = 0
         teams_added_count = 0
@@ -255,6 +252,7 @@ def sync_dataset_to_supabase(
             tid = str(t.get("team_id") or t.get("teamId") or "").strip()
             if not tid:
                 continue
+            seen_team_ids.add(tid)
 
             tname = t.get("team_name") or t.get("teamName") or "Unnamed Team"
             rank_str = str(t.get("rank", "")).strip()
@@ -341,7 +339,16 @@ def sync_dataset_to_supabase(
             chunk = teams_to_upsert[i:i + batch_size]
             supabase_client.table("teams").upsert(chunk, on_conflict="team_id").execute()
 
-        # Step 10: Batch Upsert Players
+        # Step 10: Batch Upsert Players (ensuring team_id exists in teams_to_upsert)
+        all_players_to_upsert: List[Dict[str, Any]] = []
+        seen_player_keys: Set[str] = set()
+        for tid, plist in players_by_team.items():
+            if tid in seen_team_ids:
+                for p in plist:
+                    if p["player_key"] not in seen_player_keys:
+                        seen_player_keys.add(p["player_key"])
+                        all_players_to_upsert.append(p)
+
         logger.info("Upserting %d players to Supabase...", len(all_players_to_upsert))
         for i in range(0, len(all_players_to_upsert), batch_size):
             chunk = all_players_to_upsert[i:i + batch_size]
