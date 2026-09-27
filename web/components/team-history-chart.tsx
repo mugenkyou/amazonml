@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useId } from "react";
-import { TrendingUp, Trophy, Calendar, Clock, ArrowUpRight, ArrowDownRight, Minus, Sparkles } from "lucide-react";
+import { TrendingUp, Trophy, Calendar, Sparkles, ArrowUpRight, ArrowDownRight, Minus, Activity } from "lucide-react";
 import type { HistoricalObservation } from "@/lib/types";
 
 interface TeamHistoryChartProps {
@@ -10,7 +10,8 @@ interface TeamHistoryChartProps {
 }
 
 export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
-  const [metric, setMetric] = useState<"rank" | "score">("rank");
+  // Score is now the default view as requested
+  const [metric, setMetric] = useState<"score" | "rank">("score");
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const chartGradientId = useId();
 
@@ -50,10 +51,56 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
     };
   });
 
+  // Timeline Net Diff Calculations
+  const firstPoint = points[0];
+  const latestPoint = points[points.length - 1];
+
+  const netScoreDiff = latestPoint.score - firstPoint.score;
+  const netRankDiff =
+    firstPoint.rank !== null && latestPoint.rank !== null
+      ? firstPoint.rank - latestPoint.rank
+      : 0;
+
+  // Dynamic Upward / Downward Trend Detection
+  const isScoreMetric = metric === "score";
+  const isGoingUp = isScoreMetric ? netScoreDiff > 0.000001 : netRankDiff > 0;
+  const isGoingDown = isScoreMetric ? netScoreDiff < -0.000001 : netRankDiff < 0;
+
+  // Theme Palette based on trend (Green if going UP!)
+  const strokeColor = isGoingUp
+    ? "#10B981"
+    : isGoingDown
+    ? "#E11D48"
+    : "#E47911";
+
+  const stopColor = isGoingUp
+    ? "#10B981"
+    : isGoingDown
+    ? "#F43F5E"
+    : "#FF9900";
+
+  const dotFill = isGoingUp
+    ? "#059669"
+    : isGoingDown
+    ? "#BE123C"
+    : "#E47911";
+
+  const glowBg = isGoingUp
+    ? "#D1FAE5"
+    : isGoingDown
+    ? "#FFE4E6"
+    : "#FFF3E0";
+
+  const glowBorder = isGoingUp
+    ? "#10B981"
+    : isGoingDown
+    ? "#E11D48"
+    : "#FF9900";
+
   // Dimensions
   const width = 700;
   const height = 260;
-  const padding = { top: 30, right: 35, bottom: 45, left: 55 };
+  const padding = { top: 30, right: 35, bottom: 45, left: 60 };
   const chartWidth = width - padding.left - padding.right;
   const chartHeight = height - padding.top - padding.bottom;
 
@@ -119,93 +166,167 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
       ? `${linePath} L ${coordinates[coordinates.length - 1].x} ${padding.top + chartHeight} L ${coordinates[0].x} ${padding.top + chartHeight} Z`
       : "";
 
-  // Active hovered point
+  // Active hovered point (or latest by default)
   const activePoint = hoveredIndex !== null ? points[hoveredIndex] : points[points.length - 1];
-  const activeCoord = hoveredIndex !== null ? coordinates[hoveredIndex] : coordinates[coordinates.length - 1];
 
   return (
     <div className="rounded-xl border border-[#E3E3E3] bg-white p-4 sm:p-5 shadow-subtle">
       {/* Header & Toggle Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-[#F0F0F0]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3.5 border-b border-[#F0F0F0]">
         <div>
-          <h3 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2">
-            <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
-              <TrendingUp className="h-3.5 w-3.5 text-[#FF9900]" />
-            </div>
-            <span>Performance Timeline ({points.length} Checkpoints)</span>
-          </h3>
-          <p className="text-[11px] text-[#767676] mt-0.5">
-            Interactive progression chart across all recorded historical leaderboard syncs.
+          <div className="flex items-center gap-2 flex-wrap">
+            <h3 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2">
+              <div
+                className={`flex h-5 w-5 items-center justify-center rounded ${
+                  isGoingUp
+                    ? "bg-emerald-100 text-emerald-700"
+                    : isGoingDown
+                    ? "bg-rose-100 text-rose-700"
+                    : "bg-[#FFF3E0] text-[#E47911]"
+                }`}
+              >
+                <TrendingUp className="h-3.5 w-3.5" />
+              </div>
+              <span>Performance Timeline ({points.length} Checkpoints)</span>
+            </h3>
+
+            {/* Total Net Diff Pill */}
+            {points.length > 1 && (
+              <span
+                className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-mono font-bold border shadow-2xs ${
+                  isGoingUp
+                    ? "bg-emerald-50 border-emerald-200 text-emerald-700"
+                    : isGoingDown
+                    ? "bg-rose-50 border-rose-200 text-rose-700"
+                    : "bg-gray-50 border-gray-200 text-gray-700"
+                }`}
+              >
+                {isGoingUp ? (
+                  <>
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                    <span>
+                      {isScoreMetric
+                        ? `+${netScoreDiff.toFixed(6)} Total Gain`
+                        : `▲ +${netRankDiff} Ranks Climbed`}
+                    </span>
+                  </>
+                ) : isGoingDown ? (
+                  <>
+                    <ArrowDownRight className="h-3.5 w-3.5" />
+                    <span>
+                      {isScoreMetric
+                        ? `${netScoreDiff.toFixed(6)} Total Change`
+                        : `▼ ${netRankDiff} Ranks Dropped`}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <Minus className="h-3 w-3" />
+                    <span>No Net Change</span>
+                  </>
+                )}
+              </span>
+            )}
+          </div>
+
+          <p className="text-[11px] text-[#767676] mt-1">
+            Historical progression and score diffs across all recorded leaderboard syncs.
           </p>
         </div>
 
-        {/* Metric Selector Buttons */}
+        {/* Metric Selector Buttons (F1-Score default first) */}
         <div className="inline-flex rounded-lg border border-[#E3E3E3] bg-[#F7F7F7] p-0.5 self-start sm:self-auto">
           <button
             type="button"
-            onClick={() => setMetric("rank")}
-            className={`inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-semibold transition-all cursor-pointer ${
-              metric === "rank"
-                ? "bg-white text-[#E47911] shadow-2xs font-bold"
-                : "text-[#5F6368] hover:text-[#111111]"
-            }`}
-          >
-            <Trophy className="h-3.5 w-3.5" />
-            <span>Rank Position</span>
-          </button>
-
-          <button
-            type="button"
             onClick={() => setMetric("score")}
-            className={`inline-flex items-center gap-1 rounded-md px-2.5 py-1 text-xs font-semibold transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
               metric === "score"
-                ? "bg-white text-[#E47911] shadow-2xs font-bold"
+                ? isGoingUp
+                  ? "bg-white text-emerald-700 shadow-2xs font-bold border border-emerald-200"
+                  : isGoingDown
+                  ? "bg-white text-rose-700 shadow-2xs font-bold border border-rose-200"
+                  : "bg-white text-[#E47911] shadow-2xs font-bold border border-[#F5C26B]"
                 : "text-[#5F6368] hover:text-[#111111]"
             }`}
           >
             <Sparkles className="h-3.5 w-3.5" />
-            <span>F1-Score</span>
+            <span>F1-Score Graph</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setMetric("rank")}
+            className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
+              metric === "rank"
+                ? isGoingUp
+                  ? "bg-white text-emerald-700 shadow-2xs font-bold border border-emerald-200"
+                  : isGoingDown
+                  ? "bg-white text-rose-700 shadow-2xs font-bold border border-rose-200"
+                  : "bg-white text-[#E47911] shadow-2xs font-bold border border-[#F5C26B]"
+                : "text-[#5F6368] hover:text-[#111111]"
+            }`}
+          >
+            <Trophy className="h-3.5 w-3.5" />
+            <span>Rank Graph</span>
           </button>
         </div>
       </div>
 
-      {/* Active Hover Inspection Badge */}
+      {/* Active Hover Inspection Badge with Diff Breakdown */}
       {activePoint && (
-        <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2 rounded-lg bg-gradient-to-r from-[#FFFDF9] to-[#FDFDFD] border border-[#F5C26B] px-3.5 py-2 text-xs">
+        <div
+          className={`mb-3.5 flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3.5 py-2 text-xs transition-colors ${
+            isGoingUp
+              ? "bg-gradient-to-r from-[#F0FDF4] to-[#FFFFFF] border-emerald-300"
+              : isGoingDown
+              ? "bg-gradient-to-r from-[#FFF1F2] to-[#FFFFFF] border-rose-300"
+              : "bg-gradient-to-r from-[#FFFDF9] to-[#FDFDFD] border-[#F5C26B]"
+          }`}
+        >
           <div className="flex items-center gap-2 font-mono">
             <span className="flex items-center gap-1 text-[#767676] font-sans">
-              <Calendar className="h-3.5 w-3.5 text-[#FF9900]" />
+              <Calendar className="h-3.5 w-3.5 text-[#5F6368]" />
               <span className="font-semibold text-[#111111]">{activePoint.dateStr}</span>
               <span>{activePoint.timeStr}</span>
             </span>
           </div>
 
           <div className="flex items-center gap-4 font-mono">
+            {/* Score Display & Step Diff */}
             <div className="flex items-center gap-1.5">
-              <span className="text-[10px] text-[#767676] font-sans uppercase font-bold">Rank:</span>
-              <span className="font-bold text-[#111111]">#{activePoint.rank ?? "—"}</span>
-              {activePoint.status === "new" ? (
-                <span className="rounded bg-blue-50 text-blue-700 text-[10px] font-bold px-1.5 py-0.2">NEW</span>
-              ) : activePoint.rankDelta > 0 ? (
-                <span className="text-emerald-700 text-[11px] font-bold flex items-center">
-                  <ArrowUpRight className="h-3.5 w-3.5" /> +{activePoint.rankDelta}
+              <span className="text-[10px] text-[#767676] font-sans uppercase font-bold">Score:</span>
+              <span className="font-bold text-[#111111]">{activePoint.scoreFormatted}</span>
+              {activePoint.scoreDelta > 0.000001 ? (
+                <span className="inline-flex items-center text-emerald-700 text-[11px] font-bold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                  <ArrowUpRight className="h-3 w-3 mr-0.5" />+{Number(activePoint.scoreDelta).toFixed(6)}
                 </span>
-              ) : activePoint.rankDelta < 0 ? (
-                <span className="text-rose-700 text-[11px] font-bold flex items-center">
-                  <ArrowDownRight className="h-3.5 w-3.5" /> {activePoint.rankDelta}
+              ) : activePoint.scoreDelta < -0.000001 ? (
+                <span className="inline-flex items-center text-rose-700 text-[11px] font-bold bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">
+                  <ArrowDownRight className="h-3 w-3 mr-0.5" />{Number(activePoint.scoreDelta).toFixed(6)}
                 </span>
               ) : (
                 <span className="text-[#999999] text-[10px]">—</span>
               )}
             </div>
 
+            {/* Rank Display & Step Diff */}
             <div className="flex items-center gap-1.5">
-              <span className="text-[10px] text-[#767676] font-sans uppercase font-bold">Score:</span>
-              <span className="font-bold text-[#111111]">{activePoint.scoreFormatted}</span>
-              {activePoint.scoreDelta > 0 && (
-                <span className="text-emerald-700 text-[11px] font-bold">
-                  +{Number(activePoint.scoreDelta).toFixed(6)}
+              <span className="text-[10px] text-[#767676] font-sans uppercase font-bold">Rank:</span>
+              <span className="font-bold text-[#111111]">#{activePoint.rank ?? "—"}</span>
+              {activePoint.status === "new" ? (
+                <span className="rounded bg-blue-50 text-blue-700 text-[10px] font-bold px-1.5 py-0.2 border border-blue-200">
+                  NEW
                 </span>
+              ) : activePoint.rankDelta > 0 ? (
+                <span className="inline-flex items-center text-emerald-700 text-[11px] font-bold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
+                  <ArrowUpRight className="h-3 w-3 mr-0.5" />+{activePoint.rankDelta}
+                </span>
+              ) : activePoint.rankDelta < 0 ? (
+                <span className="inline-flex items-center text-rose-700 text-[11px] font-bold bg-rose-50 px-1.5 py-0.5 rounded border border-rose-200">
+                  <ArrowDownRight className="h-3 w-3 mr-0.5" />{activePoint.rankDelta}
+                </span>
+              ) : (
+                <span className="text-[#999999] text-[10px]">—</span>
               )}
             </div>
           </div>
@@ -218,13 +339,13 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
           viewBox={`0 0 ${width} ${height}`}
           className="w-full h-auto overflow-visible select-none"
           role="img"
-          aria-label={`${metric === "rank" ? "Rank" : "Score"} timeline graph for ${teamName}`}
+          aria-label={`${metric === "score" ? "Score" : "Rank"} timeline graph for ${teamName}`}
         >
           <defs>
             <linearGradient id={chartGradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FF9900" stopOpacity="0.28" />
-              <stop offset="85%" stopColor="#FF9900" stopOpacity="0.02" />
-              <stop offset="100%" stopColor="#FF9900" stopOpacity="0" />
+              <stop offset="0%" stopColor={stopColor} stopOpacity="0.32" />
+              <stop offset="85%" stopColor={stopColor} stopOpacity="0.03" />
+              <stop offset="100%" stopColor={stopColor} stopOpacity="0" />
             </linearGradient>
           </defs>
 
@@ -273,7 +394,7 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
             <path
               d={linePath}
               fill="none"
-              stroke="#E47911"
+              stroke={strokeColor}
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -320,9 +441,6 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
           {/* Interactive Line Points */}
           {coordinates.map((c, i) => {
             const isHovered = hoveredIndex === i || (hoveredIndex === null && i === coordinates.length - 1);
-            const rDelta = c.point.rankDelta;
-            const isPositive = rDelta > 0;
-            const isNegative = rDelta < 0;
 
             return (
               <g
@@ -340,8 +458,8 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
                     cx={c.x}
                     cy={c.y}
                     r="8"
-                    fill="#FFF3E0"
-                    stroke="#FF9900"
+                    fill={glowBg}
+                    stroke={glowBorder}
                     strokeWidth="1.5"
                     className="animate-pulse"
                   />
@@ -352,22 +470,24 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
                   cx={c.x}
                   cy={c.y}
                   r={isHovered ? 5 : 3.5}
-                  fill={isHovered ? "#E47911" : "#FF9900"}
+                  fill={isHovered ? dotFill : strokeColor}
                   stroke="#FFFFFF"
                   strokeWidth="2"
                   className="transition-all duration-150"
                 />
 
-                {/* Floating Rank Pill Above Point */}
+                {/* Floating Value Pill Above Point */}
                 <text
                   x={c.x}
                   y={c.y - 9}
                   textAnchor="middle"
                   className={`text-[9px] font-mono font-bold transition-opacity ${
-                    isHovered ? "fill-[#111111] opacity-100 font-extrabold" : "fill-[#767676] opacity-0 group-hover:opacity-100"
+                    isHovered
+                      ? "fill-[#111111] opacity-100 font-extrabold"
+                      : "fill-[#767676] opacity-0 group-hover:opacity-100"
                   }`}
                 >
-                  {metric === "rank" ? `#${c.point.rank}` : c.point.scoreFormatted.slice(0, 7)}
+                  {metric === "score" ? c.point.scoreFormatted.slice(0, 8) : `#${c.point.rank}`}
                 </text>
               </g>
             );
@@ -375,27 +495,35 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
         </svg>
       </div>
 
-      {/* Footer legend and note */}
+      {/* Footer legend, net diff note, and trend orientation */}
       <div className="mt-2.5 pt-2 border-t border-[#F5F5F5] flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#767676]">
         <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1">
-            <span className="h-2 w-2 rounded-full bg-[#FF9900] inline-block" />
-            <span>Checkpoint Observations</span>
+          <span className="flex items-center gap-1.5 font-medium">
+            <span
+              className="h-2.5 w-2.5 rounded-full inline-block"
+              style={{ backgroundColor: strokeColor }}
+            />
+            <span>
+              {isGoingUp ? "Upward Score Trend (Green)" : isGoingDown ? "Downward Trend" : "Score Checkpoints"}
+            </span>
           </span>
           <span className="flex items-center gap-1">
             <span className="text-emerald-700 font-bold">▲</span>
-            <span>Climbed Rank</span>
+            <span>Positive Diff (+Score)</span>
           </span>
           <span className="flex items-center gap-1">
             <span className="text-rose-700 font-bold">▼</span>
-            <span>Dropped Rank</span>
+            <span>Negative Diff</span>
           </span>
         </div>
 
-        <span className="font-mono text-[10px]">
-          {metric === "rank" ? "↑ Top of chart = Higher Rank (#1)" : "↑ Top of chart = Higher Score"}
+        <span className="font-mono text-[10px] text-[#555555] font-semibold">
+          {metric === "score"
+            ? "↑ Top of chart = Higher Score (F1)"
+            : "↑ Top of chart = Higher Rank (#1)"}
         </span>
       </div>
     </div>
   );
 }
+
