@@ -35,6 +35,7 @@ describe("Shareable Team Performance Card Generator", () => {
       fillRect: vi.fn(),
       strokeRect: vi.fn(),
       fillText: vi.fn(),
+      strokeText: vi.fn(),
       measureText: vi.fn().mockReturnValue({ width: 120 }),
       beginPath: vi.fn(),
       closePath: vi.fn(),

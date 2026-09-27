@@ -473,16 +473,54 @@ export function renderShareCardToCanvas(
     }
     ctx.stroke();
 
-    // Data Points
+    // Data Points & Direct Value Labels (e.g. 0.9918 or #12)
     for (let i = 0; i < coords.length; i++) {
       const c = coords[i];
-      ctx.fillStyle = "#FF9900";
+      const isLatest = i === coords.length - 1;
+
+      // Outer Glow Halo for Points
+      ctx.fillStyle = isLatest ? "rgba(228, 121, 17, 0.2)" : "rgba(255, 153, 0, 0.15)";
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, isLatest ? 10 : 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Point Dot
+      ctx.fillStyle = isLatest ? "#E47911" : "#FF9900";
       ctx.strokeStyle = "#FFFFFF";
       ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.arc(c.x, c.y, 6, 0, Math.PI * 2);
+      ctx.arc(c.x, c.y, isLatest ? 7 : 5.5, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
+
+      // Point Value Label (F1 score or Rank)
+      const valText = isRankGraph
+        ? `#${c.point.rank ?? "—"}`
+        : c.point.raw.score
+        ? Number(c.point.raw.score).toFixed(4)
+        : c.point.score.toFixed(4);
+
+      // Determine label Y position (above point, or below if point is near top of graph)
+      const labelY = c.y - 14 < gPadding.top ? c.y + 20 : c.y - 12;
+
+      ctx.save();
+      ctx.font = isLatest
+        ? "bold 14px -apple-system, BlinkMacSystemFont, 'SF Mono', Monaco, monospace"
+        : "600 13px -apple-system, BlinkMacSystemFont, 'SF Mono', Monaco, monospace";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      // White halo stroke behind text for maximum legibility against background/lines
+      if (typeof ctx.strokeText === "function") {
+        ctx.strokeStyle = "#FCFCFB";
+        ctx.lineWidth = 4;
+        ctx.strokeText(valText, c.x, labelY);
+      }
+
+      // Main text
+      ctx.fillStyle = isLatest ? "#E47911" : "#0F172A";
+      ctx.fillText(valText, c.x, labelY);
+      ctx.restore();
     }
 
     // X-Axis Start and End Timestamps
