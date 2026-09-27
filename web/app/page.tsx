@@ -80,9 +80,16 @@ export default async function HomePage({ searchParams }: PageProps) {
       <section className="relative mt-2 sm:mt-4 rounded-xl border border-[#E3E3E3] bg-gradient-to-b from-[#FFFDF9] via-white to-white p-4 sm:px-8 sm:py-8 text-center shadow-xs">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[3px] w-20 sm:w-28 bg-[#FF9900] rounded-b-full" />
 
-        <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-2.5 py-0.5 text-[10px] sm:text-xs font-semibold text-[#E47911] mb-2">
-          <Award className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-          <span>Amazon ML Challenge 2026 Snapshot</span>
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-2.5">
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3E0] border border-[#F5C26B] px-2.5 py-0.5 text-[10px] sm:text-xs font-semibold text-[#E47911]">
+            <Award className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#FF9900]" />
+            <span>Amazon ML Challenge 2026</span>
+          </div>
+
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-[#F7F7F7] border border-[#E3E3E3] px-2.5 py-0.5 text-[10px] sm:text-xs font-mono font-medium text-[#5F6368]">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Last Synced: {metadata.collectionFinishedAt ? new Date(metadata.collectionFinishedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short" }) : "Live Checkpoint Active"}</span>
+          </div>
         </div>
 
         <h1 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-[#111111] leading-tight">
