@@ -200,7 +200,63 @@ def sync_to_web_json(
         norm: sorted(list(tids)) for norm, tids in org_to_team_ids.items()
     }
 
-    # 6. Load / format metadata
+    # 6. Build Inter-College Teams snapshot
+    org_by_norm: Dict[str, Dict[str, Any]] = {o["normalizedName"]: o for o in organizations_list}
+    org_by_slug: Dict[str, Dict[str, Any]] = {o["slug"]: o for o in organizations_list}
+
+    inter_college_teams: List[Dict[str, Any]] = []
+    for team in teams_list:
+        raw_orgs: List[str] = []
+        for p in team.get("players", []):
+            if p.get("organization") and p["organization"].strip():
+                raw_orgs.append(p["organization"].strip())
+        if not raw_orgs and team.get("organizations"):
+            for o in team["organizations"]:
+                if o and o.strip():
+                    raw_orgs.append(o.strip())
+
+        seen_slugs: Set[str] = set()
+        resolved_orgs: List[Dict[str, str]] = []
+
+        for raw in raw_orgs:
+            norm = normalize_organization(raw)
+            slug_guess = slugify_organization(raw)
+            matched = org_by_norm.get(norm) or org_by_slug.get(slug_guess)
+
+            if matched:
+                org_ref = {
+                    "name": matched["name"],
+                    "normalizedName": matched.get("normalizedName") or norm,
+                    "slug": matched["slug"],
+                }
+            else:
+                org_ref = {
+                    "name": raw.strip(),
+                    "normalizedName": norm,
+                    "slug": slug_guess,
+                }
+
+            if org_ref["slug"] and org_ref["slug"] not in seen_slugs:
+                seen_slugs.add(org_ref["slug"])
+                resolved_orgs.append(org_ref)
+
+        if len(resolved_orgs) >= 2:
+            inter_college_teams.append({
+                "teamId": team["teamId"],
+                "teamName": team["teamName"],
+                "rank": team["rank"],
+                "sortRank": team["sortRank"],
+                "score": team["score"],
+                "finishTime": team["finishTime"],
+                "hasPlayed": team["hasPlayed"],
+                "proctoringScore": team["proctoringScore"],
+                "isBlacklisted": team["isBlacklisted"],
+                "players": team["players"],
+                "organizations": resolved_orgs,
+                "collegeCount": len(resolved_orgs),
+            })
+
+    # 7. Load / format metadata
     raw_meta = {}
     if metadata_path.exists():
         try:
@@ -222,7 +278,7 @@ def sync_to_web_json(
         "sourceEndpoint": raw_meta.get("source_endpoint", config.BASE_API_URL),
     }
 
-    # 7. Write web JSON files
+    # 8. Write web JSON files
     with open(web_generated_dir / "teams.json", "w", encoding="utf-8") as f:
         json.dump(teams_list, f, indent=2, ensure_ascii=False)
 
@@ -232,19 +288,24 @@ def sync_to_web_json(
     with open(web_generated_dir / "organization-index.json", "w", encoding="utf-8") as f:
         json.dump(org_index, f, indent=2, ensure_ascii=False)
 
+    with open(web_generated_dir / "inter-college-teams.json", "w", encoding="utf-8") as f:
+        json.dump(inter_college_teams, f, indent=2, ensure_ascii=False)
+
     with open(web_generated_dir / "metadata.json", "w", encoding="utf-8") as f:
         json.dump(web_metadata, f, indent=2, ensure_ascii=False)
 
     logger.info(
-        "Successfully generated web JSON artifacts: %d teams, %d organizations, %d indexed org keys",
+        "Successfully generated web JSON artifacts: %d teams, %d organizations, %d inter-college teams, %d indexed org keys",
         len(teams_list),
         len(organizations_list),
+        len(inter_college_teams),
         len(org_index),
     )
 
     return {
         "teams_count": len(teams_list),
         "orgs_count": len(organizations_list),
+        "inter_college_teams_count": len(inter_college_teams),
         "org_index_count": len(org_index),
         "web_generated_dir": str(web_generated_dir),
     }

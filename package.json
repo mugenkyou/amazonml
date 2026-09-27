@@ -1,0 +1,17 @@
+{
+  "name": "amazonml-challenge-2026",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Amazon ML Challenge 2026 Leaderboard & Analytics Platform",
+  "scripts": {
+    "sync": "python sync_data.py",
+    "sync:fast": "python sync_data.py --regenerate-only",
+    "sync:web": "npm --prefix web run prepare-data",
+    "fetch-data": "python sync_data.py",
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "start": "npm --prefix web run start",
+    "test": "npm --prefix web run test",
+    "lint": "npm --prefix web run lint"
+  }
+}
