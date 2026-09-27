@@ -128,3 +128,98 @@ export function getDatasetMetadata(): DatasetMetadata {
     sourceEndpoint: "https://unstop.com/api/public/live-leaderboard/290344/CodeContest",
   });
 }
+
+function getHistoryDirectory(): string {
+  const localWebDir = path.resolve(process.cwd(), "data/history");
+  if (fs.existsSync(localWebDir)) return localWebDir;
+  const rootDir = path.resolve(process.cwd(), "web/data/history");
+  if (fs.existsSync(rootDir)) return rootDir;
+  return localWebDir;
+}
+
+const HISTORY_DIR = getHistoryDirectory();
+
+function loadHistoryJSON<T>(filename: string, fallback: T): T {
+  try {
+    const filePath = path.join(HISTORY_DIR, filename);
+    if (!fs.existsSync(filePath)) {
+      return fallback;
+    }
+    const stat = fs.statSync(filePath);
+    const currentMtime = stat.mtimeMs;
+
+    const cacheKey = `history:${filename}`;
+    const existing = fileCache.get(cacheKey);
+    if (existing && existing.mtimeMs === currentMtime) {
+      return existing.data as T;
+    }
+
+    const content = fs.readFileSync(filePath, "utf-8");
+    const parsed = JSON.parse(content) as T;
+    fileCache.set(cacheKey, { data: parsed, mtimeMs: currentMtime });
+    return parsed;
+  } catch {
+    return fallback;
+  }
+}
+
+export function getAllSnapshots(): import("./types").SnapshotMeta[] {
+  return loadHistoryJSON<import("./types").SnapshotMeta[]>("snapshots.json", []);
+}
+
+export function getAllTeamsHistory(): Record<string, import("./types").TeamHistoryRecord> {
+  return loadHistoryJSON<Record<string, import("./types").TeamHistoryRecord>>("teams-history.json", {});
+}
+
+export function getTeamHistory(teamId: string | number): import("./types").TeamHistoryRecord | null {
+  if (!teamId) return null;
+  const strId = String(teamId).trim();
+  const allHistory = getAllTeamsHistory();
+  return allHistory[strId] || null;
+}
+
+export function getAllChanges(limit?: number): import("./types").ChangeEvent[] {
+  const changes = loadHistoryJSON<import("./types").ChangeEvent[]>("changes.json", []);
+  if (limit && limit > 0) {
+    return changes.slice(-limit).reverse();
+  }
+  return changes;
+}
+
+export function getTeamChanges(teamId: string | number): import("./types").ChangeEvent[] {
+  if (!teamId) return [];
+  const strId = String(teamId).trim();
+  const history = getTeamHistory(strId);
+  if (!history || !history.history) return [];
+
+  const changes: import("./types").ChangeEvent[] = [];
+  for (const h of history.history) {
+    if (h.status === "new" || h.rankDelta !== 0 || Math.abs(h.scoreDelta) > 1e-6) {
+      changes.push({
+        timestamp: h.timestamp,
+        snapshotId: h.snapshotId,
+        teamId: strId,
+        teamName: history.teamName,
+        status: h.status,
+        previousRank: h.previousRank,
+        newRank: h.rank,
+        rankDelta: h.rankDelta,
+        previousScore: h.previousScore,
+        newScore: h.score,
+        scoreDelta: h.scoreDelta,
+      });
+    }
+  }
+  return changes.reverse();
+}
+
+export function getMoversData(): import("./types").MoversData {
+  return loadHistoryJSON<import("./types").MoversData>("movers.json", {
+    latestSnapshotId: null,
+    latestTimestamp: null,
+    topClimbers: [],
+    topFallers: [],
+    topScoreGainers: [],
+    newTeams: [],
+  });
+}

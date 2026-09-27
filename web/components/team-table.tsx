@@ -21,6 +21,64 @@ interface TeamTableProps {
   teams: SearchResultTeam[];
 }
 
+export function RankMovementBadge({
+  rankDelta,
+  status,
+  scoreDelta,
+  className = "",
+}: {
+  rankDelta?: number;
+  status?: "new" | "active" | "missing" | string;
+  scoreDelta?: number;
+  className?: string;
+}) {
+  if (status === "new") {
+    return (
+      <span
+        title="First time observed in leaderboard snapshot"
+        className={`inline-flex items-center gap-0.5 rounded bg-blue-50 border border-blue-200 px-1.5 py-0.5 text-[10px] font-bold text-blue-700 ${className}`}
+      >
+        NEW
+      </span>
+    );
+  }
+
+  if (status === "missing") {
+    return (
+      <span
+        title="Previously observed team missing from current snapshot"
+        className={`inline-flex items-center gap-0.5 rounded bg-slate-100 border border-slate-300 px-1.5 py-0.5 text-[10px] font-semibold text-slate-600 ${className}`}
+      >
+        MISSING
+      </span>
+    );
+  }
+
+  if (rankDelta !== undefined && rankDelta > 0) {
+    return (
+      <span
+        title={`Climbed ${rankDelta} positions since previous snapshot`}
+        className={`inline-flex items-center gap-0.5 rounded bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 text-[10px] font-bold text-emerald-700 ${className}`}
+      >
+        <span aria-hidden="true">▲</span> +{rankDelta}
+      </span>
+    );
+  }
+
+  if (rankDelta !== undefined && rankDelta < 0) {
+    return (
+      <span
+        title={`Dropped ${Math.abs(rankDelta)} positions since previous snapshot`}
+        className={`inline-flex items-center gap-0.5 rounded bg-rose-50 border border-rose-200 px-1.5 py-0.5 text-[10px] font-bold text-rose-700 ${className}`}
+      >
+        <span aria-hidden="true">▼</span> {rankDelta}
+      </span>
+    );
+  }
+
+  return null;
+}
+
 function MobileExpandableTeamCard({ team }: { team: SearchResultTeam }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const rankNum = team.rank || "—";
@@ -43,17 +101,20 @@ function MobileExpandableTeamCard({ team }: { team: SearchResultTeam }) {
       {/* Level 1: Primary Scan Header (Rank, Name, Score, Bookmark) */}
       <div className="flex items-start justify-between gap-2.5">
         <div className="flex items-start gap-2.5 min-w-0 flex-1">
-          <span
-            className={`inline-flex h-7 min-w-7 shrink-0 items-center justify-center rounded-md px-1.5 text-xs font-bold font-mono shadow-2xs ${
-              isTopRank
-                ? "bg-[#FF9900] text-[#111111]"
-                : isTop3
-                ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
-                : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
-            }`}
-          >
-            #{rankNum}
-          </span>
+          <div className="flex flex-col items-center gap-1 shrink-0">
+            <span
+              className={`inline-flex h-7 min-w-7 items-center justify-center rounded-md px-1.5 text-xs font-bold font-mono shadow-2xs ${
+                isTopRank
+                  ? "bg-[#FF9900] text-[#111111]"
+                  : isTop3
+                  ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                  : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+              }`}
+            >
+              #{rankNum}
+            </span>
+            <RankMovementBadge rankDelta={team.rankDelta} status={team.status} scoreDelta={team.scoreDelta} />
+          </div>
           <div className="min-w-0 flex-1">
             <Link
               href={`/teams/${team.teamId}`}
@@ -234,18 +295,21 @@ export function TeamTable({ teams }: TeamTableProps) {
                 return (
                   <tr key={team.teamId} className="transition-colors hover:bg-[#FFFDF9]">
                     {/* Rank */}
-                    <td className="whitespace-nowrap py-3.5 pl-4 pr-2 text-center">
-                      <span
-                        className={`inline-flex h-6 min-w-6 items-center justify-center rounded px-1.5 text-xs font-bold font-mono ${
-                          isTopRank
-                            ? "bg-[#FF9900] text-[#111111] shadow-xs"
-                            : isTop3
-                            ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
-                            : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
-                        }`}
-                      >
-                        #{rankNum}
-                      </span>
+                    <td className="whitespace-nowrap py-3 pl-4 pr-2 text-center">
+                      <div className="flex items-center justify-center gap-1.5">
+                        <span
+                          className={`inline-flex h-6 min-w-6 items-center justify-center rounded px-1.5 text-xs font-bold font-mono ${
+                            isTopRank
+                              ? "bg-[#FF9900] text-[#111111] shadow-xs"
+                              : isTop3
+                              ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                              : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
+                          }`}
+                        >
+                          #{rankNum}
+                        </span>
+                        <RankMovementBadge rankDelta={team.rankDelta} status={team.status} scoreDelta={team.scoreDelta} />
+                      </div>
                     </td>
 
                     {/* Team Name & ID */}

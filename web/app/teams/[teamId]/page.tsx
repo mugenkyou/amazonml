@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award, Home, GitFork, Clock } from "lucide-react";
-import { getAllTeams, getTeamById } from "@/lib/data";
+import { ArrowLeft, Building2, Users, CheckCircle2, ShieldCheck, Trophy, Award, Home, GitFork, Clock, TrendingUp, History, Calendar, ArrowUpRight, ArrowDownRight, Minus } from "lucide-react";
+import { getAllTeams, getTeamById, getTeamHistory } from "@/lib/data";
 import { slugifyOrganization } from "@/lib/normalize";
 import { isInterCollegeTeam } from "@/lib/inter-college";
 import { TeamMembers } from "@/components/team-members";
@@ -71,6 +71,9 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
   if (!team) {
     notFound();
   }
+
+  const teamHistory = getTeamHistory(teamId);
+  const historyEntries = (teamHistory?.history || []).slice().reverse();
 
   const rankNum = team.rank || "—";
   const isTopRank = rankNum === "1";
@@ -255,6 +258,164 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
           </div>
         ) : (
           <p className="text-xs text-[#767676]">Independent team / No institutional affiliation specified.</p>
+        )}
+      </div>
+
+      {/* Historical Score & Rank Progression */}
+      <div className="mt-5 sm:mt-6 rounded-xl border border-[#E3E3E3] bg-white p-4 sm:p-5 shadow-subtle">
+        <div className="flex items-center justify-between mb-3.5 flex-wrap gap-2">
+          <h2 className="text-xs font-bold text-[#111111] uppercase tracking-wider flex items-center gap-2">
+            <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+              <History className="h-3.5 w-3.5 text-[#FF9900]" />
+            </div>
+            <span>Historical Rank & Score Progression ({historyEntries.length} Snapshots)</span>
+          </h2>
+          {team.lastUpdated && (
+            <span className="text-[10px] font-mono text-[#767676]">
+              Last Checked: {new Date(team.lastUpdated).toLocaleTimeString()}
+            </span>
+          )}
+        </div>
+
+        {/* Delta Summary Metrics */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4 text-xs font-mono">
+          <div className="rounded-lg bg-[#F9F9F9] border border-[#EBEBEB] p-2.5">
+            <span className="text-[10px] text-[#767676] uppercase tracking-wider block font-sans font-semibold">
+              Current Rank
+            </span>
+            <span className="text-sm font-bold text-[#111111] mt-0.5 block">
+              #{team.rank || "—"}
+            </span>
+          </div>
+
+          <div className="rounded-lg bg-[#F9F9F9] border border-[#EBEBEB] p-2.5">
+            <span className="text-[10px] text-[#767676] uppercase tracking-wider block font-sans font-semibold">
+              Rank Movement
+            </span>
+            <div className="mt-0.5 flex items-center gap-1">
+              {(team.rankDelta ?? 0) > 0 ? (
+                <span className="text-sm font-bold text-emerald-700 flex items-center gap-0.5">
+                  <ArrowUpRight className="h-4 w-4" /> +{team.rankDelta}
+                </span>
+              ) : (team.rankDelta ?? 0) < 0 ? (
+                <span className="text-sm font-bold text-rose-700 flex items-center gap-0.5">
+                  <ArrowDownRight className="h-4 w-4" /> {team.rankDelta}
+                </span>
+              ) : (
+                <span className="text-sm font-medium text-[#767676] flex items-center gap-0.5">
+                  <Minus className="h-4 w-4" /> Unchanged
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="rounded-lg bg-[#F9F9F9] border border-[#EBEBEB] p-2.5">
+            <span className="text-[10px] text-[#767676] uppercase tracking-wider block font-sans font-semibold">
+              Current Score
+            </span>
+            <span className="text-sm font-bold text-[#111111] mt-0.5 block">
+              {team.score || "0.000000"}
+            </span>
+          </div>
+
+          <div className="rounded-lg bg-[#F9F9F9] border border-[#EBEBEB] p-2.5">
+            <span className="text-[10px] text-[#767676] uppercase tracking-wider block font-sans font-semibold">
+              Score Change
+            </span>
+            <div className="mt-0.5 flex items-center gap-1">
+              {(team.scoreDelta ?? 0) > 0 ? (
+                <span className="text-sm font-bold text-emerald-700">
+                  +{Number(team.scoreDelta).toFixed(6)}
+                </span>
+              ) : (team.scoreDelta ?? 0) < 0 ? (
+                <span className="text-sm font-bold text-rose-700">
+                  {Number(team.scoreDelta).toFixed(6)}
+                </span>
+              ) : (
+                <span className="text-sm font-medium text-[#767676]">0.000000</span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* History Timeline Table */}
+        {historyEntries.length > 0 ? (
+          <div className="overflow-hidden rounded-lg border border-[#EBEBEB]">
+            <table className="w-full text-left text-xs font-mono">
+              <thead className="bg-[#F7F7F7] text-[10px] uppercase tracking-wider text-[#5F6368] font-sans font-bold border-b border-[#EBEBEB]">
+                <tr>
+                  <th className="py-2.5 px-3">Recorded Time</th>
+                  <th className="py-2.5 px-3 text-center">Rank</th>
+                  <th className="py-2.5 px-3 text-center">Movement</th>
+                  <th className="py-2.5 px-3 text-right">Score</th>
+                  <th className="py-2.5 px-3 text-right">Score Delta</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#EBEBEB] bg-white text-[#111111]">
+                {historyEntries.map((h, idx) => {
+                  const isLatest = idx === 0;
+                  const dateObj = new Date(h.timestamp);
+                  const timeFormatted = isNaN(dateObj.getTime())
+                    ? h.timestamp.split("+")[0]
+                    : dateObj.toLocaleString();
+
+                  return (
+                    <tr key={h.snapshotId || idx} className={isLatest ? "bg-[#FFFDF9]" : ""}>
+                      <td className="py-2.5 px-3 text-[11px] text-[#5F6368]">
+                        <div className="flex items-center gap-1.5 font-sans">
+                          <Calendar className="h-3 w-3 text-[#767676]" />
+                          <span>{timeFormatted}</span>
+                          {isLatest && (
+                            <span className="rounded bg-[#FFF3E0] px-1 py-0.2 text-[9px] font-bold text-[#E47911] border border-[#F5C26B]">
+                              Latest
+                            </span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="py-2.5 px-3 text-center font-bold">
+                        {h.rank ? `#${h.rank}` : "—"}
+                      </td>
+                      <td className="py-2.5 px-3 text-center">
+                        {h.status === "new" ? (
+                          <span className="rounded bg-blue-50 text-blue-700 px-1.5 py-0.5 text-[10px] font-bold">
+                            NEW
+                          </span>
+                        ) : h.rankDelta > 0 ? (
+                          <span className="rounded bg-emerald-50 text-emerald-700 px-1.5 py-0.5 text-[10px] font-bold">
+                            ▲ +{h.rankDelta}
+                          </span>
+                        ) : h.rankDelta < 0 ? (
+                          <span className="rounded bg-rose-50 text-rose-700 px-1.5 py-0.5 text-[10px] font-bold">
+                            ▼ {h.rankDelta}
+                          </span>
+                        ) : (
+                          <span className="text-[#999999] text-[10px]">—</span>
+                        )}
+                      </td>
+                      <td className="py-2.5 px-3 text-right font-bold">
+                        {h.score || "—"}
+                      </td>
+                      <td className="py-2.5 px-3 text-right">
+                        {h.scoreDelta > 0 ? (
+                          <span className="text-emerald-700 font-bold">
+                            +{Number(h.scoreDelta).toFixed(6)}
+                          </span>
+                        ) : h.scoreDelta < 0 ? (
+                          <span className="text-rose-700 font-bold">
+                            {Number(h.scoreDelta).toFixed(6)}
+                          </span>
+                        ) : (
+                          <span className="text-[#999999]">—</span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="text-xs text-[#767676]">No previous snapshots recorded yet for this team.</p>
         )}
       </div>
 

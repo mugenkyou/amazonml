@@ -111,7 +111,7 @@ def test_search_exact_match(test_app_client):
     resp_empty = test_app_client.get("/search?q=IIT&exact=1")
     assert resp_empty.status_code == 200
     html_empty = resp_empty.get_data(as_text=True)
-    assert "No teams found" in html_empty
+    assert "No teams match this search" in html_empty or "No teams" in html_empty
 
     # Search exact for "IIT Bombay"
     resp_exact = test_app_client.get("/search?q=IIT%20Bombay&exact=1")

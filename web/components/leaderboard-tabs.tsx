@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Trophy, Building2, GitFork, Users } from "lucide-react";
 
 interface LeaderboardTabsProps {
-  activeTab: "teams" | "colleges" | "inter-college" | "women-teams";
+  activeTab: "teams" | "colleges" | "inter-college" | "women-teams" | "movers";
   teamCount?: number;
   collegeCount?: number;
   interCollegeCount?: number;
@@ -60,6 +60,18 @@ export function LeaderboardTabs({
         >
           {collegeCount.toLocaleString()}
         </span>
+      </Link>
+
+      <Link
+        href="/movers"
+        className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-3.5 py-2.5 text-xs sm:text-sm font-semibold border-b-2 transition-all whitespace-nowrap ${
+          activeTab === "movers"
+            ? "border-[#FF9900] text-[#E47911] bg-gradient-to-t from-[#FFF3E0]/40 to-transparent font-bold"
+            : "border-transparent text-[#5F6368] hover:text-[#111111] hover:border-[#D5D5D5]"
+        }`}
+      >
+        <span className="text-[#FF9900] font-bold">▲</span>
+        <span>Biggest Movers</span>
       </Link>
 
       <Link

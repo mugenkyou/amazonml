@@ -18,6 +18,76 @@ export interface Team {
   players: Player[];
   organizations: string[];
   normalizedOrganizations: string[];
+  previousRank?: number | null;
+  rankDelta?: number;
+  previousScore?: string | null;
+  scoreDelta?: number;
+  status?: "new" | "active" | "missing";
+  lastUpdated?: string;
+}
+
+export interface HistoricalObservation {
+  snapshotId: string;
+  timestamp: string;
+  rank: number | null;
+  score: string | null;
+  status: "new" | "active" | "missing";
+  previousRank: number | null;
+  rankDelta: number;
+  previousScore: string | null;
+  scoreDelta: number;
+}
+
+export interface TeamHistoryRecord {
+  teamId: string;
+  teamName: string;
+  firstObserved: string;
+  history: HistoricalObservation[];
+}
+
+export interface ChangeEvent {
+  timestamp: string;
+  snapshotId: string;
+  teamId: string;
+  teamName: string;
+  status: "new" | "active" | "missing";
+  previousRank: number | null;
+  newRank: number | null;
+  rankDelta: number;
+  previousScore: string | null;
+  newScore: string | null;
+  scoreDelta: number;
+}
+
+export interface SnapshotMeta {
+  snapshotId: string;
+  commit: string;
+  timestamp: string;
+  source: string;
+  teamCount: number;
+  changesCount: number;
+}
+
+export interface TeamMoverSummary {
+  teamId: string;
+  teamName: string;
+  rank: number | null;
+  previousRank: number | null;
+  rankDelta: number;
+  score: string | null;
+  previousScore: string | null;
+  scoreDelta: number;
+  status: "new" | "active" | "missing";
+  timestamp: string;
+}
+
+export interface MoversData {
+  latestSnapshotId: string | null;
+  latestTimestamp: string | null;
+  topClimbers: TeamMoverSummary[];
+  topFallers: TeamMoverSummary[];
+  topScoreGainers: TeamMoverSummary[];
+  newTeams: TeamMoverSummary[];
 }
 
 export interface Organization {

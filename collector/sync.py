@@ -20,6 +20,7 @@ from typing import Any, Dict, List, Optional, Set
 
 import config
 from .fetch_all import collect_leaderboard
+from .history import HistoryEngine, DEFAULT_HISTORY_DIR
 from .normalizer import normalize_organization
 
 logging.basicConfig(
@@ -279,6 +280,23 @@ def sync_to_web_json(
         "failedPages": raw_meta.get("failed_pages", []),
         "sourceEndpoint": raw_meta.get("source_endpoint", config.BASE_API_URL),
     }
+
+    # 7.5 Compute deltas and append historical snapshot
+    now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    history_engine = HistoryEngine()
+    snapshots, teams_history, changes, cycle_changes = history_engine.process_snapshot(
+        teams_list=teams_list,
+        timestamp_iso=now_iso,
+        commit_hash="live",
+        source="sync",
+    )
+    history_engine.save_all(snapshots, teams_history, changes)
+    logger.info(
+        "Historical state synchronized: %d snapshots, %d teams, %d new changes in this cycle",
+        len(snapshots),
+        len(teams_history),
+        len(cycle_changes),
+    )
 
     # 8. Write web JSON files
     with open(web_generated_dir / "teams.json", "w", encoding="utf-8") as f:
