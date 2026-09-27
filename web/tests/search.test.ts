@@ -77,7 +77,28 @@ describe("Data and Search Engine", () => {
     expect(result.teams.length).toBe(0);
   });
 
-  it("provides multi-mode autocomplete suggestions", () => {
+  it("searches teams by team ID", () => {
+    const teams = getAllTeams();
+    const firstTeam = teams[0];
+    const result = searchTeams(firstTeam.teamId, { mode: "team" });
+
+    expect(result.total).toBeGreaterThan(0);
+    expect(result.teams[0].teamId).toBe(firstTeam.teamId);
+  });
+
+  it("searches teams by leaderboard rank", () => {
+    const result = searchTeams("#1", { mode: "all" });
+    expect(result.total).toBeGreaterThan(0);
+    expect(result.teams.some((t) => t.rank === "1")).toBe(true);
+  });
+
+  it("provides multi-mode autocomplete suggestions with team ID and diverse categories", () => {
+    const teams = getAllTeams();
+    const firstTeam = teams[0];
+    const idSuggestions = searchSuggestions(firstTeam.teamId, "team", 5);
+    expect(idSuggestions.length).toBeGreaterThan(0);
+    expect(idSuggestions[0].teamId).toBe(firstTeam.teamId);
+
     const collegeSuggestions = searchSuggestions("IIT", "college", 5);
     expect(collegeSuggestions.length).toBeGreaterThan(0);
     expect(collegeSuggestions[0].type).toBe("college");
@@ -86,7 +107,7 @@ describe("Data and Search Engine", () => {
     expect(personSuggestions.length).toBeGreaterThan(0);
     expect(personSuggestions[0].type).toBe("person");
 
-    const allSuggestions = searchSuggestions("a", "all", 5);
+    const allSuggestions = searchSuggestions("a", "all", 8);
     expect(allSuggestions.length).toBeGreaterThan(0);
   });
 });

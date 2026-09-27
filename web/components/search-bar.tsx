@@ -324,6 +324,7 @@ export function SearchBar({
                     type="button"
                     role="option"
                     aria-selected={focusedIndex === index}
+                    onMouseDown={(e) => e.preventDefault()}
                     onClick={() => {
                       setQuery(item.queryValue);
                       const targetMode =
@@ -337,7 +338,7 @@ export function SearchBar({
                       setMode(targetMode);
                       handleSearch(item.queryValue, targetMode);
                     }}
-                    className={`flex w-full items-center justify-between min-h-[46px] rounded-md px-3 py-2 text-left text-xs transition-colors ${
+                    className={`flex w-full items-center justify-between min-h-[46px] rounded-md px-3 py-2 text-left text-xs transition-colors cursor-pointer ${
                       focusedIndex === index
                         ? "bg-[#FFF3E0] text-[#E47911] font-semibold"
                         : "text-[#111111] hover:bg-[#F7F7F7] active:bg-[#F0F0F0]"

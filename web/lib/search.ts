@@ -1,5 +1,6 @@
 /**
- * Search Engine for College, Person / Participant Name, and Team lookups across the dataset.
+ * High-Performance Search & Autocomplete Engine for Amazon ML Challenge 2026 Explorer.
+ * Supports multi-category lookups: Colleges, Student Participants, Team Names, Team IDs, and Ranks.
  */
 
 import { getAllOrganizations, getAllTeams } from "./data";
@@ -20,6 +21,9 @@ export interface SearchOptions {
   pageSize?: number;
 }
 
+/**
+ * Searches teams across all records with high-performance filtering.
+ */
 export function searchTeams(
   rawQuery?: string | null,
   options: SearchOptions = {}
@@ -61,6 +65,7 @@ export function searchTeams(
   const normQuery = normalizeOrganization(query);
   const tokens = tokenizeQuery(query);
   const lowerQuery = query.toLowerCase();
+  const cleanIdOrRank = query.replace(/^(team|id|rank|#)\s*/i, "").trim().toLowerCase();
 
   const matchedTeamsList: SearchResultTeam[] = [];
 
@@ -69,6 +74,21 @@ export function searchTeams(
     const matchedOrgsSet = new Set<string>();
     const matchedPlayersSet = new Set<Player>();
     const matchedReasons: string[] = [];
+
+    const tId = String(team.teamId || "").toLowerCase();
+    const tRank = String(team.rank || "").toLowerCase();
+    const tNameLower = (team.teamName || "").trim().toLowerCase();
+
+    // --- 0. DIRECT TEAM ID / RANK MATCHING (in "team" or "all" mode) ---
+    if (mode === "team" || mode === "all") {
+      if (tId === lowerQuery || tId === cleanIdOrRank || (cleanIdOrRank.length >= 4 && tId.includes(cleanIdOrRank))) {
+        teamMatches = true;
+        matchedReasons.push(`Team ID: ${team.teamId}`);
+      } else if (cleanIdOrRank && (tRank === cleanIdOrRank || (query.startsWith("#") && tRank === query.slice(1).trim()))) {
+        teamMatches = true;
+        matchedReasons.push(`Leaderboard Rank #${team.rank}`);
+      }
+    }
 
     // --- 1. PERSON / PARTICIPANT NAME MATCHING ---
     if (mode === "person" || mode === "all") {
@@ -142,14 +162,13 @@ export function searchTeams(
 
     // --- 3. TEAM NAME MATCHING ---
     if (mode === "team" || mode === "all") {
-      const tLower = (team.teamName || "").trim().toLowerCase();
       let teamNameMatched = false;
       if (exact) {
-        teamNameMatched = tLower === lowerQuery || tLower === normQuery;
+        teamNameMatched = tNameLower === lowerQuery || tNameLower === normQuery;
       } else {
-        if (tLower.includes(normQuery) || tLower.includes(lowerQuery)) {
+        if (tNameLower.includes(normQuery) || tNameLower.includes(lowerQuery)) {
           teamNameMatched = true;
-        } else if (tokens.length > 1 && tokens.every((tok) => tLower.includes(tok))) {
+        } else if (tokens.length > 1 && tokens.every((tok) => tNameLower.includes(tok))) {
           teamNameMatched = true;
         }
       }
@@ -157,6 +176,14 @@ export function searchTeams(
       if (teamNameMatched) {
         teamMatches = true;
         matchedReasons.push(`Team: ${team.teamName}`);
+      }
+    }
+
+    // --- 4. CROSS-FIELD MULTI-TOKEN MATCHING (e.g. "Sachi LPU" or "GG Punjab") ---
+    if (!teamMatches && mode === "all" && tokens.length > 1) {
+      const fullText = `${team.teamName} ${tId} ${tRank} ${(team.organizations || []).join(" ")} ${(team.players || []).map((p) => p.name).join(" ")}`.toLowerCase();
+      if (tokens.every((tok) => fullText.includes(tok))) {
+        teamMatches = true;
       }
     }
 
@@ -194,6 +221,9 @@ export function searchTeams(
   };
 }
 
+/**
+ * Searches academic organizations with limit cap.
+ */
 export function searchOrganizations(query?: string | null, limit: number = 10): Organization[] {
   const allOrgs = getAllOrganizations();
   if (!query || query.trim().length === 0) {
@@ -220,19 +250,22 @@ export function searchOrganizations(query?: string | null, limit: number = 10): 
   return matchedOrgs;
 }
 
+/**
+ * Generates fast, balanced autocomplete suggestions across Colleges, Persons, and Teams.
+ */
 export function searchSuggestions(
   query?: string | null,
   mode: SearchMode = "all",
   limit: number = 8
 ): SearchSuggestion[] {
   if (!query || query.trim().length === 0) {
-    if (mode === "college") {
+    if (mode === "college" || mode === "all") {
       return getAllOrganizations()
-        .slice(0, limit)
+        .slice(0, Math.min(limit, 5))
         .map((org) => ({
           type: "college",
           title: org.name,
-          badge: `${org.teamCount} teams`,
+          badge: `${org.teamCount} ${org.teamCount === 1 ? "team" : "teams"}`,
           queryValue: org.name,
           slug: org.slug,
         }));
@@ -243,12 +276,18 @@ export function searchSuggestions(
   const normQuery = normalizeOrganization(query);
   const tokens = tokenizeQuery(query);
   const lowerQuery = query.toLowerCase();
+  const cleanIdOrRank = query.replace(/^(team|id|rank|#)\s*/i, "").trim().toLowerCase();
 
   const results: SearchSuggestion[] = [];
+
+  const maxColleges = mode === "all" ? Math.min(3, limit) : limit;
+  const maxTeams = mode === "all" ? Math.min(3, limit) : limit;
+  const maxPersons = mode === "all" ? Math.min(3, limit) : limit;
 
   // 1. Suggestions for Colleges
   if (mode === "college" || mode === "all") {
     const orgs = getAllOrganizations();
+    let orgCount = 0;
     for (const org of orgs) {
       if (
         org.normalizedName.includes(normQuery) ||
@@ -261,28 +300,73 @@ export function searchSuggestions(
           queryValue: org.name,
           slug: org.slug,
         });
+        orgCount++;
+        if (orgCount >= maxColleges) break;
       }
-      if (results.length >= limit && mode === "college") break;
     }
   }
 
-  // 2. Suggestions for Participants / Persons
-  if (mode === "person" || (mode === "all" && results.length < limit)) {
+  // 2. Suggestions for Teams (matching teamName, teamId, or rank)
+  if (mode === "team" || mode === "all") {
+    const allTeams = getAllTeams();
+    let teamCount = 0;
+    for (const team of allTeams) {
+      const tLower = (team.teamName || "").toLowerCase();
+      const tId = String(team.teamId || "").toLowerCase();
+      const tRank = String(team.rank || "").toLowerCase();
+
+      let isMatch = false;
+      let badge = `Rank #${team.rank}`;
+
+      if (tId === lowerQuery || tId === cleanIdOrRank || (cleanIdOrRank.length >= 3 && tId.includes(cleanIdOrRank))) {
+        isMatch = true;
+        badge = `ID: ${team.teamId}`;
+      } else if (cleanIdOrRank && tRank === cleanIdOrRank) {
+        isMatch = true;
+        badge = `Rank #${team.rank}`;
+      } else if (
+        tLower.includes(normQuery) ||
+        tLower.includes(lowerQuery) ||
+        (tokens.length > 1 && tokens.every((tok) => tLower.includes(tok)))
+      ) {
+        isMatch = true;
+      }
+
+      if (isMatch) {
+        results.push({
+          type: "team",
+          title: team.teamName,
+          subtitle:
+            team.organizations && team.organizations.length > 0
+              ? `${team.organizations[0]} (ID: ${team.teamId})`
+              : `ID: ${team.teamId} • Score: ${team.score}`,
+          badge,
+          queryValue: team.teamName,
+          teamId: team.teamId,
+        });
+        teamCount++;
+        if (teamCount >= maxTeams) break;
+      }
+    }
+  }
+
+  // 3. Suggestions for Participants / Persons
+  if (mode === "person" || mode === "all") {
     const allTeams = getAllTeams();
     const seenPersons = new Set<string>();
+    let personCount = 0;
 
     for (const team of allTeams) {
       for (const player of team.players || []) {
         if (!player.name) continue;
         const pLower = player.name.toLowerCase();
-        const pNorm = normalizeOrganization(player.name);
 
         if (
           pLower.includes(normQuery) ||
           pLower.includes(lowerQuery) ||
           (tokens.length > 1 && tokens.every((tok) => pLower.includes(tok)))
         ) {
-          const key = `${player.name}::${player.organization || ""}`;
+          const key = `${player.name.toLowerCase()}::${player.organization || ""}`;
           if (!seenPersons.has(key)) {
             seenPersons.add(key);
             results.push({
@@ -293,37 +377,12 @@ export function searchSuggestions(
               queryValue: player.name,
               teamId: team.teamId,
             });
+            personCount++;
+            if (personCount >= maxPersons) break;
           }
         }
-        if (results.length >= limit) break;
       }
-      if (results.length >= limit) break;
-    }
-  }
-
-  // 3. Suggestions for Teams
-  if (mode === "team" || (mode === "all" && results.length < limit)) {
-    const allTeams = getAllTeams();
-    for (const team of allTeams) {
-      const tLower = team.teamName.toLowerCase();
-      if (
-        tLower.includes(normQuery) ||
-        tLower.includes(lowerQuery) ||
-        (tokens.length > 1 && tokens.every((tok) => tLower.includes(tok)))
-      ) {
-        results.push({
-          type: "team",
-          title: team.teamName,
-          subtitle:
-            team.organizations.length > 0
-              ? `${team.organizations[0]} (ID: ${team.teamId})`
-              : `ID: ${team.teamId} • Score: ${team.score}`,
-          badge: `Rank #${team.rank}`,
-          queryValue: team.teamName,
-          teamId: team.teamId,
-        });
-      }
-      if (results.length >= limit) break;
+      if (personCount >= maxPersons) break;
     }
   }
 
