@@ -8,11 +8,13 @@ Performs an end-to-end sync:
 
 import argparse
 import csv
+import datetime
 import json
 import logging
 import math
 import os
 import re
+import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 
@@ -363,6 +365,63 @@ def sync_all(
     }
 
 
+def sync_loop(
+    force: bool = True,
+    start_page: int = 1,
+    max_pages: Optional[int] = None,
+    per_page: int = config.DEFAULT_PER_PAGE,
+    delay_seconds: float = config.REQUEST_DELAY_SECONDS,
+    regenerate_only: bool = False,
+    interval_seconds: int = 60,
+) -> None:
+    """
+    Run data synchronization continuously in a background loop.
+    Keeps fetching fresh leaderboard rankings & compiling web JSON snapshots
+    until interrupted (e.g. while your local development server is running).
+    """
+    interval_seconds = max(5, interval_seconds)
+    iteration = 1
+    print("\n" + "=" * 70)
+    print(" UNSTOP LEADERBOARD CONTINUOUS AUTO-SYNC WATCHER")
+    print(f" - Sync Interval:    {interval_seconds} seconds")
+    print(f" - Mode:             {'REGENERATE ONLY (Offline)' if regenerate_only else 'LIVE FETCH & SYNC'}")
+    print(f" - Web Generated:    {WEB_DATA_GENERATED_DIR}")
+    print(" - Press Ctrl+C at any time to gracefully stop.")
+    print("=" * 70 + "\n")
+
+    try:
+        while True:
+            now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            print(f"\n[Auto-Sync] >>> Cycle #{iteration} started at {now_str}")
+            try:
+                sync_all(
+                    force=force,
+                    start_page=start_page,
+                    max_pages=max_pages,
+                    per_page=per_page,
+                    delay_seconds=delay_seconds,
+                    regenerate_only=regenerate_only,
+                )
+                print(f"[Auto-Sync] >>> Cycle #{iteration} completed successfully. Next refresh in {interval_seconds}s...")
+            except KeyboardInterrupt:
+                raise
+            except Exception as err:
+                logger.error(
+                    "Error during auto-sync cycle #%d: %s. Retrying next cycle in %ds...",
+                    iteration,
+                    err,
+                    interval_seconds,
+                    exc_info=True,
+                )
+
+            iteration += 1
+            time.sleep(interval_seconds)
+    except KeyboardInterrupt:
+        print("\n\n" + "=" * 70)
+        print(" Continuous Auto-Sync loop stopped by user. Local data is up-to-date.")
+        print("=" * 70 + "\n")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Unstop Leaderboard End-to-End Data Sync")
     parser.add_argument(
@@ -380,20 +439,44 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Rebuild CSVs and Web JSONs from existing raw snapshots without network calls",
     )
+    parser.add_argument(
+        "--watch",
+        "-w",
+        action="store_true",
+        help="Run continuously in a loop, updating data every interval as long as process is running",
+    )
+    parser.add_argument(
+        "--interval",
+        "-i",
+        type=int,
+        default=60,
+        help="Interval in seconds between sync cycles when --watch is enabled (default: 60)",
+    )
     parser.set_defaults(force=True)
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    sync_all(
-        force=args.force,
-        start_page=args.start_page,
-        max_pages=args.max_pages,
-        per_page=args.per_page,
-        delay_seconds=args.delay,
-        regenerate_only=args.regenerate_only,
-    )
+    if args.watch:
+        sync_loop(
+            force=args.force,
+            start_page=args.start_page,
+            max_pages=args.max_pages,
+            per_page=args.per_page,
+            delay_seconds=args.delay,
+            regenerate_only=args.regenerate_only,
+            interval_seconds=args.interval,
+        )
+    else:
+        sync_all(
+            force=args.force,
+            start_page=args.start_page,
+            max_pages=args.max_pages,
+            per_page=args.per_page,
+            delay_seconds=args.delay,
+            regenerate_only=args.regenerate_only,
+        )
 
 
 if __name__ == "__main__":

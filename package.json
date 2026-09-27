@@ -5,9 +5,12 @@
   "description": "Amazon ML Challenge 2026 Leaderboard & Analytics Platform",
   "scripts": {
     "sync": "python sync_data.py",
+    "sync:watch": "python sync_data.py --watch --interval 60",
     "sync:fast": "python sync_data.py --regenerate-only",
+    "sync:fast:watch": "python sync_data.py --regenerate-only --watch --interval 30",
     "sync:web": "npm --prefix web run prepare-data",
     "fetch-data": "python sync_data.py",
+    "fetch-data:watch": "python sync_data.py --watch",
     "dev": "npm --prefix web run dev",
     "build": "npm --prefix web run build",
     "start": "npm --prefix web run start",

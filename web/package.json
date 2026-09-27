@@ -5,7 +5,10 @@
   "scripts": {
     "prepare-data": "tsx scripts/prepare-data.ts",
     "sync": "tsx scripts/sync-all.ts",
+    "sync:watch": "tsx scripts/sync-all.ts --watch --interval 60",
+    "sync:fast:watch": "tsx scripts/sync-all.ts --regenerate-only --watch --interval 30",
     "fetch-data": "tsx scripts/sync-all.ts --force",
+    "fetch-data:watch": "tsx scripts/sync-all.ts --force --watch",
     "dev": "npm run prepare-data && next dev",
     "build": "npm run prepare-data && next build",
     "start": "next start",

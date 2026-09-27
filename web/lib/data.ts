@@ -1,6 +1,7 @@
 /**
  * Data Access Layer for Next.js Server Components and API routes.
  * Loads generated JSON snapshots into memory with zero live external requests.
+ * Automatically hot-reloads caches whenever JSON snapshots are updated on disk.
  */
 
 import fs from "fs";
@@ -17,12 +18,18 @@ function getDataDirectory(): string {
 
 const DATA_DIR = getDataDirectory();
 
-let cachedTeams: Team[] | null = null;
+interface CacheEntry<T> {
+  data: T;
+  mtimeMs: number;
+}
+
+const fileCache = new Map<string, CacheEntry<any>>();
+
 let cachedTeamsById: Map<string, Team> | null = null;
-let cachedOrganizations: Organization[] | null = null;
+let lastTeamsMtime = 0;
+
 let cachedOrgsBySlug: Map<string, Organization> | null = null;
-let cachedOrgIndex: Record<string, string[]> | null = null;
-let cachedMetadata: DatasetMetadata | null = null;
+let lastOrgsMtime = 0;
 
 function loadJSON<T>(filename: string, fallback: T): T {
   try {
@@ -30,73 +37,94 @@ function loadJSON<T>(filename: string, fallback: T): T {
     if (!fs.existsSync(filePath)) {
       return fallback;
     }
+    const stat = fs.statSync(filePath);
+    const currentMtime = stat.mtimeMs;
+
+    const existing = fileCache.get(filename);
+    if (existing && existing.mtimeMs === currentMtime) {
+      return existing.data as T;
+    }
+
     const content = fs.readFileSync(filePath, "utf-8");
-    return JSON.parse(content) as T;
+    const parsed = JSON.parse(content) as T;
+    fileCache.set(filename, { data: parsed, mtimeMs: currentMtime });
+    return parsed;
   } catch {
     return fallback;
   }
 }
 
 export function getAllTeams(): Team[] {
-  if (!cachedTeams) {
-    cachedTeams = loadJSON<Team[]>("teams.json", []);
+  const teams = loadJSON<Team[]>("teams.json", []);
+  const entry = fileCache.get("teams.json");
+  const mtime = entry?.mtimeMs || 0;
+  if (cachedTeamsById && mtime !== lastTeamsMtime) {
+    cachedTeamsById = null;
   }
-  return cachedTeams;
+  return teams;
 }
 
 export function getTeamById(teamId: string | number): Team | null {
   if (!teamId) return null;
   const strId = String(teamId).trim();
-  if (!cachedTeamsById) {
-    const teams = getAllTeams();
+  const teams = getAllTeams();
+  const entry = fileCache.get("teams.json");
+  const mtime = entry?.mtimeMs || 0;
+
+  if (!cachedTeamsById || mtime !== lastTeamsMtime) {
     cachedTeamsById = new Map<string, Team>();
     for (const t of teams) {
       if (t && t.teamId) {
         cachedTeamsById.set(String(t.teamId).trim(), t);
       }
     }
+    lastTeamsMtime = mtime;
   }
   return cachedTeamsById.get(strId) || null;
 }
 
 export function getAllOrganizations(): Organization[] {
-  if (!cachedOrganizations) {
-    cachedOrganizations = loadJSON<Organization[]>("organizations.json", []);
+  const orgs = loadJSON<Organization[]>("organizations.json", []);
+  const entry = fileCache.get("organizations.json");
+  const mtime = entry?.mtimeMs || 0;
+  if (cachedOrgsBySlug && mtime !== lastOrgsMtime) {
+    cachedOrgsBySlug = null;
   }
-  return cachedOrganizations;
+  return orgs;
 }
 
 export function getOrganizationBySlug(slug: string): Organization | null {
-  if (!cachedOrgsBySlug) {
-    const orgs = getAllOrganizations();
+  if (!slug) return null;
+  const orgs = getAllOrganizations();
+  const entry = fileCache.get("organizations.json");
+  const mtime = entry?.mtimeMs || 0;
+
+  if (!cachedOrgsBySlug || mtime !== lastOrgsMtime) {
     cachedOrgsBySlug = new Map<string, Organization>();
     for (const o of orgs) {
-      cachedOrgsBySlug.set(o.slug, o);
+      if (o && o.slug) {
+        cachedOrgsBySlug.set(o.slug, o);
+      }
     }
+    lastOrgsMtime = mtime;
   }
   return cachedOrgsBySlug.get(slug) || null;
 }
 
 export function getOrganizationIndex(): Record<string, string[]> {
-  if (!cachedOrgIndex) {
-    cachedOrgIndex = loadJSON<Record<string, string[]>>("organization-index.json", {});
-  }
-  return cachedOrgIndex;
+  return loadJSON<Record<string, string[]>>("organization-index.json", {});
 }
 
 export function getDatasetMetadata(): DatasetMetadata {
-  if (!cachedMetadata) {
-    cachedMetadata = loadJSON<DatasetMetadata>("metadata.json", {
-      challengeId: "290344",
-      collectionStartedAt: null,
-      collectionFinishedAt: null,
-      recordsCollected: 0,
-      uniqueTeams: 0,
-      uniquePlayers: 0,
-      uniqueOrganizations: 0,
-      complete: false,
-      sourceEndpoint: "https://unstop.com/api/public/live-leaderboard/290344/CodeContest",
-    });
-  }
-  return cachedMetadata;
+  return loadJSON<DatasetMetadata>("metadata.json", {
+    challengeId: "290344",
+    collectionStartedAt: null,
+    collectionFinishedAt: null,
+    recordsCollected: 0,
+    uniqueTeams: 0,
+    uniquePlayers: 0,
+    uniqueOrganizations: 0,
+    complete: false,
+    sourceEndpoint: "https://unstop.com/api/public/live-leaderboard/290344/CodeContest",
+  });
 }
