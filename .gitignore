@@ -11,6 +11,11 @@ ENV/
 
 # Environment Variables
 .env
+.env.local
+.env.*.local
+web/.env
+web/.env.local
+web/.env.*.local
 
 # Testing & Coverage
 .pytest_cache/
