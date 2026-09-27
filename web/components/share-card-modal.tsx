@@ -357,7 +357,7 @@ export function ShareCardModal({
                 >
                   <Sparkles className="h-4 w-4 mb-1 text-[#FF9900]" />
                   <span className="text-xs">F1 Score</span>
-                  <span className="text-[9px] text-[#767676] mt-0.5">{team.score?.slice(0, 6) || "0.00"}</span>
+                  <span className="text-[9px] text-[#767676] mt-0.5">{team.score ? (team.score.length > 8 ? team.score.slice(0, 8) : team.score) : "0.000000"}</span>
                 </button>
               </div>
             </div>

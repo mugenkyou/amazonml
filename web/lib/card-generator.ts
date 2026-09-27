@@ -493,12 +493,12 @@ export function renderShareCardToCanvas(
       ctx.fill();
       ctx.stroke();
 
-      // Point Value Label (F1 score or Rank)
+      // Point Value Label (F1 score full 6 decimals e.g. 0.912122 or Rank #12)
       const valText = isRankGraph
         ? `#${c.point.rank ?? "—"}`
         : c.point.raw.score
-        ? Number(c.point.raw.score).toFixed(4)
-        : c.point.score.toFixed(4);
+        ? Number(c.point.raw.score).toFixed(6)
+        : c.point.score.toFixed(6);
 
       // Determine label Y position (above point, or below if point is near top of graph)
       const labelY = c.y - 14 < gPadding.top ? c.y + 20 : c.y - 12;
