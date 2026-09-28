@@ -59,8 +59,8 @@ export default async function HomePage() {
     <div className="mx-auto max-w-6xl px-3.5 sm:px-6 lg:px-8 py-3 sm:py-6 space-y-6 sm:space-y-8">
       <JsonLd data={breadcrumbSchema} />
 
-      {/* 1. HERO BOX */}
-      <section className="relative rounded-xl border border-[#E3E3E3] bg-gradient-to-b from-[#FFFDF9] via-white to-white p-5 sm:px-8 sm:py-9 text-center shadow-xs">
+      {/* 1. HERO & SEARCH HEADER BOX */}
+      <section className="relative rounded-xl border border-[#E3E3E3] bg-gradient-to-b from-[#FFFDF9] via-white to-white p-5 sm:px-8 sm:py-8 text-center shadow-xs">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[3px] w-24 sm:w-32 bg-[#FF9900] rounded-b-full" />
 
         <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[#111111]">
@@ -83,35 +83,35 @@ export default async function HomePage() {
           </span>
         </div>
 
+        {/* Primary Search Bar with Filter Categories & Popular Colleges inside Header Box */}
+        <div className="mt-5 max-w-2xl mx-auto text-left">
+          <Suspense
+            fallback={
+              <div className="h-11 w-full animate-pulse rounded-lg bg-[#F7F7F7] border border-[#D5D5D5]" />
+            }
+          >
+            <SearchBar
+              initialQuery=""
+              initialMode="all"
+              initialExact={false}
+              popularOrganizations={popularOrganizations}
+            />
+          </Suspense>
+        </div>
+
         {/* One Primary CTA */}
-        <div className="mt-4">
+        <div className="mt-4 flex items-center justify-center">
           <Link
             href="/leaderboard"
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#FF9900] px-5 py-2 text-xs sm:text-sm font-bold text-[#111111] hover:bg-[#FFAC33] active:scale-98 transition-all shadow-xs"
           >
-            <span>Explore Leaderboard</span>
+            <span>Explore Full Leaderboard</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
 
-      {/* 2. SEARCH */}
-      <section className="max-w-2xl mx-auto">
-        <Suspense
-          fallback={
-            <div className="h-11 w-full animate-pulse rounded-lg bg-[#F7F7F7] border border-[#D5D5D5]" />
-          }
-        >
-          <SearchBar
-            initialQuery=""
-            initialMode="all"
-            initialExact={false}
-            popularOrganizations={popularOrganizations}
-          />
-        </Suspense>
-      </section>
-
-      {/* 3. EXPLORE */}
+      {/* 2. EXPLORE */}
       <section>
         <div className="flex items-center justify-between gap-2 border-b border-[#EAEAEA] pb-2 mb-3">
           <h2 className="text-xs font-bold uppercase tracking-wider text-[#767676] flex items-center gap-1.5">
@@ -178,7 +178,7 @@ export default async function HomePage() {
       {/* Saved Teams (renders only if user has bookmarks) */}
       <SavedTeamsSection allTeams={allTeams.slice(0, 50)} />
 
-      {/* 4. LEADERBOARD PREVIEW */}
+      {/* 3. LEADERBOARD PREVIEW */}
       <section>
         <div className="flex items-center justify-between gap-2 border-b border-[#EAEAEA] pb-2.5 mb-3.5">
           <h2 className="text-xs font-bold uppercase tracking-wider text-[#111111] flex items-center gap-1.5">
