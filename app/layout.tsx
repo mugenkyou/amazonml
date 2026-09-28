@@ -104,19 +104,28 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
+        url: "/favicon.ico",
+        sizes: "any",
+      },
+      {
+        url: "/whitebgfavicon/android-chrome-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+      {
         url: "/whitebgfavicon/favicon-32x32.png",
         sizes: "32x32",
         type: "image/png",
-        media: "(prefers-color-scheme: light)",
       },
       {
         url: "/whitebgfavicon/favicon-16x16.png",
         sizes: "16x16",
         type: "image/png",
-        media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/whitebgfavicon/favicon.ico",
+        url: "/whitebgfavicon/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
         media: "(prefers-color-scheme: light)",
       },
       {
@@ -125,20 +134,8 @@ export const metadata: Metadata = {
         type: "image/png",
         media: "(prefers-color-scheme: dark)",
       },
-      {
-        url: "/blackbg/favicon-16x16.png",
-        sizes: "16x16",
-        type: "image/png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/blackbg/favicon.ico",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/whitebgfavicon/favicon.ico",
-      },
     ],
+    shortcut: ["/favicon.ico"],
     apple: [
       { url: "/whitebgfavicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
@@ -172,6 +169,38 @@ export default function RootLayout({
           name="google-site-verification"
           content="5w8gnos2EMpvOaxww-8unXKrbq22ddUe_Wd82N-liqA"
         />
+        {/* Unconditional Standard Favicon & Multiples of 48px for Google Search */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="/whitebgfavicon/android-chrome-192x192.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="/whitebgfavicon/android-chrome-512x512.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/whitebgfavicon/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/whitebgfavicon/favicon-16x16.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/whitebgfavicon/apple-touch-icon.png"
+        />
         {/* Dynamic Light/Dark favicon link tags */}
         <link
           rel="icon"
@@ -200,10 +229,6 @@ export default function RootLayout({
           sizes="16x16"
           type="image/png"
           media="(prefers-color-scheme: dark)"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="/whitebgfavicon/apple-touch-icon.png"
         />
         <JsonLd data={[websiteSchema, datasetSchema]} />
       </head>

@@ -397,6 +397,33 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
             );
           })}
 
+          {/* Subtle Website Attribution built into chart graphic (Preserved in screenshots) */}
+          <a
+            href="https://amazonmlchallengeexplorer.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer group"
+          >
+            <g className="transition-opacity duration-200 opacity-60 hover:opacity-100">
+              <text
+                x={width - padding.right}
+                y={padding.top + chartHeight - 14}
+                textAnchor="end"
+                className="fill-[#767676] group-hover:fill-[#111111] text-[8.5px] font-sans font-semibold tracking-tight transition-colors"
+              >
+                Amazon ML Challenge Explorer
+              </text>
+              <text
+                x={width - padding.right}
+                y={padding.top + chartHeight - 4}
+                textAnchor="end"
+                className="fill-[#E47911] group-hover:fill-[#FF9900] text-[7.5px] font-mono font-medium transition-colors"
+              >
+                amazonmlchallengeexplorer.vercel.app
+              </text>
+            </g>
+          </a>
+
           {/* Interactive Line Points */}
           {coordinates.map((c, i) => {
             const isHovered = hoveredIndex === i || (hoveredIndex === null && i === coordinates.length - 1);
@@ -454,9 +481,9 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
         </svg>
       </div>
 
-      {/* Footer legend, net diff note, and trend orientation */}
-      <div className="mt-2.5 pt-2 border-t border-[#F5F5F5] flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#767676]">
-        <div className="flex items-center gap-3">
+      {/* Footer legend, net diff note, and trend orientation + clickable attribution */}
+      <div className="mt-2.5 pt-2 border-t border-[#F5F5F5] flex flex-wrap items-center justify-between gap-2.5 text-[11px] text-[#767676]">
+        <div className="flex items-center gap-3 flex-wrap">
           <span className="flex items-center gap-1.5 font-medium">
             <span className="h-2.5 w-2.5 rounded-full bg-[#FF9900] inline-block shadow-2xs" />
             <span>Score Checkpoints</span>
@@ -471,11 +498,23 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
           </span>
         </div>
 
-        <span className="font-mono text-[10px] text-[#555555] font-semibold">
-          {metric === "score"
-            ? "↑ Top of chart = Higher Score (F1)"
-            : "↑ Top of chart = Higher Rank (#1)"}
-        </span>
+        <div className="flex items-center gap-2.5 flex-wrap text-[10px]">
+          <span className="font-mono text-[#555555] font-semibold">
+            {metric === "score"
+              ? "↑ Higher Score (F1)"
+              : "↑ Higher Rank (#1)"}
+          </span>
+          <span className="text-[#D0D0D0] hidden sm:inline">•</span>
+          <a
+            href="https://amazonmlchallengeexplorer.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 font-medium text-[#767676] hover:text-[#111111] transition-colors"
+          >
+            <span>Amazon ML Challenge Explorer</span>
+            <span className="font-mono text-[#E47911] hover:text-[#FF9900] hover:underline">amazonmlchallengeexplorer.vercel.app</span>
+          </a>
+        </div>
       </div>
     </div>
   );

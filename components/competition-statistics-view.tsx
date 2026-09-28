@@ -385,6 +385,33 @@ export function CompetitionStatisticsView({ stats }: CompetitionStatisticsViewPr
               );
             })}
 
+            {/* Subtle Website Attribution built into chart graphic (Preserved in screenshots) */}
+            <a
+              href="https://amazonmlchallengeexplorer.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer group"
+            >
+              <g className="transition-opacity duration-200 opacity-60 hover:opacity-100">
+                <text
+                  x={chartWidth - padding.right}
+                  y={padding.top + innerHeight - 14}
+                  textAnchor="end"
+                  className="fill-[#767676] group-hover:fill-[#111111] text-[8.5px] font-sans font-semibold tracking-tight transition-colors"
+                >
+                  Amazon ML Challenge Explorer
+                </text>
+                <text
+                  x={chartWidth - padding.right}
+                  y={padding.top + innerHeight - 4}
+                  textAnchor="end"
+                  className="fill-[#E47911] group-hover:fill-[#FF9900] text-[7.5px] font-mono font-medium transition-colors"
+                >
+                  amazonmlchallengeexplorer.vercel.app
+                </text>
+              </g>
+            </a>
+
             {/* Interactive Points */}
             {timeCoordinates.map((c, i) => {
               const isHovered =
@@ -422,12 +449,23 @@ export function CompetitionStatisticsView({ stats }: CompetitionStatisticsViewPr
           </svg>
         </div>
 
-        {/* Informational Footer Note regarding 0/low teams during early/partial checkpoints */}
-        <div className="mt-3 pt-2.5 border-t border-[#F5F5F5] flex items-center gap-2 text-[11px] text-[#767676]">
-          <HelpCircle className="h-3.5 w-3.5 text-[#FF9900] shrink-0" />
-          <span>
-            Hover over any point to inspect day, date, and time. Lower or near-zero counts indicate initial synchronization checkpoints or partial sync captures where fewer teams had activated submissions.
-          </span>
+        {/* Informational Footer Note regarding 0/low teams & clickable attribution */}
+        <div className="mt-3 pt-2.5 border-t border-[#F5F5F5] flex flex-wrap items-center justify-between gap-2 text-[11px] text-[#767676]">
+          <div className="flex items-center gap-2">
+            <HelpCircle className="h-3.5 w-3.5 text-[#FF9900] shrink-0" />
+            <span>
+              Hover over any point to inspect day, date, and time. Lower or near-zero counts indicate initial synchronization checkpoints.
+            </span>
+          </div>
+          <a
+            href="https://amazonmlchallengeexplorer.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-[10px] text-[#767676] hover:text-[#111111] transition-colors font-medium shrink-0"
+          >
+            <span>Amazon ML Challenge Explorer</span>
+            <span className="font-mono text-[#E47911] hover:text-[#FF9900] hover:underline">amazonmlchallengeexplorer.vercel.app</span>
+          </a>
         </div>
       </div>
 
