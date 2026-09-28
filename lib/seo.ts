@@ -147,3 +147,58 @@ export function generateTeamSchema(team: Team) {
     },
   };
 }
+
+export function generateArticleSchema(article: {
+  title: string;
+  description: string;
+  slug: string;
+  publishedDate: string;
+  updatedDate?: string;
+  author?: string;
+  category?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    url: getCanonicalUrl(`/blog/${article.slug}`),
+    datePublished: article.publishedDate,
+    dateModified: article.updatedDate || article.publishedDate,
+    author: {
+      "@type": "Organization",
+      name: article.author || SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/image.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": getCanonicalUrl(`/blog/${article.slug}`),
+    },
+    inLanguage: "en-US",
+  };
+}
+
+export function generateFAQSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+

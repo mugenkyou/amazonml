@@ -6,7 +6,14 @@
 
 import fs from "fs";
 import path from "path";
-import type { DatasetMetadata, Organization, Team } from "./types";
+import type { DatasetMetadata, Organization, Team, CheckpointMoversData, MoversData } from "./types";
+export { formatISTTimestamp } from "./date-utils";
+export type { DatasetMetadata, Organization, Team, CheckpointMoversData, MoversData };
+
+
+
+
+
 
 function getDataDirectory(): string {
   const pathsToTry = [
@@ -363,6 +370,11 @@ export function getTeamChanges(teamId: string | number): import("./types").Chang
   return changes.reverse();
 }
 
+export function getAllCheckpointMovers(): Record<string, CheckpointMoversData> {
+  return loadHistoryJSON<Record<string, CheckpointMoversData>>("checkpoint-movers.json", {});
+}
+
+
 export function getMoversData(): import("./types").MoversData {
   return loadHistoryJSON<import("./types").MoversData>("movers.json", {
     latestSnapshotId: null,
@@ -374,28 +386,8 @@ export function getMoversData(): import("./types").MoversData {
   });
 }
 
-export function formatISTTimestamp(dateStr?: string | null, includeSeconds = false): string {
-  if (!dateStr) return "";
-  try {
-    const d = new Date(dateStr);
-    if (isNaN(d.getTime())) return "";
-    return (
-      d.toLocaleString("en-US", {
-        timeZone: "Asia/Kolkata",
-        month: "short",
-        day: "numeric",
-        hour: "numeric",
-        minute: "2-digit",
-        ...(includeSeconds ? { second: "2-digit" } : {}),
-        hour12: true,
-      }) + " IST"
-    );
-  } catch {
-    return "";
-  }
-}
-
 // -------------------------------------------------------------
+
 // Live Supabase-First Data Access Functions (Async)
 // -------------------------------------------------------------
 import {

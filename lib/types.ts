@@ -78,9 +78,10 @@ export interface TeamMoverSummary {
   score: string | null;
   previousScore: string | null;
   scoreDelta: number;
-  status: "new" | "active" | "missing";
+  status: "new" | "active" | "missing" | string;
   timestamp: string;
 }
+
 
 export interface MoversData {
   latestSnapshotId: string | null;
@@ -90,6 +91,30 @@ export interface MoversData {
   topScoreGainers: TeamMoverSummary[];
   newTeams: TeamMoverSummary[];
 }
+
+export interface CheckpointMoversData {
+  index: number;
+  prevSnapshotId: string;
+  currentSnapshotId: string;
+  prevSnapshotNum: number;
+  currentSnapshotNum: number;
+  prevTimestamp: string;
+  currentTimestamp: string;
+  prevTeamCount: number;
+  currentTeamCount: number;
+  maxRankClimb: number;
+  maxScoreGain: number;
+  activeClimbersCount: number;
+  scoreGainsCount: number;
+  newTeamsCount: number;
+  fallersCount: number;
+  topClimbers: TeamMoverSummary[];
+  topScoreGainers: TeamMoverSummary[];
+  newTeams: TeamMoverSummary[];
+  topFallers: TeamMoverSummary[];
+}
+
+
 
 export interface Organization {
   name: string;

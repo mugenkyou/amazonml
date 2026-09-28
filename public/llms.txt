@@ -1,44 +1,37 @@
-# Amazon ML Challenge Explorer (LLM Context & AI Agent Sitemap)
-> An independent leaderboard explorer, universal search engine, and institutional analytics platform for the Amazon ML Challenge 2026 dataset.
+# Amazon ML Challenge 2026 Explorer — Historical Archive
 
-## Platform Identity & Overview
-- Website: https://amazonmlchallengeexplorer.vercel.app
-- Challenge Name: Amazon ML Challenge 2026
-- Challenge ID: 290344
-- Competition Type: Machine Learning / CodeContest
-- Source Platform: Public Unstop Leaderboard Endpoint
-- Historical Snapshot Scope: 114/114 complete leaderboard pages (100% complete archive)
-- Dataset Dimensions:
-  - 4,334 total teams and finalized submission records
-  - 14,480 registered student participants
-  - 1,546 unique academic institutions and engineering colleges
+> "Amazon ML Challenge 2026 — The Competition, Preserved."
+> Official Explorer Domain: https://amazonmlchallengeexplorer.vercel.app/
 
-## Independence & Non-Affiliation Notice
-- Amazon ML Challenge Explorer is an independent data analysis and community exploration tool.
-- This platform is NOT affiliated with, maintained by, endorsed by, or sponsored by Amazon, Unstop, or official competition organizers.
-- The leaderboard data represents an immutable historical snapshot collected from the public competition leaderboard.
-- Institutional metrics (such as college rankings, score distributions, and inter-college team detection) are derived analytically from the snapshot dataset.
+## Project Overview
+Amazon ML Challenge Explorer is an independent historical archive, leaderboard analysis platform, and institutional benchmarking system for the Amazon ML Challenge 2026 machine learning competition.
 
-## Primary Routes & URLs
-- `/` - Main Explorer Dashboard: In-memory search across teams, student member names, and universities.
-- `/leaderboard` - Official Team Standings: Complete 4,334-team rankings with filters by rank tiers (Top 10, Top 25, Top 50, Top 100) and team roster sizes (1 to 4+ members).
-- `/leaderboard/colleges` - College Leaderboard: Analytical ranking of 1,546 universities by composite performance score, top team finish, top-5 average rank, and score percentiles.
-- `/leaderboard/inter-college` - Inter-College Teams: Catalog of teams formed by students collaborating across 2 or more distinct universities.
-- `/organizations` - Colleges & Universities Directory: Searchable index of 1,546 academic institutions.
-- `/organizations/[slug]` - College Profile Page: Specific university entity page detailing participating teams, student rosters, best rank, and score distributions.
-- `/teams/[teamId]` - Team Profile Page: Specific team entity page displaying official leaderboard rank, evaluation score, finish timestamp, participant roster, and college affiliations.
-- `/compare` - Institutional Comparison Tool: Multi-university comparison comparing team counts, top finishes, and score percentiles.
-- `/cross-college` - Cross-College Collaborations: High-density directory of multi-institutional teams.
-- `/about` - About Platform: Mission, capabilities, dataset dimensions, and project overview.
-- `/methodology` - Methodology & Algorithms: Technical documentation on data normalization, college scoring formulas, and inter-college detection.
-- `/data-sources` - Data Sources & Provenance: Public endpoint attribution, completeness verification, and static snapshot architecture.
-- `/privacy` - Privacy Policy: Information on privacy-safe search, cookie/local storage usage, and Google Analytics consent controls.
-- `/terms` - Terms of Use: Informational exploration scope, acceptable use, and limitation of liability.
-- `/contact` - Contact & Inquiries: Platform inquiry and documentation channels.
+The competition has concluded. This platform preserves 10,942 registered student teams, 36,016 participants, 2,663 participating academic institutions, and 17 chronological leaderboard checkpoints captured between September 26 and September 28, 2026.
 
-## Data Interpretation & Metric Definitions
-- **Scores**: Competition evaluation metric range from 0.000000 to 1.000000.
-- **Ranks**: Ordered by evaluation score descending, with submission timestamp tiebreakers where applicable.
-- **Colleges & Affiliations**: Normalized from self-reported university names during team registration.
-- **Inter-College Teams**: Defined as any team whose registered student members report 2 or more distinct academic institutions.
-- **Top-5 Average Rank**: Arithmetic mean rank of the top 5 highest-performing teams from a specific institution.
+## Key Datasets & Scope
+- **Final Submitting Teams:** 4,334 teams with benchmark F1 scores on the final recorded leaderboard.
+- **Top F1 Score Recorded:** 0.985388
+- **Median Competitive Score:** 0.684120
+- **Academic Organizations:** 2,663 distinct engineering colleges, universities, and technical institutes across India.
+- **Multi-College Collaborations:** 3,993 teams with cross-institutional rosters.
+- **Historical Snapshots:** 17 sequential checkpoints preserving intermediate leaderboard states and rank displacements.
+
+## Key Exploration Routes
+- **Homepage:** https://amazonmlchallengeexplorer.vercel.app/ — Overview, quick search, featured teams, statistics summary.
+- **Final Leaderboard:** https://amazonmlchallengeexplorer.vercel.app/leaderboard — Comprehensive 4,334 team standings, F1 scores, team sizes, and search.
+- **Movers & Climbers Dashboard:** https://amazonmlchallengeexplorer.vercel.app/movers — Step-by-step checkpoint comparison across all 16 intervals tracking top climbers, score gainers, and displacements.
+- **Colleges Directory:** https://amazonmlchallengeexplorer.vercel.app/colleges — Searchable index of 2,663 participating academic institutions.
+- **College Leaderboard:** https://amazonmlchallengeexplorer.vercel.app/colleges/leaderboard — Multi-metric institutional rankings by top finishes, median score, and team volume.
+- **Competition Statistics:** https://amazonmlchallengeexplorer.vercel.app/statistics — Aggregations, score distributions, team size histograms, and participation analytics.
+- **Editorial Blog & Insights:** https://amazonmlchallengeexplorer.vercel.app/blog — Research articles, leaderboard dynamics, and competition breakdowns.
+- **Frequently Asked Questions (FAQ):** https://amazonmlchallengeexplorer.vercel.app/faq — Knowledge base answering common competition and platform questions.
+- **Methodology & Calculations:** https://amazonmlchallengeexplorer.vercel.app/methodology — Technical documentation on snapshot processing and ranking math.
+- **Data Policy & Disclaimer:** https://amazonmlchallengeexplorer.vercel.app/data-policy — Archive transparency, student privacy protection, and non-affiliation statements.
+- **Support & Feedback:** https://amazonmlchallengeexplorer.vercel.app/support — Community support via Ko-fi and feedback link.
+
+
+## Data Methodology & Limitations
+- **Immutability:** Dataset is fixed to the recorded competition timeframe.
+- **Evaluation Metric:** Micro F1 Score on multimodal attribute extraction.
+- **Rank Delta Math:** Rank Movement = (Previous Rank) - (Current Rank).
+- **Independence:** Not officially affiliated with or sponsored by Amazon. All trademarks belong to their respective owners.

@@ -86,11 +86,12 @@ export function computeCollegeLeaderboardEntries(): CollegeLeaderboardEntry[] {
 
   for (const org of organizations) {
     const rawTeamIds = org.teamIds || [];
-    const uniqueTeamIds = Array.from(new Set(rawTeamIds));
+    const uniqueTeamIds: string[] = Array.from(new Set(rawTeamIds));
 
     const teams: Team[] = [];
     for (const tid of uniqueTeamIds) {
       const t = getTeamById(tid);
+
       if (t) {
         teams.push(t);
       }

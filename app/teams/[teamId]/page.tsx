@@ -40,9 +40,10 @@ export async function generateMetadata({ params }: TeamPageProps): Promise<Metad
   const teamName = team.teamName;
   const canonicalPath = `/teams/${teamId}`;
   const affiliations = team.organizations.length > 0 ? team.organizations.join(", ") : "Independent";
-  const memberList = team.players.map((p) => p.name).join(", ");
+  const memberList = (team.players || []).map((p: { name: string }) => p.name).join(", ");
 
   return {
+
     title: `${teamName} (Rank #${team.rank}) • Amazon ML Challenge 2026 Leaderboard`,
     description: `Official contest profile for ${teamName} (Contest ID: ${team.teamId}). Rank #${team.rank}, score ${team.score}, finished ${team.finishTime || "N/A"}. Members: ${memberList}. Affiliation: ${affiliations}.`,
     alternates: {
@@ -249,7 +250,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
 
         {team.organizations && team.organizations.length > 0 ? (
           <div className="flex flex-wrap gap-1.5">
-            {team.organizations.map((org) => {
+            {team.organizations.map((org: string) => {
               const slug = slugifyOrganization(org);
               return (
                 <Link
@@ -263,6 +264,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
               );
             })}
           </div>
+
         ) : (
           <p className="text-xs text-[#767676]">Independent team / No institutional affiliation specified.</p>
         )}
@@ -367,10 +369,11 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#EBEBEB] bg-white text-[#111111]">
-                {historyEntries.map((h, idx) => {
+                {historyEntries.map((h: any, idx: number) => {
                   const isLatest = idx === 0;
                   const timeFormatted = formatISTTimestamp(h.timestamp) || (h.timestamp ? h.timestamp.split("+")[0] : "—");
                   const submissionFormatted = h.finishTime
+
                     ? formatISTTimestamp(h.finishTime, true) || h.finishTime.replace("+05:30", " IST")
                     : (team.finishTime && isLatest ? formatISTTimestamp(team.finishTime, true) || team.finishTime.replace("+05:30", " IST") : "—");
 

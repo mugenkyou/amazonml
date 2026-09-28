@@ -35,20 +35,20 @@ export function Footer() {
               Leaderboard
             </Link>
             <span className="text-[#D5D5D5]">•</span>
-            <Link href="/leaderboard/colleges" className="hover:text-[#E47911] py-1">
-              Colleges
-            </Link>
-            <span className="text-[#D5D5D5]">•</span>
-            <Link href="/leaderboard/inter-college" className="hover:text-[#E47911] py-1">
-              Inter-College
+            <Link href="/movers" className="hover:text-[#E47911] py-1">
+              Movers
             </Link>
             <span className="text-[#D5D5D5]">•</span>
             <Link href="/colleges" className="hover:text-[#E47911] py-1">
               Colleges
             </Link>
             <span className="text-[#D5D5D5]">•</span>
-            <Link href="/compare" className="hover:text-[#E47911] py-1">
-              Compare
+            <Link href="/blog" className="hover:text-[#E47911] py-1">
+              Blog
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link href="/faq" className="hover:text-[#E47911] py-1">
+              FAQ
             </Link>
             <span className="text-[#D5D5D5]">•</span>
             <Link href="/about" className="hover:text-[#E47911] py-1">
@@ -59,15 +59,21 @@ export function Footer() {
               Methodology
             </Link>
             <span className="text-[#D5D5D5]">•</span>
-            <Link href="/privacy" className="hover:text-[#E47911] py-1">
-              Privacy
+            <Link href="/data-policy" className="hover:text-[#E47911] py-1">
+              Data Policy
             </Link>
             <span className="text-[#D5D5D5]">•</span>
-            <Link href="/terms" className="hover:text-[#E47911] py-1">
-              Terms
+            <Link href="/support" className="hover:text-[#E47911] py-1 font-bold text-[#E47911]">
+              Support
             </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <a href="https://tally.so/r/A71rkk" target="_blank" rel="noopener noreferrer" className="hover:text-[#E47911] py-1 text-[#007185]">
+              Feedback ↗
+            </a>
           </div>
         </div>
+
+
 
         {/* Desktop Multi-Column Top Grid (hidden on mobile, visible on md+) */}
         <div className="hidden md:grid md:grid-cols-4 gap-6 pb-6 border-b border-[#E3E3E3]">
@@ -130,12 +136,22 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 2: Documentation & Methodology */}
+          {/* Column 2: Documentation & Insights */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#111111] mb-2.5">
-              Methodology & Sources
+              Insights & Archive
             </h3>
             <ul className="space-y-1.5 text-[11px]">
+              <li>
+                <Link href="/blog" className="hover:text-[#E47911] hover:underline transition-colors font-medium text-[#111111]">
+                  Editorial Blog & Insights
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-[#E47911] hover:underline transition-colors">
+                  Frequently Asked Questions (FAQ)
+                </Link>
+              </li>
               <li>
                 <Link href="/about" className="hover:text-[#E47911] hover:underline transition-colors">
                   About the Project
@@ -144,11 +160,6 @@ export function Footer() {
               <li>
                 <Link href="/methodology" className="hover:text-[#E47911] hover:underline transition-colors">
                   Dataset & Ranking Methodology
-                </Link>
-              </li>
-              <li>
-                <Link href="/data-sources" className="hover:text-[#E47911] hover:underline transition-colors">
-                  Data Sources & Provenance
                 </Link>
               </li>
               <li>
@@ -168,9 +179,34 @@ export function Footer() {
           {/* Column 3: Trust, Legal & Inquiries */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#111111] mb-2.5">
-              Trust & Inquiries
+              Trust & Community
             </h3>
             <ul className="space-y-1.5 text-[11px]">
+              <li>
+                <Link href="/support" className="hover:text-[#E47911] hover:underline transition-colors font-medium text-[#111111]">
+                  ☕ Support on Ko-fi
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://tally.so/r/A71rkk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#E47911] hover:underline transition-colors"
+                >
+                  Send Feedback / Request ↗
+                </a>
+              </li>
+              <li>
+                <Link href="/data-policy" className="hover:text-[#E47911] hover:underline transition-colors">
+                  Data Policy & Disclaimer
+                </Link>
+              </li>
+              <li>
+                <Link href="/data-sources" className="hover:text-[#E47911] hover:underline transition-colors">
+                  Data Sources & Provenance
+                </Link>
+              </li>
               <li>
                 <Link href="/privacy" className="hover:text-[#E47911] hover:underline transition-colors">
                   Privacy Policy & Cookies
@@ -181,13 +217,10 @@ export function Footer() {
                   Terms of Use & Disclaimer
                 </Link>
               </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#E47911] hover:underline transition-colors">
-                  Contact & Feedback
-                </Link>
-              </li>
             </ul>
           </div>
+
+
         </div>
 
         {/* Stats Strip */}

@@ -18,7 +18,11 @@ import {
   Users,
   Bookmark,
   TrendingUp,
+  BookOpen,
+  MessageSquare,
 } from "lucide-react";
+
+
 import { useSavedTeams } from "@/hooks/useSavedTeams";
 
 interface LeaderboardSubItem {
@@ -319,7 +323,7 @@ export function Header() {
           {/* 3. Colleges Directory */}
           <Link
             href="/colleges"
-            className={`relative flex items-center gap-1.5 h-full px-3 text-xs lg:text-sm font-medium transition-colors ${
+            className={`relative flex items-center gap-1.5 h-full px-2.5 lg:px-3 text-xs lg:text-sm font-medium transition-colors ${
               pathname.startsWith("/colleges")
                 ? "text-[#E47911] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[3px] after:bg-[#FF9900]"
                 : "text-[#5F6368] hover:text-[#E47911] hover:bg-[#FFF7E6]/70"
@@ -332,7 +336,7 @@ export function Header() {
           {/* 4. Compare */}
           <Link
             href="/compare"
-            className={`relative flex items-center gap-1.5 h-full px-3 text-xs lg:text-sm font-medium transition-colors ${
+            className={`relative flex items-center gap-1.5 h-full px-2.5 lg:px-3 text-xs lg:text-sm font-medium transition-colors ${
               pathname.startsWith("/compare")
                 ? "text-[#E47911] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[3px] after:bg-[#FF9900]"
                 : "text-[#5F6368] hover:text-[#E47911] hover:bg-[#FFF7E6]/70"
@@ -342,10 +346,23 @@ export function Header() {
             <span>Compare</span>
           </Link>
 
-          {/* 5. Saved Teams */}
+          {/* 5. Blog / Insights */}
+          <Link
+            href="/blog"
+            className={`relative flex items-center gap-1.5 h-full px-2.5 lg:px-3 text-xs lg:text-sm font-medium transition-colors ${
+              pathname.startsWith("/blog")
+                ? "text-[#E47911] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[3px] after:bg-[#FF9900]"
+                : "text-[#5F6368] hover:text-[#E47911] hover:bg-[#FFF7E6]/70"
+            }`}
+          >
+            <BookOpen className={`h-4 w-4 shrink-0 ${pathname.startsWith("/blog") ? "text-[#FF9900]" : "text-[#767676]"}`} />
+            <span>Blog</span>
+          </Link>
+
+          {/* 6. Saved Teams */}
           <Link
             href="/saved"
-            className={`relative flex items-center gap-1.5 h-full px-3 text-xs lg:text-sm font-medium transition-colors ${
+            className={`relative flex items-center gap-1.5 h-full px-2.5 lg:px-3 text-xs lg:text-sm font-medium transition-colors ${
               pathname.startsWith("/saved")
                 ? "text-[#E47911] font-semibold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[3px] after:bg-[#FF9900]"
                 : "text-[#5F6368] hover:text-[#E47911] hover:bg-[#FFF7E6]/70"
@@ -361,8 +378,20 @@ export function Header() {
           </Link>
         </nav>
 
-        {/* Right side snapshot indicator & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
+
+        {/* Right side snapshot indicator, Feedback CTA & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          <a
+            href="https://tally.so/r/A71rkk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-[#111111] transition-all shadow-2xs shrink-0"
+            title="Send Feedback or Feature Request"
+          >
+            <MessageSquare className="h-3.5 w-3.5 text-[#FF9900]" />
+            <span className="hidden sm:inline">Feedback</span>
+          </a>
+
           <div className="hidden lg:flex items-center gap-1.5 rounded-full bg-[#F7F7F7] border border-[#E3E3E3] px-3 py-1 text-[11px] font-medium text-[#5F6368]">
             <span className="h-2 w-2 rounded-full bg-[#067D62] animate-pulse" />
             <span>4,334 Teams Indexed</span>
@@ -380,6 +409,7 @@ export function Header() {
           </button>
         </div>
       </div>
+
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
@@ -561,6 +591,42 @@ export function Header() {
                     </div>
                     <ChevronRight className="h-4 w-4 text-[#767676]" />
                   </Link>
+
+                  <Link
+                    href="/blog"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                      pathname.startsWith("/blog")
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]">
+                        <BookOpen className="h-4 w-4" />
+                      </div>
+                      <span>Editorial Blog & Insights</span>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-[#767676]" />
+                  </Link>
+
+                  <Link
+                    href="/faq"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                      pathname.startsWith("/faq")
+                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                        : "text-[#111111] hover:bg-[#F7F7F7]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]">
+                        <span className="font-bold text-xs">?</span>
+                      </div>
+                      <span>Frequently Asked Questions</span>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-[#767676]" />
+                  </Link>
                 </div>
               </div>
 
@@ -569,6 +635,7 @@ export function Header() {
                 <div className="px-2 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-[#767676]">
                   My Space
                 </div>
+
                 <Link
                   href="/saved"
                   onClick={() => setMobileMenuOpen(false)}
@@ -590,7 +657,42 @@ export function Header() {
                     </span>
                   )}
                 </Link>
+
+                <Link
+                  href="/support"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
+                    pathname.startsWith("/support")
+                      ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
+                      : "text-[#111111] hover:bg-[#F7F7F7]"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911]">
+                      <span className="text-xs">☕</span>
+                    </div>
+                    <span>Support the Project</span>
+                  </div>
+                  <ChevronRight className="h-4 w-4 text-[#767676]" />
+                </Link>
+
+                <a
+                  href="https://tally.so/r/A71rkk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold text-[#111111] hover:bg-[#F7F7F7] transition-colors"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]">
+                      <MessageSquare className="h-4 w-4 text-[#FF9900]" />
+                    </div>
+                    <span>Send Feedback / Request</span>
+                  </div>
+                  <ChevronRight className="h-4 w-4 text-[#767676]" />
+                </a>
               </div>
+
             </div>
 
             {/* Mobile Footer Status Tag */}
