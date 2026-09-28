@@ -9,6 +9,26 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/organizations",
+        destination: "/colleges",
+        permanent: true,
+      },
+      {
+        source: "/organizations/:slug",
+        destination: "/colleges/:slug",
+        permanent: true,
+      },
+      {
+        source: "/cross-college",
+        destination: "/leaderboard/inter-college",
+        permanent: true,
+      },
+      {
+        source: "/leaderboard/colleges",
+        destination: "/colleges",
+        permanent: true,
+      },
+      {
         source: "/women-only-teams",
         destination: "/leaderboard/women-teams",
         permanent: true,

@@ -124,7 +124,7 @@ function MobileCollegeCard({ college }: { college: CollegeLeaderboardEntry }) {
           </span>
           <div className="min-w-0 flex-1">
             <Link
-              href={`/organizations/${college.slug}`}
+              href={`/colleges/${college.slug}`}
               className="font-bold text-sm text-[#111111] hover:text-[#E47911] transition-colors leading-tight line-clamp-2 block break-words"
             >
               {college.name}
@@ -169,7 +169,7 @@ function MobileCollegeCard({ college }: { college: CollegeLeaderboardEntry }) {
         </button>
 
         <Link
-          href={`/organizations/${college.slug}`}
+          href={`/colleges/${college.slug}`}
           className="inline-flex min-h-[36px] items-center gap-1 rounded-md border border-[#FF9900] bg-[#FFF3E0] px-3 py-1 text-xs font-semibold text-[#E47911] hover:bg-[#FF9900] hover:text-[#111111] transition-all shadow-2xs"
         >
           <span>View College</span>
@@ -337,7 +337,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                     </span>
                     <h3 className="text-base sm:text-lg font-black text-[#111111] mt-1.5 leading-snug line-clamp-2">
                       <Link
-                        href={`/organizations/${top3Colleges[0].slug}`}
+                        href={`/colleges/${top3Colleges[0].slug}`}
                         className="hover:text-[#E47911] transition-colors"
                       >
                         {top3Colleges[0].name}
@@ -385,7 +385,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
 
                 <div className="mt-3 pt-2">
                   <Link
-                    href={`/organizations/${top3Colleges[0].slug}`}
+                    href={`/colleges/${top3Colleges[0].slug}`}
                     className="flex w-full min-h-[38px] items-center justify-center gap-1.5 rounded-lg bg-[#FF9900] px-3 py-1.5 text-xs font-bold text-[#111111] hover:bg-[#E47911] hover:text-white transition-all shadow-xs"
                   >
                     <span>View Champion College Profile</span>
@@ -405,7 +405,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                     </span>
                     <h3 className="text-sm sm:text-base font-bold text-[#111111] mt-1.5 leading-snug line-clamp-2">
                       <Link
-                        href={`/organizations/${top3Colleges[1].slug}`}
+                        href={`/colleges/${top3Colleges[1].slug}`}
                         className="hover:text-[#E47911] transition-colors"
                       >
                         {top3Colleges[1].name}
@@ -440,7 +440,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
 
                 <div className="mt-3">
                   <Link
-                    href={`/organizations/${top3Colleges[1].slug}`}
+                    href={`/colleges/${top3Colleges[1].slug}`}
                     className="flex w-full min-h-[34px] items-center justify-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-3 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-all"
                   >
                     <span>View Profile</span>
@@ -460,7 +460,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                     </span>
                     <h3 className="text-sm sm:text-base font-bold text-[#111111] mt-1.5 leading-snug line-clamp-2">
                       <Link
-                        href={`/organizations/${top3Colleges[2].slug}`}
+                        href={`/colleges/${top3Colleges[2].slug}`}
                         className="hover:text-[#E47911] transition-colors"
                       >
                         {top3Colleges[2].name}
@@ -495,7 +495,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
 
                 <div className="mt-3">
                   <Link
-                    href={`/organizations/${top3Colleges[2].slug}`}
+                    href={`/colleges/${top3Colleges[2].slug}`}
                     className="flex w-full min-h-[34px] items-center justify-center gap-1 rounded-md border border-[#D5D5D5] bg-white px-3 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-all"
                   >
                     <span>View Profile</span>
@@ -795,7 +795,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
                         <div className="flex items-center gap-1.5">
                           {isTopRank && <Crown className="h-3.5 w-3.5 text-[#FF9900] shrink-0" />}
                           <Link
-                            href={`/organizations/${college.slug}`}
+                            href={`/colleges/${college.slug}`}
                             className="font-bold text-[#111111] hover:text-[#E47911] hover:underline transition-colors block line-clamp-1"
                           >
                             {college.name}
@@ -868,7 +868,7 @@ export function CollegeLeaderboardView({ initialResult }: CollegeLeaderboardView
 
                       <td className="whitespace-nowrap py-3 pl-2 pr-4 text-right">
                         <Link
-                          href={`/organizations/${college.slug}`}
+                          href={`/colleges/${college.slug}`}
                           className="inline-flex min-h-[32px] items-center gap-1 rounded border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors shadow-2xs"
                         >
                           <span>View</span>

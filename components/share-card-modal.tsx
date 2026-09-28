@@ -85,7 +85,7 @@ export function ShareCardModal({
       let isMounted = true;
       setIsLoadingHistory(true);
 
-      fetch(`/api/teams/${encodeURIComponent(String(team.teamId))}/history`)
+      fetch(`/api/teams/${encodeURIComponent(String(team.teamId))}`)
         .then((res) => (res.ok ? res.json() : null))
         .then((data) => {
           if (isMounted && data?.history) {

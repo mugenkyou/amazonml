@@ -1,7 +1,8 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Home } from "lucide-react";
-import { getWomenTeams, type WomenTeamSortOption } from "@/lib/women-teams";
+import { getWomenTeams } from "@/lib/women-teams";
 import { WomenTeamsView } from "@/components/women-teams-view";
 import { JsonLd } from "@/components/json-ld";
 import { generateBreadcrumbSchema, SITE_URL } from "@/lib/seo";
@@ -27,32 +28,13 @@ export const metadata: Metadata = {
   },
 };
 
-interface WomenTeamsPageProps {
-  searchParams: Promise<{
-    sort?: string;
-    q?: string;
-    size?: string;
-    page?: string;
-    pageSize?: string;
-  }>;
-}
-
-export default async function WomenTeamsLeaderboardPage({
-  searchParams,
-}: WomenTeamsPageProps) {
-  const params = await searchParams;
-  const sort = (params.sort || "rank") as WomenTeamSortOption;
-  const query = (params.q || "").trim();
-  const teamSize = (params.size || "all") as "all" | "1" | "2" | "3" | "4";
-  const page = Math.max(1, parseInt(params.page || "1", 10) || 1);
-  const pageSize = Math.max(1, Math.min(100, parseInt(params.pageSize || "24", 10) || 24));
-
+export default function WomenTeamsLeaderboardPage() {
   const initialResult = getWomenTeams({
-    sort,
-    query,
-    teamSize,
-    page,
-    pageSize,
+    sort: "rank",
+    query: "",
+    teamSize: "all",
+    page: 1,
+    pageSize: 24,
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -100,7 +82,9 @@ export default async function WomenTeamsLeaderboardPage({
       </div>
 
       {/* Main Interactive Table / Cards / Controls */}
-      <WomenTeamsView initialResult={initialResult} />
+      <Suspense fallback={<div className="h-96 w-full animate-pulse rounded-lg bg-[#F7F7F7] border border-[#D5D5D5]" />}>
+        <WomenTeamsView initialResult={initialResult} />
+      </Suspense>
     </div>
   );
 }

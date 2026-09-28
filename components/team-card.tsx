@@ -79,7 +79,7 @@ export function TeamCard({ team }: TeamCardProps) {
                 return (
                   <Link
                     key={org}
-                    href={`/organizations/${slug}`}
+                    href={`/colleges/${slug}`}
                     className={`rounded px-1.5 py-0.5 text-[10px] sm:text-[11px] transition-colors break-words max-w-full ${
                       isMatched
                         ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B] font-semibold"

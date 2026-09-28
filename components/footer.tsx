@@ -43,8 +43,8 @@ export function Footer() {
               Inter-College
             </Link>
             <span className="text-[#D5D5D5]">•</span>
-            <Link href="/organizations" className="hover:text-[#E47911] py-1">
-              Directory
+            <Link href="/colleges" className="hover:text-[#E47911] py-1">
+              Colleges
             </Link>
             <span className="text-[#D5D5D5]">•</span>
             <Link href="/compare" className="hover:text-[#E47911] py-1">
@@ -118,7 +118,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/organizations" className="hover:text-[#E47911] hover:underline transition-colors">
+                <Link href="/colleges" className="hover:text-[#E47911] hover:underline transition-colors">
                   Colleges & Universities Directory
                 </Link>
               </li>

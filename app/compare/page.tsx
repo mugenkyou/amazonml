@@ -5,7 +5,7 @@ import { getAllOrganizations } from "@/lib/data";
 import { compareOrganizations } from "@/lib/analytics";
 import { OrganizationCompare } from "@/components/organization-compare";
 import { JsonLd } from "@/components/json-ld";
-import { generateBreadcrumbSchema, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { generateBreadcrumbSchema, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Compare Colleges & University Performance • Amazon ML Challenge 2026",
@@ -22,33 +22,15 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = "force-dynamic";
-
-interface ComparePageProps {
-  searchParams: Promise<{
-    orgs?: string;
-  }>;
-}
-
-export default async function ComparePage({ searchParams }: ComparePageProps) {
-  const params = await searchParams;
-  const rawOrgs = params.orgs || "";
-
+export default function ComparePage() {
   const defaultSlugs = [
     "indian-institute-of-technology-iit-madras",
     "vellore-institute-of-technology-vit-vellore",
     "amrita-vishwa-vidyapeetham-ettimadai-coimbatore",
   ];
 
-  const slugs = rawOrgs
-    ? rawOrgs
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean)
-    : defaultSlugs;
-
   const allOrganizations = getAllOrganizations();
-  const initialComparisons = compareOrganizations(slugs);
+  const initialComparisons = compareOrganizations(defaultSlugs);
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", item: "/" },

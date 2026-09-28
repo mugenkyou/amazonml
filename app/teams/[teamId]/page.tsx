@@ -19,9 +19,7 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 
-export const dynamic = "force-dynamic";
 export const dynamicParams = true;
-export const revalidate = 0;
 
 interface TeamPageProps {
   params: Promise<{
@@ -256,7 +254,7 @@ export default async function TeamDetailPage({ params }: TeamPageProps) {
               return (
                 <Link
                   key={org}
-                  href={`/organizations/${slug}`}
+                  href={`/colleges/${slug}`}
                   className="inline-flex min-h-[36px] items-center gap-1.5 rounded-md border border-[#E3E3E3] bg-[#F7F7F7] px-3 py-1.5 text-xs font-medium text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors break-words max-w-full"
                 >
                   <Building2 className="h-3.5 w-3.5 text-[#767676] shrink-0" />

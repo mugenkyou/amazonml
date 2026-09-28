@@ -527,10 +527,10 @@ export function Header() {
                   </Link>
 
                   <Link
-                    href="/organizations"
+                    href="/colleges"
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center justify-between rounded-xl px-3 py-2.5 min-h-[44px] text-xs font-semibold transition-colors ${
-                      pathname.startsWith("/organizations")
+                      pathname.startsWith("/colleges")
                         ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
                         : "text-[#111111] hover:bg-[#F7F7F7]"
                     }`}

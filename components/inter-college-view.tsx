@@ -133,7 +133,7 @@ function MobileInterCollegeCard({ team }: { team: InterCollegeTeam }) {
           {team.organizations.map((org) => (
             <Link
               key={org.slug}
-              href={`/organizations/${org.slug}`}
+              href={`/colleges/${org.slug}`}
               className="inline-flex items-center gap-1 rounded bg-[#F7F7F7] border border-[#E3E3E3] px-2 py-0.5 text-[11px] text-[#5F6368] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors max-w-full break-words"
             >
               <Building2 className="h-3 w-3 text-[#767676] shrink-0" />
@@ -599,7 +599,7 @@ export function InterCollegeView({ initialResult }: InterCollegeViewProps) {
                             {team.organizations.map((org) => (
                               <Link
                                 key={org.slug}
-                                href={`/organizations/${org.slug}`}
+                                href={`/colleges/${org.slug}`}
                                 className="inline-flex items-center gap-1 rounded bg-[#F7F7F7] border border-[#E3E3E3] px-1.5 py-0.5 text-[11px] text-[#5F6368] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors"
                               >
                                 <Building2 className="h-3 w-3 text-[#767676] shrink-0" />
@@ -769,7 +769,7 @@ export function InterCollegeView({ initialResult }: InterCollegeViewProps) {
                 <div className="flex items-center gap-1.5">
                   <Building2 className="h-3.5 w-3.5 text-[#FF9900] shrink-0" />
                   <Link
-                    href={`/organizations/${pair.college1.slug}`}
+                    href={`/colleges/${pair.college1.slug}`}
                     className="font-semibold text-[#111111] hover:text-[#E47911] transition-colors truncate"
                   >
                     {pair.college1.name}
@@ -781,7 +781,7 @@ export function InterCollegeView({ initialResult }: InterCollegeViewProps) {
                 <div className="flex items-center gap-1.5">
                   <Building2 className="h-3.5 w-3.5 text-[#5F6368] shrink-0" />
                   <Link
-                    href={`/organizations/${pair.college2.slug}`}
+                    href={`/colleges/${pair.college2.slug}`}
                     className="font-semibold text-[#111111] hover:text-[#E47911] transition-colors truncate"
                   >
                     {pair.college2.name}
@@ -842,7 +842,7 @@ export function InterCollegeView({ initialResult }: InterCollegeViewProps) {
                 </span>
                 <div className="min-w-0 flex-1">
                   <Link
-                    href={`/organizations/${stat.organization.slug}`}
+                    href={`/colleges/${stat.organization.slug}`}
                     className="font-bold text-xs sm:text-sm text-[#111111] hover:text-[#E47911] transition-colors block truncate"
                   >
                     {stat.organization.name}

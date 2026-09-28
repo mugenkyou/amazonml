@@ -30,14 +30,11 @@ import {
 } from "@/lib/data";
 import { searchTeams } from "@/lib/search";
 import { generateBreadcrumbSchema, SITE_URL } from "@/lib/seo";
-import type { SearchMode } from "@/lib/types";
-
-export const revalidate = 30;
 
 export const metadata: Metadata = {
   title: "Amazon ML Challenge 2026 — Final Historical Explorer",
   description:
-    "Explore 9,000+ teams across the competition's historical leaderboard snapshots. Preserved historical dataset and analytics for Amazon ML Challenge 2026.",
+    "Explore 10,900+ teams across the competition's historical leaderboard snapshots. Preserved historical dataset and analytics for Amazon ML Challenge 2026.",
   alternates: {
     canonical: "/",
   },
@@ -49,25 +46,7 @@ export const metadata: Metadata = {
   },
 };
 
-interface PageProps {
-  searchParams: Promise<{
-    q?: string;
-    mode?: string;
-    exact?: string;
-    page?: string;
-  }>;
-}
-
-export default async function HomePage({ searchParams }: PageProps) {
-  const params = await searchParams;
-  const query = params.q || "";
-  const modeParam = params.mode as SearchMode;
-  const mode: SearchMode = ["all", "college", "person", "team"].includes(modeParam)
-    ? modeParam
-    : "all";
-  const exact = params.exact === "1" || params.exact === "true";
-  const page = parseInt(params.page || "1", 10) || 1;
-
+export default async function HomePage() {
   const [historicalMeta, timelineSnapshots, allOrganizations, allTeams] = await Promise.all([
     getHistoricalMetadata(),
     getTimelineSnapshots(),
@@ -76,11 +55,11 @@ export default async function HomePage({ searchParams }: PageProps) {
   ]);
   const popularOrganizations = allOrganizations.slice(0, 6);
 
-  const searchResponse = searchTeams(query, {
-    mode,
-    exact,
-    page,
-    pageSize: query ? 24 : 6,
+  const searchResponse = searchTeams("", {
+    mode: "all",
+    exact: false,
+    page: 1,
+    pageSize: 6,
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([{ name: "Home", item: "/" }]);
@@ -108,85 +87,85 @@ export default async function HomePage({ searchParams }: PageProps) {
 
         {/* Hero Title & Supporting Copy */}
         <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#111111] leading-tight">
-          THE COMPETITION, PRESERVED.
+          Historical Leaderboard Explorer
         </h1>
-        <p className="mt-2 text-sm sm:text-base text-[#5F6368] max-w-2xl mx-auto leading-relaxed">
-          Explore 9,000+ teams across the competition&apos;s historical leaderboard snapshots.
+        <p className="mt-2 text-xs sm:text-sm text-[#5F6368] max-w-2xl mx-auto leading-relaxed">
+          Permanent historical archive of the Amazon ML Challenge 2026. Explore final standings, institutional rankings, team histories, and timeline replays across all competition snapshots.
         </p>
 
-        {/* 4 Primary Dynamic Statistic Cards */}
-        <div className="mt-6 sm:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto text-left">
-          {/* Stat 1: Teams */}
-          <div className="rounded-xl border border-[#E3E3E3] bg-white p-3.5 sm:p-4 shadow-2xs hover:border-[#FF9900] transition-colors">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#5F6368]">
-                Teams
-              </span>
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911]">
-                <Trophy className="h-3.5 w-3.5" />
-              </div>
-            </div>
-            <div className="mt-2 font-mono text-xl sm:text-2xl font-black text-[#111111]">
-              {historicalMeta.number_of_unique_teams.toLocaleString()}
-            </div>
-            <div className="mt-0.5 text-[11px] text-[#767676] font-sans">
-              Recorded in competition
-            </div>
-          </div>
+        {/* Preserved Dataset Integrity Callout */}
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-[#5F6368]">
+          <span className="inline-flex items-center gap-1 font-mono text-[11px] bg-[#F7F7F7] border border-[#E3E3E3] rounded-md px-2.5 py-1 text-[#111111]">
+            <ShieldCheck className="h-3.5 w-3.5 text-[#007600]" />
+            <span>Dataset Preserved & Validated</span>
+          </span>
+          <span className="inline-flex items-center gap-1 font-mono text-[11px] bg-[#F7F7F7] border border-[#E3E3E3] rounded-md px-2.5 py-1 text-[#111111]">
+            <Database className="h-3.5 w-3.5 text-[#FF9900]" />
+            <span>{allTeams.length.toLocaleString()} Teams · {allOrganizations.length.toLocaleString()} Colleges</span>
+          </span>
+          <span className="inline-flex items-center gap-1 font-mono text-[11px] bg-[#F7F7F7] border border-[#E3E3E3] rounded-md px-2.5 py-1 text-[#111111]">
+            <History className="h-3.5 w-3.5 text-[#007185]" />
+            <span>{timelineSnapshots.length} Snapshots Preserved</span>
+          </span>
+        </div>
 
-          {/* Stat 2: Participants */}
-          <div className="rounded-xl border border-[#E3E3E3] bg-white p-3.5 sm:p-4 shadow-2xs hover:border-[#FF9900] transition-colors">
+        {/* Quick Navigation Cards */}
+        <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 max-w-4xl mx-auto text-left">
+          <Link
+            href="/leaderboard"
+            className="group rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-3 hover:border-[#FF9900] hover:bg-[#FFF3E0]/30 transition-all shadow-2xs"
+          >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#5F6368]">
-                Participants
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] group-hover:text-[#E47911]">
+                Standings
               </span>
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#F3F4F6] text-[#4B5563]">
-                <Users className="h-3.5 w-3.5" />
-              </div>
+              <Trophy className="h-4 w-4 text-[#FF9900]" />
             </div>
-            <div className="mt-2 font-mono text-xl sm:text-2xl font-black text-[#111111]">
-              {historicalMeta.number_of_unique_participants.toLocaleString()}
-            </div>
-            <div className="mt-0.5 text-[11px] text-[#767676] font-sans">
-              Indexed competitors
-            </div>
-          </div>
+            <div className="text-sm sm:text-base font-bold text-[#111111] mt-1">Leaderboard</div>
+            <div className="text-[11px] text-[#5F6368] mt-0.5 font-mono">10,942 Teams</div>
+          </Link>
 
-          {/* Stat 3: Organizations */}
-          <div className="rounded-xl border border-[#E3E3E3] bg-white p-3.5 sm:p-4 shadow-2xs hover:border-[#FF9900] transition-colors">
+          <Link
+            href="/colleges"
+            className="group rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-3 hover:border-[#FF9900] hover:bg-[#FFF3E0]/30 transition-all shadow-2xs"
+          >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#5F6368]">
-                Organizations
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] group-hover:text-[#E47911]">
+                Institutions
               </span>
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#F3F4F6] text-[#4B5563]">
-                <Building2 className="h-3.5 w-3.5" />
-              </div>
+              <Building2 className="h-4 w-4 text-[#007185]" />
             </div>
-            <div className="mt-2 font-mono text-xl sm:text-2xl font-black text-[#111111]">
-              {historicalMeta.number_of_unique_organizations.toLocaleString()}
-            </div>
-            <div className="mt-0.5 text-[11px] text-[#767676] font-sans">
-              Colleges & universities
-            </div>
-          </div>
+            <div className="text-sm sm:text-base font-bold text-[#111111] mt-1">Colleges Hub</div>
+            <div className="text-[11px] text-[#5F6368] mt-0.5 font-mono">2,579 Colleges</div>
+          </Link>
 
-          {/* Stat 4: Historical Snapshots */}
-          <div className="rounded-xl border border-[#E3E3E3] bg-white p-3.5 sm:p-4 shadow-2xs hover:border-[#FF9900] transition-colors">
+          <Link
+            href="/race-test"
+            className="group rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-3 hover:border-[#FF9900] hover:bg-[#FFF3E0]/30 transition-all shadow-2xs"
+          >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#5F6368]">
-                Historical Snapshots
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] group-hover:text-[#E47911]">
+                Interactive
               </span>
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#FFF3E0] text-[#E47911]">
-                <History className="h-3.5 w-3.5" />
-              </div>
+              <History className="h-4 w-4 text-[#E47911]" />
             </div>
-            <div className="mt-2 font-mono text-xl sm:text-2xl font-black text-[#111111]">
-              {historicalMeta.number_of_snapshots.toLocaleString()}
+            <div className="text-sm sm:text-base font-bold text-[#111111] mt-1">Race Replay</div>
+            <div className="text-[11px] text-[#5F6368] mt-0.5 font-mono">Top 50 Dynamics</div>
+          </Link>
+
+          <Link
+            href="/statistics"
+            className="group rounded-lg border border-[#E3E3E3] bg-[#FAFAFA] p-3 hover:border-[#FF9900] hover:bg-[#FFF3E0]/30 transition-all shadow-2xs"
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#767676] group-hover:text-[#E47911]">
+                Analytics
+              </span>
+              <BarChart2 className="h-4 w-4 text-[#007600]" />
             </div>
-            <div className="mt-0.5 text-[11px] text-[#767676] font-sans">
-              Checkpoints preserved
-            </div>
-          </div>
+            <div className="text-sm sm:text-base font-bold text-[#111111] mt-1">Statistics</div>
+            <div className="text-[11px] text-[#5F6368] mt-0.5 font-mono">Score Distributions</div>
+          </Link>
         </div>
 
         {/* Primary Search Bar */}
@@ -197,9 +176,9 @@ export default async function HomePage({ searchParams }: PageProps) {
             }
           >
             <SearchBar
-              initialQuery={query}
-              initialMode={mode}
-              initialExact={exact}
+              initialQuery=""
+              initialMode="all"
+              initialExact={false}
               popularOrganizations={popularOrganizations}
             />
           </Suspense>
@@ -220,97 +199,44 @@ export default async function HomePage({ searchParams }: PageProps) {
       {/* Saved Teams Section */}
       <SavedTeamsSection allTeams={allTeams.slice(0, 50)} />
 
-      {/* Top Teams Preview / Search Results Section */}
+      {/* Top Teams Preview Section */}
       <section className="mt-6">
-        {!query && (
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E3E3E3] pb-2.5 mb-4">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#111111] flex items-center gap-2 font-mono">
-              <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
-                <Trophy className="h-3.5 w-3.5 text-[#FF9900]" />
-              </div>
-              <span>Final Recorded Leaderboard Preview</span>
-            </h2>
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
-              <Link
-                href="/leaderboard/inter-college"
-                className="inline-flex items-center gap-1 font-semibold text-[#E47911] hover:underline"
-              >
-                <span>Inter-College Teams</span>
-                <ArrowRight className="h-3 w-3" />
-              </Link>
-              <span className="text-[#D5D5D5]">•</span>
-              <Link
-                href="/leaderboard/colleges"
-                className="inline-flex items-center gap-1 font-semibold text-[#007185] hover:text-[#E47911] hover:underline"
-              >
-                <span>Colleges Standings</span>
-                <ArrowRight className="h-3 w-3" />
-              </Link>
-              <span className="text-[#D5D5D5]">•</span>
-              <Link
-                href="/leaderboard"
-                className="inline-flex items-center gap-1 font-semibold text-[#007185] hover:text-[#E47911] hover:underline"
-              >
-                <span>Full Recorded Leaderboard</span>
-                <ArrowRight className="h-3 w-3" />
-              </Link>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#E3E3E3] pb-2.5 mb-4">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-[#111111] flex items-center gap-2 font-mono">
+            <div className="flex h-5 w-5 items-center justify-center rounded bg-[#FFF3E0] text-[#E47911]">
+              <Trophy className="h-3.5 w-3.5 text-[#FF9900]" />
             </div>
+            <span>Final Recorded Leaderboard Preview</span>
+          </h2>
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs">
+            <Link
+              href="/leaderboard/inter-college"
+              className="inline-flex items-center gap-1 font-semibold text-[#E47911] hover:underline"
+            >
+              <span>Inter-College Teams</span>
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link
+              href="/colleges"
+              className="inline-flex items-center gap-1 font-semibold text-[#007185] hover:text-[#E47911] hover:underline"
+            >
+              <span>Colleges Standings</span>
+              <ArrowRight className="h-3 w-3" />
+            </Link>
+            <span className="text-[#D5D5D5]">•</span>
+            <Link
+              href="/leaderboard"
+              className="inline-flex items-center gap-1 font-semibold text-[#007185] hover:text-[#E47911] hover:underline"
+            >
+              <span>Full Recorded Leaderboard</span>
+              <ArrowRight className="h-3 w-3" />
+            </Link>
           </div>
-        )}
+        </div>
 
         <OrganizationResults searchResponse={searchResponse} />
       </section>
-
-      {/* Data Preservation Notice & Disclaimer */}
-      {!query && (
-        <section className="mt-10 rounded-xl border border-[#E3E3E3] bg-[#FAFAFA] p-5 sm:p-7 shadow-xs">
-          <div className="flex items-center gap-2 border-b border-[#E3E3E3] pb-3 mb-4">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#131921] text-white">
-              <Database className="h-4 w-4 text-[#FF9900]" />
-            </div>
-            <div>
-              <h2 className="text-sm sm:text-base font-bold text-[#111111]">
-                Historical Archive & Dataset Integrity
-              </h2>
-              <p className="text-[11px] text-[#767676] font-mono">
-                Preserved from {historicalMeta.number_of_snapshots} snapshots ({historicalMeta.total_historical_observations.toLocaleString()} historical observations)
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-[#5F6368] leading-relaxed">
-            <div className="rounded-lg border border-[#E3E3E3] bg-white p-3.5">
-              <div className="flex items-center gap-1.5 font-bold text-[#111111] mb-1.5">
-                <Search className="h-4 w-4 text-[#FF9900]" />
-                <span>Historical Search Index</span>
-              </div>
-              <p>
-                Search across all {historicalMeta.number_of_unique_teams.toLocaleString()} recorded teams, participants, or {historicalMeta.number_of_unique_organizations.toLocaleString()} colleges with deterministic offline indexing.
-              </p>
-            </div>
-
-            <div className="rounded-lg border border-[#E3E3E3] bg-white p-3.5">
-              <div className="flex items-center gap-1.5 font-bold text-[#111111] mb-1.5">
-                <History className="h-4 w-4 text-[#FF9900]" />
-                <span>Snapshot Progression</span>
-              </div>
-              <p>
-                Every snapshot from {timelineSnapshots[0]?.dateFormatted || "Sep 26"} through competition close is preserved with full rank, score, and movement history.
-              </p>
-            </div>
-
-            <div className="rounded-lg border border-[#E3E3E3] bg-white p-3.5">
-              <div className="flex items-center gap-1.5 font-bold text-[#111111] mb-1.5">
-                <ShieldCheck className="h-4 w-4 text-[#067D62]" />
-                <span>Archive Attribution</span>
-              </div>
-              <p>
-                Based on the final leaderboard snapshot collected by the Explorer. This archive reflects the data captured by the Explorer and may not represent an official permanent competition API.
-              </p>
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   );
 }

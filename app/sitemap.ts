@@ -40,7 +40,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/organizations`,
+      url: `${SITE_URL}/colleges`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/colleges/leaderboard`,
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
@@ -49,12 +55,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/compare`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/cross-college`,
-      lastModified: now,
-      changeFrequency: "weekly",
       priority: 0.8,
     },
     {
@@ -96,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const orgEntries: MetadataRoute.Sitemap = organizations.map((org) => ({
-    url: `${SITE_URL}/organizations/${org.slug}`,
+    url: `${SITE_URL}/colleges/${org.slug}`,
     lastModified: now,
     changeFrequency: "weekly",
     priority: 0.8,

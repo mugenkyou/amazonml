@@ -19,8 +19,6 @@ import { LeaderboardRaceView } from "@/components/leaderboard-race-view";
 import { JsonLd } from "@/components/json-ld";
 import { generateBreadcrumbSchema, SITE_URL } from "@/lib/seo";
 
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "The Race to the Top • Historical Leaderboard Race (Top 50)",
   description:

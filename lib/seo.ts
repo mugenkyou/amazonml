@@ -113,7 +113,7 @@ export function generateOrganizationSchema(
   org: Organization,
   stats?: OrganizationStats | null
 ) {
-  const orgUrl = getCanonicalUrl(`/organizations/${org.slug}`);
+  const orgUrl = getCanonicalUrl(`/colleges/${org.slug}`);
   return {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",

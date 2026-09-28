@@ -22,9 +22,6 @@ import { JsonLd } from "@/components/json-ld";
 import { generateBreadcrumbSchema, SITE_URL } from "@/lib/seo";
 import type { SearchResultTeam } from "@/lib/types";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 export const metadata: Metadata = {
   title: "FINAL RECORDED LEADERBOARD • Amazon ML Challenge 2026",
   description:

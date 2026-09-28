@@ -37,7 +37,7 @@ export function TeamMembers({ players }: TeamMembersProps) {
                 <Building2 className="h-3 w-3 shrink-0 text-[#767676]" />
                 {orgSlug && player.organization ? (
                   <Link
-                    href={`/organizations/${orgSlug}`}
+                    href={`/colleges/${orgSlug}`}
                     className="truncate text-[#007185] hover:text-[#E47911] hover:underline transition-colors"
                   >
                     {player.organization}

@@ -235,7 +235,7 @@ function MobileExpandableTeamCard({ team }: { team: SearchResultTeam }) {
                   return (
                     <Link
                       key={org}
-                      href={`/organizations/${slug}`}
+                      href={`/colleges/${slug}`}
                       className="inline-flex items-center gap-1 rounded bg-white border border-[#D5D5D5] px-2 py-1 text-[11px] text-[#007185] hover:text-[#E47911] hover:border-[#FF9900] transition-colors break-words max-w-full"
                     >
                       <span className="line-clamp-1">{org}</span>
@@ -363,7 +363,7 @@ export function TeamTable({ teams }: TeamTableProps) {
                             return (
                               <Link
                                 key={org}
-                                href={`/organizations/${slug}`}
+                                href={`/colleges/${slug}`}
                                 className="inline-flex items-center gap-1 text-[#007185] hover:text-[#E47911] hover:underline max-w-[260px] truncate"
                               >
                                 <Building2 className="h-3 w-3 text-[#767676] shrink-0" />
