@@ -87,7 +87,7 @@ export default async function HomePage() {
 
         {/* Hero Title & Supporting Copy */}
         <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#111111] leading-tight">
-          Historical Leaderboard Explorer
+          Amazon ML Challenge Explorer 2026
         </h1>
         <p className="mt-2 text-xs sm:text-sm text-[#5F6368] max-w-2xl mx-auto leading-relaxed">
           Permanent historical archive of the Amazon ML Challenge 2026. Explore final standings, institutional rankings, team histories, and timeline replays across all competition snapshots.
