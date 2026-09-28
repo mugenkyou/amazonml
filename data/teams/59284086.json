@@ -1,0 +1,97 @@
+{
+  "team_id": "59284086",
+  "team_name": "Neural Ninjas",
+  "participants": [
+    {
+      "player_name": "Piyush Kumar",
+      "organization": "Netaji Subhas University of Technology (NSUT), Delhi",
+      "player_index": 1
+    },
+    {
+      "player_name": "Rajit Gupta",
+      "organization": "Netaji Subhas University of Technology (NSUT), Delhi",
+      "player_index": 2
+    },
+    {
+      "player_name": "Veer Rathi",
+      "organization": "Netaji Subhas University of Technology (NSUT), Delhi",
+      "player_index": 3
+    },
+    {
+      "player_name": "Jashan Preet Singh",
+      "organization": "Netaji Subhas University of Technology (NSUT), Delhi",
+      "player_index": 4
+    }
+  ],
+  "organizations": [
+    "Netaji Subhas University of Technology (NSUT), Delhi"
+  ],
+  "is_inter_college": false,
+  "first_seen": "2026-09-27T16:43:29+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 3,
+  "latest_rank": 692,
+  "latest_score": 0.983552,
+  "statistics": {
+    "first_rank": 679,
+    "final_rank": 692,
+    "best_rank": 679,
+    "worst_rank": 692,
+    "first_score": 0.983552,
+    "final_score": 0.983552,
+    "best_score": 0.983552,
+    "worst_score": 0.983552,
+    "rank_change": -13,
+    "score_change": 0.0
+  },
+  "history": [
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 679,
+      "score": 0.983552,
+      "score_str": "0.983552",
+      "finish_time": "2026-09-27 22:04:40+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 692,
+      "score": 0.983552,
+      "score_str": "0.983552",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 679,
+      "rank_delta": -13,
+      "previous_score": 0.983552,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 692,
+      "score": 0.983552,
+      "score_str": "0.983552",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 692,
+      "rank_delta": 0,
+      "previous_score": 0.983552,
+      "score_delta": 0.0
+    }
+  ]
+}

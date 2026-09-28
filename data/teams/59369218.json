@@ -1,0 +1,108 @@
+{
+  "team_id": "59369218",
+  "team_name": "Lunchbox",
+  "participants": [
+    {
+      "player_name": "Snehal Pal",
+      "organization": "Indian Institute of Technology (IIT), Kharagpur",
+      "player_index": 1
+    },
+    {
+      "player_name": "Abhishek Saha",
+      "organization": "Indian Institute of Technology (IIT), Kharagpur",
+      "player_index": 2
+    },
+    {
+      "player_name": "Arkapratim Debnath",
+      "organization": "Indian Institute of Technology (IIT), Kharagpur",
+      "player_index": 3
+    }
+  ],
+  "organizations": [
+    "Indian Institute of Technology (IIT), Kharagpur"
+  ],
+  "is_inter_college": false,
+  "first_seen": "2026-09-27T15:57:31.616790+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 4,
+  "latest_rank": 628,
+  "latest_score": 0.984082,
+  "statistics": {
+    "first_rank": 533,
+    "final_rank": 628,
+    "best_rank": 533,
+    "worst_rank": 628,
+    "first_score": 0.984082,
+    "final_score": 0.984082,
+    "best_score": 0.984082,
+    "worst_score": 0.984082,
+    "rank_change": -95,
+    "score_change": 0.0
+  },
+  "history": [
+    {
+      "snapshot_id": "2026-09-27T15-57-31.616790Z00-00_live",
+      "timestamp": "2026-09-27T15:57:31.616790+00:00",
+      "rank": 533,
+      "score": 0.984082,
+      "score_str": "0.984082",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 612,
+      "score": 0.984082,
+      "score_str": "0.984082",
+      "finish_time": "2026-09-27 20:18:30+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 533,
+      "rank_delta": -79,
+      "previous_score": 0.984082,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 628,
+      "score": 0.984082,
+      "score_str": "0.984082",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 612,
+      "rank_delta": -16,
+      "previous_score": 0.984082,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 628,
+      "score": 0.984082,
+      "score_str": "0.984082",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 628,
+      "rank_delta": 0,
+      "previous_score": 0.984082,
+      "score_delta": 0.0
+    }
+  ]
+}

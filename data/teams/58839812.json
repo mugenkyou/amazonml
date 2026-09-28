@@ -1,0 +1,113 @@
+{
+  "team_id": "58839812",
+  "team_name": "Model Mavericks",
+  "participants": [
+    {
+      "player_name": "Jai Nikhil Boricha",
+      "organization": "Sardar Patel Institute of Technology (SPIT), Mumbai",
+      "player_index": 1
+    },
+    {
+      "player_name": "Vansh Lathiya",
+      "organization": "Sardar Patel Institute of Technology (SPIT), Mumbai",
+      "player_index": 2
+    },
+    {
+      "player_name": "Dheer Kedia",
+      "organization": "Sardar Patel Institute of Technology (SPIT), Mumbai",
+      "player_index": 3
+    },
+    {
+      "player_name": "Vivan Dhoka",
+      "organization": "Sardar Patel Institute of Technology (SPIT), Mumbai",
+      "player_index": 4
+    }
+  ],
+  "organizations": [
+    "Sardar Patel Institute of Technology (SPIT), Mumbai"
+  ],
+  "is_inter_college": false,
+  "first_seen": "2026-09-27T15:57:31.616790+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 4,
+  "latest_rank": 554,
+  "latest_score": 0.98476,
+  "statistics": {
+    "first_rank": 1070,
+    "final_rank": 554,
+    "best_rank": 544,
+    "worst_rank": 1070,
+    "first_score": 0.978494,
+    "final_score": 0.98476,
+    "best_score": 0.98476,
+    "worst_score": 0.978494,
+    "rank_change": 516,
+    "score_change": 0.006266
+  },
+  "history": [
+    {
+      "snapshot_id": "2026-09-27T15-57-31.616790Z00-00_live",
+      "timestamp": "2026-09-27T15:57:31.616790+00:00",
+      "rank": 1070,
+      "score": 0.978494,
+      "score_str": "0.978494",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 544,
+      "score": 0.98476,
+      "score_str": "0.98476",
+      "finish_time": "2026-09-27 22:05:32+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "improved",
+      "previous_rank": 1070,
+      "rank_delta": 526,
+      "previous_score": 0.978494,
+      "score_delta": 0.006266
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 554,
+      "score": 0.98476,
+      "score_str": "0.984760",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 544,
+      "rank_delta": -10,
+      "previous_score": 0.98476,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 554,
+      "score": 0.98476,
+      "score_str": "0.984760",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 554,
+      "rank_delta": 0,
+      "previous_score": 0.98476,
+      "score_delta": 0.0
+    }
+  ]
+}

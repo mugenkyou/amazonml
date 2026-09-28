@@ -1,0 +1,87 @@
+{
+  "team_id": "58950915",
+  "team_name": "Sher",
+  "participants": [
+    {
+      "player_name": "kaustubh chaturvedi",
+      "organization": "Jaypee Institute of Information Technology (JIIT), Noida",
+      "player_index": 1
+    },
+    {
+      "player_name": "Ausaaf Ahmad",
+      "organization": "Jaypee Institute of Information Technology (JIIT), Noida",
+      "player_index": 2
+    }
+  ],
+  "organizations": [
+    "Jaypee Institute of Information Technology (JIIT), Noida"
+  ],
+  "is_inter_college": false,
+  "first_seen": "2026-09-27T16:43:29+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 3,
+  "latest_rank": 52,
+  "latest_score": 0.990129,
+  "statistics": {
+    "first_rank": 49,
+    "final_rank": 52,
+    "best_rank": 49,
+    "worst_rank": 52,
+    "first_score": 0.990107,
+    "final_score": 0.990129,
+    "best_score": 0.990129,
+    "worst_score": 0.990107,
+    "rank_change": -3,
+    "score_change": 2.2e-05
+  },
+  "history": [
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 49,
+      "score": 0.990107,
+      "score_str": "0.990107",
+      "finish_time": "2026-09-27 21:56:29+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 52,
+      "score": 0.990129,
+      "score_str": "0.990129",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "improved",
+      "previous_rank": 49,
+      "rank_delta": -3,
+      "previous_score": 0.990107,
+      "score_delta": 2.2e-05
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 52,
+      "score": 0.990129,
+      "score_str": "0.990129",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 52,
+      "rank_delta": 0,
+      "previous_score": 0.990129,
+      "score_delta": 0.0
+    }
+  ]
+}

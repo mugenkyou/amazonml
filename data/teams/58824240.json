@@ -1,0 +1,58 @@
+{
+  "team_id": "58824240",
+  "team_name": "MLC",
+  "participants": [],
+  "organizations": [],
+  "is_inter_college": false,
+  "first_seen": "2026-09-27T17:21:36.463044+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 2,
+  "latest_rank": 2608,
+  "latest_score": 0.95181,
+  "statistics": {
+    "first_rank": 7145,
+    "final_rank": 2608,
+    "best_rank": 2608,
+    "worst_rank": 7145,
+    "first_score": 0.43317,
+    "final_score": 0.95181,
+    "best_score": 0.95181,
+    "worst_score": 0.43317,
+    "rank_change": 4537,
+    "score_change": 0.51864
+  },
+  "history": [
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 7145,
+      "score": 0.43317,
+      "score_str": "0.433170",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 2608,
+      "score": 0.95181,
+      "score_str": "0.951810",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "improved",
+      "previous_rank": 7145,
+      "rank_delta": 4537,
+      "previous_score": 0.43317,
+      "score_delta": 0.51864
+    }
+  ]
+}

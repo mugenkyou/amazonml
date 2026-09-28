@@ -1,0 +1,113 @@
+{
+  "team_id": "59070174",
+  "team_name": "Clover",
+  "participants": [
+    {
+      "player_name": "Swagata Banerjee",
+      "organization": "Vellore Institute of Technology (VIT), Vellore",
+      "player_index": 1
+    },
+    {
+      "player_name": "Avanthika Hegde",
+      "organization": "Vellore Institute of Technology (VIT), Vellore",
+      "player_index": 2
+    },
+    {
+      "player_name": "Shalvi Surve",
+      "organization": "Vellore Institute of Technology (VIT), Vellore",
+      "player_index": 3
+    },
+    {
+      "player_name": "Shaik Azam Sufiyan",
+      "organization": "Vellore Institute of Technology (VIT), Vellore",
+      "player_index": 4
+    }
+  ],
+  "organizations": [
+    "Vellore Institute of Technology (VIT), Vellore"
+  ],
+  "is_inter_college": false,
+  "first_seen": "2026-09-27T15:57:31.616790+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 4,
+  "latest_rank": 420,
+  "latest_score": 0.986191,
+  "statistics": {
+    "first_rank": 339,
+    "final_rank": 420,
+    "best_rank": 339,
+    "worst_rank": 420,
+    "first_score": 0.986191,
+    "final_score": 0.986191,
+    "best_score": 0.986191,
+    "worst_score": 0.986191,
+    "rank_change": -81,
+    "score_change": 0.0
+  },
+  "history": [
+    {
+      "snapshot_id": "2026-09-27T15-57-31.616790Z00-00_live",
+      "timestamp": "2026-09-27T15:57:31.616790+00:00",
+      "rank": 339,
+      "score": 0.986191,
+      "score_str": "0.986191",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 409,
+      "score": 0.986191,
+      "score_str": "0.986191",
+      "finish_time": "2026-09-27 19:59:38+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 339,
+      "rank_delta": -70,
+      "previous_score": 0.986191,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 420,
+      "score": 0.986191,
+      "score_str": "0.986191",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 409,
+      "rank_delta": -11,
+      "previous_score": 0.986191,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 420,
+      "score": 0.986191,
+      "score_str": "0.986191",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 420,
+      "rank_delta": 0,
+      "previous_score": 0.986191,
+      "score_delta": 0.0
+    }
+  ]
+}

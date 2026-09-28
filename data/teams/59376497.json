@@ -1,0 +1,97 @@
+{
+  "team_id": "59376497",
+  "team_name": "em el",
+  "participants": [
+    {
+      "player_name": "Rahul Joshi",
+      "organization": "Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad",
+      "player_index": 1
+    },
+    {
+      "player_name": "Ranish Garg",
+      "organization": "Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad",
+      "player_index": 2
+    },
+    {
+      "player_name": "Rachit Pandey",
+      "organization": "Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad",
+      "player_index": 3
+    },
+    {
+      "player_name": "Yash Agarwal",
+      "organization": "Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad",
+      "player_index": 4
+    }
+  ],
+  "organizations": [
+    "Indian Institute of Technology, Indian School of Mines (IIT ISM), Dhanbad"
+  ],
+  "is_inter_college": false,
+  "first_seen": "2026-09-27T16:43:29+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 3,
+  "latest_rank": 135,
+  "latest_score": 0.98908,
+  "statistics": {
+    "first_rank": 128,
+    "final_rank": 135,
+    "best_rank": 128,
+    "worst_rank": 135,
+    "first_score": 0.98908,
+    "final_score": 0.98908,
+    "best_score": 0.98908,
+    "worst_score": 0.98908,
+    "rank_change": -7,
+    "score_change": 0.0
+  },
+  "history": [
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 128,
+      "score": 0.98908,
+      "score_str": "0.98908",
+      "finish_time": "2026-09-27 21:49:51+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 135,
+      "score": 0.98908,
+      "score_str": "0.989080",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 128,
+      "rank_delta": -7,
+      "previous_score": 0.98908,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 135,
+      "score": 0.98908,
+      "score_str": "0.989080",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 135,
+      "rank_delta": 0,
+      "previous_score": 0.98908,
+      "score_delta": 0.0
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "team_id": "59346572",
+  "team_name": "AI Amazons",
+  "participants": [
+    {
+      "player_name": "Shivani Lodhi",
+      "organization": "Jai Narain College of Technology (JNCT), Bhopal, Madhya Pradesh",
+      "player_index": 1
+    },
+    {
+      "player_name": "Anju Dhakar",
+      "organization": "Lakshmi Narain College of Technology (LNCT), Bhopal, Madhya Pradesh",
+      "player_index": 2
+    },
+    {
+      "player_name": "Nisha Mewada",
+      "organization": "Jai Narain College of Technology (JNCT), Bhopal, Madhya Pradesh",
+      "player_index": 3
+    },
+    {
+      "player_name": "Amrita Pal",
+      "organization": "LNCT Group of Colleges",
+      "player_index": 4
+    }
+  ],
+  "organizations": [
+    "Lakshmi Narain College of Technology (LNCT), Bhopal, Madhya Pradesh",
+    "Jai Narain College of Technology (JNCT), Bhopal, Madhya Pradesh",
+    "LNCT Group of Colleges"
+  ],
+  "is_inter_college": true,
+  "first_seen": "2026-09-27T15:57:31.616790+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 4,
+  "latest_rank": 764,
+  "latest_score": 0.982933,
+  "statistics": {
+    "first_rank": 663,
+    "final_rank": 764,
+    "best_rank": 663,
+    "worst_rank": 764,
+    "first_score": 0.982933,
+    "final_score": 0.982933,
+    "best_score": 0.982933,
+    "worst_score": 0.982933,
+    "rank_change": -101,
+    "score_change": 0.0
+  },
+  "history": [
+    {
+      "snapshot_id": "2026-09-27T15-57-31.616790Z00-00_live",
+      "timestamp": "2026-09-27T15:57:31.616790+00:00",
+      "rank": 663,
+      "score": 0.982933,
+      "score_str": "0.982933",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 745,
+      "score": 0.982933,
+      "score_str": "0.982933",
+      "finish_time": "2026-09-27 21:17:49+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 663,
+      "rank_delta": -82,
+      "previous_score": 0.982933,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 764,
+      "score": 0.982933,
+      "score_str": "0.982933",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 745,
+      "rank_delta": -19,
+      "previous_score": 0.982933,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 764,
+      "score": 0.982933,
+      "score_str": "0.982933",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 764,
+      "rank_delta": 0,
+      "previous_score": 0.982933,
+      "score_delta": 0.0
+    }
+  ]
+}

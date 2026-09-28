@@ -1,0 +1,88 @@
+{
+  "team_id": "59441431",
+  "team_name": "BitStorm",
+  "participants": [
+    {
+      "player_name": "PARTH MISHRA",
+      "organization": "Thapar Institute of Engineering and Technology (TIET), Patiala",
+      "player_index": 1
+    },
+    {
+      "player_name": "Saksham",
+      "organization": "Thapar University (TU), Patiala, Punjab, India",
+      "player_index": 2
+    }
+  ],
+  "organizations": [
+    "Thapar Institute of Engineering and Technology (TIET), Patiala",
+    "Thapar University (TU), Patiala, Punjab, India"
+  ],
+  "is_inter_college": true,
+  "first_seen": "2026-09-27T16:43:29+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 3,
+  "latest_rank": 40,
+  "latest_score": 0.990344,
+  "statistics": {
+    "first_rank": 38,
+    "final_rank": 40,
+    "best_rank": 38,
+    "worst_rank": 40,
+    "first_score": 0.990253,
+    "final_score": 0.990344,
+    "best_score": 0.990344,
+    "worst_score": 0.990253,
+    "rank_change": -2,
+    "score_change": 9.1e-05
+  },
+  "history": [
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 38,
+      "score": 0.990253,
+      "score_str": "0.990253",
+      "finish_time": "2026-09-27 22:00:49+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 40,
+      "score": 0.990344,
+      "score_str": "0.990344",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "improved",
+      "previous_rank": 38,
+      "rank_delta": -2,
+      "previous_score": 0.990253,
+      "score_delta": 9.1e-05
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 40,
+      "score": 0.990344,
+      "score_str": "0.990344",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 40,
+      "rank_delta": 0,
+      "previous_score": 0.990344,
+      "score_delta": 0.0
+    }
+  ]
+}

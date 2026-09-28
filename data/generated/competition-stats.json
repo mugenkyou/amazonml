@@ -1,0 +1,2801 @@
+{
+  "summary": {
+    "totalTeams": 10942,
+    "totalParticipants": 35946,
+    "totalOrganizations": 2663,
+    "totalSnapshots": 34,
+    "finalSnapshotTimestamp": "2026-09-27T18:34:36.366546+00:00"
+  },
+  "participationOverTime": [
+    {
+      "snapshotId": "2026-09-26T12-10-09Z05-30_2f83adc",
+      "snapshotNumber": 1,
+      "timestamp": "2026-09-26T12:10:09+05:30",
+      "dateFormatted": "Sep 26, 2026",
+      "timeFormatted": "12:10 PM IST",
+      "teams": 3398,
+      "participants": 11394,
+      "organizations": 1390
+    },
+    {
+      "snapshotId": "2026-09-26T18-25-07Z05-30_aca6c24",
+      "snapshotNumber": 2,
+      "timestamp": "2026-09-26T18:25:07+05:30",
+      "dateFormatted": "Sep 26, 2026",
+      "timeFormatted": "06:25 PM IST",
+      "teams": 4334,
+      "participants": 14480,
+      "organizations": 1582
+    },
+    {
+      "snapshotId": "2026-09-27T00-21-49Z05-30_4c7d519",
+      "snapshotNumber": 3,
+      "timestamp": "2026-09-27T00:21:49+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "12:21 AM IST",
+      "teams": 5881,
+      "participants": 19641,
+      "organizations": 1881
+    },
+    {
+      "snapshotId": "2026-09-27T05-15-33Z05-30_9386fcf",
+      "snapshotNumber": 4,
+      "timestamp": "2026-09-27T05:15:33+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "05:15 AM IST",
+      "teams": 6273,
+      "participants": 20916,
+      "organizations": 1945
+    },
+    {
+      "snapshotId": "2026-09-27T12-00-16Z05-30_42336ee",
+      "snapshotNumber": 5,
+      "timestamp": "2026-09-27T12:00:16+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "12:00 PM IST",
+      "teams": 6954,
+      "participants": 23161,
+      "organizations": 2041
+    },
+    {
+      "snapshotId": "2026-09-27T16-08-17Z05-30_4d9907b",
+      "snapshotNumber": 6,
+      "timestamp": "2026-09-27T16:08:17+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "04:08 PM IST",
+      "teams": 7787,
+      "participants": 25861,
+      "organizations": 2184
+    },
+    {
+      "snapshotId": "2026-09-27T10-50-21Z_8af6ace",
+      "snapshotNumber": 7,
+      "timestamp": "2026-09-27T10:50:21+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "04:20 PM IST",
+      "teams": 7834,
+      "participants": 26015,
+      "organizations": 2187
+    },
+    {
+      "snapshotId": "2026-09-27T16-25-28Z05-30_3966d6d",
+      "snapshotNumber": 8,
+      "timestamp": "2026-09-27T16:25:28+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "04:25 PM IST",
+      "teams": 7829,
+      "participants": 25997,
+      "organizations": 2186
+    },
+    {
+      "snapshotId": "2026-09-27T11-26-52.367126Z00-00_live",
+      "snapshotNumber": 9,
+      "timestamp": "2026-09-27T11:26:52.367126+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "04:56 PM IST",
+      "teams": 7816,
+      "participants": 25952,
+      "organizations": 2185
+    },
+    {
+      "snapshotId": "2026-09-27T12-25-44.921187Z00-00_live",
+      "snapshotNumber": 10,
+      "timestamp": "2026-09-27T12:25:44.921187+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "05:55 PM IST",
+      "teams": 8271,
+      "participants": 27432,
+      "organizations": 2257
+    },
+    {
+      "snapshotId": "2026-09-27T13-41-43.591963Z00-00_live",
+      "snapshotNumber": 11,
+      "timestamp": "2026-09-27T13:41:43.591963+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "07:11 PM IST",
+      "teams": 8362,
+      "participants": 27717,
+      "organizations": 2264
+    },
+    {
+      "snapshotId": "2026-09-27T13-57-24.911205Z00-00_live",
+      "snapshotNumber": 12,
+      "timestamp": "2026-09-27T13:57:24.911205+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "07:27 PM IST",
+      "teams": 8358,
+      "participants": 27704,
+      "organizations": 2263
+    },
+    {
+      "snapshotId": "2026-09-27T13-58-23.382052Z00-00_live",
+      "snapshotNumber": 13,
+      "timestamp": "2026-09-27T13:58:23.382052+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "07:28 PM IST",
+      "teams": 8358,
+      "participants": 27704,
+      "organizations": 2263
+    },
+    {
+      "snapshotId": "2026-09-27T14-03-12.162412Z00-00_live",
+      "snapshotNumber": 14,
+      "timestamp": "2026-09-27T14:03:12.162412+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "07:33 PM IST",
+      "teams": 8358,
+      "participants": 27704,
+      "organizations": 2263
+    },
+    {
+      "snapshotId": "2026-09-27T15-57-31.616790Z00-00_live",
+      "snapshotNumber": 15,
+      "timestamp": "2026-09-27T15:57:31.616790+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "09:27 PM IST",
+      "teams": 9115,
+      "participants": 30141,
+      "organizations": 2381
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-42-50_UTC",
+      "snapshotNumber": 16,
+      "timestamp": "2026-09-27T16:42:50.953844+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:12 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-43-29_UTC",
+      "snapshotNumber": 17,
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:13 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-45-04_UTC",
+      "snapshotNumber": 18,
+      "timestamp": "2026-09-27T16:45:04.690215+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:15 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-59-41_UTC",
+      "snapshotNumber": 19,
+      "timestamp": "2026-09-27T16:59:41.855116+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:29 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-59-42_UTC",
+      "snapshotNumber": 20,
+      "timestamp": "2026-09-27T16:59:42.161794+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:29 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-11-35_UTC",
+      "snapshotNumber": 21,
+      "timestamp": "2026-09-27T17:11:35.644424+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:41 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "2026-09-27T17-21-36.463044Z00-00_live",
+      "snapshotNumber": 22,
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:51 PM IST",
+      "teams": 10088,
+      "participants": 33281,
+      "organizations": 2540
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-23-25_UTC",
+      "snapshotNumber": 23,
+      "timestamp": "2026-09-27T17:23:25.644908+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:53 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-23-28_UTC",
+      "snapshotNumber": 24,
+      "timestamp": "2026-09-27T17:23:28.243543+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:53 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-35-12_UTC",
+      "snapshotNumber": 25,
+      "timestamp": "2026-09-27T17:35:12.423509+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:05 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-35-13_UTC",
+      "snapshotNumber": 26,
+      "timestamp": "2026-09-27T17:35:13.754643+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:05 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-46-54_UTC",
+      "snapshotNumber": 27,
+      "timestamp": "2026-09-27T17:46:54.304910+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:16 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-46-55_UTC",
+      "snapshotNumber": 28,
+      "timestamp": "2026-09-27T17:46:55.780478+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:16 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-58-38_UTC",
+      "snapshotNumber": 29,
+      "timestamp": "2026-09-27T17:58:38.857086+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:28 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-58-39_UTC",
+      "snapshotNumber": 30,
+      "timestamp": "2026-09-27T17:58:39.872365+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:28 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_18-10-15_UTC",
+      "snapshotNumber": 31,
+      "timestamp": "2026-09-27T18:10:15.958349+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:40 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_18-21-50_UTC",
+      "snapshotNumber": 32,
+      "timestamp": "2026-09-27T18:21:50.849153+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:51 PM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_18-33-27_UTC",
+      "snapshotNumber": 33,
+      "timestamp": "2026-09-27T18:33:27.598450+00:00",
+      "dateFormatted": "Sep 28, 2026",
+      "timeFormatted": "12:03 AM IST",
+      "teams": 0,
+      "participants": 0,
+      "organizations": 0
+    },
+    {
+      "snapshotId": "2026-09-27T18-34-36.366546Z00-00_live",
+      "snapshotNumber": 34,
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "dateFormatted": "Sep 28, 2026",
+      "timeFormatted": "12:04 AM IST",
+      "teams": 10135,
+      "participants": 33416,
+      "organizations": 2550
+    }
+  ],
+  "snapshots": [
+    {
+      "snapshotId": "2026-09-26T12-10-09Z05-30_2f83adc",
+      "snapshotNumber": 1,
+      "timestamp": "2026-09-26T12:10:09+05:30",
+      "dateFormatted": "Sep 26, 2026",
+      "timeFormatted": "12:10 PM IST",
+      "teamCount": 3398,
+      "participantCount": 11394,
+      "orgCount": 1390,
+      "avgScore": 0.662757,
+      "medianScore": 0.766626,
+      "minScore": 0.0,
+      "maxScore": 0.990556,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 477,
+          "percentage": 14.04
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 287,
+          "percentage": 8.45
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 481,
+          "percentage": 14.16
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 538,
+          "percentage": 15.83
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 255,
+          "percentage": 7.5
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 355,
+          "percentage": 10.45
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 826,
+          "percentage": 24.31
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 179,
+          "percentage": 5.27
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-26T18-25-07Z05-30_aca6c24",
+      "snapshotNumber": 2,
+      "timestamp": "2026-09-26T18:25:07+05:30",
+      "dateFormatted": "Sep 26, 2026",
+      "timeFormatted": "06:25 PM IST",
+      "teamCount": 4334,
+      "participantCount": 14480,
+      "orgCount": 1582,
+      "avgScore": 0.658235,
+      "medianScore": 0.753939,
+      "minScore": 0.0,
+      "maxScore": 0.990748,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 611,
+          "percentage": 14.1
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 375,
+          "percentage": 8.65
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 614,
+          "percentage": 14.17
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 721,
+          "percentage": 16.64
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 352,
+          "percentage": 8.12
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 418,
+          "percentage": 9.64
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 931,
+          "percentage": 21.48
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 312,
+          "percentage": 7.2
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T00-21-49Z05-30_4c7d519",
+      "snapshotNumber": 3,
+      "timestamp": "2026-09-27T00:21:49+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "12:21 AM IST",
+      "teamCount": 5881,
+      "participantCount": 19641,
+      "orgCount": 1881,
+      "avgScore": 0.660985,
+      "medianScore": 0.747095,
+      "minScore": 0.0,
+      "maxScore": 0.990788,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 796,
+          "percentage": 13.54
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 501,
+          "percentage": 8.52
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 868,
+          "percentage": 14.76
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1004,
+          "percentage": 17.07
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 518,
+          "percentage": 8.81
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 500,
+          "percentage": 8.5
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1191,
+          "percentage": 20.26
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 502,
+          "percentage": 8.54
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T05-15-33Z05-30_9386fcf",
+      "snapshotNumber": 4,
+      "timestamp": "2026-09-27T05:15:33+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "05:15 AM IST",
+      "teamCount": 6273,
+      "participantCount": 20916,
+      "orgCount": 1945,
+      "avgScore": 0.65444,
+      "medianScore": 0.736867,
+      "minScore": 0.0,
+      "maxScore": 0.990788,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 852,
+          "percentage": 13.7
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 546,
+          "percentage": 8.78
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 934,
+          "percentage": 15.02
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1104,
+          "percentage": 17.75
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 569,
+          "percentage": 9.15
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 521,
+          "percentage": 8.38
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1191,
+          "percentage": 19.15
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 502,
+          "percentage": 8.07
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T12-00-16Z05-30_42336ee",
+      "snapshotNumber": 5,
+      "timestamp": "2026-09-27T12:00:16+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "12:00 PM IST",
+      "teamCount": 6954,
+      "participantCount": 23161,
+      "orgCount": 2041,
+      "avgScore": 0.671657,
+      "medianScore": 0.762981,
+      "minScore": 0.0,
+      "maxScore": 0.991811,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 884,
+          "percentage": 12.74
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 559,
+          "percentage": 8.05
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 987,
+          "percentage": 14.22
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1247,
+          "percentage": 17.97
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 624,
+          "percentage": 8.99
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 579,
+          "percentage": 8.34
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1359,
+          "percentage": 19.58
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 701,
+          "percentage": 10.1
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T16-08-17Z05-30_4d9907b",
+      "snapshotNumber": 6,
+      "timestamp": "2026-09-27T16:08:17+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "04:08 PM IST",
+      "teamCount": 7787,
+      "participantCount": 25861,
+      "orgCount": 2184,
+      "avgScore": 0.671946,
+      "medianScore": 0.762775,
+      "minScore": 0.0,
+      "maxScore": 0.991829,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 982,
+          "percentage": 12.67
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 615,
+          "percentage": 7.93
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1120,
+          "percentage": 14.45
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1397,
+          "percentage": 18.02
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 704,
+          "percentage": 9.08
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 650,
+          "percentage": 8.38
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1445,
+          "percentage": 18.64
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 840,
+          "percentage": 10.83
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T10-50-21Z_8af6ace",
+      "snapshotNumber": 7,
+      "timestamp": "2026-09-27T10:50:21+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "04:20 PM IST",
+      "teamCount": 7834,
+      "participantCount": 26015,
+      "orgCount": 2187,
+      "avgScore": 0.675646,
+      "medianScore": 0.766626,
+      "minScore": 0.0,
+      "maxScore": 0.991829,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 952,
+          "percentage": 12.19
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 624,
+          "percentage": 7.99
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1138,
+          "percentage": 14.57
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1402,
+          "percentage": 17.95
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 716,
+          "percentage": 9.17
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 662,
+          "percentage": 8.48
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1460,
+          "percentage": 18.69
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 856,
+          "percentage": 10.96
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T16-25-28Z05-30_3966d6d",
+      "snapshotNumber": 8,
+      "timestamp": "2026-09-27T16:25:28+05:30",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "04:25 PM IST",
+      "teamCount": 7829,
+      "participantCount": 25997,
+      "orgCount": 2186,
+      "avgScore": 0.676141,
+      "medianScore": 0.770139,
+      "minScore": 0.0,
+      "maxScore": 0.991829,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 971,
+          "percentage": 12.51
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 614,
+          "percentage": 7.91
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1081,
+          "percentage": 13.93
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1402,
+          "percentage": 18.06
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 716,
+          "percentage": 9.22
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 662,
+          "percentage": 8.53
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1460,
+          "percentage": 18.81
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 856,
+          "percentage": 11.03
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T11-26-52.367126Z00-00_live",
+      "snapshotNumber": 9,
+      "timestamp": "2026-09-27T11:26:52.367126+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "04:56 PM IST",
+      "teamCount": 7816,
+      "participantCount": 25952,
+      "orgCount": 2185,
+      "avgScore": 0.671946,
+      "medianScore": 0.762775,
+      "minScore": 0.0,
+      "maxScore": 0.991829,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 982,
+          "percentage": 12.67
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 615,
+          "percentage": 7.93
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1120,
+          "percentage": 14.45
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1397,
+          "percentage": 18.02
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 704,
+          "percentage": 9.08
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 650,
+          "percentage": 8.38
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1445,
+          "percentage": 18.64
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 840,
+          "percentage": 10.83
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T12-25-44.921187Z00-00_live",
+      "snapshotNumber": 10,
+      "timestamp": "2026-09-27T12:25:44.921187+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "05:55 PM IST",
+      "teamCount": 8271,
+      "participantCount": 27432,
+      "orgCount": 2257,
+      "avgScore": 0.672192,
+      "medianScore": 0.762654,
+      "minScore": 0.0,
+      "maxScore": 0.991829,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 1035,
+          "percentage": 12.52
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 670,
+          "percentage": 8.1
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1197,
+          "percentage": 14.48
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1486,
+          "percentage": 17.97
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 757,
+          "percentage": 9.15
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 697,
+          "percentage": 8.43
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1496,
+          "percentage": 18.09
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 931,
+          "percentage": 11.26
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T13-41-43.591963Z00-00_live",
+      "snapshotNumber": 11,
+      "timestamp": "2026-09-27T13:41:43.591963+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "07:11 PM IST",
+      "teamCount": 8362,
+      "participantCount": 27717,
+      "orgCount": 2264,
+      "avgScore": 0.669418,
+      "medianScore": 0.760465,
+      "minScore": 0.0,
+      "maxScore": 0.991829,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 1071,
+          "percentage": 12.81
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 682,
+          "percentage": 8.16
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1211,
+          "percentage": 14.49
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1489,
+          "percentage": 17.82
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 763,
+          "percentage": 9.13
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 696,
+          "percentage": 8.33
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1508,
+          "percentage": 18.04
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 938,
+          "percentage": 11.22
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T13-57-24.911205Z00-00_live",
+      "snapshotNumber": 12,
+      "timestamp": "2026-09-27T13:57:24.911205+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "07:27 PM IST",
+      "teamCount": 8358,
+      "participantCount": 27704,
+      "orgCount": 2263,
+      "avgScore": 0.669418,
+      "medianScore": 0.760465,
+      "minScore": 0.0,
+      "maxScore": 0.991829,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 1071,
+          "percentage": 12.81
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 682,
+          "percentage": 8.16
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1211,
+          "percentage": 14.49
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1489,
+          "percentage": 17.82
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 763,
+          "percentage": 9.13
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 696,
+          "percentage": 8.33
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1508,
+          "percentage": 18.04
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 938,
+          "percentage": 11.22
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T13-58-23.382052Z00-00_live",
+      "snapshotNumber": 13,
+      "timestamp": "2026-09-27T13:58:23.382052+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "07:28 PM IST",
+      "teamCount": 8358,
+      "participantCount": 27704,
+      "orgCount": 2263,
+      "avgScore": 0.669418,
+      "medianScore": 0.760465,
+      "minScore": 0.0,
+      "maxScore": 0.991829,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 1071,
+          "percentage": 12.81
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 682,
+          "percentage": 8.16
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1211,
+          "percentage": 14.49
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1489,
+          "percentage": 17.82
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 763,
+          "percentage": 9.13
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 696,
+          "percentage": 8.33
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1508,
+          "percentage": 18.04
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 938,
+          "percentage": 11.22
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T14-03-12.162412Z00-00_live",
+      "snapshotNumber": 14,
+      "timestamp": "2026-09-27T14:03:12.162412+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "07:33 PM IST",
+      "teamCount": 8358,
+      "participantCount": 27704,
+      "orgCount": 2263,
+      "avgScore": 0.669418,
+      "medianScore": 0.760465,
+      "minScore": 0.0,
+      "maxScore": 0.991829,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 1071,
+          "percentage": 12.81
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 682,
+          "percentage": 8.16
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1211,
+          "percentage": 14.49
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1489,
+          "percentage": 17.82
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 763,
+          "percentage": 9.13
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 696,
+          "percentage": 8.33
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1508,
+          "percentage": 18.04
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 938,
+          "percentage": 11.22
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T15-57-31.616790Z00-00_live",
+      "snapshotNumber": 15,
+      "timestamp": "2026-09-27T15:57:31.616790+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "09:27 PM IST",
+      "teamCount": 9115,
+      "participantCount": 30141,
+      "orgCount": 2381,
+      "avgScore": 0.66156,
+      "medianScore": 0.750296,
+      "minScore": 0.0,
+      "maxScore": 0.992082,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 1217,
+          "percentage": 13.38
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 779,
+          "percentage": 8.56
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1341,
+          "percentage": 14.74
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1595,
+          "percentage": 17.53
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 824,
+          "percentage": 9.06
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 742,
+          "percentage": 8.15
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1562,
+          "percentage": 17.17
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 1039,
+          "percentage": 11.42
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-42-50_UTC",
+      "snapshotNumber": 16,
+      "timestamp": "2026-09-27T16:42:50.953844+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:12 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-43-29_UTC",
+      "snapshotNumber": 17,
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:13 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-45-04_UTC",
+      "snapshotNumber": 18,
+      "timestamp": "2026-09-27T16:45:04.690215+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:15 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-59-41_UTC",
+      "snapshotNumber": 19,
+      "timestamp": "2026-09-27T16:59:41.855116+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:29 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_16-59-42_UTC",
+      "snapshotNumber": 20,
+      "timestamp": "2026-09-27T16:59:42.161794+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:29 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-11-35_UTC",
+      "snapshotNumber": 21,
+      "timestamp": "2026-09-27T17:11:35.644424+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:41 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T17-21-36.463044Z00-00_live",
+      "snapshotNumber": 22,
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:51 PM IST",
+      "teamCount": 10088,
+      "participantCount": 33281,
+      "orgCount": 2540,
+      "avgScore": 0.654343,
+      "medianScore": 0.740061,
+      "minScore": 0.0,
+      "maxScore": 0.992082,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 1381,
+          "percentage": 13.71
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 901,
+          "percentage": 8.95
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1530,
+          "percentage": 15.19
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1763,
+          "percentage": 17.51
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 893,
+          "percentage": 8.87
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 789,
+          "percentage": 7.83
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1632,
+          "percentage": 16.2
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 1182,
+          "percentage": 11.74
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-23-25_UTC",
+      "snapshotNumber": 23,
+      "timestamp": "2026-09-27T17:23:25.644908+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:53 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-23-28_UTC",
+      "snapshotNumber": 24,
+      "timestamp": "2026-09-27T17:23:28.243543+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "10:53 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-35-12_UTC",
+      "snapshotNumber": 25,
+      "timestamp": "2026-09-27T17:35:12.423509+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:05 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-35-13_UTC",
+      "snapshotNumber": 26,
+      "timestamp": "2026-09-27T17:35:13.754643+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:05 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-46-54_UTC",
+      "snapshotNumber": 27,
+      "timestamp": "2026-09-27T17:46:54.304910+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:16 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-46-55_UTC",
+      "snapshotNumber": 28,
+      "timestamp": "2026-09-27T17:46:55.780478+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:16 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-58-38_UTC",
+      "snapshotNumber": 29,
+      "timestamp": "2026-09-27T17:58:38.857086+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:28 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_17-58-39_UTC",
+      "snapshotNumber": 30,
+      "timestamp": "2026-09-27T17:58:39.872365+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:28 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_18-10-15_UTC",
+      "snapshotNumber": 31,
+      "timestamp": "2026-09-27T18:10:15.958349+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:40 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_18-21-50_UTC",
+      "snapshotNumber": 32,
+      "timestamp": "2026-09-27T18:21:50.849153+00:00",
+      "dateFormatted": "Sep 27, 2026",
+      "timeFormatted": "11:51 PM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "snapshot_2026-09-27_18-33-27_UTC",
+      "snapshotNumber": 33,
+      "timestamp": "2026-09-27T18:33:27.598450+00:00",
+      "dateFormatted": "Sep 28, 2026",
+      "timeFormatted": "12:03 AM IST",
+      "teamCount": 0,
+      "participantCount": 0,
+      "orgCount": 0,
+      "avgScore": 0.0,
+      "medianScore": 0.0,
+      "minScore": 0.0,
+      "maxScore": 0.0,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 0,
+          "percentage": 0.0
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 0,
+          "percentage": 0.0
+        }
+      ]
+    },
+    {
+      "snapshotId": "2026-09-27T18-34-36.366546Z00-00_live",
+      "snapshotNumber": 34,
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "dateFormatted": "Sep 28, 2026",
+      "timeFormatted": "12:04 AM IST",
+      "teamCount": 10135,
+      "participantCount": 33416,
+      "orgCount": 2550,
+      "avgScore": 0.6554,
+      "medianScore": 0.735511,
+      "minScore": 0.0,
+      "maxScore": 0.992082,
+      "scoreBuckets": [
+        {
+          "label": "0.00\u20130.20",
+          "min": 0.0,
+          "max": 0.2,
+          "count": 1292,
+          "percentage": 13.43
+        },
+        {
+          "label": "0.20\u20130.40",
+          "min": 0.2,
+          "max": 0.4,
+          "count": 846,
+          "percentage": 8.79
+        },
+        {
+          "label": "0.40\u20130.60",
+          "min": 0.4,
+          "max": 0.6,
+          "count": 1514,
+          "percentage": 15.73
+        },
+        {
+          "label": "0.60\u20130.80",
+          "min": 0.6,
+          "max": 0.8,
+          "count": 1708,
+          "percentage": 17.75
+        },
+        {
+          "label": "0.80\u20130.90",
+          "min": 0.8,
+          "max": 0.9,
+          "count": 824,
+          "percentage": 8.56
+        },
+        {
+          "label": "0.90\u20130.95",
+          "min": 0.9,
+          "max": 0.95,
+          "count": 754,
+          "percentage": 7.84
+        },
+        {
+          "label": "0.95\u20130.98",
+          "min": 0.95,
+          "max": 0.98,
+          "count": 1502,
+          "percentage": 15.61
+        },
+        {
+          "label": "0.98\u20131.00",
+          "min": 0.98,
+          "max": 1.0001,
+          "count": 1182,
+          "percentage": 12.28
+        }
+      ]
+    }
+  ]
+}

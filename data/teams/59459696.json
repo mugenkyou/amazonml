@@ -1,0 +1,103 @@
+{
+  "team_id": "59459696",
+  "team_name": "Team Rebels",
+  "participants": [
+    {
+      "player_name": "Karthik Chukkala",
+      "organization": "Chaitanya Bharati institute of technology,gandipet,hyderabad",
+      "player_index": 1
+    },
+    {
+      "player_name": "Peddagolla Sriharini",
+      "organization": "Chaitanya Bharati institute of technology,gandipet,hyderabad",
+      "player_index": 2
+    }
+  ],
+  "organizations": [
+    "Chaitanya Bharati institute of technology,gandipet,hyderabad"
+  ],
+  "is_inter_college": false,
+  "first_seen": "2026-09-27T15:57:31.616790+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 4,
+  "latest_rank": 247,
+  "latest_score": 0.987764,
+  "statistics": {
+    "first_rank": 287,
+    "final_rank": 247,
+    "best_rank": 242,
+    "worst_rank": 287,
+    "first_score": 0.986639,
+    "final_score": 0.987764,
+    "best_score": 0.987764,
+    "worst_score": 0.986639,
+    "rank_change": 40,
+    "score_change": 0.001125
+  },
+  "history": [
+    {
+      "snapshot_id": "2026-09-27T15-57-31.616790Z00-00_live",
+      "timestamp": "2026-09-27T15:57:31.616790+00:00",
+      "rank": 287,
+      "score": 0.986639,
+      "score_str": "0.986639",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 242,
+      "score": 0.987718,
+      "score_str": "0.987718",
+      "finish_time": "2026-09-27 20:40:59+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "improved",
+      "previous_rank": 287,
+      "rank_delta": 45,
+      "previous_score": 0.986639,
+      "score_delta": 0.001079
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 247,
+      "score": 0.987764,
+      "score_str": "0.987764",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "improved",
+      "previous_rank": 242,
+      "rank_delta": -5,
+      "previous_score": 0.987718,
+      "score_delta": 4.6e-05
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 247,
+      "score": 0.987764,
+      "score_str": "0.987764",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 247,
+      "rank_delta": 0,
+      "previous_score": 0.987764,
+      "score_delta": 0.0
+    }
+  ]
+}

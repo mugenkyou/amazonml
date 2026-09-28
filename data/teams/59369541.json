@@ -1,0 +1,114 @@
+{
+  "team_id": "59369541",
+  "team_name": "ZAMBER",
+  "participants": [
+    {
+      "player_name": "Jees Lionel G",
+      "organization": "Sri Krishna College of Technology (SKCT), Coimbatore",
+      "player_index": 1
+    },
+    {
+      "player_name": "DHANUSH RAJ KUMAR S S",
+      "organization": "Sri Krishna College of Technology (SKCT), Coimbatore",
+      "player_index": 2
+    },
+    {
+      "player_name": "Dilip Kumar S P",
+      "organization": "Sri Krishna College of Engineering and Technology (SKCET), Coimbatore",
+      "player_index": 3
+    },
+    {
+      "player_name": "ARUN R",
+      "organization": "Sri Krishna College of Technology (SKCT), Coimbatore",
+      "player_index": 4
+    }
+  ],
+  "organizations": [
+    "Sri Krishna College of Technology (SKCT), Coimbatore",
+    "Sri Krishna College of Engineering and Technology (SKCET), Coimbatore"
+  ],
+  "is_inter_college": true,
+  "first_seen": "2026-09-27T15:57:31.616790+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 4,
+  "latest_rank": 301,
+  "latest_score": 0.987252,
+  "statistics": {
+    "first_rank": 1605,
+    "final_rank": 301,
+    "best_rank": 294,
+    "worst_rank": 1605,
+    "first_score": 0.970441,
+    "final_score": 0.987252,
+    "best_score": 0.987252,
+    "worst_score": 0.970441,
+    "rank_change": 1304,
+    "score_change": 0.016811
+  },
+  "history": [
+    {
+      "snapshot_id": "2026-09-27T15-57-31.616790Z00-00_live",
+      "timestamp": "2026-09-27T15:57:31.616790+00:00",
+      "rank": 1605,
+      "score": 0.970441,
+      "score_str": "0.970441",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 294,
+      "score": 0.987252,
+      "score_str": "0.987252",
+      "finish_time": "2026-09-27 21:32:17+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "improved",
+      "previous_rank": 1605,
+      "rank_delta": 1311,
+      "previous_score": 0.970441,
+      "score_delta": 0.016811
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 301,
+      "score": 0.987252,
+      "score_str": "0.987252",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "dropped",
+      "previous_rank": 294,
+      "rank_delta": -7,
+      "previous_score": 0.987252,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 301,
+      "score": 0.987252,
+      "score_str": "0.987252",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 301,
+      "rank_delta": 0,
+      "previous_score": 0.987252,
+      "score_delta": 0.0
+    }
+  ]
+}

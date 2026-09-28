@@ -1,0 +1,108 @@
+{
+  "team_id": "59003978",
+  "team_name": "Latent Space",
+  "participants": [
+    {
+      "player_name": "Sai Mounika Kotapati",
+      "organization": "Indian Institute of Technology (IIT), Bhilai",
+      "player_index": 1
+    },
+    {
+      "player_name": "Vishishta panuganti",
+      "organization": "Indian Institute of Technology (IIT), Bhilai",
+      "player_index": 2
+    },
+    {
+      "player_name": "Satwika",
+      "organization": "Indian Institute of Technology (IIT), Bhilai",
+      "player_index": 3
+    }
+  ],
+  "organizations": [
+    "Indian Institute of Technology (IIT), Bhilai"
+  ],
+  "is_inter_college": false,
+  "first_seen": "2026-09-27T15:57:31.616790+00:00",
+  "last_seen": "2026-09-27T18:34:36.366546+00:00",
+  "total_observations": 4,
+  "latest_rank": 74,
+  "latest_score": 0.989715,
+  "statistics": {
+    "first_rank": 7905,
+    "final_rank": 74,
+    "best_rank": 69,
+    "worst_rank": 7905,
+    "first_score": 0.0,
+    "final_score": 0.989715,
+    "best_score": 0.989715,
+    "worst_score": 0.0,
+    "rank_change": 7831,
+    "score_change": 0.989715
+  },
+  "history": [
+    {
+      "snapshot_id": "2026-09-27T15-57-31.616790Z00-00_live",
+      "timestamp": "2026-09-27T15:57:31.616790+00:00",
+      "rank": 7905,
+      "score": 0.0,
+      "score_str": "0.000000",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "new",
+      "previous_rank": null,
+      "rank_delta": 0,
+      "previous_score": null,
+      "score_delta": 0.0
+    },
+    {
+      "snapshot_id": "snapshot_2026-09-27_16-43-29_UTC",
+      "timestamp": "2026-09-27T16:43:29+00:00",
+      "rank": 69,
+      "score": 0.98971,
+      "score_str": "0.98971",
+      "finish_time": "2026-09-27 22:03:23+05:30",
+      "has_played": "2026-09-27 23:59:49+05:30",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "improved",
+      "previous_rank": 7905,
+      "rank_delta": 7836,
+      "previous_score": 0.0,
+      "score_delta": 0.98971
+    },
+    {
+      "snapshot_id": "2026-09-27T17-21-36.463044Z00-00_live",
+      "timestamp": "2026-09-27T17:21:36.463044+00:00",
+      "rank": 74,
+      "score": 0.989715,
+      "score_str": "0.989715",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "improved",
+      "previous_rank": 69,
+      "rank_delta": -5,
+      "previous_score": 0.98971,
+      "score_delta": 5e-06
+    },
+    {
+      "snapshot_id": "2026-09-27T18-34-36.366546Z00-00_live",
+      "timestamp": "2026-09-27T18:34:36.366546+00:00",
+      "rank": 74,
+      "score": 0.989715,
+      "score_str": "0.989715",
+      "finish_time": "",
+      "has_played": "",
+      "proctoring_score": "0",
+      "is_blacklisted": false,
+      "status": "steady",
+      "previous_rank": 74,
+      "rank_delta": 0,
+      "previous_score": 0.989715,
+      "score_delta": 0.0
+    }
+  ]
+}
