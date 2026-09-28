@@ -10,6 +10,7 @@ import {
   Compass,
 } from "lucide-react";
 import { SearchBar } from "@/components/search-bar";
+import { TeamTable } from "@/components/team-table";
 import { SavedTeamsSection } from "@/components/saved-teams-section";
 import { JsonLd } from "@/components/json-ld";
 import {
@@ -43,19 +44,19 @@ export default async function HomePage() {
   ]);
   const popularOrganizations = allOrganizations.slice(0, 6);
 
-  // Top 5 teams for clean mobile-compatible preview
+  // Top 6 teams for clean preview matching the official table design
   const searchResponse = searchTeams("", {
     mode: "all",
     exact: false,
     page: 1,
-    pageSize: 5,
+    pageSize: 6,
   });
   const previewTeams = searchResponse.teams;
 
   const breadcrumbSchema = generateBreadcrumbSchema([{ name: "Home", item: "/" }]);
 
   return (
-    <div className="mx-auto max-w-5xl px-3.5 sm:px-6 lg:px-8 py-3 sm:py-6 space-y-6 sm:space-y-8">
+    <div className="mx-auto max-w-6xl px-3.5 sm:px-6 lg:px-8 py-3 sm:py-6 space-y-6 sm:space-y-8">
       <JsonLd data={breadcrumbSchema} />
 
       {/* 1. HERO BOX */}
@@ -193,70 +194,8 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        {/* Mobile & Desktop Clean Preview List (No Left-Right Scroll) */}
-        <div className="space-y-2">
-          {previewTeams.map((team) => {
-            const rankNum = team.rank || "—";
-            const isTop3 = ["1", "2", "3"].includes(rankNum);
-            const isTop1 = rankNum === "1";
-            const primaryOrg = team.organizations?.[0];
-
-            return (
-              <div
-                key={team.teamId}
-                className="flex items-center justify-between gap-2.5 rounded-lg border border-[#EAEAEA] bg-white p-2.5 sm:px-4 sm:py-3 shadow-2xs hover:border-[#FF9900] transition-colors"
-              >
-                {/* Rank & Team Details */}
-                <div className="flex items-center gap-2.5 min-w-0 flex-1">
-                  <span
-                    className={`inline-flex h-7 min-w-7 shrink-0 items-center justify-center rounded-md px-1 text-xs font-bold font-mono ${
-                      isTop1
-                        ? "bg-[#FF9900] text-[#111111]"
-                        : isTop3
-                        ? "bg-[#FFF3E0] text-[#E47911] border border-[#F5C26B]"
-                        : "bg-[#F7F7F7] text-[#5F6368] border border-[#E3E3E3]"
-                    }`}
-                  >
-                    #{rankNum}
-                  </span>
-
-                  <div className="min-w-0 flex-1">
-                    <Link
-                      href={`/teams/${team.teamId}`}
-                      className="font-bold text-xs sm:text-sm text-[#111111] hover:text-[#E47911] transition-colors truncate block"
-                    >
-                      {team.teamName}
-                    </Link>
-                    {primaryOrg && (
-                      <p className="text-[11px] text-[#767676] truncate">
-                        {primaryOrg}
-                        {(team.organizations?.length || 0) > 1 && ` +${(team.organizations?.length || 0) - 1} more`}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Score & Action */}
-                <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
-                  <div className="text-right">
-                    <span className="text-[9px] uppercase font-bold text-[#767676] block sm:hidden">Score</span>
-                    <span className="font-mono font-bold text-xs sm:text-sm text-[#111111]">
-                      {team.score || "0.000000"}
-                    </span>
-                  </div>
-
-                  <Link
-                    href={`/teams/${team.teamId}`}
-                    className="inline-flex min-h-[32px] items-center gap-0.5 rounded-md border border-[#D5D5D5] bg-white px-2.5 py-1 text-xs font-semibold text-[#111111] hover:border-[#FF9900] hover:bg-[#FFF3E0] hover:text-[#E47911] transition-colors shadow-2xs"
-                  >
-                    <span>View</span>
-                    <ArrowRight className="h-3 w-3" />
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        {/* Clean Leaderboard Table (Desktop Table + Mobile Cards with 0 overflow) */}
+        <TeamTable teams={previewTeams} />
 
         <div className="mt-4 text-center">
           <Link
