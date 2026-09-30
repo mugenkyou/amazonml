@@ -185,6 +185,33 @@ export function SearchBar({
     }
   };
 
+  const handleSelectSuggestion = (item: SearchSuggestion) => {
+    setShowDropdown(false);
+    if (item.type === "college" && item.slug) {
+      startTransition(() => {
+        router.push(`/colleges/${item.slug}`);
+      });
+      return;
+    }
+    if (item.type === "team" && item.teamId) {
+      startTransition(() => {
+        router.push(`/teams/${item.teamId}`);
+      });
+      return;
+    }
+    setQuery(item.queryValue);
+    const targetMode =
+      item.type === "person"
+        ? "person"
+        : item.type === "college"
+        ? "college"
+        : item.type === "team"
+        ? "team"
+        : mode;
+    setMode(targetMode);
+    handleSearch(item.queryValue, targetMode);
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!showDropdown || suggestions.length === 0) return;
 
@@ -197,11 +224,7 @@ export function SearchBar({
     } else if (e.key === "Enter") {
       if (focusedIndex >= 0 && suggestions[focusedIndex]) {
         e.preventDefault();
-        const selected = suggestions[focusedIndex];
-        setQuery(selected.queryValue);
-        const targetMode = selected.type === "person" ? "person" : selected.type === "college" ? "college" : selected.type === "team" ? "team" : mode;
-        setMode(targetMode);
-        handleSearch(selected.queryValue, targetMode);
+        handleSelectSuggestion(suggestions[focusedIndex]);
       }
     } else if (e.key === "Escape") {
       setShowDropdown(false);
@@ -224,7 +247,7 @@ export function SearchBar({
               key={m.id}
               type="button"
               onClick={() => handleModeChange(m.id)}
-              className={`inline-flex items-center gap-1.5 min-h-[34px] sm:min-h-[30px] rounded-md px-2.5 sm:px-3 text-xs font-semibold transition-all shrink-0 ${
+              className={`inline-flex items-center gap-1.5 min-h-[34px] sm:min-h-[30px] rounded-md px-2.5 sm:px-3 text-xs font-semibold transition-all shrink-0 cursor-pointer ${
                 isActive
                   ? "bg-[#FF9900] text-[#111111] shadow-xs"
                   : "text-[#5F6368] hover:text-[#111111] hover:bg-white active:bg-white"
@@ -283,7 +306,7 @@ export function SearchBar({
                 setShowDropdown(false);
                 handleSearch("", mode);
               }}
-              className="flex h-11 w-10 shrink-0 items-center justify-center text-[#767676] hover:text-[#111111] active:scale-95"
+              className="flex h-11 w-10 shrink-0 items-center justify-center text-[#767676] hover:text-[#111111] active:scale-95 cursor-pointer"
               title="Clear search"
               aria-label="Clear search"
             >
@@ -294,7 +317,7 @@ export function SearchBar({
           <button
             type="submit"
             disabled={isPending}
-            className="inline-flex min-h-[46px] items-center justify-center rounded-r-[7px] bg-[#FF9900] px-3.5 sm:px-5 text-xs sm:text-sm font-semibold text-[#111111] hover:bg-[#E47911] active:bg-[#C7511F] transition-colors disabled:opacity-50 shrink-0"
+            className="inline-flex min-h-[46px] items-center justify-center rounded-r-[7px] bg-[#FF9900] px-3.5 sm:px-5 text-xs sm:text-sm font-semibold text-[#111111] hover:bg-[#E47911] active:bg-[#C7511F] transition-colors disabled:opacity-50 shrink-0 cursor-pointer"
           >
             <span>{isPending ? "..." : "Search"}</span>
           </button>
@@ -325,19 +348,7 @@ export function SearchBar({
                     role="option"
                     aria-selected={focusedIndex === index}
                     onMouseDown={(e) => e.preventDefault()}
-                    onClick={() => {
-                      setQuery(item.queryValue);
-                      const targetMode =
-                        item.type === "person"
-                          ? "person"
-                          : item.type === "college"
-                          ? "college"
-                          : item.type === "team"
-                          ? "team"
-                          : mode;
-                      setMode(targetMode);
-                      handleSearch(item.queryValue, targetMode);
-                    }}
+                    onClick={() => handleSelectSuggestion(item)}
                     className={`flex w-full items-center justify-between min-h-[46px] rounded-md px-3 py-2 text-left text-xs transition-colors cursor-pointer ${
                       focusedIndex === index
                         ? "bg-[#FFF3E0] text-[#E47911] font-semibold"
@@ -352,11 +363,9 @@ export function SearchBar({
                         <div className="font-semibold text-xs text-[#111111] truncate">
                           {item.title}
                         </div>
-                        {item.subtitle && (
-                          <div className="text-[10px] text-[#767676] truncate">
-                            {item.subtitle}
-                          </div>
-                        )}
+                        <div className="text-[10px] text-[#767676] truncate">
+                          {item.subtitle || (item.type === "college" ? "View institution profile & teams ↗" : item.type === "team" ? "View team roster & score ↗" : undefined)}
+                        </div>
                       </div>
                     </div>
                     {item.badge && (
@@ -392,15 +401,16 @@ export function SearchBar({
         {mode === "college" && popularOrganizations.length > 0 && (
           <div className="flex flex-wrap items-center gap-1.5 pt-1 sm:pt-0">
             <span className="text-[#767676] font-medium text-[11px]">Popular:</span>
-            {popularOrganizations.slice(0, 4).map((org) => (
+            {popularOrganizations.slice(0, 5).map((org) => (
               <button
                 key={org.slug}
                 type="button"
                 onClick={() => {
                   setQuery(org.name);
+                  setMode("college");
                   handleSearch(org.name, "college", false);
                 }}
-                className="inline-flex items-center gap-1 rounded-md border border-[#E3E3E3] bg-white px-2 py-1 min-h-[32px] sm:min-h-[26px] text-[11px] text-[#5F6368] transition-colors hover:border-[#FF9900] hover:bg-[#FFF7E6] hover:text-[#111111] active:bg-[#FFE0B2]"
+                className="inline-flex items-center gap-1 rounded-md border border-[#E3E3E3] bg-white px-2 py-1 min-h-[32px] sm:min-h-[26px] text-[11px] text-[#5F6368] transition-colors hover:border-[#FF9900] hover:bg-[#FFF7E6] hover:text-[#111111] active:bg-[#FFE0B2] cursor-pointer"
               >
                 <span className="truncate max-w-[130px] sm:max-w-[160px]">{org.name}</span>
                 <span className="font-mono text-[#767676]">({org.teamCount})</span>
@@ -418,9 +428,10 @@ export function SearchBar({
                 type="button"
                 onClick={() => {
                   setQuery(name);
+                  setMode("person");
                   handleSearch(name, "person", false);
                 }}
-                className="inline-flex items-center gap-1 rounded-md border border-[#E3E3E3] bg-white px-2 py-1 min-h-[32px] sm:min-h-[26px] text-[11px] text-[#5F6368] transition-colors hover:border-[#FF9900] hover:bg-[#FFF7E6] hover:text-[#111111]"
+                className="inline-flex items-center gap-1 rounded-md border border-[#E3E3E3] bg-white px-2 py-1 min-h-[32px] sm:min-h-[26px] text-[11px] text-[#5F6368] transition-colors hover:border-[#FF9900] hover:bg-[#FFF7E6] hover:text-[#111111] cursor-pointer"
               >
                 <span>{name}</span>
               </button>
@@ -437,9 +448,10 @@ export function SearchBar({
                 type="button"
                 onClick={() => {
                   setQuery(tName);
+                  setMode("team");
                   handleSearch(tName, "team", false);
                 }}
-                className="inline-flex items-center gap-1 rounded-md border border-[#E3E3E3] bg-white px-2 py-1 min-h-[32px] sm:min-h-[26px] text-[11px] text-[#5F6368] transition-colors hover:border-[#FF9900] hover:bg-[#FFF7E6] hover:text-[#111111]"
+                className="inline-flex items-center gap-1 rounded-md border border-[#E3E3E3] bg-white px-2 py-1 min-h-[32px] sm:min-h-[26px] text-[11px] text-[#5F6368] transition-colors hover:border-[#FF9900] hover:bg-[#FFF7E6] hover:text-[#111111] cursor-pointer"
               >
                 <span>{tName}</span>
               </button>
@@ -449,16 +461,17 @@ export function SearchBar({
 
         {mode === "all" && popularOrganizations.length > 0 && (
           <div className="flex flex-wrap items-center gap-1.5 pt-1 sm:pt-0">
-            <span className="text-[#767676] font-medium text-[11px]">Popular:</span>
-            {popularOrganizations.slice(0, 3).map((org) => (
+            <span className="text-[#767676] font-medium text-[11px]">Popular Colleges:</span>
+            {popularOrganizations.slice(0, 4).map((org) => (
               <button
                 key={org.slug}
                 type="button"
                 onClick={() => {
                   setQuery(org.name);
-                  handleSearch(org.name, "all", false);
+                  setMode("college");
+                  handleSearch(org.name, "college", false);
                 }}
-                className="inline-flex items-center gap-1 rounded-md border border-[#E3E3E3] bg-white px-2 py-1 min-h-[32px] sm:min-h-[26px] text-[11px] text-[#5F6368] transition-colors hover:border-[#FF9900] hover:bg-[#FFF7E6] hover:text-[#111111]"
+                className="inline-flex items-center gap-1 rounded-md border border-[#E3E3E3] bg-white px-2 py-1 min-h-[32px] sm:min-h-[26px] text-[11px] text-[#5F6368] transition-colors hover:border-[#FF9900] hover:bg-[#FFF7E6] hover:text-[#111111] cursor-pointer"
               >
                 <span className="truncate max-w-[120px] sm:max-w-[150px]">{org.name}</span>
               </button>

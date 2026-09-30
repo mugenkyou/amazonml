@@ -4,7 +4,7 @@
  */
 
 import { getAllOrganizations, getAllTeams } from "./data";
-import { normalizeOrganization, tokenizeQuery } from "./normalize";
+import { normalizeOrganization, tokenizeQuery, matchesCollegeName } from "./normalize";
 import type {
   Organization,
   SearchMode,
@@ -136,16 +136,7 @@ export function searchTeams(
         const rawOrg = team.organizations[i] || normOrg;
         if (!normOrg) continue;
 
-        let orgMatched = false;
-        if (exact) {
-          orgMatched = normOrg === normQuery;
-        } else {
-          if (normOrg.includes(normQuery)) {
-            orgMatched = true;
-          } else if (tokens.length > 1 && tokens.every((token) => normOrg.includes(token))) {
-            orgMatched = true;
-          }
-        }
+        const orgMatched = matchesCollegeName(normOrg, query, exact);
 
         if (orgMatched) {
           teamMatches = true;
@@ -158,13 +149,9 @@ export function searchTeams(
       if (orgMatchedForTeam) {
         for (const player of team.players || []) {
           if (!player.organization) continue;
-          const pNorm = player.normalizedOrganization;
-          if (exact) {
-            if (pNorm === normQuery) matchedPlayersSet.add(player);
-          } else {
-            if (pNorm.includes(normQuery) || (tokens.length > 1 && tokens.every((tok) => pNorm.includes(tok)))) {
-              matchedPlayersSet.add(player);
-            }
+          const pNorm = player.normalizedOrganization || normalizeOrganization(player.organization);
+          if (matchesCollegeName(pNorm, query, exact)) {
+            matchedPlayersSet.add(player);
           }
         }
       }
@@ -232,7 +219,7 @@ export function searchTeams(
 }
 
 /**
- * Searches academic organizations with limit cap.
+ * Searches academic organizations with limit cap and team-count ranking.
  */
 export function searchOrganizations(query?: string | null, limit: number = 10): Organization[] {
   const allOrgs = getAllOrganizations();
@@ -240,24 +227,17 @@ export function searchOrganizations(query?: string | null, limit: number = 10): 
     return allOrgs.slice(0, limit);
   }
 
-  const normQuery = normalizeOrganization(query);
-  const tokens = tokenizeQuery(query);
-
   const matchedOrgs: Organization[] = [];
 
   for (const org of allOrgs) {
-    if (org.normalizedName.includes(normQuery)) {
+    if (matchesCollegeName(org.normalizedName, query, false)) {
       matchedOrgs.push(org);
-    } else if (tokens.length > 1 && tokens.every((tok) => org.normalizedName.includes(tok))) {
-      matchedOrgs.push(org);
-    }
-
-    if (matchedOrgs.length >= limit) {
-      break;
     }
   }
 
-  return matchedOrgs;
+  matchedOrgs.sort((a, b) => b.teamCount - a.teamCount);
+
+  return matchedOrgs.slice(0, limit);
 }
 
 /**
@@ -297,22 +277,24 @@ export function searchSuggestions(
   // 1. Suggestions for Colleges
   if (mode === "college" || mode === "all") {
     const orgs = getAllOrganizations();
-    let orgCount = 0;
+    const matchedOrgs: Organization[] = [];
+
     for (const org of orgs) {
-      if (
-        org.normalizedName.includes(normQuery) ||
-        (tokens.length > 1 && tokens.every((tok) => org.normalizedName.includes(tok)))
-      ) {
-        results.push({
-          type: "college",
-          title: org.name,
-          badge: `${org.teamCount} ${org.teamCount === 1 ? "team" : "teams"}`,
-          queryValue: org.name,
-          slug: org.slug,
-        });
-        orgCount++;
-        if (orgCount >= maxColleges) break;
+      if (matchesCollegeName(org.normalizedName, query, false)) {
+        matchedOrgs.push(org);
       }
+    }
+
+    matchedOrgs.sort((a, b) => b.teamCount - a.teamCount);
+
+    for (const org of matchedOrgs.slice(0, maxColleges)) {
+      results.push({
+        type: "college",
+        title: org.name,
+        badge: `${org.teamCount} ${org.teamCount === 1 ? "team" : "teams"}`,
+        queryValue: org.name,
+        slug: org.slug,
+      });
     }
   }
 

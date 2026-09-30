@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Building2, Search, X, Users, Trophy, ChevronRight, ArrowUpDown, Sparkles } from "lucide-react";
 import type { CollegeSummary } from "@/lib/college-data";
+import { matchesCollegeName } from "@/lib/normalize";
 
 interface CollegesDirectoryViewProps {
   colleges: CollegeSummary[];
@@ -22,12 +23,12 @@ export function CollegesDirectoryView({ colleges }: CollegesDirectoryViewProps) 
     let result = colleges;
 
     if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase().trim();
+      const q = searchQuery.trim();
       result = result.filter(
         (c) =>
-          c.name.toLowerCase().includes(q) ||
-          c.normalizedName.toLowerCase().includes(q) ||
-          c.slug.toLowerCase().includes(q)
+          matchesCollegeName(c.normalizedName, q, false) ||
+          matchesCollegeName(c.name, q, false) ||
+          c.slug.toLowerCase().includes(q.toLowerCase())
       );
     }
 
