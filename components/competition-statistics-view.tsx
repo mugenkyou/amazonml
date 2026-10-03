@@ -387,7 +387,7 @@ export function CompetitionStatisticsView({ stats }: CompetitionStatisticsViewPr
 
             {/* Subtle Website Attribution built into chart graphic (Preserved in screenshots) */}
             <a
-              href="https://amazonmlchallengeexplorer.vercel.app"
+              href="https://amazonmlchallengeexplorerv2.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer group"
@@ -407,7 +407,7 @@ export function CompetitionStatisticsView({ stats }: CompetitionStatisticsViewPr
                   textAnchor="end"
                   className="fill-[#E47911] group-hover:fill-[#FF9900] text-[7.5px] font-mono font-medium transition-colors"
                 >
-                  amazonmlchallengeexplorer.vercel.app
+                  amazonmlchallengeexplorerv2.vercel.app
                 </text>
               </g>
             </a>
@@ -458,13 +458,13 @@ export function CompetitionStatisticsView({ stats }: CompetitionStatisticsViewPr
             </span>
           </div>
           <a
-            href="https://amazonmlchallengeexplorer.vercel.app"
+            href="https://amazonmlchallengeexplorerv2.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-[10px] text-[#767676] hover:text-[#111111] transition-colors font-medium shrink-0"
           >
             <span>Amazon ML Challenge Explorer</span>
-            <span className="font-mono text-[#E47911] hover:text-[#FF9900] hover:underline">amazonmlchallengeexplorer.vercel.app</span>
+            <span className="font-mono text-[#E47911] hover:text-[#FF9900] hover:underline">amazonmlchallengeexplorerv2.vercel.app</span>
           </a>
         </div>
       </div>

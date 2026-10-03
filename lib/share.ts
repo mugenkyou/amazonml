@@ -2,7 +2,7 @@
  * Canonical helper for team sharing and Web Share API / Clipboard fallback.
  */
 
-export const DEFAULT_SITE_URL = "https://amazonmlchallengeexplorer.vercel.app";
+export const DEFAULT_SITE_URL = "https://amazonmlchallengeexplorerv2.vercel.app";
 
 /**
  * Returns the relative canonical path for a team.
@@ -14,7 +14,7 @@ export function getTeamSharePath(teamId: string | number): string {
 
 /**
  * Returns the absolute canonical share URL for a team based on the current environment.
- * Production: https://amazonmlchallengeexplorer.vercel.app/teams/{teamId}
+ * Production: https://amazonmlchallengeexplorerv2.vercel.app/teams/{teamId}
  * Development: http://localhost:3000/teams/{teamId}
  */
 export function getTeamShareUrl(teamId: string | number): string {

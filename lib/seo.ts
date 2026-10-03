@@ -4,7 +4,7 @@
 
 import type { DatasetMetadata, Organization, OrganizationStats, Team } from "./types";
 
-export const SITE_URL = "https://amazonmlchallengeexplorer.vercel.app";
+export const SITE_URL = "https://amazonmlchallengeexplorerv2.vercel.app";
 export const SITE_NAME = "Amazon ML Challenge Explorer";
 export const SITE_TAGLINE = "Independent Leaderboard & College Performance Explorer";
 export const CHALLENGE_NAME = "Amazon ML Challenge 2026";

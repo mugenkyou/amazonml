@@ -399,7 +399,7 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
 
           {/* Subtle Website Attribution built into chart graphic (Preserved in screenshots) */}
           <a
-            href="https://amazonmlchallengeexplorer.vercel.app"
+            href="https://amazonmlchallengeexplorerv2.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer group"
@@ -419,7 +419,7 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
                 textAnchor="end"
                 className="fill-[#E47911] group-hover:fill-[#FF9900] text-[7.5px] font-mono font-medium transition-colors"
               >
-                amazonmlchallengeexplorer.vercel.app
+                amazonmlchallengeexplorerv2.vercel.app
               </text>
             </g>
           </a>
@@ -506,13 +506,13 @@ export function TeamHistoryChart({ history, teamName }: TeamHistoryChartProps) {
           </span>
           <span className="text-[#D0D0D0] hidden sm:inline">•</span>
           <a
-            href="https://amazonmlchallengeexplorer.vercel.app"
+            href="https://amazonmlchallengeexplorerv2.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 font-medium text-[#767676] hover:text-[#111111] transition-colors"
           >
             <span>Amazon ML Challenge Explorer</span>
-            <span className="font-mono text-[#E47911] hover:text-[#FF9900] hover:underline">amazonmlchallengeexplorer.vercel.app</span>
+            <span className="font-mono text-[#E47911] hover:text-[#FF9900] hover:underline">amazonmlchallengeexplorerv2.vercel.app</span>
           </a>
         </div>
       </div>

@@ -38,8 +38,8 @@ describe("Short Team Sharing & Canonical URL Helper", () => {
     const urlA = getTeamShareUrl(teamA.teamId);
     const urlB = getTeamShareUrl(teamB.teamId);
 
-    expect(urlA).toBe("https://amazonmlchallengeexplorer.vercel.app/teams/12345");
-    expect(urlB).toBe("https://amazonmlchallengeexplorer.vercel.app/teams/67890");
+    expect(urlA).toBe("https://amazonmlchallengeexplorerv2.vercel.app/teams/12345");
+    expect(urlB).toBe("https://amazonmlchallengeexplorerv2.vercel.app/teams/67890");
     expect(urlA).not.toBe(urlB);
     expect(urlA).not.toContain("ai-warriors");
     expect(urlB).not.toContain("ai-warriors");
@@ -61,7 +61,7 @@ describe("Short Team Sharing & Canonical URL Helper", () => {
     expect(mockShare).toHaveBeenCalledWith({
       title: "AI Warriors — Amazon ML Challenge 2026",
       text: "View AI Warriors on Amazon ML Challenge Explorer",
-      url: "https://amazonmlchallengeexplorer.vercel.app/teams/12345",
+      url: "https://amazonmlchallengeexplorerv2.vercel.app/teams/12345",
     });
     expect(result).toEqual({ success: true, method: "native" });
   });
@@ -81,7 +81,7 @@ describe("Short Team Sharing & Canonical URL Helper", () => {
     const result = await shareTeam({ teamId: "12345", teamName: "AI Warriors" });
 
     expect(mockWriteText).toHaveBeenCalledTimes(1);
-    expect(mockWriteText).toHaveBeenCalledWith("https://amazonmlchallengeexplorer.vercel.app/teams/12345");
+    expect(mockWriteText).toHaveBeenCalledWith("https://amazonmlchallengeexplorerv2.vercel.app/teams/12345");
     expect(result).toEqual({
       success: true,
       method: "clipboard",
